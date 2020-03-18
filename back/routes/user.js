@@ -1,5 +1,6 @@
 const passport = require('../passport/passport');
 const express = require('express');
+const { User } = require("../models/index")
 const router = express.Router();
 
 const loggedUser = function (req, res, next) {
@@ -11,7 +12,7 @@ const loggedUser = function (req, res, next) {
 }
 
 router.post("/user/register", function (req, res) {
-    Usuario.create(req.body)
+    User.create(req.body)
         .then(res.send("Se creo el usuario"))
 })
 
