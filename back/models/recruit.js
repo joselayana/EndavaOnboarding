@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const sequelize = require('../config/db');
+const sequelize = require('../db/db');
 
 class Recruit extends Sequelize.Model { }
 
@@ -43,8 +43,8 @@ Recruit.init({
         type: Sequelize.INTEGER
     }
 }, {
-        sequelize,
-        modelName: 'recruit'
-    });
+    sequelize,
+    modelName: 'recruit'
+});
 
 module.exports = Recruit;
