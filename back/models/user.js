@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const sequelize = require('../config/db');
+const sequelize = require('../db/db');
 
 const crypto = require('crypto');
 class User extends Sequelize.Model { }
@@ -45,9 +45,9 @@ User.init({
         type: Sequelize.STRING
     }
 }, {
-        sequelize,
-        modelName: 'user'
-    });
+    sequelize,
+    modelName: 'user'
+});
 
 
 User.beforeCreate((user) => {
