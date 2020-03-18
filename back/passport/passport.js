@@ -1,12 +1,12 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy
-//const { Usuario } = require('../models/index');
+const { User } = require('../models/index');
 
-/*passport.use(new LocalStrategy({
+passport.use(new LocalStrategy({
     usernameField: 'email'
 },
     function (inputEmail, password, done) {
-        Usuario.findOne({
+        User.findOne({
             where: {
                 email: inputEmail
             }
@@ -26,7 +26,7 @@ const LocalStrategy = require('passport-local').Strategy
             })
             .catch(done);
     }
-));*/
+));
 
 // esto es para actualizar el status
 
