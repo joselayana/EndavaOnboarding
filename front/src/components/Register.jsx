@@ -2,14 +2,14 @@ import React from "react";
 
 
 
-export default ({ handldeSubmit, handleChange, state }) => (
+export default ({ handleSubmit, handleChange, state }) => (
 
   <div className="card bg-light">
     <div className="card-body mx-auto" style={{ maxWidth: "400px" }}>
       <h4 className="card-title mt-3 text-center">Create Account</h4>
       <p className="text-center">Use your corporate email to SignUp</p>
 
-      <form onSubmit={handldeSubmit} >
+      <form onSubmit={handleSubmit} >
 
         <div className="form-group input-group">
           <div className="input-group-prepend">
@@ -38,8 +38,8 @@ export default ({ handldeSubmit, handleChange, state }) => (
 
 
 
-          <select onChange={handleChange} name="discipline" value={state.discipline} className="form-control">
-            <option selected=""> Select Discipline</option>
+          <select onChange={handleChange} value={state.discipline} selected="" name="discipline" className="form-control">
+            <option > Select Discipline</option>
             <option>Development</option>
             <option>Project Manager</option>
             <option>Testing</option>
