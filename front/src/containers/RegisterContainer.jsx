@@ -3,21 +3,19 @@ import {Route, Switch} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 
-import RegisterContainer from "../containers/RegisterContainer"
+import Register from "../components/Register";
 
-class Main extends React.Component{
+class RegisterContainer extends React.Component{
     constructor(){
         super()
     }
     render(){
         return(
             <div>
-              <h1>Holaholahola</h1>
-              <RegisterContainer/>
+              <Register/>
             </div>
         )
     }
-
 }
 
-export default connect(null, null)(Main)
+export default RegisterContainer;
