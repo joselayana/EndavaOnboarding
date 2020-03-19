@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 
 export default ({ handleSubmit, handleChange, state }) => (
@@ -64,7 +64,7 @@ export default ({ handleSubmit, handleChange, state }) => (
           <button type="submit" className="btn btn-primary btn-block"> Create Account  </button>
         </div>
 
-        <p className="text-center">Already have an account? <a href="">Log In</a> </p>
+        <p className="text-center">Already have an account? <Link to={"/login"}> Log In</Link></p>
 
       </form>
     </div>
