@@ -3,22 +3,19 @@ import {Route, Switch} from "react-router-dom";
 import {withRouter} from "react-router-dom";
 import {connect} from "react-redux";
 
-import RegisterContainer from "../containers/RegisterContainer"
-import LogInContainer from "../containers/LogInContainer"
+import LogIn from "../components/LogIn";
 
-class Main extends React.Component{
+class LogInContainer extends React.Component{
     constructor(){
         super()
     }
     render(){
         return(
             <div>
-              <LogInContainer/>
-              <RegisterContainer/>
+              <LogIn/>
             </div>
         )
     }
-
 }
 
-export default connect(null, null)(Main)
+export default LogInContainer;
