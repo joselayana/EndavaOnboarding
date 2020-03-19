@@ -5,17 +5,13 @@ const Recruit = require("./recruit");
 const User = require("./user");
 
 
-// TaskRecruit.belongsTo(User);
-// TaskRecruit.belongsTo(Recruit);
-// TaskRecruit.belongsTo(Task);
-// User.hasMany(Recruit);
-// User.belongsTo(Dicipline)
-// Recruit.belongsTo(User);
-// Recruit.hasMany(Task);
-// Task.belongsTo(Recruit);
-// Task.hasMany(Dicipline);
-// Dicipline.hasMany(User);
-// Dicipline.hasMany(Recruit);
-// Dicipline.hasMany(Task)
+TaskRecruit.belongsTo(User);
+TaskRecruit.belongsTo(Recruit);
+TaskRecruit.belongsTo(Task);
+Recruit.belongsTo(User);
+Recruit.belongsTo(Dicipline);
+User.belongsTo(Dicipline)
+Task.belongsToMany(Dicipline, { through: 'dicipline_task' });
+Dicipline.belongsToMany(Task, { through: 'dicipline_task' });
 
 module.exports = { Task, Dicipline, TaskRecruit, Recruit, User }
