@@ -15,8 +15,16 @@ export default () => (
   		<div className="input-group-prepend">
   		    <span className="input-group-text"> <i className="fa fa-user"></i> </span>
   		 </div>
-          <input name="" className="form-control" placeholder="Full name" type="text"/>
+          <input name="" className="form-control" placeholder="Name" type="text"/>
       </div>
+
+      <div className="form-group input-group">
+        <div className="input-group-prepend">
+            <span className="input-group-text"> <i className="fa fa-user"></i> </span>
+         </div>
+            <input name="" className="form-control" placeholder="Lastname" type="text"/>
+        </div>
+
       <div className="form-group input-group">
       	<div className="input-group-prepend">
   		    <span className="input-group-text"> <i className="fa fa-envelope"></i> </span>
@@ -28,17 +36,14 @@ export default () => (
       	<div className="input-group-prepend">
   		    <span className="input-group-text"> <i className="fa fa-building"></i> </span>
   		</div>
-
+        <select className="form-control">
+          <option selected=""> Select Discipline</option>
+          <option>Development</option>
+          <option>Project Manager</option>
+          <option>Testing</option>
+          <option>Pdrc</option>
+        </select>
   	  </div>
-
-      <select className="form-control">
-        <option selected=""> Select Discipline</option>
-        <option>Development</option>
-        <option>Project Manager</option>
-        <option>Testing</option>
-        <option>Pdrc</option>
-      </select>
-
 
       <div className="form-group input-group">
       	<div className="input-group-prepend">
