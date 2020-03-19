@@ -1,9 +1,9 @@
 const Sequelize = require('sequelize')
 const sequelize = require('../db/db');
 
-class Dicipline extends Sequelize.Model { }
+class Discipline extends Sequelize.Model { }
 
-Dicipline.init({
+Discipline.init({
     description: {
         type: Sequelize.TEXT,
         allowNull: false
@@ -14,4 +14,4 @@ Dicipline.init({
     modelName: 'dicipline'
 });
 
-module.exports = Dicipline;
+module.exports = Discipline;
