@@ -8,14 +8,14 @@ const User = require("./user");
 // TaskRecruit.belongsTo(User);
 // TaskRecruit.belongsTo(Recruit);
 // TaskRecruit.belongsTo(Task);
-// User.hasMany(Recruit);
+// // User.hasMany(Recruit);
 // User.belongsTo(Dicipline)
 // Recruit.belongsTo(User);
 // Recruit.hasMany(Task);
-// Task.belongsTo(Recruit);
+// // Task.belongsTo(Recruit);
 // Task.hasMany(Dicipline);
-// Dicipline.hasMany(User);
+// // Dicipline.hasMany(User);
 // Dicipline.hasMany(Recruit);
-// Dicipline.hasMany(Task)
+// // Dicipline.hasMany(Task)
 
 module.exports = { Task, Dicipline, TaskRecruit, Recruit, User }
