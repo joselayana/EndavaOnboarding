@@ -11,16 +11,16 @@ const loggedUser = function (req, res, next) {
     }
 }
 
-router.post("/user/register", function (req, res) {
+router.post("/register", function (req, res) {
     User.create(req.body)
         .then(res.send("Se creo el usuario"))
 })
 
-router.post('/user/login', passport.authenticate('local'), (req, res) => {
+router.post('/login', passport.authenticate('local'), (req, res) => {
     res.send(req.user)
 })
 
-router.get("/user/logout", function (req, res) {
+router.get("/logout", function (req, res) {
     req.logout()
     res.send('deslogueado!')
 })
