@@ -1,8 +1,10 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-export default ({ handleSubmit, handleChange, state, tasks }) => (
+export default ({ handleSubmit, handleChange, state, tasks }) => {
+  return(
   <div style={{ padding: "3%" }}>
+
     <h1>My Tasks</h1>
     <br />
     <div>
@@ -21,8 +23,8 @@ export default ({ handleSubmit, handleChange, state, tasks }) => (
           {tasks.map((task) => (
             <tr key={task.id}>
               <th scope="row">1</th>
-              <td>{task.taskId}</td>
-              <td>{task.recruitId}</td>
+              <td>{task.task.description}</td>
+              <td>{task.recruit.name}</td>
               <td>{task.dueDate}</td>
               <td>{task.state}</td>
               <td>{task.comment}</td>
@@ -54,11 +56,7 @@ export default ({ handleSubmit, handleChange, state, tasks }) => (
             <td>Finalizado</td>
             <td>HolaHOla</td>
           </tr>
-<<<<<<< HEAD
-        </tbody>
-=======
         </tbody> */}
->>>>>>> 451f3756f92acf55290a069471c30f58ff4eb64e
       </table>
     </div>
 
@@ -73,4 +71,4 @@ export default ({ handleSubmit, handleChange, state, tasks }) => (
       <button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#adb5bd", borderColor: "#adb5bd" }}>Create Task</button>
     </form>
   </div>
-)
+)}
