@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import TaskAdmin from "../components/TasksAdmin";
-import { createTask } from "../redux/actions/tasks"
+import { createTask, searchTasks } from "../redux/actions/tasks"
 
 
 class TasksAdminContainer extends React.Component {
@@ -13,6 +13,13 @@ class TasksAdminContainer extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+    }
+
+    componentDidMount() {
+        const userId = this.props.user.id
+        this.props.searchTasks(userId)
+
+
     }
 
     handleSubmit(e) {
@@ -28,22 +35,26 @@ class TasksAdminContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <TaskAdmin handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} />
+                <TaskAdmin handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} tasks={this.props.tasks} />
             </Fragment>
         )
     }
 }
 
-// const mapStateToProps = (state, ownProps) => {
-
-// }
-
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        createTask: (task) => dispatch(createTask(task))
+        user: state.login.user,
+        tasks: state.task.tasks
     }
 }
 
-export default withRouter(connect(null, mapDispatchToProps)(TasksAdminContainer))
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        createTask: (task) => dispatch(createTask(task)),
+        searchTasks: (userId) => dispatch(searchTasks(userId))
+    }
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(TasksAdminContainer))
 
 
