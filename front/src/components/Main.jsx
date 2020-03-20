@@ -17,7 +17,7 @@ class Main extends React.Component {
                 <Switch>
                     <Route exact path="/login" component={LogInContainer} />
                     <Route exact path="/" component={RegisterContainer} />
-                    <AdminLandingCardsContainer/>
+                    <Route exact path="/home" component={AdminLandingCardsContainer} />
                 </Switch>
             </Fragment>
         )

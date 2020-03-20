@@ -57,7 +57,6 @@ db.sync({
     force: false
 })
     .then(function () {
-        // asegurate de reemplazar el nombre de abajo con tu app de express
         app.listen(3000, function () {
             console.log('Server is listening on port 3000!');
         });
