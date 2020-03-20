@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import RegisterContainer from "../containers/RegisterContainer"
 import LogInContainer from "../containers/LogInContainer"
 import AdminLandingCardsContainer from "../containers/AdminLandingCardsContainer"
+import TasksAdmin from "./TasksAdmin"
 
 class Main extends React.Component {
     constructor() {
@@ -17,6 +18,7 @@ class Main extends React.Component {
                 <Switch>
                     <Route exact path="/login" component={LogInContainer} />
                     <Route exact path="/" component={RegisterContainer} />
+                    <Route exact path="/myTasks" component={TasksAdmin} />
                     <AdminLandingCardsContainer/>
                 </Switch>
             </Fragment>
