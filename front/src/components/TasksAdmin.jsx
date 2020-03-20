@@ -1,7 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
-export default ({ handleSubmit, handleChange, state }) => (
+export default ({ handleSubmit, handleChange, state, tasks }) => (
   <div style={{ padding: "3%" }}>
     <h1>My Tasks</h1>
     <br />
@@ -18,6 +18,18 @@ export default ({ handleSubmit, handleChange, state }) => (
           </tr>
         </thead>
         <tbody>
+          {tasks.map((task) => (
+            <tr key={task.id}>
+              <th scope="row">1</th>
+              <td>{task.taskId}</td>
+              <td>{task.recruitId}</td>
+              <td>{task.dueDate}</td>
+              <td>{task.state}</td>
+              <td>{task.comment}</td>
+            </tr>
+          ))}
+        </tbody>
+        {/* <tbody>
           <tr>
             <th scope="row">1</th>
             <td>Mark</td>
@@ -42,7 +54,11 @@ export default ({ handleSubmit, handleChange, state }) => (
             <td>Finalizado</td>
             <td>HolaHOla</td>
           </tr>
+<<<<<<< HEAD
         </tbody>
+=======
+        </tbody> */}
+>>>>>>> 451f3756f92acf55290a069471c30f58ff4eb64e
       </table>
     </div>
 
