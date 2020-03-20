@@ -7,7 +7,8 @@ import RegisterContainer from "../containers/RegisterContainer"
 import LogInContainer from "../containers/LogInContainer"
 import AdminLandingCardsContainer from "../containers/AdminLandingCardsContainer"
 import CreateRecruitContainer from "../containers/CreateRecruitContainer"
-import TasksAdmin from "./TasksAdmin"
+import TasksAdminContainer from "../containers/TaskAdminContainer"
+import NavbarContainer from "../containers/NavbarContainer"
 
 
 class Main extends React.Component {
@@ -17,15 +18,13 @@ class Main extends React.Component {
     render() {
         return (
             <Fragment>
+                <NavbarContainer />
                 <Switch>
-
                     <Route exact path="/login" component={LogInContainer} />
                     <Route exact path="/" component={RegisterContainer} />
-                    <Route exact path="/myTasks" component={TasksAdmin} />
+                    <Route exact path="/myTasks" component={TasksAdminContainer} />
                     <Route exact path="/home" component={AdminLandingCardsContainer} />
                     <Route exact path="/newRecruit" component={CreateRecruitContainer} />
-
-
                 </Switch>
             </Fragment>
         )
