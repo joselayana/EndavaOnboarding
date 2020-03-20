@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 
 
 export default ({ handleSubmit, handleChange, state }) => (
@@ -59,12 +59,48 @@ export default ({ handleSubmit, handleChange, state }) => (
           </div>
           <input onChange={handleChange} name="password2" value={state.password2} placeholder="Repeat password" type="password" />
         </div>
+        {state.errorMail ? (
+                  <div
+                    className="alert alert-danger"
+                    style= {{
+                      borderRadius: "5px",
+                      marginTop: "17px"
+                    }}
+                    role="alert"
+                  >
+                    The selected email is invalid
+                  </div>
+                ) : null}
+          {state.errorPass ? (
+                  <div
+                    className="alert alert-danger"
+                    style={{
+                      borderRadius: "5px",
+                      marginTop: "17px"
+                    }}
+                    role="alert"
+                  >
+                    The two passwords have to be the same!
+                  </div>
+          ) : null}
+          {state.errorInc ? (
+                  <div
+                    className="alert alert-danger"
+                    style={{
+                      borderRadius: "5px",
+                      marginTop: "17px"
+                    }}
+                    role="alert"
+                  >
+                    Fill in all the fields
+                  </div>
+          ) : null}
 
         <div className="form-group">
           <button type="submit" className="btn btn-primary btn-block"> Create Account  </button>
         </div>
 
-        <p className="text-center">Already have an account? <a href="">Log In</a> </p>
+        <p className="text-center">Already have an account? <Link to={"/login"}> Log In</Link></p>
 
       </form>
     </div>

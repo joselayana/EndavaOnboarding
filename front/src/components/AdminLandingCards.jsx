@@ -11,7 +11,7 @@ export default ({})=>(
   					<div className="card-body">
   						<h5 className="card-title">My Tasks</h5>
   						<p className="card-text">See the activities that you have going on, all in one section.</p>
-  						<Link to='/'>
+  						<Link to='/myTasks'>
                 <button className="btn btn-info btn-block mb-2" style={{backgroundColor:"#adb5bd", borderColor: "#adb5bd"}}>Access</button>
               </Link>
   					</div>

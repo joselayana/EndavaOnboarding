@@ -14,7 +14,10 @@ class RegisterContainer extends React.Component {
             email: "",
             dicipline: "",
             password1: "",
-            password2: ""
+            password2: "",
+            errorMail: false,
+            errorPass: false,
+            errorInc: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this)
@@ -25,12 +28,21 @@ class RegisterContainer extends React.Component {
         e.preventDefault();
         let flagMail = false
         let flagPassword = false
-        if (e.target[2].value.includes("@endava.com")) flagMail = true
-        if (e.target[4].value === e.target[5].value) flagPassword = true
-        if (flagMail === true && flagPassword === true) {
-            let obj = { name: e.target[0].value, lastName: e.target[1].value, email: e.target[2].value, discipline: e.target[3].value, password: e.target[4].value }
-            this.props.createUser(obj)
-                .then(() => this.props.history.push("/login"))
+        this.setState({ errorMail: false })
+        this.setState({ errorPass: false })
+        this.setState({ errorInc: false })
+        if(e.target[0].value && e.target[1].value && e.target[2].value && e.target[3].value && e.target[4].value && e.target[5].value) {
+            if (e.target[2].value.includes("@endava.com")) flagMail = true
+            else this.setState({ errorMail: true })
+            if (e.target[4].value === e.target[5].value) flagPassword = true
+            else this.setState({ errorPass: true })
+            if (flagMail === true && flagPassword === true) {
+                let obj = { name: e.target[0].value, lastName: e.target[1].value, email: e.target[2].value, discipline: e.target[3].value, password: e.target[4].value }
+                this.props.createUser(obj)
+                    .then(() => this.props.history.push("/login"))
+            }
+        } else {
+            this.setState({ errorInc: true })
         }
     }
 
