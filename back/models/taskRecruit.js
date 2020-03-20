@@ -10,7 +10,6 @@ TaskRecruit.init({
     },
     finishDate: {
         type: Sequelize.DATE,
-        allowNull: false
     },
     comment: {
         type: Sequelize.TEXT,
