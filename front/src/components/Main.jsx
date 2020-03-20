@@ -22,9 +22,10 @@ class Main extends React.Component {
                     <Route exact path="/login" component={LogInContainer} />
                     <Route exact path="/" component={RegisterContainer} />
                     <Route exact path="/myTasks" component={TasksAdmin} />
-                    <AdminLandingCardsContainer/>
-                    <CreateRecruitContainer/>
-                  
+                    <Route exact path="/home" component={AdminLandingCardsContainer} />
+                    <Route exact path="/newRecruit" component={CreateRecruitContainer} />
+
+
                 </Switch>
             </Fragment>
         )

@@ -11,7 +11,7 @@ Discipline.init({
 
 }, {
     sequelize,
-    modelName: 'dicipline'
+    modelName: 'discipline'
 });
 
 module.exports = Discipline;
