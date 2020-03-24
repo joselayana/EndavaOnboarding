@@ -9,32 +9,40 @@ router.post("/newTask", function (req, res) {
 
 router.get("/myTasks/:id", function (req, res) {
     const id = req.params.id
-    
+
     TaskRecruit.findAll({
         include: [
-            {model: Recruit},
-            {model: Task}
-        ], 
+            { model: Recruit },
+            { model: Task }
+        ],
         where: { userId: id },
         order: [
-        ['id', 'DESC'],
+            ['id', 'DESC'],
         ],
     })
         .then(tasks => res.send(tasks))
-    
-    
-    // TaskRecruit.findAll({
-    //     where: {
-    //         userId: id
-    //     }
-    // })
-    //     .then(tasks => {
-    //         console.log("aquiiiiiiiiiiiiii", tasks);
 
-    //         res.send(tasks)
-    //     })
+})
+
+
+router.get("/:id", (req, res) => {
+    const id = req.params.id
+    TaskRecruit.findAll({
+        include: [
+            { model: Recruit },
+            { model: Task }
+        ],
+        where: {
+            id: id
+        }
+
+
+    })
+        .then(task => res.send(task[0]))
+
 })
 
 module.exports = router
+
 
 

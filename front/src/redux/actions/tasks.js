@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { CREATE_TASK, SEARCH_TASKS } from "../constants";
+import { CREATE_TASK, SEARCH_TASKS, SINGLE_TASK_RECRUIT } from "../constants";
 
 export const setTask = (task) => ({
     type: CREATE_TASK,
@@ -11,6 +11,10 @@ export const findTasks = (tasks) => ({
     tasks
 })
 
+export const singleTaskRecruit = (task) => ({
+    type: SINGLE_TASK_RECRUIT,
+    task
+})
 
 
 
@@ -25,4 +29,10 @@ export const searchTasks = (userId) => dispatch => {
         .then(res => res.data)
         .then(tasks => dispatch(findTasks(tasks)))
 
+}
+
+export const searchSingleTaskRecruit = (taskId) => dispatch => {
+    return Axios.get(`/api/task/${taskId}`)
+        .then(res => res.data)
+        .then(task => dispatch(singleTaskRecruit(task)))
 }
