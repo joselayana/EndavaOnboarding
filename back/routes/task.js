@@ -7,6 +7,12 @@ router.post("/newTask", function (req, res) {
         .then(res.send("Se creo la tarea"))
 })
 
+router.put("/edit", function (req, res) {
+    console.log("Llegueeeeeee", req.body)
+    // TaskRecruit.update(req.body)
+    //     .then(res.send("Se actualizó la tarea"))
+})
+
 router.get("/myTasks/:id", function (req, res) {
     const id = req.params.id
 

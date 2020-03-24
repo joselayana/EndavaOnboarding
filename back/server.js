@@ -55,6 +55,7 @@ app.get('/*', (req, res) => {
 db.sync({
     logging: false,
     force: false
+
 })
     .then(function () {
         app.listen(3000, function () {
