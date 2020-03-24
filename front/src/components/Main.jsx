@@ -3,8 +3,6 @@ import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 
-import RegisterContainer from "../containers/RegisterContainer"
-import LogInContainer from "../containers/LogInContainer"
 import AdminLandingCardsContainer from "../containers/AdminLandingCardsContainer"
 import CreateRecruitContainer from "../containers/CreateRecruitContainer"
 import TasksAdminContainer from "../containers/TaskAdminContainer"
@@ -23,12 +21,10 @@ class Main extends React.Component {
         return (
             <Fragment>
                 <NavbarContainer />
-                <BannerWelcomeContainer />
-                <BannerLoginContainer />
-                <BannerRegisterContainer />
                 <Switch>
-                    <Route exact path="/login" component={LogInContainer} />
-                    <Route exact path="/register" component={RegisterContainer} />
+                    <Route exact path="/" component={BannerWelcomeContainer} />  
+                    <Route exact path="/login" component={BannerLoginContainer} />
+                    <Route exact path="/register" component={BannerRegisterContainer} />
                     <Route exact path="/myTasks" component={TasksAdminContainer} />
                     <Route exact path="/home" component={AdminLandingCardsContainer} />
                     <Route exact path="/newRecruit" component={CreateRecruitContainer} />
