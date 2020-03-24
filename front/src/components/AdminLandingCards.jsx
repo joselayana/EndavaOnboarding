@@ -1,62 +1,84 @@
 import React from "react"
 import { Link } from "react-router-dom"
+import "../css/style.css"
 
 export default ({ }) => (
-	<div className="container mt-5">
-		<div className="row mb-5">
+	<section>
+		<div className="jumbotron backgroundbanner" style={{height: "300px"}} >
+	    <div className="row">
+	      <div className="col-md-6" style={{height: "300px"}}>
+	        <p className="banner-title2">ADMIN SECTIONS</p>
+	        <p className="banner-subtitle2">Find out all that you can do with your admin's account! </p>
+	      </div>
+	      <div className="col-md-6 text-center" >
+	        <img src="images/design/HL_M04_07_ce.svg" className="img-fluid" style ={{height: "300px"}}/>
+	      </div>
+	    </div>
+	  </div>
 
-			<div className="col-md-4">
+		<div className="row ml-4 mr-4">
+
+
+		<div className="col-md-4 mt-3">
+			<div className="container box_container2">
 				<div className="card">
-					<img src="https://images.pexels.com/photos/572056/pexels-photo-572056.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="card-img-top" alt="..." />
+					<img src="/images/design/dashboard.svg" className="card-img-top" alt="..." />
 					<div className="card-body">
-						<h5 className="card-title">My Tasks</h5>
-						<p className="card-text">See the activities that you have going on, all in one section.</p>
+						<h5 className="card-title category_title">My Tasks</h5>
+						<p className="card-text category_text">See the activities that you have going on, all in one section.</p>
 						<Link to='/myTasks'>
-							<button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#adb5bd", borderColor: "#adb5bd" }}>Access</button>
+							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
 					</div>
 				</div>
 			</div>
-
-			<div className="col-md-4">
-				<div className="card">
-					<img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="card-img-top" alt="..." />
-					<div className="card-body">
-						<h5 className="card-title">Recruits</h5>
-						<p className="card-text">Get to know your Recruits, and add new ones.</p>
-						<Link to='/newRecruit'>
-							<button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#adb5bd", borderColor: "#adb5bd" }}>Access</button>
-						</Link>
-					</div>
-				</div>
-			</div>
-
-			<div className="col-md-4">
-				<div className="card">
-					<img src="https://images.pexels.com/photos/669621/pexels-photo-669621.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="card-img-top" alt="..." />
-					<div className="card-body">
-						<h5 className="card-title">Dashboard</h5>
-						<p className="card-text">Discover al the metrics and reports that you need to stay informed.</p>
-						<Link to='/'>
-							<button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#adb5bd", borderColor: "#adb5bd" }}>Access</button>
-						</Link>
-					</div>
-				</div>
-			</div>
-
-			<div className="col-md-4 mt-4">
-				<div className="card">
-					<img src="https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" className="card-img-top" alt="..." />
-					<div className="card-body">
-						<h5 className="card-title">Users</h5>
-						<p className="card-text">Inspect, create and edit all your users.</p>
-						<Link to='/'>
-							<button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#adb5bd", borderColor: "#adb5bd" }}>Access</button>
-						</Link>
-					</div>
-				</div>
-			</div>
-
 		</div>
+
+			<div className="col-md-4 mt-3">
+				<div className="container box_container2">
+				<div className="card">
+					<img src="/images/design/recruits0.svg" className="card-img-top" alt="..." />
+					<div className="card-body">
+						<h5 className="card-title category_title">Recruits</h5>
+						<p className="card-text category_text">Get to know your Recruits, and add new ones.</p>
+						<Link to='/myTasks'>
+							<button className="btn category_button btn-block mb-2">Access</button>
+						</Link>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<div className="col-md-4 mt-3">
+				<div className="container box_container2">
+				<div className="card">
+					<img src="/images/design/dashboard0.svg" className="card-img-top" alt="..." />
+					<div className="card-body">
+						<h5 className="card-title category_title">My Dashboard</h5>
+						<p className="card-text category_text">Discover al the metrics and reports that you need.</p>
+						<Link to='/myTasks'>
+							<button className="btn category_button btn-block mb-2">Access</button>
+						</Link>
+					</div>
+				</div>
+			</div>
+		</div>
+
+			<div className="col-md-4 mt-3">
+				<div className="container box_container2">
+				<div className="card">
+					<img src="/images/design/reclutas2.svg" className="card-img-top" alt="..." />
+					<div className="card-body">
+						<h5 className="card-title category_title">Users</h5>
+						<p className="card-text category_text">Inspect, create and edit all your users.</p>
+						<Link to='/myTasks'>
+							<button className="btn category_button btn-block mb-2">Access</button>
+						</Link>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div>
+	</section>
 )
