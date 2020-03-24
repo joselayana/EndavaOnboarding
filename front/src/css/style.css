@@ -1,0 +1,132 @@
+*
+{
+  margin:0;
+  padding: 0;
+}
+
+body
+{
+  font-family: 'Montserrat', sans-serif;
+
+/*-----------Navbar------------*/
+
+}
+#nav-bar
+{
+  position: sticky;
+  top:0;
+  z-index:10;
+}
+
+.navbar
+{
+  background-image:linear-gradient(to right,#2980b9, #5f1782);
+}
+.navbar-brand img
+{
+  height:37px;
+  padding-left: 20px;
+}
+
+#admin-btn
+{
+  margin-right: 3%;
+}
+
+.btn-secondary-nav {
+    color: #495057;
+    background-color: #f8f9fa;
+    border-color: #f8f9fa;
+}
+
+/*-----------WelcomeLogin------------*/
+
+#banner
+{
+  background-image:linear-gradient(to right,#2980b9, #5f1782);
+  color:#fff;
+  padding-top:5%
+}
+.banner-tittle
+{
+  font-size: 40px;
+  font-weight: 300;
+  margin-top: 92px;
+}
+.welcome-btn
+{
+  width: 45px;
+  margin: 20px;
+}
+
+#banner a
+{
+  color: #fff;
+}
+
+
+/*-----------BannerLogin------------*/
+
+#banner_white
+{
+  background-color: #fff;
+  color:#fff;
+  padding-top:5%
+}
+
+.form
+{
+  background-color: #1e5dac;
+  position: center;
+}
+
+.box_container
+{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+  position:relative;
+  overflow: hidden;
+  width: 1200px;
+  max-width: 100%
+}
+
+.title
+{
+  font-size: 3.5rem;
+  font-weight: 300;
+}
+
+.subtitle
+{
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.logform
+{
+  margin-top: 54px;
+}
+
+.allform
+{
+  margin-top: 30px;
+}
+
+.button1
+{
+  background-color: #6f97de;
+  border-color: #6f97de;
+}
+
+.icon1
+{
+  background-color: #dee5f0;
+  border-color: #dee5f0;
+}
+
+.border1
+{
+  border-top-left-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
