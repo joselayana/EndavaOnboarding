@@ -30,7 +30,7 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick }) => {
             return(
             <tr key={task.id}>
               <th scope="row">{indice}</th>
-              <td>{task.task.description}</td>
+              <td><Link to={`/task/${task.id}`} >{task.task.description}</Link></td>
               <td>{task.recruit.name}</td>
               <td>{dueDate}</td>
               <td>{task.state}</td>
