@@ -20,6 +20,12 @@ export const createTask = (task) => dispatch => {
         .then(task => dispatch(setTask(task)))
 }
 
+export const updateTaskState = (objTaskState) => dispatch => {
+    return Axios.put("/api/task/edit", objTaskState)
+        .then(res => res.data)
+        .then(task => dispatch(setTask(task)))
+}
+
 export const searchTasks = (userId) => dispatch => {
     return Axios.get(`/api/task/myTasks/${userId}`)
         .then(res => res.data)

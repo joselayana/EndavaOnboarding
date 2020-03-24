@@ -5,7 +5,7 @@ class TaskRecruit extends Sequelize.Model { }
 
 TaskRecruit.init({
     dueDate: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
     },
     finishDate: {
