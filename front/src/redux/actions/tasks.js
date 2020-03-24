@@ -25,7 +25,7 @@ export const createTask = (task) => dispatch => {
 }
 
 export const updateTaskState = (objTaskState) => dispatch => {
-    return Axios.put("/api/task/edit", objTaskState)
+    return Axios.put(`/api/task/edit/${objTaskState.taskId}`, objTaskState)
         .then(res => res.data)
         .then(task => dispatch(setTask(task)))
 }

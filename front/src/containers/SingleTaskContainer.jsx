@@ -27,7 +27,7 @@ class SingleTaskContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <SingleTask selectedTask={this.props.selectedTask} />
+                <SingleTask selectedTask={this.props.selectedTask} user={this.props.user} />
             </Fragment>
 
         )
@@ -37,7 +37,8 @@ class SingleTaskContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
-        selectedTask: state.task.selectedTask
+        selectedTask: state.task.selectedTask,
+        user: state.login.user
     }
 }
 
