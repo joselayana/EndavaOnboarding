@@ -20,6 +20,16 @@ router.put("/edit/:id", function (req, res, next) {
       .catch(next)  
 })
 
+router.get('/', function (req, res, next) {
+    TaskRecruit.findAll({
+        include: [
+            { model: Recruit },
+            { model: Task }
+        ],
+    })
+        .then((allTasks) => res.status(200).json(allTasks))
+});
+
 router.get("/myTasks/:id", function (req, res) {
     const id = req.params.id
 
