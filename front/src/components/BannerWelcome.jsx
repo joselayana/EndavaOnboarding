@@ -10,7 +10,7 @@ export default () => (
       <div className="col-md-6">
         <p className="banner-tittle">WELCOME ON BOARD!</p>
         <p>Access to this app to manage all your recruits, asign them tasks and organice their onboarding process! </p>
-        <a href="#"><img src="images/welcome/9.png" className="welcome-btn"/>Login or Register</a>
+        <Link to = "/register" ><img src="images/welcome/9.png" className="welcome-btn"/>Login or Register</Link>
       </div>
       <div className="col-md-6 text-center">
         <img src="images/design/HL_M04_07_ce.svg" className="img-fluid"/>
