@@ -52,7 +52,48 @@ router.get("/:id", (req, res) => {
 
     })
         .then(task => res.send(task[0]))
+})
 
+router.post('/', function (req, res, next) {
+    TaskRecruit.create(req.body)
+    .then(nuevaTaskRec => {
+        return Promise.all([
+            nuevaTaskRec.setDiscipline(req.body.discipline),
+            nuevaTaskRec.setUser(req.body.user),
+            nuevaTaskRec.setRecruit(req.recruit)
+        ])
+    })
+    .then((nuevaTaskRec) => res.status(201).json(nuevaTaskRec))
+});
+
+router.delete("/:id", (req,res,next) =>{
+    TaskRecruit.findByPk(req.params.id)
+    .then(task=>{
+        if(task){
+            task.destroy()
+            .then(() => res.sendStatus(204))
+        } else {
+            res.sendStatus(404)
+        }
+
+    })
+    .catch(err => res.sendStatus(500))  
+})
+
+router.delete("byRecruit/:recruitId", (req,res,next) =>{
+    TaskRecruit.findAll({where: {
+        recruitId: req.params.recruitId,
+    }})
+    .then(tasks=>{
+        if(tasks){
+            tasks.destroy()
+            .then(() => res.sendStatus(204))
+        } else {
+            res.sendStatus(404)
+        }
+
+    })
+    .catch(err => res.sendStatus(500))  
 })
 
 module.exports = router
