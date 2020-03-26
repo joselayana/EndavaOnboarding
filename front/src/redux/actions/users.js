@@ -1,5 +1,5 @@
 import axios from "axios"
-import { CREATE_USER, SEARCH_USERS, CHANGE_PROFILE } from "../constants/index"
+import { CREATE_USER, SEARCH_USERS } from "../constants/index"
 
 export const setUser = (user) => ({
     type: CREATE_USER,
