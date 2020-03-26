@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "../css/style.css"
 
-export default ({ }) => (
+export default ({ userId}) => (
 	<section>
 		<div className="jumbotron backgroundbanner" style={{height: "300px"}} >
 	    <div className="row">
@@ -26,7 +26,7 @@ export default ({ }) => (
 					<div className="card-body">
 						<h5 className="card-title category_title">My Tasks</h5>
 						<p className="card-text category_text">See the activities that you have going on, all in one section.</p>
-						<Link to='/myTasks'>
+						<Link to={`/myTasks/${userId}`}>
 							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
 					</div>

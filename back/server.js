@@ -35,6 +35,8 @@ app.use(morgan('tiny'));
 app.use(cookieParser());
 app.use(session({
     secret: "cats",
+    resave: true,
+    saveUninitialized: true
     // resave: true, // Guarda la sesion por mas que no haya sido modificada
     //saveUninitialized: true, // Cuando iniciamos sesion en una App, si modificamos algo y nno guardamos nada, se va a guardar la sesion
     //cookie: {
@@ -45,9 +47,9 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 passport.use(new LocalStrategy({ usernameField: 'email' },
-  function (inputUsername, password, done) {
+  function (inputEmail, password, done) {
 
-    User.findOne({ where: { email: inputUsername } })
+    User.findOne({ where: { email: inputEmail } })
       .then(user => {
         if (!user) {
           return done(null, false, { message: 'Incorrect email.' });
@@ -55,7 +57,7 @@ passport.use(new LocalStrategy({ usernameField: 'email' },
         if (!user.validPassword(password)) {
           return done(null, false, { message: 'Incorrect password.' });
         }
-        return done(null, user); //ESTA TODO OK!
+        return done(null, user);
       })
       .catch(done);
   }
@@ -78,7 +80,7 @@ app.use(function (err, req, res, next) {
 app.use("/", Router)
 
 app.get('/*', (req, res) => {
-    res.sendFile(__dirname + '/public/' + 'indefalsex.html')
+    res.sendFile(__dirname + '/public/' + 'index.html')
 })
 db.sync({
     logging: false,

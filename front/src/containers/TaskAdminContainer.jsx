@@ -18,7 +18,7 @@ class TasksAdminContainer extends React.Component {
     }
 
     componentDidMount() {
-        const userId = this.props.user.id
+        const userId = this.props.match.params.userId
         this.props.searchTasks(userId)
 
 
