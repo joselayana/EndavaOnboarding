@@ -36,16 +36,16 @@ export default ({ }) => (
 
 			<div className="col-md-4 mt-3">
 				<div className="container box_container2">
-					<div className="card">
-						<img src="/images/design/recruits0.svg" className="card-img-top" alt="..." />
-						<div className="card-body">
-							<h5 className="card-title category_title">Recruits</h5>
-							<p className="card-text category_text">Get to know your Recruits, and add new ones.</p>
-							<Link to='/myTasks'>
-								<button className="btn category_button btn-block mb-2">Access</button>
-							</Link>
-						</div>
+				<div className="card">
+					<img src="/images/design/recruits0.svg" className="card-img-top" alt="..." />
+					<div className="card-body">
+						<h5 className="card-title category_title">Recruits</h5>
+						<p className="card-text category_text">Get to know your Recruits, and add new ones.</p>
+						<Link to='/recruits'>
+							<button className="btn category_button btn-block mb-2">Access</button>
+						</Link>
 					</div>
+				</div>
 				</div>
 			</div>
 
