@@ -2,9 +2,12 @@ const express = require('express');
 const { Task, TaskRecruit, User, Recruit } = require("../models/index")
 const router = express.Router();
 
-router.post("/newTask", function (req, res) {
+router.post("/newTask", function (req, res, next) {
     Task.create(req.body)
-        .then(res.send("Se creo la tarea"))
+        .then(() => Task.findAll()
+            .then(tasksList => res.status(200).json(tasksList)))
+        .catch(err => console.log(err)
+        )
 })
 
 router.put("/edit/:id", function (req, res, next) {
@@ -81,6 +84,8 @@ router.get("/:id", (req, res) => {
 })
 
 router.post('/', function (req, res, next) {
+    console.log("tambien llegueeeeeeeeeeeeeee");
+
     TaskRecruit.create(req.body)
         .then(nuevaTaskRec => {
             return Promise.all([
