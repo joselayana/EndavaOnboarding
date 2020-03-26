@@ -11,13 +11,13 @@ router.put("/edit/:id", function (req, res, next) {
     const taskId = req.params.id
     const newState = req.body.newTaskState
     const newComment = req.body.comment
-    
+
     TaskRecruit.update(
-        {comment: newComment, state: newState},
-        {where: {id : taskId}}
-      )
-      .then(res.send("Se actualizó la tarea"))
-      .catch(next)  
+        { comment: newComment, state: newState },
+        { where: { id: taskId } }
+    )
+        .then(res.send("Se actualizó la tarea"))
+        .catch(next)
 })
 
 router.get('/', function (req, res, next) {
@@ -47,6 +47,22 @@ router.get("/myTasks/:id", function (req, res) {
 
 })
 
+router.get("/allTasks", (req, res) => {
+    TaskRecruit.findAll({
+        include: [
+            { model: Recruit },
+            { model: Task },
+            { model: User }
+        ]
+    })
+        .then(allTasks => res.status(200).json(allTasks))
+})
+
+router.get("/tasksList", (req, res) => {
+    Task.findAll()
+        .then(tasksList => res.status(200).json(tasksList))
+})
+
 
 router.get("/:id", (req, res) => {
     const id = req.params.id
@@ -66,44 +82,46 @@ router.get("/:id", (req, res) => {
 
 router.post('/', function (req, res, next) {
     TaskRecruit.create(req.body)
-    .then(nuevaTaskRec => {
-        return Promise.all([
-            nuevaTaskRec.setDiscipline(req.body.discipline),
-            nuevaTaskRec.setUser(req.body.user),
-            nuevaTaskRec.setRecruit(req.recruit)
-        ])
-    })
-    .then((nuevaTaskRec) => res.status(201).json(nuevaTaskRec))
+        .then(nuevaTaskRec => {
+            return Promise.all([
+                nuevaTaskRec.setDiscipline(req.body.discipline),
+                nuevaTaskRec.setUser(req.body.user),
+                nuevaTaskRec.setRecruit(req.recruit)
+            ])
+        })
+        .then((nuevaTaskRec) => res.status(201).json(nuevaTaskRec))
 });
 
-router.delete("/:id", (req,res,next) =>{
+router.delete("/:id", (req, res, next) => {
     TaskRecruit.findByPk(req.params.id)
-    .then(task=>{
-        if(task){
-            task.destroy()
-            .then(() => res.sendStatus(204))
-        } else {
-            res.sendStatus(404)
-        }
+        .then(task => {
+            if (task) {
+                task.destroy()
+                    .then(() => res.sendStatus(204))
+            } else {
+                res.sendStatus(404)
+            }
 
-    })
-    .catch(err => res.sendStatus(500))  
+        })
+        .catch(err => res.sendStatus(500))
 })
 
-router.delete("byRecruit/:recruitId", (req,res,next) =>{
-    TaskRecruit.findAll({where: {
-        recruitId: req.params.recruitId,
-    }})
-    .then(tasks=>{
-        if(tasks){
-            tasks.destroy()
-            .then(() => res.sendStatus(204))
-        } else {
-            res.sendStatus(404)
+router.delete("byRecruit/:recruitId", (req, res, next) => {
+    TaskRecruit.findAll({
+        where: {
+            recruitId: req.params.recruitId,
         }
-
     })
-    .catch(err => res.sendStatus(500))  
+        .then(tasks => {
+            if (tasks) {
+                tasks.destroy()
+                    .then(() => res.sendStatus(204))
+            } else {
+                res.sendStatus(404)
+            }
+
+        })
+        .catch(err => res.sendStatus(500))
 })
 
 module.exports = router
