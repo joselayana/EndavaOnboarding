@@ -41,7 +41,7 @@ export default ({ }) => (
 					<div className="card-body">
 						<h5 className="card-title category_title">Recruits</h5>
 						<p className="card-text category_text">Get to know your Recruits, and add new ones.</p>
-						<Link to='/myTasks'>
+						<Link to='/recruits'>
 							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
 					</div>

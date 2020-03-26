@@ -20,8 +20,6 @@ class TasksAdminContainer extends React.Component {
     componentDidMount() {
         const userId = this.props.user.id
         this.props.searchTasks(userId)
-
-
     }
 
     handleSubmit(e) {
