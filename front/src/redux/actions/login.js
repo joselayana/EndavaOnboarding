@@ -26,7 +26,7 @@ export const login = (user) => (dispatch) => {
 
 export const logout = () => {
   return function (dispatch, getstate) {
-    return Axios.post("api/user/logout")
+    return Axios.get("api/user/logout")
       .then(res => { dispatch(userLogout()) })
   }
 }

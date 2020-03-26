@@ -29,7 +29,7 @@ Recruit.init({
         }
     },
     entryDate: {
-        type: Sequelize.DATE,
+        type: Sequelize.DATEONLY,
         allowNull: false,
         validate: {
             notEmpty: true
