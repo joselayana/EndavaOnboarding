@@ -11,6 +11,7 @@ import BannerRegisterContainer from "../containers/BannerRegisterContainer"
 import SingleTaskContainer from "../containers/SingleTaskContainer"
 import RecruitContainer from "../containers/RecruitContainer"
 import CreateRecruitContainer from "../containers/CreateRecruitContainer"
+import UsersAdminContainer from "../containers/UsersAdminContainer"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 
@@ -23,14 +24,16 @@ class Main extends React.Component {
             <Fragment>
                 <NavbarContainer />
                 <Switch>
-                    <Route exact path="/" component={BannerWelcomeContainer} />  
+                    <Route exact path="/" component={BannerWelcomeContainer} />
                     <Route exact path="/login" component={BannerLoginContainer} />
                     <Route exact path="/register" component={BannerRegisterContainer} />
                     <Route exact path="/myTasks" component={TasksAdminContainer} />
+                    <Route exact path="/users" component={UsersAdminContainer} />
                     <Route exact path="/home" component={AdminLandingCardsContainer} />
                     <Route exact path="/recruits" component={RecruitContainer} />
                     <Route exact path="/newRecruit" component={CreateRecruitContainer} />
                     <Route exact path="/task/:taskId" component={SingleTaskContainer} />
+
                 </Switch>
             </Fragment>
         )
