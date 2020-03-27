@@ -19,7 +19,13 @@ router.put("/edit/:id", function (req, res, next) {
         { comment: newComment, state: newState },
         { where: { id: taskId } }
     )
-        .then(res.send("Se actualizó la tarea"))
+        .then(TaskRecruit.findAll({
+            include: [
+                { model: Recruit },
+                { model: Task }
+            ],
+        }))
+        .then((allTasks) => res.status(200).json(allTasks))
         .catch(next)
 })
 

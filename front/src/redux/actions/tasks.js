@@ -1,14 +1,5 @@
 import Axios from "axios";
-<<<<<<< HEAD
-import { CREATE_TASK, SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT } from "../constants";
-
-export const setTask = (task) => ({
-    type: CREATE_TASK,
-    task
-})
-=======
-import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST } from "../constants";
->>>>>>> 248d7c9069e3416c3ae00625fdd2f4b1a948f298
+import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST } from "../constants";
 
 export const findTasks = (tasks) => ({
     type: SEARCH_TASKS,
@@ -46,7 +37,7 @@ export const createTask = (task) => dispatch => {
 export const updateTaskState = (objTaskState) => dispatch => {
     return Axios.put(`/api/task/edit/${objTaskState.taskId}`, objTaskState)
         .then(res => res.data)
-        .then(task => dispatch(setTask(task)))
+        .then(task => dispatch(findTasksRecruits(task)))
 }
 
 export const searchTasks = (userId) => dispatch => {
@@ -74,7 +65,6 @@ export const searchSingleTaskRecruit = (taskId) => dispatch => {
 }
 
 export const searchTasksRecruits = (recruitId) => dispatch => {
-    console.log("ACAAAA", recruitId)
     return Axios.get(`/api/task/recruit/${recruitId}`)
         .then(res => res.data)
         .then(tasks => dispatch(findTasksRecruits(tasks)))

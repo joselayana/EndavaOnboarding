@@ -12,6 +12,7 @@ const loggedUser = function (req, res, next) {
 }
 
 router.post("/register", function (req, res) {
+    console.log(req.body, "ACAAAA")
     User.create(req.body)
         .then(res.send("Se creo el usuario"))
 })
