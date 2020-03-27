@@ -19,7 +19,13 @@ router.put("/edit/:id", function (req, res, next) {
         { comment: newComment, state: newState },
         { where: { id: taskId } }
     )
-        .then(res.send("Se actualizó la tarea"))
+        .then(TaskRecruit.findAll({
+            include: [
+                { model: Recruit },
+                { model: Task }
+            ],
+        }))
+        .then((allTasks) => res.status(200).json(allTasks))
         .catch(next)
 })
 
@@ -48,6 +54,22 @@ router.get("/myTasks/:id", function (req, res) {
     })
         .then(tasks => res.send(tasks))
 
+})
+
+router.get("/recruit/:id", function (req, res) {
+    const id = req.params.id
+
+    TaskRecruit.findAll({
+        include: [
+            { model: Task },
+            { model: User }
+        ],
+        where: { recruitId: id },
+        order: [
+            ['id', 'DESC'],
+        ],
+    })
+        .then(tasks => res.send(tasks))
 })
 
 router.get("/allTasks", (req, res) => {
@@ -84,8 +106,6 @@ router.get("/:id", (req, res) => {
 })
 
 router.post('/', function (req, res, next) {
-    console.log("tambien llegueeeeeeeeeeeeeee");
-
     TaskRecruit.create(req.body)
         .then(nuevaTaskRec => {
             return Promise.all([

@@ -2,7 +2,7 @@ const { User } = require("./models/index")
 
 // SEED USERS //
 User.create({
-    id: 1,
+    //id: 1,
     name: "Celeste",
     lastName: "Colamarino",
     email: "celeste@endava.com",
@@ -10,7 +10,7 @@ User.create({
     disciplineId: 1
 })
 User.create({
-    id: 2,
+    //id: 2,
     name: "Ignacio",
     lastName: "Rodriguez Villasuso",
     email: "nacho@endava.com",
@@ -18,7 +18,7 @@ User.create({
     disciplineId: 2
 })
 User.create({
-    id: 3,
+    //id: 3,
     name: "Martin",
     lastName: "Gonzalez",
     email: "martin@endava.com",
@@ -26,7 +26,7 @@ User.create({
     disciplineId: 3
 })
 User.create({
-    id: 4,
+    //id: 4,
     name: "Fernanda",
     lastName: "Fernanda",
     email: "fernanda@endava.com",

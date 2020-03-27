@@ -71,3 +71,18 @@ router.delete("/:id", (req,res,next) =>{
     })
     .catch(err => res.sendStatus(500))  
 }) 
+
+router.put("/edit/:id", (req, res, next) => {
+    Recruit.findByPk(req.params.id)
+    .then(recruit=>{
+        if(recruit){
+            recruit.update(req.body)
+            // aca hay que desglosar el req.body para que complete solo los datos que estan defined
+            .then(recruitU =>res.status(200).json(recruitU))
+        } else {
+            res.sendStatus(404)
+        }
+
+    })
+    .catch(err => res.sendStatus(500))  
+})
