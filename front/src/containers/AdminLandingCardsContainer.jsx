@@ -12,10 +12,16 @@ class AdminLandingCardsContainer extends React.Component {
     render() {
         return (
             <div>
-                <AdminLandingCards />
+                <AdminLandingCards userId={this.props.user.id}/>
             </div>
         )
     }
 }
 
-export default AdminLandingCardsContainer;
+const mapStateToProps = (state, ownProps) => {
+    return {
+      user: state.login.user
+    };
+  };
+  
+export default connect(mapStateToProps, null)(AdminLandingCardsContainer)
