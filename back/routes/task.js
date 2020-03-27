@@ -47,6 +47,23 @@ router.get("/myTasks/:id", function (req, res) {
 
 })
 
+router.get("/recruit/:id", function (req, res) {
+    const id = req.params.id
+
+    TaskRecruit.findAll({
+        include: [
+            { model: Task },
+            { model: User }
+        ],
+        where: { recruitId: id },
+        order: [
+            ['id', 'DESC'],
+        ],
+    })
+        .then(tasks => res.send(tasks))
+
+})
+
 
 router.get("/:id", (req, res) => {
     const id = req.params.id
