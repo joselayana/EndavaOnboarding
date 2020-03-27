@@ -13,8 +13,19 @@ const loggedUser = function (req, res, next) {
 
 router.post("/register", function (req, res) {
     console.log(req.body, "ACAAAA")
-    User.create(req.body)
-        .then(res.send("Se creo el usuario"))
+    User.create({
+        name: req.body.name,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    })
+    .then(nuevoUser => {
+            nuevoUser.setDiscipline(req.body.disciplineId)
+      })
+        .then(creado => res.status(201).json(creado))
+        .catch(function(err) {
+            console.log(err);
+        })
 })
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
