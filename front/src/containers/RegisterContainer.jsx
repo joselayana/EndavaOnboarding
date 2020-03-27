@@ -28,16 +28,23 @@ class RegisterContainer extends React.Component {
         e.preventDefault();
         let flagMail = false
         let flagPassword = false
+        let IdDiscipline;
         this.setState({ errorMail: false })
         this.setState({ errorPass: false })
         this.setState({ errorInc: false })
+
+        if(this.state.discipline === "Development") IdDiscipline=1
+        if(this.state.discipline === "Project Manager") IdDiscipline=2
+        if(this.state.discipline === "Testing") IdDiscipline=3
+        if(this.state.discipline === "Pdrc") IdDiscipline=4
+
         if(e.target[0].value && e.target[1].value && e.target[2].value && e.target[3].value && e.target[4].value && e.target[5].value) {
             if (e.target[2].value.includes("@endava.com")) flagMail = true
             else this.setState({ errorMail: true })
             if (e.target[4].value === e.target[5].value) flagPassword = true
             else this.setState({ errorPass: true })
             if (flagMail === true && flagPassword === true) {
-                let obj = { name: e.target[0].value, lastName: e.target[1].value, email: e.target[2].value, discipline: e.target[3].value, password: e.target[4].value }
+                let obj = { name: e.target[0].value, lastName: e.target[1].value, email: e.target[2].value, disciplineId: IdDiscipline, password: e.target[4].value }
                 this.props.createUser(obj)
                     .then(() => this.props.history.push("/login"))
             }
