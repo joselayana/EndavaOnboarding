@@ -21,8 +21,9 @@ export default ({ recruits }) => {
                     <th scope="col">Email</th>
                     <th scope="col">Discipline</th>
                     <th scope="col">Entry Date</th>
-                    <th scope="col">Phone Number</th>
+                    <th scope="col">Phone</th>
                     <th scope="col">DNI</th>
+                    <th scope="col">Details</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -41,6 +42,7 @@ export default ({ recruits }) => {
                         <td className="align-middle">{dateOfEntry}</td>
                         <td className="align-middle">{recruit.phone}</td>
                         <td className="align-middle">{recruit.DNI}</td>
+                        <Link to={`/recruit/${recruit.id}`}><td className="align-middle">View More</td></Link>
                       </tr>
                     )
                   })}
