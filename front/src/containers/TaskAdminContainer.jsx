@@ -28,6 +28,7 @@ class TasksAdminContainer extends React.Component {
         e.preventDefault();
         let obj = { description: e.target[0].value }
         this.props.createTask(obj)
+            .then(() => this.setState({ description: '' }))
     }
 
     handleChange(e) {
