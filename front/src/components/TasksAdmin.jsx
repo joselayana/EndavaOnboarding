@@ -9,29 +9,27 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
 
   return (
     <div style={{ padding: "3%" }}>
-
       <p>
-        <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
           Add a new task  </button>
       </p>
-      <div class="collapse" id="collapseExample">
+      <div className="collapse" id="collapseExample">
         <p>In this section, you can add a new task to the list of available tasks.
-          <button type="button" class=" btn btn-link " data-toggle="modal" data-target="#tasksList">
+          <button type="button" className=" btn btn-link " data-toggle="modal" data-target="#tasksList">
             See the available tasks.
           </button>
         </p>
-
-        {/* <!-- Modal --> */}
-        <div class="modal fade" id="tasksList" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">List of available tasks</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        {/* -- Modal task form -- */}
+        <div className="modal fade" id="tasksList" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div className="modal-dialog" role="document">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h5 className="modal-title" id="exampleModalLongTitle">List of available tasks</h5>
+                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-              <div class="modal-body">
+              <div className="modal-body">
                 <table className="table table-striped">
                   <thead>
                     <tr className="table1">
@@ -52,8 +50,8 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
                   </tbody>
                 </table>
               </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <div className="modal-footer">
+                <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
               </div>
             </div>
           </div>
@@ -66,6 +64,7 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
               <textarea onChange={handleChange} value={state.description} name="description" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
             </div>
             <button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#1d57a8", borderColor: "#1d57a8" }}>Create Task</button>
+
           </form>
         </div>
 
