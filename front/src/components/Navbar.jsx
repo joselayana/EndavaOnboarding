@@ -19,6 +19,7 @@ export default ({ user, onLogout }) => (
               {user.name}
             </button>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+              <Link to="/home" className="dropdown-item" href="#">Home</Link>
               <Link to={`/myTasks/${user.id}`} className="dropdown-item" href="#">My Tasks</Link>
               <Link to="/recruits" className="dropdown-item" href="#">Recruits</Link>
               <Link to="/" className="dropdown-item" href="#">Dashboard</Link>

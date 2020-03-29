@@ -107,7 +107,15 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
                         <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                         <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
                         <td className="align-middle">{dueDate}</td>
-                        <td className="align-middle">{task.state}</td>
+                        <>
+                          {(task.state == "blocked out") ? (
+                            <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                          ) : (
+                              <td className="align-middle"   >{task.state}</td>
+                            )
+                          }
+                        </>
+                        {/* <td className="align-middle"   >{task.state}</td> */}
                         <td className="align-middle">
                           <div className="form-group input-group">
                             <select onChange={handleChange} selected="" name="taskState" className="form-control border1">
@@ -128,7 +136,6 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
               </table>
             </div>
           </div>
-
           <>
             {(user.isAdmin) ? (
               <>
@@ -146,7 +153,6 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
                           <th scope="col">Task owner</th>
                           <th scope="col">Due Date</th>
                           <th scope="col">State</th>
-                          {/* <th scope="col">New State</th> */}
                           <th scope="col">Coments</th>
                         </tr>
                       </thead>
@@ -164,18 +170,6 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
                               <td className="align-middle">{task.user.name} {task.user.lastName}</td>
                               <td className="align-middle">{dueDate}</td>
                               <td className="align-middle">{task.state}</td>
-                              {/* <td className="align-middle">
-                                        <div className="form-group input-group">
-                                          <select onChange={handleChange} selected="" name="taskState" className="form-control border1">
-                                            <option className="border1">Current State</option>
-                                            <option className="border1">pending</option>
-                                            <option className="border1">started</option>
-                                            <option className="border1">blocked out</option>
-                                            <option className="border1">finished</option>
-                                          </select>
-                                          <button onClick={handleClick} style={{display:"inline-block"}}><i className="far fa-save"></i></button>
-                                        </div>
-                                      </td> */}
                               <td className="align-middle">{task.comment}</td>
                             </tr>
                           )
@@ -195,6 +189,6 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
           null
         )
       }
-    </Fragment>
+    </Fragment >
   )
 }

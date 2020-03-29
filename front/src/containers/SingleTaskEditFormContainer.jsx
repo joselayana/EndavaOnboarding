@@ -10,31 +10,31 @@ import SingleTaskEditForm from "../components/SingleTaskEditForm"
 class SingleTaskEditFormContainer extends React.Component {
     constructor() {
         super()
-        this.state= {
-            newTaskState : "",
-            comment : ""
+        this.state = {
+            newTaskState: "",
+            comment: ""
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     handleChange(e) {
-        this.setState({[e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value });
     }
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
-        if(this.state.newTaskState){
-            let obj = {newTaskState: this.state.newTaskState, comment: this.state.comment, taskId: this.props.task.id}
+        if (this.state.newTaskState) {
+            let obj = { newTaskState: this.state.newTaskState, comment: this.state.comment, taskId: this.props.task.id }
             this.props.updateTaskState(obj)
-            .then(() => this.props.history.push("/myTasks"))
+                .then(() => this.props.history.push(`/myTasks/${this.props.user.id}`))
         }
     }
 
     render() {
         return (
             <Fragment>
-                <SingleTaskEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+                <SingleTaskEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
             </Fragment>
         )
     }
