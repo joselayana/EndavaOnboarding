@@ -5,7 +5,7 @@ import SingleRecruitAddTaskContainer from "../containers/SingleRecruitAddTaskCon
 
 
 
-export default ({ recruit, tasks }) => {
+export default ({ recruit, tasks, handlerClick }) => {
     let indice = 0
     if(tasks){
         return (
@@ -61,7 +61,7 @@ export default ({ recruit, tasks }) => {
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                             <div className="card-body">
     
-                                {(tasks.length) ? (
+                                {(tasks.length > 0 && typeof tasks[0] === 'object') ? (
                                 <>
                                     <SingleRecruitAddTaskContainer />
                                     <table className="table table-striped">
@@ -90,7 +90,7 @@ export default ({ recruit, tasks }) => {
                                                     <td className="align-middle">{dueDate}</td>
                                                     <td className="align-middle">{task.state}</td>
                                                     <td className="align-middle">{task.comment}</td>
-                                                    <td className="align-middle"><button type="button" class="btn btn-outline-danger"><i className="far fa-trash-alt"></i></button></td>
+                                                    <td className="align-middle"><button type="button" class="btn btn-outline-danger" onClick = {()=>handlerClick(task.id)}><i className="far fa-trash-alt"></i></button></td>
                                                 </tr>    
                                             )
                                         })}
@@ -104,14 +104,18 @@ export default ({ recruit, tasks }) => {
                                     <p><Link to={`/recruit/addTask/${recruit.id}`}>Add taks here</Link></p>
                                     </div>
                                 )}
-    
-    
                             </div>
                             </div>
                         </div>
                         </div>
     
                 </div>
+            </div>
+        )
+    }else{
+        return(
+            <div class="spinner-border text-danger" role="status" style={{marginTop:"20%" ,marginLeft: "50%"}}>
+            <span class="sr-only">Loading...</span>
             </div>
         )
     }

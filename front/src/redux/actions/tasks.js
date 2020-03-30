@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_TASK_RECRUIT } from "../constants";
+import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_ERROR } from "../constants";
 
 export const findTasks = (tasks) => ({
     type: SEARCH_TASKS,
@@ -16,6 +16,9 @@ export const findTasksList = (tasksList) => ({
     tasksList
 })
 
+export const setError = () => ({
+    type: SET_ERROR,
+})
 
 export const singleTaskRecruit = (task) => ({
     type: SINGLE_TASK_RECRUIT,
@@ -79,4 +82,13 @@ export const createTaskRecruit = (obj) => dispatch => {
     return Axios.post("/api/taskRecruit", obj)
         .then(res => res.data)
         .then(nuevaTaskRec => dispatch(searchTasksRecruits(nuevaTaskRec.recruitId)))
+}
+
+export const deleteTaskRecruit = (taskRecruitId, recruitId) => dispatch => {
+    return Axios.delete(`/api/taskRecruit/${taskRecruitId}`)
+        .then(() => dispatch(searchTasksRecruits(recruitId)))
+}
+
+export const setErrorFields = () => dispatch =>{
+    dispatch(setError())
 }

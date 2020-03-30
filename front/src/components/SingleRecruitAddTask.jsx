@@ -4,8 +4,8 @@ import "../css/style.css"
 
 
 
-export default ({ taskOptions, userOptions, handleSubmit, handleChange, state, newTasks }) => {
-    let indice = 0
+export default ({ taskOptions, userOptions, handleSubmit, handleChange, state}) => {
+    
     if(taskOptions.length>0 && userOptions.length>0){
         return (
             <div style={{ padding: "3%" }}>
@@ -25,7 +25,7 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange, state, n
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm">
-                                    <select selected="" name="taskDescription" className="form-control border1" onChange={handleChange}>
+                                    <select selected="" name="taskDescription" className="form-control border1" onChange={handleChange} value={state.taskDescription}>
                                     <option className="border1">Select Task</option>
                                     {taskOptions.map((taskOption)=>(
                                     <option key={taskOption.id} className="border1">{taskOption.description}</option>
@@ -33,7 +33,7 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange, state, n
                                 </select>
                                     </div>
                                     <div class="col-sm">
-                                    <select selected="" name="responsable" className="form-control border1" onChange={handleChange}>
+                                    <select selected="" name="responsable" className="form-control border1" onChange={handleChange} value={state.responsable}>
                                     <option className="border1">Select Responsable</option>
                                     {userOptions.map((userOption)=>(
                                     <option key={userOption.id} className="border1">{userOption.name} {userOption.lastName}</option>
@@ -41,7 +41,7 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange, state, n
                                 </select>
                                     </div>
                                     <div class="col-sm">
-                                    <input type="date" name="dueDate" max="2050-12-31" min="2020-03-01" className="form-control" placeholder="Starting on" onChange={handleChange}/>
+                                    <input type="date" name="dueDate" max="2050-12-31" min="2020-03-01" className="form-control" placeholder="Starting on" onChange={handleChange} value={state.dueDate}/>
                                     </div>
                                 </div>
                             </div>
