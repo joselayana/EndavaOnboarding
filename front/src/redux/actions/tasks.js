@@ -43,15 +43,17 @@ export const updateTaskState = (objTaskState) => dispatch => {
 }
 
 export const searchTasks = (userId, busqueda) => dispatch => {
-    {if (busqueda === undefined) {
-        return Axios.get(`/api/task/myTasks/${userId}`)
-        .then(res => res.data)
-        .then(tasks => dispatch(findTasks(tasks)))
-    } else {
-        return Axios.get(`/api/task/myTasks/${userId}?s=${busqueda}`)
-        .then(res => res.data)
-        .then(tasks => dispatch(findTasks(tasks)))
-    }}
+    {
+        if (busqueda === undefined) {
+            return Axios.get(`/api/task/myTasks/${userId}`)
+                .then(res => res.data)
+                .then(tasks => dispatch(findTasks(tasks)))
+        } else {
+            return Axios.get(`/api/task/myTasks/${userId}?s=${busqueda}`)
+                .then(res => res.data)
+                .then(tasks => dispatch(findTasks(tasks)))
+        }
+    }
 }
 
 export const searchAllTasks = () => dispatch => {
@@ -79,6 +81,8 @@ export const searchTasksRecruits = (recruitId) => dispatch => {
 }
 
 export const createTaskRecruit = (obj) => dispatch => {
+    console.log("aqui el froooooooooooont", obj);
+
     return Axios.post("/api/taskRecruit", obj)
         .then(res => res.data)
         .then(nuevaTaskRec => dispatch(searchTasksRecruits(nuevaTaskRec.recruitId)))

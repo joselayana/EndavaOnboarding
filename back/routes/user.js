@@ -35,7 +35,7 @@ const sendMail = function (name, lastName, email) {
         to: `${email}`,
         subject: `Wellcome On Board ${name} ${lastName}!!!`,
         // text:  Wellcome!!!!`,
-        template: "index",
+        template: "wellcome",
         context: {
             name: `${name}`,
             lastName: `${lastName}`,
