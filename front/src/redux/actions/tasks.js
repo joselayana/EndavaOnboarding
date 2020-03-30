@@ -39,10 +39,16 @@ export const updateTaskState = (objTaskState) => dispatch => {
         .then(task => dispatch(setTask(task)))
 }
 
-export const searchTasks = (userId) => dispatch => {
-    return Axios.get(`/api/task/myTasks/${userId}`)
+export const searchTasks = (userId, busqueda) => dispatch => {
+    {if (busqueda === undefined) {
+        return Axios.get(`/api/task/myTasks/${userId}`)
         .then(res => res.data)
         .then(tasks => dispatch(findTasks(tasks)))
+    } else {
+        return Axios.get(`/api/task/myTasks/${userId}?s=${busqueda}`)
+        .then(res => res.data)
+        .then(tasks => dispatch(findTasks(tasks)))
+    }}
 }
 
 export const searchAllTasks = () => dispatch => {

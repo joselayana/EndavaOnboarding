@@ -1,8 +1,8 @@
 import React from "react"
-import { Link } from "react-router-dom"
+import { Link} from "react-router-dom"
 import "../css/style.css"
 
-export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTasks, tasksList }) => {
+export default ({ handleSubmit,handleSearchInput, handleChange, state, tasks, handleClick, allTasks, tasksList }) => {
   let indice = 0
   let indice2 = 0
   let indice3 = 0
@@ -73,6 +73,13 @@ export default ({ handleSubmit, handleChange, state, tasks, handleClick, allTask
       <br />
       <h1>My Tasks</h1>
       <br />
+        <div style={{ paddingLeft: "8%", marginTop: "-1%" }}>
+                <input
+                  type="text"
+                  placeholder="Search for recruits"
+                  onChange={handleSearchInput}
+                />
+        </div>
       <div>
         <div className="container box_container2">
           <table className="table table-striped">

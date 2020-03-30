@@ -1,6 +1,8 @@
 const express = require('express');
 const { Task, TaskRecruit, User, Recruit } = require("../models/index")
 const router = express.Router();
+const Sequelize = require("sequelize")
+
 
 router.post("/newTask", function (req, res) {
     Task.create(req.body)
@@ -31,20 +33,36 @@ router.get('/', function (req, res, next) {
 });
 
 router.get("/myTasks/:id", function (req, res) {
+    const Op = Sequelize.Op
     const id = req.params.id
-
-    TaskRecruit.findAll({
-        include: [
-            { model: Recruit },
-            { model: Task }
-        ],
-        where: { userId: id },
-        order: [
-            ['id', 'DESC'],
-        ],
-    })
-        .then(tasks => res.send(tasks))
-
+    if(req.query.s){
+        TaskRecruit.findAll({
+            include: [
+                { model: Recruit, 
+                where: { name:{ [Op.iLike]: `%${req.query.s}%` }}
+                },
+                { model: Task }
+            ],
+            where: { userId: id,
+            },
+            order: [
+                ['id', 'DESC'],
+            ],
+        })
+            .then(tasks => res.send(tasks))
+    } else{
+        TaskRecruit.findAll({
+            include: [
+                { model: Recruit },
+                { model: Task }
+            ],
+            where: { userId: id },
+            order: [
+                ['id', 'DESC'],
+            ],
+        })
+            .then(tasks => res.send(tasks))
+    }
 })
 
 router.get("/allTasks", (req, res) => {

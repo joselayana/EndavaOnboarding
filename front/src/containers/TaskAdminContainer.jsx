@@ -10,11 +10,14 @@ class TasksAdminContainer extends React.Component {
         super()
         this.state = {
             description: "",
-            taskState: ""
+            taskState: "",
+            busqueda:"",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
+        this.handleSearchInput = this.handleSearchInput.bind(this);
+
     }
 
     componentDidMount() {
@@ -34,6 +37,15 @@ class TasksAdminContainer extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    handleSearchInput (e) {
+        const userId = this.props.match.params.userId
+        this.setState({busqueda : e.target.value})
+        const busqueda = e.target.value
+        busqueda.length >=2? this.props.searchTasks(userId, busqueda)
+        : this.props.searchTasks(userId)
+        
+      }
+
     handleClick(e) {
         let obj = { taskState: this.state.taskState }
         if (this.state.taskState) {
@@ -44,7 +56,7 @@ class TasksAdminContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <TaskAdmin handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                <TaskAdmin handleSubmit={this.handleSubmit} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
             </Fragment>
         )
     }
@@ -62,7 +74,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createTask: (task) => dispatch(createTask(task)),
-        searchTasks: (userId) => dispatch(searchTasks(userId)),
+        searchTasks: (userId, busqueda) => dispatch(searchTasks(userId, busqueda)),
         searchAllTasks: () => dispatch(searchAllTasks()),
         searchTasksList: () => dispatch(searchTasksList()),
         updateTaskState: (taskState) => dispatch(updateTaskState(taskState))
