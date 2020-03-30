@@ -23,8 +23,8 @@ export const fetchUsers = () => dispatch => {
         .then(users => dispatch(allUsers(users)))
 }
 
-export const changeProfile = (idUser, state) => dispatch => {
-    return axios.put(`/api/user/changeProfile/${idUser}`, { state })
+export const changeProfile = (idUser, profile) => dispatch => {
+    return axios.put(`/api/user/changeProfile/${idUser}`, { profile })
         .then(res => res.data)
         .then(users => dispatch(allUsers(users)))
 

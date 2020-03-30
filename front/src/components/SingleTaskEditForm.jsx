@@ -13,10 +13,10 @@ export default ({ handleSubmit, handleChange }) => {
                             <br />
                             <div>
                                 <select onChange={handleChange} selected="" name="newTaskState" className="form-control border1">
-                                    <option className="border1">Actual State</option>
+                                    <option className="border1">Current  State</option>
                                     <option className="border1">pending</option>
                                     <option className="border1">started</option>
-                                    <option className="border1">blocked up</option>
+                                    <option className="border1">blocked out</option>
                                     <option className="border1">finished</option>
                                 </select>
                             </div>
