@@ -94,13 +94,13 @@ export default ({ recruit, tasks }) => {
                                     </tbody>
                                 </table>
                                 <div style={{padding:"3%", display:"flex", justifyContent: "flex-end"}}>
-                                    <Link to={`/recruit/edit/${recruit.id}`}><button type="button" className="btn btn-outline-primary" style={{ borderColor: "#1E5DAC" }} >Add New Task</button></Link>
+                                    <Link to={`/recruit/addTask/${recruit.id}`}><button type="button" className="btn btn-outline-primary" style={{ borderColor: "#1E5DAC" }} >Add New Task</button></Link>
                                 </div>
                             </>
                             ) : (
                                 <div style={{ padding: "3%" }}>
                                 <p>There's no tasks associated with this new hire</p>
-                                <p><Link to="/recruits">Add taks here</Link></p>
+                                <p><Link to={`/recruit/addTask/${recruit.id}`}>Add taks here</Link></p>
                                 </div>
                             )}
 
