@@ -5,7 +5,7 @@ const initialTaskState = {
     tasksRecruit: [],
     allTasks: [],
     tasksList: [],
-    selectedTask: {}
+    selectedTask: {},
 }
 export default function (state = initialTaskState, action) {
     switch (action.type) {
