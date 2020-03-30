@@ -61,6 +61,15 @@ router.get("/allUsers", (req, res) => {
         .then(users => res.status(200).json(users))
 })
 
+router.get("/findUser", (req, res) => {
+    User.findAll({
+        include: [
+            { model: Discipline }
+        ]
+    })
+        .then(users => res.status(200).json(users))
+})
+
 router.put("/changeProfile/:id", (req, res, next) => {
     const id = req.params.id
     const state = (req.body.state === 2) ? true : false

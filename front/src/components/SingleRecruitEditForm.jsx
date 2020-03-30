@@ -69,7 +69,7 @@ export default ({handleChange, handleSubmit, recruit}) => (
           </div>
 
           <div className="form-group">
-            <button type="submit" className="btn btn-primary btn-block"> Create Recruit  </button>
+            <button type="submit" className="btn btn-primary btn-block">Save Changes</button>
           </div>
 
         </form>
