@@ -34,9 +34,13 @@ const sendMail = function (name, lastName, email) {
         from: "endavaOnBoard@gmail.com",
         to: `${email}`,
         subject: `Wellcome On Board ${name} ${lastName}!!!`,
-        text: `Dear  .
-        Wellcome!!!!`,
-        template: "index"
+        // text:  Wellcome!!!!`,
+        template: "index",
+        context: {
+            name: `${name}`,
+            lastName: `${lastName}`,
+            email: `${email}`
+        }
 
 
     };
@@ -71,8 +75,7 @@ router.post("/register", function (req, res) {
         .then(nuevoUser => {
             nuevoUser.setDiscipline(req.body.disciplineId)
         })
-        //el usuario creado no es nada
-        // .then(creado => res.status(201).json(creado))
+        //el usuario creado no es nada .then(creado => res.status(201).json(creado))
         .then((data) => {
             sendMail(req.body.name, req.body.lastName, req.body.email)
             res.status(200).json("the user was created and the email was sent")
