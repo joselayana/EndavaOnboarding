@@ -45,7 +45,7 @@ class TasksAdminContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <TaskAdmin handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                <TaskAdmin user={this.props.user} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
             </Fragment>
         )
     }
