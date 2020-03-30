@@ -3,7 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchUsers } from "../redux/actions/users"
 import SingleRecruitAddTask from "../components/SingleRecruitAddTask";
-import { searchTasksList, createTaskRecruit } from "../redux/actions/tasks"
+import { searchTasksList, createTaskRecruit, setErrorFields, searchTasksRecruits } from "../redux/actions/tasks"
 
 
 class SingleRecruitAddTaskContainer extends React.Component {
@@ -12,8 +12,7 @@ class SingleRecruitAddTaskContainer extends React.Component {
         this.state={
             taskDescription: "",
             responsable: "",
-            dueDate: "",
-            errorFields: false
+            dueDate: ""
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,16 +26,21 @@ class SingleRecruitAddTaskContainer extends React.Component {
     handleSubmit(e){
         e.preventDefault();
         if(this.state.taskDescription && this.state.responsable && this.state.dueDate){
-            this.state.errorFields = false
+            //this.props.setErrorFields()
             let idUser;
             let idTask;
             this.props.userOptions.map((user) =>(this.state.responsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
             this.props.taskOptions.map((task) =>(this.state.taskDescription == task.description) ? (idTask = task.id) : null)
             let obj = {taskId: idTask, responsableId: idUser, dueDate: this.state.dueDate, recruitId: this.props.match.params.recruitId}
             this.props.createTaskRecruit(obj)
+            this.state.taskDescription = "" 
+            this.state.responsable = "" 
+            this.state.dueDate = ""
             
         } else{
-            this.state.errorFields = true
+            // const recruitId = this.props.match.params.recruitId
+            // //this.props.setErrorFields()
+            // this.props.searchTasksRecruits(recruitId)
         }
     }
 
@@ -65,7 +69,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchUsers: () => dispatch(fetchUsers()),
         searchTasksList: () => dispatch(searchTasksList()),
-        createTaskRecruit: (obj) => dispatch(createTaskRecruit(obj))
+        searchTasksRecruits: (id) => dispatch(searchTasksRecruits(id)),
+        createTaskRecruit: (obj) => dispatch(createTaskRecruit(obj)),
+        setErrorFields: () => dispatch(setErrorFields())
     }
 }
 
