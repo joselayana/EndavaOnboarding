@@ -2,6 +2,68 @@ const express = require('express');
 const { Task, TaskRecruit, User, Recruit } = require("../models/index")
 const router = express.Router();
 const Sequelize = require("sequelize")
+const nodemailer = require("nodemailer");
+require('dotenv').config();
+const hbs = require('nodemailer-express-handlebars');
+
+
+// const sendMail = function (name, lastName, email, TaskRecruit) {
+
+//     const transporter = nodemailer.createTransport({
+//         service: "gmail",
+//         auth: {
+//             user: process.env.EMAIL,
+//             pass: process.env.PASSWORD
+//         }
+//     });
+
+//     transporter.use("compile", hbs({
+//         viewEngine: {
+//             extName: '.hbs',
+//             partialsDir: '../views/',
+//             defaultLayout: false
+//         },
+//         viewPath: '../views/',
+//         extName: ".hbs"
+//     }))
+
+
+//     const taskRecruitAssigned = {
+//         from: "endavaOnBoard@gmail.com",
+//         to: `${email}`,
+//         subject: "There is a new task waiting for you",
+//         text: `Dear ${name} ${lastName},
+//         You have been designated as the owner of the task :${task} for the new hired: ${recruit}, the due date's task`
+//         // template: "taskAssigned",
+//         // context: {
+//         //     name: `${name}`,
+//         //     lastName: `${lastName}`,
+//         //     email: `${email}`
+//         // }
+
+
+//     };
+//     transporter.sendMail(mailOptions, function (error, info) {
+//         if (error) {
+//             console.log(error);
+//         } else {
+//             console.log("Se ha enviando el mail");
+//         }
+//     });
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 router.post("/newTask", function (req, res, next) {
@@ -44,22 +106,24 @@ router.get('/', function (req, res, next) {
 router.get("/myTasks/:id", function (req, res) {
     const Op = Sequelize.Op
     const id = req.params.id
-    if(req.query.s){
+    if (req.query.s) {
         TaskRecruit.findAll({
             include: [
-                { model: Recruit, 
-                where: { name:{ [Op.iLike]: `%${req.query.s}%` }}
+                {
+                    model: Recruit,
+                    where: { name: { [Op.iLike]: `%${req.query.s}%` } }
                 },
                 { model: Task }
             ],
-            where: { userId: id,
+            where: {
+                userId: id,
             },
             order: [
                 ['id', 'DESC'],
             ],
         })
             .then(tasks => res.send(tasks))
-    } else{
+    } else {
         TaskRecruit.findAll({
             include: [
                 { model: Recruit },

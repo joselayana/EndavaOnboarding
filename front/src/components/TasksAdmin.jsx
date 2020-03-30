@@ -81,13 +81,13 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
           <br />
           <h1>My Tasks</h1>
           <br />
-           <div style={{ paddingLeft: "8%", marginTop: "-1%" }}>
-                <input
-                  type="text"
-                  placeholder="Search for recruits"
-                  onChange={handleSearchInput}
-                />
-           </div>
+          <div style={{ paddingLeft: "8%", marginTop: "-1%" }}>
+            <input
+              type="text"
+              placeholder="Search for recruits"
+              onChange={handleSearchInput}
+            />
+          </div>
           <div>
             <div className="container box_container2">
               <table className="table table-striped">
@@ -176,7 +176,15 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                               <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
                               <td className="align-middle">{task.user.name} {task.user.lastName}</td>
                               <td className="align-middle">{dueDate}</td>
-                              <td className="align-middle">{task.state}</td>
+                              <>
+                                {(task.state == "blocked out") ? (
+                                  <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                                ) : (
+                                    <td className="align-middle"   >{task.state}</td>
+                                  )
+                                }
+                              </>
+                              {/* <td className="align-middle">{task.state}</td> */}
                               <td className="align-middle">{task.comment}</td>
                             </tr>
                           )
