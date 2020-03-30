@@ -57,7 +57,7 @@ export default ({ handleSubmit, handleChange, state }) => (
           </div>
           <input onChange={handleChange} name="password2" value={state.password2} className="form-control" placeholder="Repeat password" type="password" />
         </div>
-        {state.errorMail ? (
+        {/* {state.errorMail ? (
           <div
             className="alert alert-danger"
             style={{
@@ -68,7 +68,7 @@ export default ({ handleSubmit, handleChange, state }) => (
           >
             The selected email is invalid
                   </div>
-        ) : null}
+        ) : null} */}
         {state.errorPass ? (
           <div
             className="alert alert-danger"

@@ -31,6 +31,7 @@ class TasksAdminContainer extends React.Component {
         e.preventDefault();
         let obj = { description: e.target[0].value }
         this.props.createTask(obj)
+            .then(() => this.setState({ description: '' }))
     }
 
     handleChange(e) {
@@ -56,7 +57,9 @@ class TasksAdminContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <TaskAdmin handleSubmit={this.handleSubmit} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+
+                <TaskAdmin user={this.props.user} handleSearchInput={this.handleSearchInput} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+
             </Fragment>
         )
     }

@@ -13,6 +13,9 @@ import { getLoggedUser } from "../redux/actions/login";
 import RecruitContainer from "../containers/RecruitContainer"
 import CreateRecruitContainer from "../containers/CreateRecruitContainer"
 import UsersAdminContainer from "../containers/UsersAdminContainer"
+import SingleRecruitContainer from "../containers/SingleRecruitContainer"
+import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormContainer"
+import SingleRecruitAddTaskContainer from "../containers/SingleRecruitAddTaskContainer"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 
@@ -35,6 +38,9 @@ class Main extends React.Component {
                     <Route exact path="/users" component={UsersAdminContainer} />
                     <Route exact path="/home" component={AdminLandingCardsContainer} />
                     <Route exact path="/recruits" component={RecruitContainer} />
+                    <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
+                    <Route exact path="/recruit/addTask/:recruitId" component={SingleRecruitAddTaskContainer} />
+                    <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
                     <Route exact path="/newRecruit" component={CreateRecruitContainer} />
                     <Route exact path="/task/:taskId" component={SingleTaskContainer} />
                 </Switch>

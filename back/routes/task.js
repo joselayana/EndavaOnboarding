@@ -4,9 +4,12 @@ const router = express.Router();
 const Sequelize = require("sequelize")
 
 
-router.post("/newTask", function (req, res) {
+router.post("/newTask", function (req, res, next) {
     Task.create(req.body)
-        .then(res.send("Se creo la tarea"))
+        .then(() => Task.findAll()
+            .then(tasksList => res.status(200).json(tasksList)))
+        .catch(err => console.log(err)
+        )
 })
 
 router.put("/edit/:id", function (req, res, next) {
@@ -18,7 +21,13 @@ router.put("/edit/:id", function (req, res, next) {
         { comment: newComment, state: newState },
         { where: { id: taskId } }
     )
-        .then(res.send("Se actualizó la tarea"))
+        .then(TaskRecruit.findAll({
+            include: [
+                { model: Recruit },
+                { model: Task }
+            ],
+        }))
+        .then((allTasks) => res.status(200).json(allTasks))
         .catch(next)
 })
 
@@ -63,6 +72,22 @@ router.get("/myTasks/:id", function (req, res) {
         })
             .then(tasks => res.send(tasks))
     }
+})
+
+router.get("/recruit/:id", function (req, res) {
+    const id = req.params.id
+
+    TaskRecruit.findAll({
+        include: [
+            { model: Task },
+            { model: User }
+        ],
+        where: { recruitId: id },
+        order: [
+            ['id', 'DESC'],
+        ],
+    })
+        .then(tasks => res.send(tasks))
 })
 
 router.get("/allTasks", (req, res) => {
