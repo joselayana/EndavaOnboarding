@@ -2,23 +2,20 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "../css/style.css"
 
-export default ({ userId}) => (
+export default ({ userId }) => (
 	<section>
 
-		<div className="jumbotron backgroundbanner" style={{height: "300px"}} >
-	    <div className="row">
-	      <div className="col-md-6" style={{height: "300px"}}>
-	        <p className="banner-title2">ADMIN SECTIONS</p>
-	        <p className="banner-subtitle2">Find out all that you can do with your admin's account! </p>
-	      </div>
-	      <div className="col-md-6 text-center" >
-	        <img src="images/design/tareas1.svg" className="img-fluid" style ={{height: "300px", marginTop: "-32px"}}/>
-	      </div>
-	    </div>
-	  </div>
-
-		<div className="row ml-4 mr-4">
-
+		<div className="jumbotron backgroundbanner" style={{ height: "300px" }} >
+			<div className="row">
+				<div className="col-md-6" style={{ height: "300px" }}>
+					<p className="banner-title2">ADMIN SECTIONS</p>
+					<p className="banner-subtitle2">Find out all that you can do with your admin's account! </p>
+				</div>
+				<div className="col-md-6 text-center" >
+					<img src="images/design/tareas1.svg" className="img-fluid" style={{ height: "300px", marginTop: "-32px" }} />
+				</div>
+			</div>
+		</div>
 
 		<div className="col-md-4 mt-3">
 			<div className="container box_container2">
@@ -30,13 +27,13 @@ export default ({ userId}) => (
 						<Link to={`/myTasks/${userId}`}>
 							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
-
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<div className="col-md-4 mt-3">
-				<div className="container box_container2">
+		<div className="col-md-4 mt-3">
+			<div className="container box_container2">
 				<div className="card">
 					<img src="/images/design/recluta5.svg" className="card-img-top" alt="..." />
 					<div className="card-body">
@@ -47,11 +44,11 @@ export default ({ userId}) => (
 						</Link>
 					</div>
 				</div>
-				</div>
 			</div>
+		</div>
 
-			<div className="col-md-4 mt-3">
-				<div className="container box_container2">
+		<div className="col-md-4 mt-3">
+			<div className="container box_container2">
 
 				<div className="card">
 					<img src="/images/design/tablero1.svg" className="card-img-top" alt="..." />
@@ -64,9 +61,10 @@ export default ({ userId}) => (
 					</div>
 				</div>
 			</div>
+		</div>
 
-			<div className="col-md-4 mt-3">
-				<div className="container box_container2">
+		<div className="col-md-4 mt-3">
+			<div className="container box_container2">
 
 				<div className="card">
 					<img src="/images/design/recluta5.svg" className="card-img-top" alt="..." />
@@ -80,7 +78,6 @@ export default ({ userId}) => (
 					</div>
 				</div>
 			</div>
-
 		</div>
 	</section>
 )
