@@ -6,6 +6,8 @@ const passport = require('passport');
 const Router = require("./routes/index")
 const cookieParser = require('cookie-parser');
 const session = require("express-session");
+const User = require("./models/user");
+const LocalStrategy = require("passport-local").Strategy;
 const app = express();
 require("./passport/passport")
 
@@ -33,6 +35,8 @@ app.use(morgan('tiny'));
 app.use(cookieParser());
 app.use(session({
     secret: "cats",
+    resave: true,
+    saveUninitialized: true
     // resave: true, // Guarda la sesion por mas que no haya sido modificada
     //saveUninitialized: true, // Cuando iniciamos sesion en una App, si modificamos algo y nno guardamos nada, se va a guardar la sesion
     //cookie: {
@@ -41,6 +45,32 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+
+passport.use(new LocalStrategy({ usernameField: 'email' },
+  function (inputEmail, password, done) {
+
+    User.findOne({ where: { email: inputEmail } })
+      .then(user => {
+        if (!user) {
+          return done(null, false, { message: 'Incorrect email.' });
+        }
+        if (!user.validPassword(password)) {
+          return done(null, false, { message: 'Incorrect password.' });
+        }
+        return done(null, user);
+      })
+      .catch(done);
+  }
+));
+
+passport.serializeUser(function (user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function (id, done) {
+  User.findByPk(id).then(user => done(null, user));
+});
+
 
 app.use(function (err, req, res, next) {
     console.error(err);

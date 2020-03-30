@@ -13,7 +13,11 @@ router.get('/', function (req, res, next) {
         })
         .then(recruits => res.status(200).json(recruits))
     } else{
-        Recruit.findAll()
+        Recruit.findAll({
+            include: [
+                { model: Discipline }
+            ],
+        })
         .then((recruit) => res.status(200).json(recruit))
     }
 });
@@ -34,14 +38,24 @@ router.get("/:id", (req, res, next) =>{
 });
 
 router.post('/', function (req, res, next) {
-    Recruit.create(req.body)
-    .then(nuevoRecruit => {
+    Recruit.create({
+        name: req.body.name,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phone: req.body.phone,
+        DNI: req.body.DNI,
+        entryDate: req.body.entryDate
+      })
+      .then(nuevoRecruit => {
         return Promise.all([
-            nuevoRecruit.setDiscipline(req.body.discipline),
-            nuevoRecruit.setUser(req.user)
+            nuevoRecruit.setDiscipline(req.body.disciplineId),
+            nuevoRecruit.setUser(req.body.userId)
         ])
-    })
+      })
     .then((nuevoRecruit) => res.status(201).json(nuevoRecruit))
+    .catch(function(err) {
+        console.log(err);
+    })
 });
 
 router.delete("/:id", (req,res,next) =>{
@@ -57,3 +71,18 @@ router.delete("/:id", (req,res,next) =>{
     })
     .catch(err => res.sendStatus(500))  
 }) 
+
+router.put("/edit/:id", (req, res, next) => {
+    Recruit.findByPk(req.params.id)
+    .then(recruit=>{
+        if(recruit){
+            recruit.update(req.body)
+            // aca hay que desglosar el req.body para que complete solo los datos que estan defined
+            .then(recruitU =>res.status(200).json(recruitU))
+        } else {
+            res.sendStatus(404)
+        }
+
+    })
+    .catch(err => res.sendStatus(500))  
+})

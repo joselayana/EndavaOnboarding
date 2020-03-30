@@ -1,6 +1,6 @@
 const passport = require('../passport/passport');
 const express = require('express');
-const { User } = require("../models/index")
+const { User, Discipline } = require("../models/index")
 const router = express.Router();
 
 const loggedUser = function (req, res, next) {
@@ -12,8 +12,20 @@ const loggedUser = function (req, res, next) {
 }
 
 router.post("/register", function (req, res) {
-    User.create(req.body)
-        .then(res.send("Se creo el usuario"))
+    console.log(req.body, "ACAAAA")
+    User.create({
+        name: req.body.name,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        password: req.body.password
+    })
+    .then(nuevoUser => {
+            nuevoUser.setDiscipline(req.body.disciplineId)
+      })
+        .then(creado => res.status(201).json(creado))
+        .catch(function(err) {
+            console.log(err);
+        })
 })
 
 router.post('/login', passport.authenticate('local'), (req, res) => {
@@ -39,6 +51,28 @@ function isLogedIn(req, res, next) {
 }
 
 */
+
+router.get("/allUsers", (req, res) => {
+    User.findAll({
+        include: [
+            { model: Discipline }
+        ]
+    })
+        .then(users => res.status(200).json(users))
+})
+
+router.put("/changeProfile/:id", (req, res, next) => {
+    const id = req.params.id
+    const state = (req.body.state === 2) ? true : false
+    User.update({ isAdmin: state }, { where: { id } })
+        .then(() => User.findAll({
+            include: [
+                { model: Discipline }
+            ]
+        }))
+        .then(users => res.status(200).json(users))
+        .catch(next)
+})
 
 
 

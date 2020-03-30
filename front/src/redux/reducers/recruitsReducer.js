@@ -1,0 +1,20 @@
+import { SEARCH_RECRUITS, CREATE_RECRUIT, SINGLE_RECRUIT } from "../constants/index";
+
+const initialRecruitState = {
+    recruits: [],
+    newRecruit: [],
+    selectedRecruit: {}
+}
+export default function (state = initialRecruitState, action) {
+    switch (action.type) {
+        case SEARCH_RECRUITS:
+            return Object.assign({}, state, { recruits: action.recruits })
+        case CREATE_RECRUIT:
+            return Object.assign({}, state, { newRecruit: action.recruit })
+        case SINGLE_RECRUIT:
+            return Object.assign({}, state, { selectedRecruit: action.recruit })
+        default:
+            return state;
+    }
+}
+

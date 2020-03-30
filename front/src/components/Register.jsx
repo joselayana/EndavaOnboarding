@@ -78,7 +78,7 @@ export default ({ handleSubmit, handleChange, state }) => (
             }}
             role="alert"
           >
-            The two passwords have to be the same!
+            Both passwords have to be the same!
                   </div>
         ) : null}
         {state.errorInc ? (

@@ -2,8 +2,9 @@ import React from "react"
 import { Link } from "react-router-dom"
 import "../css/style.css"
 
-export default ({ }) => (
+export default ({ userId}) => (
 	<section>
+
 		<div className="jumbotron backgroundbanner" style={{height: "300px"}} >
 	    <div className="row">
 	      <div className="col-md-6" style={{height: "300px"}}>
@@ -26,13 +27,13 @@ export default ({ }) => (
 					<div className="card-body">
 						<h5 className="card-title category_title">My Tasks</h5>
 						<p className="card-text category_text">See the activities that you have going on, all in one section.</p>
-						<Link to='/myTasks'>
+						<Link to={`/myTasks/${userId}`}>
 							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
+
 					</div>
 				</div>
 			</div>
-		</div>
 
 			<div className="col-md-4 mt-3">
 				<div className="container box_container2">
@@ -41,16 +42,17 @@ export default ({ }) => (
 					<div className="card-body">
 						<h5 className="card-title category_title">Recruits</h5>
 						<p className="card-text category_text">Get to know all the new hirees, add new ones, and start their onboarding process.</p>
-						<Link to='/myTasks'>
+						<Link to='/recruits'>
 							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
 					</div>
 				</div>
+				</div>
 			</div>
-		</div>
 
 			<div className="col-md-4 mt-3">
 				<div className="container box_container2">
+
 				<div className="card">
 					<img src="/images/design/tablero1.svg" className="card-img-top" alt="..." />
 					<div className="card-body">
@@ -62,23 +64,23 @@ export default ({ }) => (
 					</div>
 				</div>
 			</div>
-		</div>
 
 			<div className="col-md-4 mt-3">
 				<div className="container box_container2">
+
 				<div className="card">
 					<img src="/images/design/recluta5.svg" className="card-img-top" alt="..." />
 					<div className="card-body">
 						<h5 className="card-title category_title">Users</h5>
 						<p className="card-text category_text">Inspect, create and edit all your users.</p>
-						<Link to='/myTasks'>
+						<Link to='/users'>
 							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
+
 					</div>
 				</div>
 			</div>
-		</div>
 
-	</div>
+		</div>
 	</section>
 )
