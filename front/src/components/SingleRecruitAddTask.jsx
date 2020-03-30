@@ -4,8 +4,8 @@ import "../css/style.css"
 
 
 
-export default ({ taskOptions, userOptions, handleSubmit, handleChange }) => {
-    
+export default ({ taskOptions, userOptions, handleSubmit, handleChange, state, newTasks }) => {
+    let indice = 0
     if(taskOptions.length>0 && userOptions.length>0){
         return (
             <div style={{ padding: "3%" }}>
@@ -48,9 +48,13 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange }) => {
                             <div style={{padding:"3%", display:"flex", justifyContent: "flex-end"}}>
                                 <button type="submit" className="btn btn-outline-primary" style={{ borderColor: "#1E5DAC" }} >Associate Task</button>
                             </div>
+                            {(state.errorFields) ? (
+                                <div class="alert alert-danger" role="alert">
+                                A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                              </div>
+                            ) : (null)}
                         </form>
                     </div>
-    
                 </div>
             </div>
         )

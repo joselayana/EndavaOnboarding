@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {TaskRecruit, Recruit, Discipline, User } = require('../models');
+const {TaskRecruit, Recruit, Discipline, User, Task } = require('../models');
 const Sequelize = require("sequelize")
 const Promise = require("bluebird");
 module.exports = router;
@@ -50,15 +50,17 @@ router.get("byUser/:recruitId", (req, res, next) =>{
 
 
 router.post('/', function (req, res, next) {
-    TaskRecruit.create(req.body)
+    TaskRecruit.create({
+        dueDate: req.body.dueDate
+    })
     .then(nuevaTaskRec => {
         return Promise.all([
-            nuevaTaskRec.setDiscipline(req.body.discipline),
-            nuevaTaskRec.setUser(req.body.user),
-            nuevaTaskRec.setRecruit(req.recruit)
+            nuevaTaskRec.setTask(req.body.taskId),
+            nuevaTaskRec.setUser(req.body.responsableId),
+            nuevaTaskRec.setRecruit(req.body.recruitId)
         ])
     })
-    .then((nuevaTaskRec) => res.status(201).json(nuevaTaskRec))
+    .then((nuevaTaskRec) => res.status(201).json(nuevaTaskRec[0]))
 });
 
 router.delete("/:id", (req,res,next) =>{

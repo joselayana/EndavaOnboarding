@@ -19,7 +19,6 @@ export default ({ userId}) => (
 
 		<div className="row ml-4 mr-4">
 
-
 		<div className="col-md-4 mt-3">
 			<div className="container box_container2">
 				<div className="card">
@@ -34,6 +33,7 @@ export default ({ userId}) => (
 					</div>
 				</div>
 			</div>
+		</div>
 
 			<div className="col-md-4 mt-3">
 				<div className="container box_container2">
@@ -64,10 +64,10 @@ export default ({ userId}) => (
 					</div>
 				</div>
 			</div>
+		</div>
 
 			<div className="col-md-4 mt-3">
 				<div className="container box_container2">
-
 				<div className="card">
 					<img src="/images/design/recluta5.svg" className="card-img-top" alt="..." />
 					<div className="card-body">
@@ -76,11 +76,12 @@ export default ({ userId}) => (
 						<Link to='/users'>
 							<button className="btn category_button btn-block mb-2">Access</button>
 						</Link>
-
 					</div>
 				</div>
 			</div>
-
 		</div>
+
+	</div>
+
 	</section>
 )
