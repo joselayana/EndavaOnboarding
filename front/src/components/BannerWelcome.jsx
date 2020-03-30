@@ -9,11 +9,11 @@ export default () => (
     <div className="row">
       <div className="col-md-6">
         <p className="banner-tittle">WELCOME ON BOARD!</p>
-        <p>Access to this app to manage all your recruits, asign them tasks and organice their onboarding process! </p>
-        <Link to = "/register" ><img src="images/welcome/9.png" className="welcome-btn"/>Login or Register</Link>
+        <p>ACCESS THIS APP TO MANAGE ALL YOUR RECRUITS, ASIGN THEM TASKS AND ORGANICE THEIR ONBOARDING PROCESS </p>
+        <Link to = "/register" ><img src="images/welcome/3.png" className="welcome-btn"/>LOGIN OR REGISTER</Link>
       </div>
       <div className="col-md-6 text-center">
-        <img src="images/design/HL_M04_07_ce.svg" className="img-fluid"/>
+        <img src="images/welcome/1/welcome1.svg" className="img-fluid"/>
       </div>
     </div>
   </div>

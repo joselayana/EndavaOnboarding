@@ -6,11 +6,12 @@
 
 body
 {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
 
 /*-----------Navbar------------*/
 
-}
 #nav-bar
 {
   position: sticky;
@@ -20,11 +21,11 @@ body
 
 .navbar
 {
-  background-image:linear-gradient(to right,#2980b9, #5f1782);
+  background-image:linear-gradient(to right,#f0f3f3, #f0f3f3);
 }
 .navbar-brand img
 {
-  height:37px;
+  height:50px;
   padding-left: 20px;
 }
 
@@ -33,24 +34,26 @@ body
   margin-right: 3%;
 }
 
-.btn-secondary-nav {
-    color: #495057;
-    background-color: #f8f9fa;
-    border-color: #f8f9fa;
+.btn-secondary-nav
+{
+    color: #f0f4f4;
+    background-color: #48545b;
+    border-color: #48545b;
 }
 
 /*-----------WelcomeLogin------------*/
 
 #banner
 {
-  background-image:linear-gradient(to right,#2980b9, #5f1782);
-  color:#fff;
+  background-color:#f0f3f3;
+  color:#48545b;
   padding-top:5%
 }
 .banner-tittle
 {
+  font-family: 'Roboto Condensed', sans-serif;
   font-size: 40px;
-  font-weight: 300;
+  font-weight: 700;
   margin-top: 92px;
 }
 .welcome-btn
@@ -61,7 +64,7 @@ body
 
 #banner a
 {
-  color: #fff;
+  color: #c31900;
 }
 
 
@@ -148,13 +151,13 @@ body
 
 .category_title
 {
-  color: #216ab0;
+  color: #285078;
   font-size: 2.00rem;
 }
 
 .category_button
 {
-  background-image:linear-gradient(to right,#2980b9, #2980b9);
+  background-color:#9bb4be;
   color:white;
   font-size: 1.4rem;
 }
@@ -166,27 +169,32 @@ body
 
 .backgroundbanner
 {
-  background-image: linear-gradient(to right,#2980b9, #5f1782);
+  background-image: linear-gradient(to right,#f0f3f3, #ffffff);
 }
 
 .banner-title2
 {
-  font-size: 40px;
-  font-weight: 400;
-  margin-top: 92px;
-  color:white;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 4rem;
+  font-weight: 700;
+  margin-top: 37px;
+  color:#48545b;
   padding-left: 15px;
 }
 
 .banner-subtitle2
 {
-  font-size: 20px;
-  font-weight: 200;
-  color:white;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  color:#48545b;
   padding-left: 15px;
 }
 
-.table1{
+/*-----------Tables------------*/
+
+.table1
+{
   color: white;
   background-color: #1d57a8;
 }
