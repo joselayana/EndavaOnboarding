@@ -6,7 +6,7 @@ export default ({user, onLogout}) => (
 <section id="nav-bar">
   <nav className="navbar navbar-light pt-2">
     <a className="navbar-brand" href="/">
-      <img src="images/logo/13.png"/>
+      <img src="images/logo/Endava_Logo.svg"/>
     </a>
     
     
