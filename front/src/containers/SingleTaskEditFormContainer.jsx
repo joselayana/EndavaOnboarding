@@ -25,7 +25,7 @@ class SingleTaskEditFormContainer extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         if (this.state.newTaskState) {
-            let obj = { newTaskState: this.state.newTaskState, comment: this.state.comment, taskId: this.props.task.id }
+            let obj = { taskState: this.state.newTaskState, comment: this.state.comment, taskId: this.props.task.id }
             this.props.updateTaskState(obj)
                 .then(() => this.props.history.push(`/myTasks/${this.props.user.id}`))
         }

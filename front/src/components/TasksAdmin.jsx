@@ -132,7 +132,9 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                               <option className="border1">blocked out</option>
                               <option className="border1">finished</option>
                             </select>
-                            {/*<button onClick={handleClick} style={{display:"inline-block"}}><i className="far fa-save"></i></button>*/}
+                            <div>
+                            <button type="button" className="btn btn-outline-success" style={{marginLeft: "5%"}} onClick={()=>handleClick(task.id)}><i className="fas fa-sync-alt"></i></button>
+                            </div>
                           </div>
                         </td>
                         <td className="align-middle">{task.comment}</td>
