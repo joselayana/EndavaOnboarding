@@ -6,17 +6,16 @@ export default ({ user, onLogout }) => (
   <section id="nav-bar">
     <nav className="navbar navbar-light pt-2">
       <a className="navbar-brand" href="/">
-        <img src="images/logo/Endava_Logo.svg" />
+        <img src="images/logo/Endava_Logo_Rojo.svg" />
       </a>
 
 
       {(user.name) ? (
         <>
-          <button onClick={onLogout} type="button" class="btn btn-light">Log Out</button>
-
-          <div className="dropdown" id="admin-btn">
-            <button className="btn btn-secondary-nav dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              {user.name}
+          <button onClick={onLogout} type="button" class="btn btn-light btnout"><i class="fa fa-sign-out-alt"></i>Log Out</button>
+          <div className="dropdown" id="admin-btn" >
+            <button className="btn dropdown-toggle btnout" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa fa-user1"></i>{user.name}
             </button>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
               <Link to="/home" className="dropdown-item" href="#">Home</Link>
@@ -29,8 +28,10 @@ export default ({ user, onLogout }) => (
         </>
       ) : (
           <>
-            <Link to="/register"><button type="button" class="btn btn-light">Register</button></Link>
-            <Link to="/login"><button type="button" class="btn btn-light">Log In</button></Link>
+          <div>
+            <Link to="/register"><button type="button" class="btn btn-light"> <i class="fa fa-user-plus"></i>Sign Up</button></Link>
+            <Link style={{marginLeft:"10px"}}to="/login"><button type="button" class="btn btn-light"> <i className="fa fa-sign-in-alt"></i> Sign In</button></Link>
+          </div>
           </>
         )}
     </nav>

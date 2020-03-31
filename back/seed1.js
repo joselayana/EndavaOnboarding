@@ -8,7 +8,7 @@ User.create({
     email: "celeste@endava.com",
     password: "123",
     disciplineId: 1,
-    isAdmin: true
+    isAdmin:true
 })
 User.create({
     //id: 2,

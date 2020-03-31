@@ -79,16 +79,16 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
               )}
           </>
           <br />
-          <h1>My Tasks</h1>
+          <h1 className="titleSection">My Tasks</h1>
           <br />
-          <div style={{ paddingLeft: "8%", marginTop: "-1%" }}>
-            <input
-              type="text"
-              placeholder="Search for recruits"
-              onChange={handleSearchInput}
-            />
-          </div>
           <div>
+            <div className="container box_container2 margen">
+              <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for recruits" onChange={handleSearchInput}
+                  aria-label="Search"/>
+                <i class="fas fa-search searchColor" aria-hidden="true"></i>
+              </form>
+          </div>
             <div className="container box_container2">
               <table className="table table-striped">
                 <thead>
@@ -111,12 +111,12 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                     return (
                       <tr key={task.id}>
                         <th scope="row" className="align-middle">{indice}</th>
-                        <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
+                        <td className="align-middle"><Link style={{color:"#285078"}} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                         <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
                         <td className="align-middle">{dueDate}</td>
                         <>
                           {(task.state == "blocked out") ? (
-                            <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                            <td className="align-middle ">{task.state}</td>
                           ) : (
                               <td className="align-middle"   >{task.state}</td>
                             )
