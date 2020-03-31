@@ -67,8 +67,9 @@ class TasksAdminContainer extends React.Component {
         : this.props.searchAllTasks()
     }
 
-    handleClick(e) {
-        let obj = { taskState: this.state.taskState }
+
+    handleClick(taskId) {
+        let obj = { taskState: this.state.taskState, taskId: taskId, userId: this.props.user.id}
         if (this.state.taskState) {
             this.props.updateTaskState(obj)
         }

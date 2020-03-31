@@ -49,7 +49,6 @@ class SingleRecruitEditFormContainer extends React.Component {
         if(!this.state.discipline) IdDiscipline=viejoIdDiscipline
 
         let obj = { name: newName, lastName:newLastName , email: newEmail, phone: newPhone, DNI:newDNI, entryDate: newEntryDate , userId:this.props.user.id, disciplineId: IdDiscipline, recruitId:recruitId }
-        console.log("SALIOOOOO", obj)
         this.props.updateRecruit(obj)
             .then(() => this.props.history.push(`/recruit/${recruitId}`))
     }

@@ -15,7 +15,7 @@ router.post("/newTask", function (req, res, next) {
 
 router.put("/edit/:id", function (req, res, next) {
     const taskId = req.params.id
-    const newState = req.body.newTaskState
+    const newState = req.body.taskState
     const newComment = req.body.comment
 
     TaskRecruit.update(

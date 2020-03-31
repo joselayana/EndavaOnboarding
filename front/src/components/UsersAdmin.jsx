@@ -7,8 +7,8 @@ export default ({ users, handleProfile, handleSearchInput }) => {
     <Fragment>
       {(users.length) ?
         (
-          <>
-            <h1>Users</h1>
+          <div style={{ padding: "3%" }}>
+            <h1 className="titleSection">Users</h1>
             <br />
             <div className="container box_container2 margen">
               <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
@@ -44,7 +44,7 @@ export default ({ users, handleProfile, handleSearchInput }) => {
                               {(user.isAdmin) ? ("Admin") : ("Regular User")}
                             </>
                           </td>
-                          <button type="button" className="align-middle btn btn-outline-info" data-toggle="modal" data-target={`#changeProfile${indice}`}>Change profile</button>
+                          <button type="button" className="align-middle btn btn-outline-danger" style={{ marginTop: "12px", marginBottom: "12px" }} data-toggle="modal" data-target={`#changeProfile${indice}`}>Change profile</button>
                           {/* <!-- Modal --> */}
                           <div className="modal fade" id={`changeProfile${indice}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered" role="document">
@@ -74,7 +74,7 @@ export default ({ users, handleProfile, handleSearchInput }) => {
                 </table>
               </div>
             </div>
-          </>
+          </div>
         ) : null}
     </Fragment>
 
