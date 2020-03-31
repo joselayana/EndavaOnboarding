@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import { Link } from "react-router-dom"
 
-export default ({ users, handleProfile }) => {
+export default ({ users, handleProfile, handleSearchInput }) => {
   let indice = 0
   return (
     <Fragment>
@@ -10,6 +10,13 @@ export default ({ users, handleProfile }) => {
           <div style={{ padding: "3%" }}>
             <h1 className="titleSection">Users</h1>
             <br />
+            <div className="container box_container2 margen">
+              <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Name" onChange={handleSearchInput}
+                  aria-label="Search"/>
+                <i class="fas fa-search searchColor" aria-hidden="true"></i>
+              </form>
+            </div>
             <div>
               <div className="container box_container2">
                 <table className="table table-striped">

@@ -16,10 +16,16 @@ export const singleRecruit = (recruit) => ({
     recruit
 })
 
-export const searchRecruits = () => dispatch => {
-    return Axios.get("/api/recruit/")
+export const searchRecruits = (busqueda) => dispatch => {
+    if (busqueda === undefined) {
+        return Axios.get("/api/recruit/")
         .then(res => res.data)
         .then(recruits => dispatch(findRecruits(recruits)))
+    } else {
+        return Axios.get(`/api/recruit/?s=${busqueda}`)
+        .then(res => res.data)
+        .then(recruits => dispatch(findRecruits(recruits)))
+    }
 }
 
 export const createRecruit = (recruit) => dispatch => {

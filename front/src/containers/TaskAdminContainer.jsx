@@ -12,11 +12,16 @@ class TasksAdminContainer extends React.Component {
             description: "",
             taskState: "",
             busqueda:"",
+            busquedaS:"",
+            busquedaT:"",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleSearchInput = this.handleSearchInput.bind(this);
+        this.handleSearchAllInputS = this.handleSearchAllInputS.bind(this);
+        this.handleSearchAllInputT = this.handleSearchAllInputT.bind(this);
+
 
     }
 
@@ -47,6 +52,22 @@ class TasksAdminContainer extends React.Component {
         
       }
 
+    handleSearchAllInputS (e) {
+        this.setState({busquedaS : e.target.value})
+        const busqueda = e.target.value
+        busqueda.length >=2? this.props.searchAllTasks(busqueda, 1)
+        : this.props.searchAllTasks()
+        
+    }
+
+    handleSearchAllInputT (e) {
+        this.setState({busquedaT : e.target.value})
+        const busqueda = e.target.value
+        busqueda.length >=2? this.props.searchAllTasks(busqueda, 2)
+        : this.props.searchAllTasks()
+    }
+
+
     handleClick(taskId) {
         let obj = { taskState: this.state.taskState, taskId: taskId, userId: this.props.user.id}
         if (this.state.taskState) {
@@ -58,7 +79,7 @@ class TasksAdminContainer extends React.Component {
         return (
             <Fragment>
 
-                <TaskAdmin user={this.props.user} handleSearchInput={this.handleSearchInput} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                <TaskAdmin user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllInputS={this.handleSearchAllInputS} handleSearchAllInputT={this.handleSearchAllInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
 
             </Fragment>
         )
@@ -78,7 +99,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         createTask: (task) => dispatch(createTask(task)),
         searchTasks: (userId, busqueda) => dispatch(searchTasks(userId, busqueda)),
-        searchAllTasks: () => dispatch(searchAllTasks()),
+        searchAllTasks: (busqueda, valor) => dispatch(searchAllTasks(busqueda, valor)),
         searchTasksList: () => dispatch(searchTasksList()),
         updateTaskState: (taskState) => dispatch(updateTaskState(taskState))
     }

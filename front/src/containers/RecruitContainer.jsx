@@ -8,16 +8,33 @@ import Recruit from "../components/Recruit";
 class RecruitContainer extends React.Component {
     constructor() {
         super()
+        this.state = {
+            busqueda:"",
+        }
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSearchInput = this.handleSearchInput.bind(this);
     }
 
     componentDidMount() {
         this.props.searchRecruits()
     }
 
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    handleSearchInput (e) {
+        this.setState({busqueda : e.target.value})
+        const busqueda = e.target.value
+        busqueda.length >=2? this.props.searchRecruits(busqueda)
+        : this.props.searchRecruits()
+        
+    }
+
     render() {
         return (
             <div>
-                <Recruit recruits={this.props.recruits}/>
+                <Recruit recruits={this.props.recruits} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} state={this.state} />
             </div>
         )
     }
@@ -31,7 +48,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        searchRecruits: () => dispatch(searchRecruits())
+        searchRecruits: (busqueda) => dispatch(searchRecruits(busqueda))
     }
 }
 

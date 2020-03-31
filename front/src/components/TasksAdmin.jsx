@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { Link } from "react-router-dom"
 import "../css/style.css"
 
-export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, handleClick, allTasks, tasksList, user }) => {
+export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handleSearchAllInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user }) => {
 
   let indice = 0
   let indice2 = 0
@@ -84,8 +84,8 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
           <div>
             <div className="container box_container2 margen">
               <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
-                <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for recruits" onChange={handleSearchInput}
-                  aria-label="Search" />
+                <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for New Hires" onChange={handleSearchInput}
+                  aria-label="Search"/>
                 <i class="fas fa-search searchColor" aria-hidden="true"></i>
               </form>
             </div>
@@ -203,6 +203,18 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                 <h1>All Tasks</h1>
                 <br />
                 <div>
+                <div className="container box_container2 margen">
+                    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for New Hires" onChange={handleSearchAllInputS}
+                        aria-label="Search"/>
+                      <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                    </form>
+                    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Task Owners" onChange={handleSearchAllInputT}
+                        aria-label="Search"/>
+                      <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                    </form>
+                </div>  
                   <div className="container box_container2">
                     <table className="table table-striped">
                       <thead>
@@ -284,7 +296,7 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                 <div>
                   <div className="container box_container2 margen">
                     <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
-                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for recruits" onChange={handleSearchInput}
+                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for New Hire" onChange={handleSearchInput}
                         aria-label="Search" />
                       <i class="fas fa-search searchColor" aria-hidden="true"></i>
                     </form>
@@ -438,6 +450,18 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                   data-parent="#accordionEx5">
                   <div class="card-body rgba-black-light white-text z-depth-1">
                     <div>
+                     <div className="container box_container2 margen">
+                    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for New Hires" onChange={handleSearchAllInputS}
+                        aria-label="Search"/>
+                      <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                    </form>
+                    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Task Owners" onChange={handleSearchAllInputT}
+                        aria-label="Search"/>
+                      <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                    </form>
+                </div>  
                       <div className="container box_container2">
                         <table className="table table-striped">
                           <thead>
