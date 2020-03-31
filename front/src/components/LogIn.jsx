@@ -36,7 +36,7 @@ export default ({ handleSubmit, handleChange, state }) => (
                     <button type="submit" className="btn btn-primary btn-block button1"> Log In  </button>
                 </div>
 
-                <p className="text-center">Forgot your password? <a href="">Click here</a> </p>
+                <p className="text-center log">Forgot your password? <a href="">Click here</a> </p>
 
             </form>
         </div>

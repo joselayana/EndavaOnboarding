@@ -9,10 +9,10 @@ export default () => (
     <div className="row">
 
       <div className="col-md-6 text-center">
-        <img src="images/design/HL_M04_03_ce.svg" className="img-fluid"/>
+        <img src="images/design/login12.svg" className="img-fluid"/>
       </div>
 
-      <div className="col-md-6" style={{backgroundColor:"#1e5dac"}}>
+      <div className="col-md-6" style={{backgroundColor:"#f0f3f3"}}>
         <LogInContainer/>
       </div>
 
