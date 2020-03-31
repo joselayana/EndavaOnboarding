@@ -31,7 +31,7 @@ export default ({ recruit, tasks, handlerClick }) => {
                                                 <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
                                                     <div className="form-container">
                                                         <div className="card-body mx-auto">
-                                                            <p className="card-title mt-3 text-center title">Recruit Information</p>
+                                                            <p className="card-title mt-3 text-center title">New Hire Information</p>
                                                             <p className="text-left subtitle">Name: {recruit.name} {recruit.lastName}</p>
                                                             <p className="text-left subtitle">Email: {recruit.email}</p>
                                                             <p className="text-left subtitle">Phone Number: {recruit.phone}</p>
