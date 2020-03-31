@@ -34,13 +34,37 @@ body
   margin-right: 3%;
 }
 
-.btn-secondary-nav
-{
-    color: #f0f4f4;
-    background-color: #48545b;
-    border-color: #48545b;
+
+
+.btnout{
+    color:#48545b;
+    background-color:#f8f9fa;
+    border-color:#f8f9fa
 }
 
+.fa-sign-out-alt:before{
+  margin-right: 7px;
+  color:#c43826
+}
+.fa-user1:before {
+    content: "\f007";
+    margin-right: 7px;
+    color: #c43826;
+}
+.fa-sign-in-alt:before {
+    content: "\f2f6";
+    margin-right: 7px;
+    color:#c43826
+}
+
+.fa-user-plus:before {
+    margin-right: 7px;
+    color:#c43826
+}
+.btnlog
+{
+  color:#48545b
+}
 /*-----------WelcomeLogin------------*/
 
 #banner
@@ -100,10 +124,16 @@ body
   font-weight: 300;
 }
 
+.card-title
+{
+  color:#48545b;
+}
+
 .subtitle
 {
   font-size: 1.2rem;
   font-weight: 300;
+  color:#48545b;
 }
 
 .logform
@@ -118,8 +148,8 @@ body
 
 .button1
 {
-  background-color: #6f97de;
-  border-color: #6f97de;
+  background-color: #de4242;
+  border-color: #de4242;
 }
 
 .icon1
@@ -134,6 +164,10 @@ body
   border-bottom-left-radius: 0px !important;
 }
 
+.log
+{
+  color:#9bb4be;
+}
 
 /*-----------AdminLandingCards------------*/
 
@@ -196,5 +230,30 @@ body
 .table1
 {
   color: white;
-  background-color: #1d57a8;
+  background-color: #48545b;
+}
+
+.ancho
+{
+width: 94% !important
+}
+
+.margen
+{
+  margin-bottom:15px !important
+}
+
+.titleSection
+{
+  color:#48545b
+}
+
+.taskColor
+{
+  color: #285078
+}
+
+.searchColor
+{
+  color:#c43826
 }

@@ -98,7 +98,7 @@ export default ({ handleSubmit, handleChange, state }) => (
           <button type="submit" className="btn btn-primary btn-block button1"> Create Account  </button>
         </div>
 
-        <p className="text-center">Already have an account? <Link to={"/login"}> Log In</Link></p>
+        <p className="text-center log">Already have an account? <Link className="log" to={"/login"}> Log In</Link></p>
 
       </form>
     </div>
