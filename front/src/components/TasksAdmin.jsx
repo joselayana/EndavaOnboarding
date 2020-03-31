@@ -81,7 +81,6 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
           <br />
           <h1 className="titleSection">My Tasks</h1>
           <br />
-
           <div>
             <div className="container box_container2 margen">
               <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
@@ -177,7 +176,15 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                               <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
                               <td className="align-middle">{task.user.name} {task.user.lastName}</td>
                               <td className="align-middle">{dueDate}</td>
-                              <td className="align-middle">{task.state}</td>
+                              <>
+                                {(task.state == "blocked out") ? (
+                                  <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                                ) : (
+                                    <td className="align-middle"   >{task.state}</td>
+                                  )
+                                }
+                              </>
+                              {/* <td className="align-middle">{task.state}</td> */}
                               <td className="align-middle">{task.comment}</td>
                             </tr>
                           )

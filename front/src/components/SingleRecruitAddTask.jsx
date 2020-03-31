@@ -4,7 +4,7 @@ import "../css/style.css"
 
 
 
-export default ({ taskOptions, userOptions, handleSubmit, handleChange }) => {
+export default ({ taskOptions, userOptions, handleSubmit, handleChange, state}) => {
     
     if(taskOptions.length>0 && userOptions.length>0){
         return (
@@ -25,7 +25,7 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange }) => {
                             <div class="container">
                                 <div class="row">
                                     <div class="col-sm">
-                                    <select selected="" name="taskDescription" className="form-control border1" onChange={handleChange}>
+                                    <select selected="" name="taskDescription" className="form-control border1" onChange={handleChange} value={state.taskDescription}>
                                     <option className="border1">Select Task</option>
                                     {taskOptions.map((taskOption)=>(
                                     <option key={taskOption.id} className="border1">{taskOption.description}</option>
@@ -33,7 +33,7 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange }) => {
                                 </select>
                                     </div>
                                     <div class="col-sm">
-                                    <select selected="" name="responsable" className="form-control border1" onChange={handleChange}>
+                                    <select selected="" name="responsable" className="form-control border1" onChange={handleChange} value={state.responsable}>
                                     <option className="border1">Select Responsable</option>
                                     {userOptions.map((userOption)=>(
                                     <option key={userOption.id} className="border1">{userOption.name} {userOption.lastName}</option>
@@ -41,16 +41,20 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange }) => {
                                 </select>
                                     </div>
                                     <div class="col-sm">
-                                    <input type="date" name="dueDate" max="2050-12-31" min="2020-03-01" className="form-control" placeholder="Starting on" onChange={handleChange}/>
+                                    <input type="date" name="dueDate" max="2050-12-31" min="2020-03-01" className="form-control" placeholder="Starting on" onChange={handleChange} value={state.dueDate}/>
                                     </div>
                                 </div>
                             </div>
                             <div style={{padding:"3%", display:"flex", justifyContent: "flex-end"}}>
                                 <button type="submit" className="btn btn-outline-primary" style={{ borderColor: "#1E5DAC" }} >Associate Task</button>
                             </div>
+                            {(state.errorFields) ? (
+                                <div class="alert alert-danger" role="alert">
+                                A simple danger alert with <a href="#" class="alert-link">an example link</a>. Give it a click if you like.
+                              </div>
+                            ) : (null)}
                         </form>
                     </div>
-    
                 </div>
             </div>
         )
