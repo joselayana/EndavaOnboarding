@@ -41,8 +41,8 @@ export default ({ user }) => (
 								<div className="card">
 									<img src="/images/design/recluta5.svg" className="card-img-top" alt="..." />
 									<div className="card-body">
-										<h5 className="card-title category_title">Recruits</h5>
-										<p className="card-text category_text">Get to know all the new hirees, add new ones, and start their onboarding process.</p>
+										<h5 className="card-title category_title">New Hires</h5>
+										<p className="card-text category_text">Get to know all the new hires, add new ones, and start their onboarding process.</p>
 										<Link to='/recruits'>
 											<button className="btn category_button btn-block mb-2">Access</button>
 										</Link>

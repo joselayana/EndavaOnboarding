@@ -37,7 +37,7 @@ const sendMail = function (objMail) {
         You have been designated as the owner of: 
 
            - Task: ${objMail.task}. 
-           - New hired: ${objMail.recruitName} ${objMail.recruitLastName}.
+           - New hires: ${objMail.recruitName} ${objMail.recruitLastName}.
            - Due date:  ${objMail.dueDate}.
 
         Please check the status of all your tasks in the ON BOARD APP.
