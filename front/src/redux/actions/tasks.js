@@ -56,10 +56,20 @@ export const searchTasks = (userId, busqueda) => dispatch => {
     }
 }
 
-export const searchAllTasks = () => dispatch => {
-    return Axios.get("/api/task/allTasks")
-        .then(res => res.data)
-        .then(allTasks => dispatch(findAllTasks(allTasks)))
+export const searchAllTasks = (busqueda, valor) => dispatch => {
+    if (valor === undefined) {
+        return Axios.get("/api/task/allTasks")
+            .then(res => res.data)
+            .then(allTasks => dispatch(findAllTasks(allTasks)))
+    } else if (valor === 1) {
+        return Axios.get(`/api/task/allTasks?s=${busqueda}`)
+                .then(res => res.data)
+                .then(allTasks => dispatch(findAllTasks(allTasks)))
+    } else if (valor === 2) {
+        return Axios.get(`/api/task/allTasks?t=${busqueda}`)
+                .then(res => res.data)
+                .then(allTasks => dispatch(findAllTasks(allTasks)))
+    }
 }
 
 export const searchTasksList = () => dispatch => {

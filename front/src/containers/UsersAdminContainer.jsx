@@ -9,6 +9,7 @@ class UsersAdminContainer extends React.Component {
     constructor() {
         super()
         this.state = {
+            busqueda:""
             // name: "",
             // lastName: "",
             // email: "",
@@ -22,6 +23,7 @@ class UsersAdminContainer extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
         // this.handleChange = this.handleChange.bind(this)
         this.handleProfile = this.handleProfile.bind(this)
+        this.handleSearchInput = this.handleSearchInput.bind(this);
 
     }
     componentDidMount() {
@@ -31,6 +33,14 @@ class UsersAdminContainer extends React.Component {
     handleProfile(idUser, profile) {
         this.props.changeProfile(idUser, profile)
 
+    }
+
+    handleSearchInput (e) {
+        this.setState({busqueda : e.target.value})
+        const busqueda = e.target.value
+        busqueda.length >=2? this.props.fetchUsers(busqueda)
+        : this.props.fetchUsers()
+        
     }
     // handleSubmit(e) {
     //     e.preventDefault();
@@ -62,7 +72,7 @@ class UsersAdminContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <UsersAdmin users={this.props.users} handleProfile={this.handleProfile} />
+                <UsersAdmin users={this.props.users} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />
             </Fragment>
         )
     }
@@ -77,7 +87,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        fetchUsers: () => dispatch(fetchUsers()),
+        fetchUsers: (busqueda) => dispatch(fetchUsers(busqueda)),
         changeProfile: (idUser, profile) => dispatch(changeProfile(idUser, profile))
     }
 };

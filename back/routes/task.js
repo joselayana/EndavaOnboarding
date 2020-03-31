@@ -50,7 +50,10 @@ router.get("/myTasks/:id", function (req, res) {
             include: [
                 {
                     model: Recruit,
-                    where: { name: { [Op.iLike]: `%${req.query.s}%` } }
+                    where: { [Op.or]: [
+                        {name: { [Op.iLike]: `%${req.query.s}%` } },
+                        {lastName: { [Op.iLike]: `%${req.query.s}%` } }
+                    ] }
                 },
                 { model: Task }
             ],
@@ -94,14 +97,45 @@ router.get("/recruit/:id", function (req, res) {
 })
 
 router.get("/allTasks", (req, res) => {
-    TaskRecruit.findAll({
-        include: [
-            { model: Recruit },
-            { model: Task },
-            { model: User }
-        ]
-    })
-        .then(allTasks => res.status(200).json(allTasks))
+    const Op = Sequelize.Op
+
+    if (req.query.s) {
+        TaskRecruit.findAll({
+            include: [
+                { model: Recruit,
+                    where: { [Op.or]: [
+                    {name: { [Op.iLike]: `%${req.query.s}%` } },
+                    {lastName: { [Op.iLike]: `%${req.query.s}%` } }
+                ] } },
+                { model: Task },
+                { model: User }
+            ]
+        })
+            .then(allTasks => res.status(200).json(allTasks))
+    } else if (req.query.t) {
+        TaskRecruit.findAll({
+            include: [
+                { model: Recruit},
+                { model: Task },
+                { model: User ,
+                    where: { [Op.or]: [
+                    {name: { [Op.iLike]: `%${req.query.t}%` } },
+                    {lastName: { [Op.iLike]: `%${req.query.t}%` } }
+                ] } }
+            ]
+        })
+            .then(allTasks => res.status(200).json(allTasks))
+    } else {
+        TaskRecruit.findAll({
+            include: [
+                { model: Recruit },
+                { model: Task },
+                { model: User }
+            ]
+        })
+            .then(allTasks => res.status(200).json(allTasks))
+    }
+
 })
 
 router.get("/tasksList", (req, res) => {

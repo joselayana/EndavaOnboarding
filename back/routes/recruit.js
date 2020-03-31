@@ -9,7 +9,13 @@ router.get('/', function (req, res, next) {
     const Op = Sequelize.Op
     if(req.query.s){
         Recruit.findAll({
-            where: { name: { [Op.iLike]: `%${req.query.s}%` }}
+            where: { [Op.or]: [
+                {name: { [Op.iLike]: `%${req.query.s}%` } },
+                {lastName: { [Op.iLike]: `%${req.query.s}%` } }
+            ]},
+            include: [
+                { model: Discipline }
+            ],
         })
         .then(recruits => res.status(200).json(recruits))
     } else{

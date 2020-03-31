@@ -17,10 +17,16 @@ export const createUser = (user) => dispatch => {
         .then(user => dispatch(setUser(user)))
 }
 
-export const fetchUsers = () => dispatch => {
-    return axios.get("/api/user/allUsers")
+export const fetchUsers = (busqueda) => dispatch => {
+    if (busqueda === undefined) {
+        return axios.get("/api/user/allUsers")
         .then(res => res.data)
         .then(users => dispatch(allUsers(users)))
+    } else {
+        return axios.get(`/api/user/allUsers?s=${busqueda}`)
+        .then(res => res.data)
+        .then(users => dispatch(allUsers(users)))
+    }
 }
 
 export const changeProfile = (idUser, profile) => dispatch => {

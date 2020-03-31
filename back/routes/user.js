@@ -5,6 +5,8 @@ const router = express.Router();
 const nodemailer = require("nodemailer");
 require('dotenv').config();
 const hbs = require('nodemailer-express-handlebars');
+const Sequelize = require("sequelize")
+
 
 
 
@@ -109,12 +111,26 @@ function isLogedIn(req, res, next) {
 */
 
 router.get("/allUsers", (req, res) => {
-    User.findAll({
-        include: [
-            { model: Discipline }
-        ]
-    })
-        .then(users => res.status(200).json(users))
+    const Op = Sequelize.Op
+    if(req.query.s){
+        User.findAll({
+            where: { [Op.or]: [
+                {name: { [Op.iLike]: `%${req.query.s}%` } },
+                {lastName: { [Op.iLike]: `%${req.query.s}%` } }
+            ]},
+            include: [
+                { model: Discipline }
+            ]
+        })
+            .then(users => res.status(200).json(users))
+    } else{
+        User.findAll({
+            include: [
+                { model: Discipline }
+            ]
+        })
+            .then(users => res.status(200).json(users))
+    }
 })
 
 router.get("/findUser", (req, res) => {
