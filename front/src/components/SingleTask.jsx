@@ -9,10 +9,10 @@ export default ({ selectedTask, user }) => {
                     <section id="banner_white">
                         <div className="container box_container">
                             <div className="row">
-                                <div className="col-md-6" style={{ backgroundColor: "#1E5DAC" }}>
+                                <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
                                     <div className="form-container">
                                         <div className="card-body mx-auto">
-                                            <p className="card-title mt-3 text-center title">Recruit Information</p>
+                                            <p className="card-title mt-3 text-center title">Recruit<br /> Information</p>
                                             <p className="text-left subtitle">Name: {selectedTask.recruit.name} {selectedTask.recruit.lastName}</p>
                                             <p className="text-left subtitle">Email: {selectedTask.recruit.email}</p>
                                             <p className="text-left subtitle">Phone Number: {selectedTask.recruit.phone}</p>
@@ -21,7 +21,7 @@ export default ({ selectedTask, user }) => {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-6" style={{ backgroundColor: "#226EB2" }}>
+                                <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
                                     <div className="form-container" style={{ display: "inline-block" }}>
                                         <div className="card-body mx-auto">
                                             <p className="card-title mt-3 text-center title">Task General Information</p>

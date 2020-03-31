@@ -27,7 +27,7 @@ export default ({ handleSubmit, handleChange }) => {
                                 <div className="form-group">
                                     <textarea onChange={handleChange} name="comment" className="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                                 </div>
-                                <button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#226eb2", borderColor: "#226eb2" }}>Save Changes</button>
+                                <button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#9bb4be", borderColor: "#9bb4be" }}>Save Changes</button>
                             </form>
                         </div>
                     </div>

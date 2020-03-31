@@ -7,6 +7,7 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
   let indice = 0
   let indice2 = 0
   let indice3 = 0
+  let indice4 = 0
   return (
     <Fragment>
       {(user.id) ? (
@@ -44,10 +45,9 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                             </thead>
                             <tbody>
                               {tasksList.map((task) => {
-                                indice3 = indice3 + 1
                                 return (
                                   <tr key={task.id}>
-                                    <th scope="row" className="align-middle">{indice3}</th>
+                                    <th scope="row" className="align-middle">{++indice3}</th>
                                     <td className="align-middle">{task.description} </td>
                                   </tr>
                                 )
@@ -85,10 +85,10 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
             <div className="container box_container2 margen">
               <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
                 <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for recruits" onChange={handleSearchInput}
-                  aria-label="Search"/>
+                  aria-label="Search" />
                 <i class="fas fa-search searchColor" aria-hidden="true"></i>
               </form>
-          </div>
+            </div>
             <div className="container box_container2">
               <table className="table table-striped">
                 <thead>
@@ -99,7 +99,7 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                     <th scope="col">Due Date</th>
                     <th scope="col">State</th>
                     <th scope="col">New State</th>
-                    <th scope="col">Coments</th>
+                    <th scope="col">Comments</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -107,38 +107,89 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                     let fechaArray = task.dueDate.split("-")
                     let fechaOrdenada = fechaArray.reverse()
                     let dueDate = fechaOrdenada.join("/")
-                    indice = indice + 1
                     return (
-                      <tr key={task.id}>
-                        <th scope="row" className="align-middle">{indice}</th>
-                        <td className="align-middle"><Link style={{color:"#285078"}} to={`/task/${task.id}`} >{task.task.description}</Link></td>
-                        <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                        <td className="align-middle">{dueDate}</td>
-                        <>
-                          {(task.state == "blocked out") ? (
-                            <td className="align-middle ">{task.state}</td>
-                          ) : (
-                              <td className="align-middle"   >{task.state}</td>
-                            )
-                          }
-                        </>
-                        {/* <td className="align-middle"   >{task.state}</td> */}
-                        <td className="align-middle">
-                          <div className="form-group input-group">
-                            <select onChange={handleChange} selected="" name="taskState" className="form-control border1">
-                              <option className="border1">Current State</option>
-                              <option className="border1">pending</option>
-                              <option className="border1">started</option>
-                              <option className="border1">blocked out</option>
-                              <option className="border1">finished</option>
-                            </select>
-                            <div>
-                            <button type="button" className="btn btn-outline-success" style={{marginLeft: "5%"}} onClick={()=>handleClick(task.id)}><i className="fas fa-sync-alt"></i></button>
-                            </div>
-                          </div>
-                        </td>
-                        <td className="align-middle">{task.comment}</td>
-                      </tr>
+                      <>
+                        {(task.state != "finished") ? (
+                          <>
+                            <tr key={task.id}>
+                              <th scope="row" className="align-middle">{++indice}</th>
+                              <td className="align-middle"><Link style={{ color: "#285078" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
+                              <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
+                              <td className="align-middle">{dueDate}</td>
+                              <>
+                                {(task.state == "blocked out") ? (
+                                  <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                                ) : (
+                                    <td className="align-middle"   >{task.state}</td>
+                                  )
+                                }
+                              </>
+                              <td className="align-middle">
+                                <div className="form-group input-group">
+                                  <select onChange={handleChange} selected="" name="taskState" className="form-control border1">
+                                    <option className="border1">Current State</option>
+                                    <option className="border1">pending</option>
+                                    <option className="border1">started</option>
+                                    <option className="border1">blocked out</option>
+                                    <option className="border1">finished</option>
+                                  </select>
+                                  <button type="button" className="btn btn-outline-success" style={{ marginLeft: "5%" }} onClick={() => handleClick(task.id)}><i className="fas fa-sync-alt"></i></button>
+                                </div>
+                              </td>
+                              <td className="align-middle">{task.comment}</td>
+                            </tr>
+                          </>
+                        ) : (
+                            null
+                          )}
+                      </>
+                    )
+                  })}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <br />
+          <br />
+          <h1>My Accomplished Tasks</h1>
+          <br />
+          <div>
+            <div className="container box_container2">
+              <table className="table table-striped">
+                <thead>
+                  <tr className="table1">
+                    <th scope="col">#</th>
+                    <th scope="col">Task</th>
+                    <th scope="col">New hired</th>
+                    <th scope="col">Due Date</th>
+                    <th scope="col">End date</th>
+                    <th scope="col">Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {tasks.map((task) => {
+                    let fechaArray = task.dueDate.split("-")
+                    let fechaOrdenada = fechaArray.reverse()
+                    let dueDate = fechaOrdenada.join("/")
+                    return (
+                      <>
+                        {(task.state == "finished") ? (
+                          <>
+                            <tr key={task.id}>
+                              <th scope="row" className="align-middle">{++indice4}</th>
+                              <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
+                              <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
+                              <td className="align-middle">{dueDate}</td>
+                              <td className="align-middle">{task.finishDate}</td>
+                              {/* <td className="align-middle">{task.state}</td> */}
+                              <td className="align-middle">{task.comment}</td>
+                            </tr>
+                          </>
+                        ) : (
+                            null
+                          )
+                        }
+                      </>
                     )
                   })}
                 </tbody>
@@ -162,7 +213,7 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                           <th scope="col">Task owner</th>
                           <th scope="col">Due Date</th>
                           <th scope="col">State</th>
-                          <th scope="col">Coments</th>
+                          <th scope="col">Comments</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -170,10 +221,9 @@ export default ({ handleSubmit, handleSearchInput, handleChange, state, tasks, h
                           let fechaArray = task.dueDate.split("-")
                           let fechaOrdenada = fechaArray.reverse()
                           let dueDate = fechaOrdenada.join("/")
-                          indice2 = indice2 + 1
                           return (
                             <tr key={task.id}>
-                              <th scope="row" className="align-middle">{indice2}</th>
+                              <th scope="row" className="align-middle">{++indice2}</th>
                               <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                               <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
                               <td className="align-middle">{task.user.name} {task.user.lastName}</td>
