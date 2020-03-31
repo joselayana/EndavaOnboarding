@@ -38,6 +38,7 @@ class SingleRecruitAddTaskContainer extends React.Component {
             this.state.dueDate = ""
             
         } else{
+            alert("You must complete all the fields")
             // const recruitId = this.props.match.params.recruitId
             // //this.props.setErrorFields()
             // this.props.searchTasksRecruits(recruitId)

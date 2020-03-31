@@ -39,7 +39,14 @@ export const createTask = (task) => dispatch => {
 export const updateTaskState = (objTaskState) => dispatch => {
     return Axios.put(`/api/task/edit/${objTaskState.taskId}`, objTaskState)
         .then(res => res.data)
-        .then(task => dispatch(findTasksRecruits(task)))
+        .then(task => {
+            dispatch(findTasksRecruits(task))
+            dispatch(searchTasks(objTaskState.userId))
+            dispatch(searchAllTasks())
+
+            // searchAllTasks
+            // searchTasks
+        })
 }
 
 export const searchTasks = (userId, busqueda) => dispatch => {
