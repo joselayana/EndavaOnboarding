@@ -36,6 +36,11 @@ export const createTask = (task) => dispatch => {
         .then(tasksList => dispatch(findTasksList(tasksList)))
 }
 
+export const deleteTask = (taskId) => dispatch => {
+    return Axios.delete(`/api/task/${taskId}`)
+        .then(() => dispatch(searchTasksList()))
+}
+
 export const updateTaskState = (objTaskState) => dispatch => {
     return Axios.put(`/api/task/edit/${objTaskState.taskId}`, objTaskState)
         .then(res => res.data)
