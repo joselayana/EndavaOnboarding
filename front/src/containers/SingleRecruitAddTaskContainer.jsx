@@ -9,7 +9,7 @@ import { searchTasksList, createTaskRecruit, setErrorFields, searchTasksRecruits
 class SingleRecruitAddTaskContainer extends React.Component {
     constructor() {
         super()
-        this.state={
+        this.state = {
             taskDescription: "",
             responsable: "",
             dueDate: ""
@@ -18,26 +18,28 @@ class SingleRecruitAddTaskContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.fetchUsers()
         this.props.searchTasksList()
     }
 
-    handleSubmit(e){
+    handleSubmit(e) {
         e.preventDefault();
-        if(this.state.taskDescription && this.state.responsable && this.state.dueDate){
+        console.log("aquiiiiiiiiiiiiiii", this.state.responsable);
+
+        if (this.state.taskDescription && this.state.responsable && this.state.dueDate) {
             //this.props.setErrorFields()
             let idUser;
             let idTask;
-            this.props.userOptions.map((user) =>(this.state.responsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
-            this.props.taskOptions.map((task) =>(this.state.taskDescription == task.description) ? (idTask = task.id) : null)
-            let obj = {taskId: idTask, responsableId: idUser, dueDate: this.state.dueDate, recruitId: this.props.match.params.recruitId}
+            this.props.userOptions.map((user) => (this.state.responsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
+            this.props.taskOptions.map((task) => (this.state.taskDescription == task.description) ? (idTask = task.id) : null)
+            let obj = { taskId: idTask, responsableId: idUser, dueDate: this.state.dueDate, recruitId: this.props.match.params.recruitId }
             this.props.createTaskRecruit(obj)
-            this.state.taskDescription = "" 
-            this.state.responsable = "" 
+            this.state.taskDescription = ""
+            this.state.responsable = ""
             this.state.dueDate = ""
-            
-        } else{
+
+        } else {
             alert("You must complete all the fields")
             // const recruitId = this.props.match.params.recruitId
             // //this.props.setErrorFields()
@@ -45,14 +47,14 @@ class SingleRecruitAddTaskContainer extends React.Component {
         }
     }
 
-    handleChange(e){
+    handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
 
     render() {
         return (
             <div>
-                <SingleRecruitAddTask taskOptions={this.props.taskOptions} userOptions={this.props.userOptions} handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} newTasks={this.props.newTasks}/>
+                <SingleRecruitAddTask taskOptions={this.props.taskOptions} userOptions={this.props.userOptions} handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} newTasks={this.props.newTasks} />
             </div>
         )
     }
