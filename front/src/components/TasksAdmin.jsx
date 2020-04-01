@@ -2,7 +2,7 @@ import React, { Fragment } from "react"
 import { Link } from "react-router-dom"
 import "../css/style.css"
 
-export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handleSearchAllInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user }) => {
+export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handleSearchAllInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user, handleClick2 }) => {
 
   let indice = 0
   let indice2 = 0
@@ -513,7 +513,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
             }
           </>
 
-          {/* COLLAPSE ADD TASK */}
+          {/* COLLAPSE EDIT TASK */}
           <>
             {(user.isAdmin) ? (
 
@@ -524,7 +524,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                     aria-controls="collapse30">
                     <i class="far fa-plus-square collapseLogo fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                     <h4 class="text-uppercase mb-0 py-3 mt-1 collapseTitle" style={{ textDecoration: "none" }}>
-                      ADD TASKS
+                      EDIT TASKS
                   </h4>
                   </a>
                 </div>
@@ -537,9 +537,9 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                         Add a new task  </button>
                     </p> */}
                     {/* <div className="collapse" id="collapseExample"> */}
-                    <p>As a ADMIN, in this section, you can add a new task to the list of available tasks.
+                    <p>As an ADMIN, in this section, you can add or delete tasks to the list of available tasks.
                         <button type="button" className=" btn btn-link " data-toggle="modal" data-target="#tasksList">
-                        See the available tasks.
+                        See or modify available tasks.
                         </button>
                     </p>
                     {/* -- Modal task form -- */}
@@ -558,6 +558,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                                 <tr className="table1">
                                   <th scope="col">#</th>
                                   <th scope="col">Task</th>
+                                  <th scope="col"></th>
                                 </tr>
                               </thead>
                               <tbody>
@@ -566,6 +567,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                                     <tr key={task.id}>
                                       <th scope="row" className="align-middle">{++indice3}</th>
                                       <td className="align-middle">{task.description} </td>
+                                      <td className="align-middle"><button type="button" class="btn btn-outline-danger" onClick ={()=>handleClick2(task.id)}><i className="far fa-trash-alt"></i></button></td>
                                     </tr>
                                   )
                                 })}
