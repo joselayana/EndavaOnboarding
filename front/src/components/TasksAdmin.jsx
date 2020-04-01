@@ -95,7 +95,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                   <tr className="table1">
                     <th scope="col">#</th>
                     <th scope="col">Task</th>
-                    <th scope="col">New hired</th>
+                    <th scope="col">New Hire</th>
                     <th scope="col">Due Date</th>
                     <th scope="col">State</th>
                     <th scope="col">New State</th>
@@ -214,7 +214,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                         aria-label="Search"/>
                       <i class="fas fa-search searchColor" aria-hidden="true"></i>
                     </form>
-                </div>  
+                </div>
                   <div className="container box_container2">
                     <table className="table table-striped">
                       <thead>
@@ -273,7 +273,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
 
 
 
-      <div className="container box_container2">
+      <div className="container box_container2 mt-4">
         <div class="accordion md-accordion accordion-5" id="accordionEx5" role="tablist"
           aria-multiselectable="true">
           {/* COLLAPSE MY  TASKS */}
@@ -307,7 +307,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                         <tr className="table1">
                           <th scope="col">#</th>
                           <th scope="col">Task</th>
-                          <th scope="col">New hired</th>
+                          <th scope="col">New Hire</th>
                           <th scope="col">Due Date</th>
                           <th scope="col">State</th>
                           <th scope="col">New State</th>
@@ -394,7 +394,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                         <tr className="table1">
                           <th scope="col">#</th>
                           <th scope="col">Task</th>
-                          <th scope="col">New hired</th>
+                          <th scope="col">New Hire</th>
                           <th scope="col">Due Date</th>
                           <th scope="col">End date</th>
                           <th scope="col">Comments</th>
@@ -461,14 +461,14 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                         aria-label="Search"/>
                       <i class="fas fa-search searchColor" aria-hidden="true"></i>
                     </form>
-                </div>  
+                </div>
                       <div className="container box_container2">
                         <table className="table table-striped">
                           <thead>
                             <tr className="table1">
                               <th scope="col">#</th>
                               <th scope="col">Task</th>
-                              <th scope="col">New hired</th>
+                              <th scope="col">New Hire</th>
                               <th scope="col">Task owner</th>
                               <th scope="col">Due Date</th>
                               <th scope="col">State</th>

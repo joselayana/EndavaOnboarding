@@ -14,8 +14,8 @@ const sendMail = function (objMail) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
+          user: "endavaOnBoard@gmail.com",
+          pass: "onboard123"
         }
     });
 
@@ -34,9 +34,9 @@ const sendMail = function (objMail) {
         to: `${objMail.taskOwnerEmail}`,
         subject: "There is a new task waiting for you",
         text: `Dear ${objMail.taskOwnerName} ${objMail.taskOwnerLastName},
-        You have been designated as the owner of: 
+        You have been designated as the owner of:
 
-           - Task: ${objMail.task}. 
+           - Task: ${objMail.task}.
            - New hires: ${objMail.recruitName} ${objMail.recruitLastName}.
            - Due date:  ${objMail.dueDate}.
 

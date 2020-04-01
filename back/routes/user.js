@@ -16,8 +16,8 @@ const sendMail = function (name, lastName, email) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: process.env.EMAIL,
-            pass: process.env.PASSWORD
+            user: "endavaOnBoard@gmail.com",
+            pass: "onboard123"
         }
     });
 
