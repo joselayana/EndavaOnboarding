@@ -23,6 +23,7 @@ class CreateRecruitContainer extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
+        if(this.state.name && this.state.lastName && this.state.email && this.state.phone && this.state.DNI && this.state.entryDate && this.state.discipline){
         let IdDiscipline;
         if(this.state.discipline === "Development") IdDiscipline=1
         if(this.state.discipline === "Project Manager") IdDiscipline=2
@@ -31,6 +32,9 @@ class CreateRecruitContainer extends React.Component {
         let obj = { name: this.state.name, lastName: this.state.lastName, email: this.state.email, phone: this.state.phone, DNI:this.state.DNI, entryDate: this.state.entryDate, userId:this.props.user.id, disciplineId: IdDiscipline }
         this.props.createRecruit(obj)
             .then(() => this.props.history.push("/recruits"))
+        }else{
+            alert("You must complete all the fields")
+        }
     }
 
     handleChange(e) {

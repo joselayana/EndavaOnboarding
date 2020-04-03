@@ -101,7 +101,7 @@ export default ({ recruit, tasks, handlerClick }) => {
                                     ) : (
                                             <div style={{ padding: "3%" }}>
                                                 <p>There's no tasks associated with this new hire</p>
-                                                <p><Link to={`/recruit/addTask/${recruit.id}`}>Add taks here</Link></p>
+                                                <SingleRecruitAddTaskContainer />
                                             </div>
                                         )}
                                 </div>

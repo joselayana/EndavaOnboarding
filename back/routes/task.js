@@ -189,7 +189,7 @@ router.post('/', function (req, res, next) {
 });
 
 router.delete("/:id", (req, res, next) => {
-    TaskRecruit.findByPk(req.params.id)
+    Task.findByPk(req.params.id)
         .then(task => {
             if (task) {
                 task.destroy()

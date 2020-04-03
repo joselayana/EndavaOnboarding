@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import TaskAdmin from "../components/TasksAdmin";
-import { createTask, searchTasks, searchAllTasks, searchTasksList, updateTaskState } from "../redux/actions/tasks"
+import { createTask, searchTasks, searchAllTasks, searchTasksList, updateTaskState, deleteTask } from "../redux/actions/tasks"
 
 
 class TasksAdminContainer extends React.Component {
@@ -26,6 +26,7 @@ class TasksAdminContainer extends React.Component {
         this.handleSearchAllFinishedInputS = this.handleSearchAllFinishedInputS.bind(this);
         this.handleSearchAllFinishedInputT = this.handleSearchAllFinishedInputT.bind(this);
         this.clearState = this.clearState.bind(this)
+        this.handleClick2 = this.handleClick2.bind(this);
     }
 
     componentDidMount() {
@@ -110,11 +111,15 @@ class TasksAdminContainer extends React.Component {
         }
     }
 
+    handleClick2(taskId) {
+        this.props.deleteTask(taskId)
+    }
+
     render() {
         return (
             <Fragment>
 
-                <TaskAdmin clearState={this.clearState} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                <TaskAdmin clearState={this.clearState} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
 
             </Fragment>
         )
@@ -136,7 +141,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         searchTasks: (userId, busqueda) => dispatch(searchTasks(userId, busqueda)),
         searchAllTasks: (busqueda, valor) => dispatch(searchAllTasks(busqueda, valor)),
         searchTasksList: () => dispatch(searchTasksList()),
-        updateTaskState: (taskState) => dispatch(updateTaskState(taskState))
+        updateTaskState: (taskState) => dispatch(updateTaskState(taskState)),
+        deleteTask: (taskId) => dispatch(deleteTask(taskId))
     }
 }
 
