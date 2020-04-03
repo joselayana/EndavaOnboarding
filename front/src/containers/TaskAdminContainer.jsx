@@ -11,16 +11,21 @@ class TasksAdminContainer extends React.Component {
         this.state = {
             description: "",
             taskState: "",
-            busqueda:"",
-            busquedaS:"",
-            busquedaT:"",
+            busqueda: "",
+            busquedaS: "",
+            busquedaT: "",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleSearchInput = this.handleSearchInput.bind(this);
-        this.handleSearchAllInputS = this.handleSearchAllInputS.bind(this);
-        this.handleSearchAllInputT = this.handleSearchAllInputT.bind(this);
+        // this.handleSearchAllInputS = this.handleSearchAllInputS.bind(this);
+        // this.handleSearchAllInputT = this.handleSearchAllInputT.bind(this);
+        this.handleSearchAllPendingInputS = this.handleSearchAllPendingInputS.bind(this);
+        this.handleSearchAllPendingInputT = this.handleSearchAllPendingInputT.bind(this);
+        this.handleSearchAllFinishedInputS = this.handleSearchAllFinishedInputS.bind(this);
+        this.handleSearchAllFinishedInputT = this.handleSearchAllFinishedInputT.bind(this);
+        this.clearState = this.clearState.bind(this)
         this.handleClick2 = this.handleClick2.bind(this);
     }
 
@@ -42,39 +47,71 @@ class TasksAdminContainer extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    handleSearchInput (e) {
+    handleSearchInput(e) {
         const userId = this.props.match.params.userId
-        this.setState({busqueda : e.target.value})
+        this.setState({ busqueda: e.target.value })
         const busqueda = e.target.value
-        busqueda.length >=2? this.props.searchTasks(userId, busqueda)
-        : this.props.searchTasks(userId)
-        
-      }
+        busqueda.length >= 2 ? this.props.searchTasks(userId, busqueda)
+            : this.props.searchTasks(userId)
 
-    handleSearchAllInputS (e) {
-        this.setState({busquedaS : e.target.value})
-        const busqueda = e.target.value
-        busqueda.length >=2? this.props.searchAllTasks(busqueda, 1)
-        : this.props.searchAllTasks()
-        
     }
 
-    handleSearchAllInputT (e) {
-        this.setState({busquedaT : e.target.value})
-        const busqueda = e.target.value
-        busqueda.length >=2? this.props.searchAllTasks(busqueda, 2)
-        : this.props.searchAllTasks()
+    // handleSearchAllInputS (e) {
+    //     this.setState({busquedaS : e.target.value})
+    //     const busqueda = e.target.value
+    //     busqueda.length >=2? this.props.searchAllTasks(busqueda, 1)
+    //     : this.props.searchAllTasks()
+
+    // }
+
+    // handleSearchAllInputT (e) {
+    //     this.setState({busquedaT : e.target.value})
+    //     const busqueda = e.target.value
+    //     busqueda.length >=2? this.props.searchAllTasks(busqueda, 2)
+    //     : this.props.searchAllTasks()
+    // }
+
+    clearState(e) {
+        this.setState({ busquedaS: "", busquedaT: "" })
+        this.props.searchAllTasks()
     }
 
+    handleSearchAllPendingInputS(e) {
+        this.setState({ busquedaS: e.target.value })
+        const busqueda = e.target.value
+        busqueda.length >= 2 ? this.props.searchAllTasks(busqueda, 1)
+            : this.props.searchAllTasks()
+    }
+
+    handleSearchAllPendingInputT(e) {
+        this.setState({ busquedaT: e.target.value })
+        const busqueda = e.target.value
+        busqueda.length >= 2 ? this.props.searchAllTasks(busqueda, 2)
+            : this.props.searchAllTasks()
+    }
+
+    handleSearchAllFinishedInputS(e) {
+        this.setState({ busquedaS: e.target.value })
+        const busqueda = e.target.value
+        busqueda.length >= 2 ? this.props.searchAllTasks(busqueda, 1)
+            : this.props.searchAllTasks()
+    }
+
+    handleSearchAllFinishedInputT(e) {
+        this.setState({ busquedaT: e.target.value })
+        const busqueda = e.target.value
+        busqueda.length >= 2 ? this.props.searchAllTasks(busqueda, 2)
+            : this.props.searchAllTasks()
+    }
 
     handleClick(taskId) {
-        let obj = { taskState: this.state.taskState, taskId: taskId, userId: this.props.user.id}
+        let obj = { taskState: this.state.taskState, taskId: taskId, userId: this.props.user.id }
         if (this.state.taskState) {
             this.props.updateTaskState(obj)
         }
     }
 
-    handleClick2(taskId){
+    handleClick2(taskId) {
         this.props.deleteTask(taskId)
     }
 
@@ -82,7 +119,7 @@ class TasksAdminContainer extends React.Component {
         return (
             <Fragment>
 
-                <TaskAdmin user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllInputS={this.handleSearchAllInputS} handleSearchAllInputT={this.handleSearchAllInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} handleClick2={this.handleClick2} state={this.state} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                <TaskAdmin clearState={this.clearState} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
 
             </Fragment>
         )
