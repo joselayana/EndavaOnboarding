@@ -2,12 +2,13 @@ import React, { Fragment } from "react"
 import { Link } from "react-router-dom"
 import "../css/style.css"
 
-export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handleSearchAllInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user }) => {
+export default ({ clearState, handleSubmit, handleSearchInput, handleSearchAllPendingInputS, handleSearchAllPendingInputT, handleSearchAllFinishedInputS, handleSearchAllFinishedInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user }) => {
 
   let indice = 0
   let indice2 = 0
   let indice3 = 0
   let indice4 = 0
+  let indice5 = 0
   return (
     <Fragment>
       {/* {(user.id) ? (
@@ -271,8 +272,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
 
  */}
 
-
-
       <div className="container box_container2 mt-4">
         <div class="accordion md-accordion accordion-5" id="accordionEx5" role="tablist"
           aria-multiselectable="true">
@@ -290,9 +289,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
             <div id="mytask" class="collapse" role="tabpanel" aria-labelledby="heading30"
               data-parent="#accordionEx5">
               <div class="card-body rgba-black-light white-text z-depth-1">
-
-
-
                 <div>
                   <div className="container box_container2 margen">
                     <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
@@ -316,9 +312,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                       </thead>
                       <tbody>
                         {tasks.map((task) => {
-                          let fechaArray = task.dueDate.split("-")
-                          let fechaOrdenada = fechaArray.reverse()
-                          let dueDate = fechaOrdenada.join("/")
                           return (
                             <>
                               {(task.state != "finished") ? (
@@ -327,7 +320,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                                     <th scope="row" className="align-middle">{++indice}</th>
                                     <td className="align-middle"><Link style={{ color: "#285078" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                     <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                                    <td className="align-middle">{dueDate}</td>
+                                    <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
                                     <>
                                       {(task.state == "blocked out") ? (
                                         <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
@@ -361,15 +354,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                     </table>
                   </div>
                 </div>
-
-
-
-
-
-
-
-
-
               </div>
             </div>
           </div>
@@ -402,9 +386,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                       </thead>
                       <tbody>
                         {tasks.map((task) => {
-                          let fechaArray = task.dueDate.split("-")
-                          let fechaOrdenada = fechaArray.reverse()
-                          let dueDate = fechaOrdenada.join("/")
                           return (
                             <>
                               {(task.state == "finished") ? (
@@ -413,9 +394,8 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                                     <th scope="row" className="align-middle">{++indice4}</th>
                                     <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                     <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                                    <td className="align-middle">{dueDate}</td>
-                                    <td className="align-middle">{task.finishDate}</td>
-                                    {/* <td className="align-middle">{task.state}</td> */}
+                                    <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
+                                    <td className="align-middle">{task.finishDate.split("-").reverse().join("/")}</td>
                                     <td className="align-middle">{task.comment}</td>
                                   </tr>
                                 </>
@@ -433,35 +413,35 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
               </div>
             </div>
           </div>
-          {/* COLLAPSE ALL TASKS */}
+          {/* COLLAPSE ALL PENDING TASKS */}
           <>
             {(user.isAdmin) ? (
               <div class="card mb-4">
                 <div class="card-header p-0 z-depth-1 collapseTitleBackground" style={{ textDecoration: "none" }} role="tab" id="heading30">
-                  <a data-toggle="collapse" data-parent="#accordionEx5" href="#allTasks" aria-expanded="true"
+                  <a onClick={clearState} data-toggle="collapse" data-parent="#accordionEx5" href="#allPendingTasks" aria-expanded="true"
                     aria-controls="collapse30">
                     <i class="far fa-list-alt collapseLogo fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                     <h4 class="text-uppercase mb-0 py-3 mt-1 collapseTitle" style={{ textDecoration: "none" }}>
-                      ALL TASKS
+                      ALL  PENDING TASKS
                     </h4>
                   </a>
                 </div>
-                <div id="allTasks" class="collapse" role="tabpanel" aria-labelledby="heading30"
+                <div id="allPendingTasks" class="collapse" role="tabpanel" aria-labelledby="heading30"
                   data-parent="#accordionEx5">
                   <div class="card-body rgba-black-light white-text z-depth-1">
                     <div>
-                     <div className="container box_container2 margen">
-                    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
-                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for New Hires" onChange={handleSearchAllInputS}
-                        aria-label="Search"/>
-                      <i class="fas fa-search searchColor" aria-hidden="true"></i>
-                    </form>
-                    <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
-                      <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Task Owners" onChange={handleSearchAllInputT}
-                        aria-label="Search"/>
-                      <i class="fas fa-search searchColor" aria-hidden="true"></i>
-                    </form>
-                </div>
+                      <div className="container box_container2 margen">
+                        <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                          <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for New Hires" onChange={handleSearchAllPendingInputS}
+                            aria-label="Search" />
+                          <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                        </form>
+                        <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                          <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Task Owners" onChange={handleSearchAllPendingInputT}
+                            aria-label="Search" />
+                          <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                        </form>
+                      </div>
                       <div className="container box_container2">
                         <table className="table table-striped">
                           <thead>
@@ -477,27 +457,33 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                           </thead>
                           <tbody>
                             {allTasks.map((task) => {
-                              let fechaArray = task.dueDate.split("-")
-                              let fechaOrdenada = fechaArray.reverse()
-                              let dueDate = fechaOrdenada.join("/")
                               return (
-                                <tr key={task.id}>
-                                  <th scope="row" className="align-middle">{++indice2}</th>
-                                  <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
-                                  <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                                  <td className="align-middle">{task.user.name} {task.user.lastName}</td>
-                                  <td className="align-middle">{dueDate}</td>
-                                  <>
-                                    {(task.state == "blocked out") ? (
-                                      <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
-                                    ) : (
-                                        <td className="align-middle"   >{task.state}</td>
-                                      )
-                                    }
-                                  </>
-                                  {/* <td className="align-middle">{task.state}</td> */}
-                                  <td className="align-middle">{task.comment}</td>
-                                </tr>
+                                <>
+                                  {(task.state != "finished") ? (
+                                    <tr key={task.id}>
+                                      <th scope="row" className="align-middle">{++indice2}</th>
+                                      <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
+                                      <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
+                                      <td className="align-middle">{task.user.name} {task.user.lastName}</td>
+                                      <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
+                                      <>
+                                        {(task.state == "blocked out") ? (
+                                          <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                                        ) : (
+                                            <td className="align-middle"   >{task.state}</td>
+                                          )
+                                        }
+                                      </>
+                                      {/* <td className="align-middle">{task.state}</td> */}
+                                      <td className="align-middle">{task.comment}</td>
+                                    </tr>
+                                  ) : (null)}
+
+                                </>
+
+
+
+
                               )
                             })}
                           </tbody>
@@ -512,12 +498,86 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
               )
             }
           </>
-
+          {/* COLLAPSE ALL FINISHED TASKS */}
+          <>
+            {(user.isAdmin) ? (
+              <div class="card mb-4">
+                <div class="card-header p-0 z-depth-1 collapseTitleBackground" style={{ textDecoration: "none" }} role="tab" id="heading30">
+                  <a onClick={clearState} data-toggle="collapse" data-parent="#accordionEx5" href="#allFinishTasks" aria-expanded="true"
+                    aria-controls="collapse30">
+                    <i class="far fa-list-alt collapseLogo fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
+                    <h4 class="text-uppercase mb-0 py-3 mt-1 collapseTitle" style={{ textDecoration: "none" }}>
+                      ALL FINISHED TASKS
+                    </h4>
+                  </a>
+                </div>
+                <div id="allFinishTasks" class="collapse" role="tabpanel" aria-labelledby="heading30"
+                  data-parent="#accordionEx5">
+                  <div class="card-body rgba-black-light white-text z-depth-1">
+                    <div>
+                      <div className="container box_container2 margen">
+                        <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                          <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for New Hires" onChange={handleSearchAllFinishedInputS}
+                            aria-label="Search" />
+                          <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                        </form>
+                        <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                          <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Task Owners" onChange={handleSearchAllFinishedInputT}
+                            aria-label="Search" />
+                          <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                        </form>
+                      </div>
+                      <div className="container box_container2">
+                        <table className="table table-striped">
+                          <thead>
+                            <tr className="table1">
+                              <th scope="col">#</th>
+                              <th scope="col">Task</th>
+                              <th scope="col">New Hire</th>
+                              <th scope="col">Task owner</th>
+                              <th scope="col">Due Date</th>
+                              <th scope="col">End date</th>
+                              <th scope="col">Comments</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {allTasks.map((task) => {
+                              return (
+                                <>
+                                  {(task.state == "finished") ? (
+                                    <>
+                                      <tr key={task.id}>
+                                        <th scope="row" className="align-middle">{++indice5}</th>
+                                        <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
+                                        <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
+                                        <td className="align-middle">{task.user.name} {task.user.lastName}</td>
+                                        <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
+                                        <td className="align-middle">{task.finishDate.split("-").reverse().join("/")}</td>
+                                        <td className="align-middle">{task.comment}</td>
+                                      </tr>
+                                    </>
+                                  ) : (
+                                      null
+                                    )
+                                  }
+                                </>
+                              )
+                            })}
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+                null
+              )
+            }
+          </>
           {/* COLLAPSE ADD TASK */}
           <>
             {(user.isAdmin) ? (
-
-
               <div class="card mb-4">
                 <div class="card-header p-0 z-depth-1 collapseTitleBackground" style={{ textDecoration: "none" }} role="tab" id="heading30">
                   <a data-toggle="collapse" data-parent="#accordionEx5" href="#addTasks" aria-expanded="true"
@@ -530,13 +590,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                 </div>
                 <div id="addTasks" class="collapse" role="tabpanel" aria-labelledby="heading30" data-parent="#accordionEx5">
                   <div class="card-body rgba-black-light white-text z-depth-1">
-
-
-                    {/* <p>
-                      <button className="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                        Add a new task  </button>
-                    </p> */}
-                    {/* <div className="collapse" id="collapseExample"> */}
                     <p>As a ADMIN, in this section, you can add a new task to the list of available tasks.
                         <button type="button" className=" btn btn-link " data-toggle="modal" data-target="#tasksList">
                         See the available tasks.
@@ -578,7 +631,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
                         </div>
                       </div>
                     </div>
-
                     <div className="container box_container2">
                       <form onSubmit={handleSubmit}>
                         <div className="form-group">
@@ -589,42 +641,16 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllInputS, handle
 
                       </form>
                     </div>
-                    {/* </div> */}
-
-
-
-
-
-
-
                   </div>
                 </div>
               </div>
-
-
-
-
-
-
-
-
-
             ) : (
                 null
               )
             }
-
           </>
-
-
-
         </div>
       </div>
-
-
-
-
-
     </Fragment >
   )
 }
