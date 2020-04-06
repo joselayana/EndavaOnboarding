@@ -1,6 +1,6 @@
 const passport = require('../passport/passport');
 const express = require('express');
-const { User, Discipline } = require("../models/index")
+const { User, Discipline, Recruit } = require("../models/index")
 const router = express.Router();
 const nodemailer = require("nodemailer");
 require('dotenv').config();
@@ -21,30 +21,37 @@ const sendMail = function (name, lastName, email) {
         }
     });
 
-    transporter.use("compile", hbs({
-        viewEngine: {
-            extName: '.hbs',
-            partialsDir: '../views/',
-            defaultLayout: false
-        },
-        viewPath: '../views/',
-        extName: ".hbs"
-    }))
+    // transporter.use("compile", hbs({
+    //     viewEngine: {
+    //         extName: '.hbs',
+    //         partialsDir: '../views/',
+    //         defaultLayout: false
+    //     },
+    //     viewPath: '../views/',
+    //     extName: ".hbs"
+    // }))
 
 
     const mailOptions = {
         from: "endavaOnBoard@gmail.com",
         to: `${email}`,
         subject: `Wellcome On Board ${name} ${lastName}!!!`,
-        // text:  Wellcome!!!!`,
-        template: "wellcome",
-        context: {
-            name: `${name}`,
-            lastName: `${lastName}`,
-            email: `${email}`
-        }
+        text:
+            ` Wellcome On Board ${name} ${lastName}!!!
 
+         Your user has been succesfully created with the email: ${email}, from
+         now on you'll be able to manage all the tasks assigned to you regarding to the new hires
 
+         We hope you find this tool usefull and we thank you very much for giving
+         it a try!!! :)
+
+        `
+        // template: "wellcome",
+        // context: {
+        //     name: `${name}`,
+        //     lastName: `${lastName}`,
+        //     email: `${email}`
+        // }
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -77,7 +84,6 @@ router.post("/register", function (req, res) {
         .then(nuevoUser => {
             nuevoUser.setDiscipline(req.body.disciplineId)
         })
-        //el usuario creado no es nada .then(creado => res.status(201).json(creado))
         .then((data) => {
             sendMail(req.body.name, req.body.lastName, req.body.email)
             res.status(200).json("the user was created and the email was sent")
@@ -112,18 +118,20 @@ function isLogedIn(req, res, next) {
 
 router.get("/allUsers", (req, res) => {
     const Op = Sequelize.Op
-    if(req.query.s){
+    if (req.query.s) {
         User.findAll({
-            where: { [Op.or]: [
-                {name: { [Op.iLike]: `%${req.query.s}%` } },
-                {lastName: { [Op.iLike]: `%${req.query.s}%` } }
-            ]},
+            where: {
+                [Op.or]: [
+                    { name: { [Op.iLike]: `%${req.query.s}%` } },
+                    { lastName: { [Op.iLike]: `%${req.query.s}%` } }
+                ]
+            },
             include: [
                 { model: Discipline }
             ]
         })
             .then(users => res.status(200).json(users))
-    } else{
+    } else {
         User.findAll({
             include: [
                 { model: Discipline }
@@ -155,7 +163,26 @@ router.put("/changeProfile/:id", (req, res, next) => {
         .catch(next)
 })
 
+router.put("/:id", (req, res, next) => {
+    const id = req.params.id
+    const newUserId = req.body.newUserId
+    Recruit.update({ userId: newUserId }, { where: { userId: id } })
+        .then(recruitUp => res.status(200).json(recruitUp))
+        .catch(next)
+})
 
+router.delete("/:id", (req, res, next) => {
+    User.findByPk(req.params.id)
+        .then(user => {
+            if (user) {
+                user.destroy()
+                    .then(() => res.sendStatus(204))
+            } else {
+                res.sendStatus(404)
+            }
+        })
+        .catch(err => res.sendStatus(500))
+})
 
 
 

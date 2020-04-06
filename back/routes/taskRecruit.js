@@ -184,7 +184,9 @@ router.put("/:id", (req, res, next) => {
     TaskRecruit.findByPk(req.params.id)
         .then(task => {
             if (task) {
-                task.update(req.body)
+                task.update({
+                    userId: req.body.userId
+                })
                     .then(taskU => res.status(200).json(taskU))
             } else {
                 res.sendStatus(404)

@@ -13,16 +13,13 @@ class SingleTaskContainer extends React.Component {
         this.state = {
             newComment: ""
         }
-        // this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleComment = this.
     }
+
     componentDidMount() {
         const taskId = this.props.match.params.taskId
         this.props.searchSingleTaskRecruit(taskId)
 
     }
-
-
 
     render() {
         return (

@@ -7,5 +7,11 @@ router.post("/newDiscipline", function (req, res) {
         .then(res.send("Se creo la disciplina"))
 })
 
+router.get('/', function (req, res, next) {
+    Discipline.findAll()
+        .then((allDisciplines) => res.status(200).json(allDisciplines))
+        .catch((err) => console.log(err))
+});
+
 
 module.exports = router

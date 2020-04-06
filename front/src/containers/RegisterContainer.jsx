@@ -1,9 +1,9 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Register from "../components/Register";
 import { createUser } from "../redux/actions/users"
+import { searchDisciplines } from "../redux/actions/disciplines"
 
 class RegisterContainer extends React.Component {
     constructor() {
@@ -12,7 +12,7 @@ class RegisterContainer extends React.Component {
             name: "",
             lastName: "",
             email: "",
-            dicipline: "",
+            discipline: "",
             password1: "",
             password2: "",
             // errorMail: false,
@@ -21,7 +21,10 @@ class RegisterContainer extends React.Component {
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this)
+    }
 
+    componentDidMount(){
+        this.props.searchDisciplines()
     }
 
     handleSubmit(e) {
@@ -33,10 +36,12 @@ class RegisterContainer extends React.Component {
         this.setState({ errorPass: false })
         this.setState({ errorInc: false })
 
-        if (this.state.discipline === "Development") IdDiscipline = 1
-        if (this.state.discipline === "Project Manager") IdDiscipline = 2
-        if (this.state.discipline === "Testing") IdDiscipline = 3
-        if (this.state.discipline === "Pdrc") IdDiscipline = 4
+        this.props.disciplinesOptions.map((discipline) => (this.state.discipline == discipline.description) ? (IdDiscipline = discipline.id) : null)
+
+        // if (this.state.discipline === "Development") IdDiscipline = 1
+        // if (this.state.discipline === "Project Manager") IdDiscipline = 2
+        // if (this.state.discipline === "Testing") IdDiscipline = 3
+        // if (this.state.discipline === "Pdrc") IdDiscipline = 4
 
         if (e.target[0].value && e.target[1].value && e.target[2].value && e.target[3].value && e.target[4].value && e.target[5].value) {
             // if (e.target[2].value.includes("@endava.com")) flagMail = true
@@ -54,20 +59,15 @@ class RegisterContainer extends React.Component {
         }
     }
 
-
-
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
 
     }
 
-
-
-
     render() {
         return (
             <div>
-                <Register handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} />
+                <Register handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} disciplinesOptions={this.props.disciplinesOptions}/>
             </div>
         )
     }
@@ -75,12 +75,13 @@ class RegisterContainer extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-
+    disciplinesOptions : state.disciplines.disciplines
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        createUser: (usuario) => dispatch(createUser(usuario))
+        createUser: (usuario) => dispatch(createUser(usuario)),
+        searchDisciplines: () => dispatch(searchDisciplines())
     }
 }
 

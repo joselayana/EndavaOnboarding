@@ -48,9 +48,6 @@ export const updateTaskState = (objTaskState) => dispatch => {
             dispatch(findTasksRecruits(task))
             dispatch(searchTasks(objTaskState.userId))
             dispatch(searchAllTasks())
-
-            // searchAllTasks
-            // searchTasks
         })
 }
 
@@ -103,8 +100,6 @@ export const searchTasksRecruits = (recruitId) => dispatch => {
 }
 
 export const createTaskRecruit = (obj) => dispatch => {
-    console.log("aqui el froooooooooooont", obj);
-
     return Axios.post("/api/taskRecruit", obj)
         .then(res => res.data)
         .then(nuevaTaskRec => dispatch(searchTasksRecruits(nuevaTaskRec.recruitId)))
@@ -113,6 +108,15 @@ export const createTaskRecruit = (obj) => dispatch => {
 export const deleteTaskRecruit = (taskRecruitId, recruitId) => dispatch => {
     return Axios.delete(`/api/taskRecruit/${taskRecruitId}`)
         .then(() => dispatch(searchTasksRecruits(recruitId)))
+}
+
+export const updateTaskRecruit = (obj) => dispatch => {
+    return Axios.put(`/api/taskRecruit/${obj.taskId}`, obj)
+    .then(res => res.data)
+    .then(task => {
+        dispatch(findTasksRecruits(task))
+        dispatch(searchTasks(obj.oldUserId))
+    })
 }
 
 export const setErrorFields = () => dispatch =>{

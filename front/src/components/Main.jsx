@@ -15,6 +15,7 @@ import CreateRecruitContainer from "../containers/CreateRecruitContainer"
 import UsersAdminContainer from "../containers/UsersAdminContainer"
 import SingleRecruitContainer from "../containers/SingleRecruitContainer"
 import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormContainer"
+import DeleteUserContainer from "../containers/DeleteUserContainer"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 
@@ -35,6 +36,7 @@ class Main extends React.Component {
                     <Route exact path="/register" component={BannerRegisterContainer} />
                     <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
                     <Route exact path="/users" component={UsersAdminContainer} />
+                    <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
                     <Route exact path="/home" component={AdminLandingCardsContainer} />
                     <Route exact path="/recruits" component={RecruitContainer} />
                     <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
