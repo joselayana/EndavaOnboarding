@@ -10,7 +10,7 @@ const Sequelize = require("sequelize")
 
 
 
-
+//-------------------> Config. Mail
 const sendMail = function (name, lastName, email) {
 
     const transporter = nodemailer.createTransport({
@@ -39,10 +39,10 @@ const sendMail = function (name, lastName, email) {
         text:
             ` Wellcome On Board ${name} ${lastName}!!!
 
-         Your user has been succesfully created with the email: ${email}, from
-         now on you'll be able to manage all the tasks assigned to you regarding to the new hires
+         Your user has been successfully created with the email: ${email}, from
+         now on you'll be able to manage all the tasks assigned to you regarding to new hires
 
-         We hope you find this tool usefull and we thank you very much for giving
+         We hope you find this tool useful. Thank you very much for giving
          it a try!!! :)
 
         `
@@ -61,7 +61,7 @@ const sendMail = function (name, lastName, email) {
         }
     });
 }
-
+//------------------------->
 
 
 

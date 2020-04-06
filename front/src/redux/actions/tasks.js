@@ -114,14 +114,14 @@ export const deleteTaskRecruit = (taskRecruitId, recruitId) => dispatch => {
 
 export const updateTaskRecruit = (obj) => dispatch => {
     return Axios.put(`/api/taskRecruit/${obj.taskId}`, obj)
-    .then(res => res.data)
-    .then(task => {
-        dispatch(findTasksRecruits(task))
-        dispatch(searchTasks(obj.oldUserId))
-    })
+        .then(res => res.data)
+        .then(task => {
+            dispatch(findTasksRecruits(task))
+            dispatch(searchTasks(obj.oldUserId))
+        })
 }
 
-export const setErrorFields = () => dispatch =>{
+export const setErrorFields = () => dispatch => {
     dispatch(setError())
 }
 
