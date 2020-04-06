@@ -15,39 +15,40 @@ import CreateRecruitContainer from "../containers/CreateRecruitContainer"
 import UsersAdminContainer from "../containers/UsersAdminContainer"
 import SingleRecruitContainer from "../containers/SingleRecruitContainer"
 import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormContainer"
+import DeleteUserContainer from "../containers/DeleteUserContainer"
 import TasksAdminEditFormTasksListContainer from "../containers/TasksAdminEditFormTasksListContainer"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 
 class Main extends React.Component {
-  constructor() {
-    super()
-  }
-  componentDidMount() {
-    this.props.getLoggedUser();
-  }
-  render() {
-    return (
-      <Fragment>
-        <NavbarContainer />
-        <Switch>
-          <Route exact path="/" component={BannerWelcomeContainer} />
-          <Route exact path="/login" component={BannerLoginContainer} />
-          <Route exact path="/register" component={BannerRegisterContainer} />
-          <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
-          <Route exact path="/users" component={UsersAdminContainer} />
-          <Route exact path="/home" component={AdminLandingCardsContainer} />
-          <Route exact path="/recruits" component={RecruitContainer} />
-          <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
-          <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
-          <Route exact path="/newRecruit" component={CreateRecruitContainer} />
-          <Route exact path="/task/:taskId" component={SingleTaskContainer} />
-          <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
-
-        </Switch>
-      </Fragment>
-    )
-  }
+    constructor() {
+        super()
+    }
+    componentDidMount() {
+        this.props.getLoggedUser();
+    }
+    render() {
+        return (
+            <Fragment>
+                <NavbarContainer />
+                <Switch>
+                    <Route exact path="/" component={BannerWelcomeContainer} />
+                    <Route exact path="/login" component={BannerLoginContainer} />
+                    <Route exact path="/register" component={BannerRegisterContainer} />
+                    <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
+                    <Route exact path="/users" component={UsersAdminContainer} />
+                    <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
+                    <Route exact path="/home" component={AdminLandingCardsContainer} />
+                    <Route exact path="/recruits" component={RecruitContainer} />
+                    <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
+                    <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
+                    <Route exact path="/newRecruit" component={CreateRecruitContainer} />
+                    <Route exact path="/task/:taskId" component={SingleTaskContainer} />
+                    <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
+                </Switch>
+            </Fragment>
+        )
+    }
 
 }
 const mapStateToProps = (state, ownProps) => {

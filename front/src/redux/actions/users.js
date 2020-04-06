@@ -17,6 +17,17 @@ export const createUser = (user) => dispatch => {
         .then(user => dispatch(setUser(user)))
 }
 
+export const deleteUser = (userId) => dispatch => {
+    return axios.delete(`/api/user/${userId}`)
+        .then(() => console.log("Se elimino el usuario"))
+}
+
+export const changeTaskOwner = (obj) => dispatch => {
+    return axios.put(`/api/user/${obj.userId}`, obj)
+        .then(data => data.data)
+        .then(user => console.log(user))
+}
+
 export const fetchUsers = (busqueda) => dispatch => {
     if (busqueda === undefined) {
         return axios.get("/api/user/allUsers")

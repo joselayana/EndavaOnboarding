@@ -50,9 +50,6 @@ export const updateTaskState = (objTaskState) => dispatch => {
             dispatch(findTasksRecruits(task))
             dispatch(searchTasks(objTaskState.userId))
             dispatch(searchAllTasks())
-
-            // searchAllTasks
-            // searchTasks
         })
 }
 
@@ -115,7 +112,16 @@ export const deleteTaskRecruit = (taskRecruitId, recruitId) => dispatch => {
         .then(() => dispatch(searchTasksRecruits(recruitId)))
 }
 
-export const setErrorFields = () => dispatch => {
+export const updateTaskRecruit = (obj) => dispatch => {
+    return Axios.put(`/api/taskRecruit/${obj.taskId}`, obj)
+    .then(res => res.data)
+    .then(task => {
+        dispatch(findTasksRecruits(task))
+        dispatch(searchTasks(obj.oldUserId))
+    })
+}
+
+export const setErrorFields = () => dispatch =>{
     dispatch(setError())
 }
 

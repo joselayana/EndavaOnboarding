@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
 import { updateRecruit } from "../redux/actions/recruits"
-
+import { searchDisciplines } from "../redux/actions/disciplines"
 
 import SingleRecruitEditForm from "../components/SingleRecruitEditForm"
 
@@ -21,6 +21,10 @@ class SingleRecruitEditFormContainer extends React.Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+    }
+
+    componentDidMount(){
+        this.props.searchDisciplines()
     }
 
     handleSubmit(e) {
@@ -42,10 +46,11 @@ class SingleRecruitEditFormContainer extends React.Component {
         this.state.DNI ? (newnewDNIName = this.state.DNI) : (newDNI = this.props.recruit.DNI)
         this.state.entryDate ? (newEntryDate = this.state.entryDate) : (newEntryDate = this.props.recruit.entryDate)
 
-        if(this.state.discipline === "Development") IdDiscipline=1
-        if(this.state.discipline === "Project Manager") IdDiscipline=2
-        if(this.state.discipline === "Testing") IdDiscipline=3
-        if(this.state.discipline === "Pdrc") IdDiscipline=4
+        this.props.disciplinesOptions.map((discipline) => (this.state.discipline == discipline.description) ? (IdDiscipline = discipline.id) : null)
+        // if(this.state.discipline === "Development") IdDiscipline=1
+        // if(this.state.discipline === "Project Manager") IdDiscipline=2
+        // if(this.state.discipline === "Testing") IdDiscipline=3
+        // if(this.state.discipline === "Pdrc") IdDiscipline=4
         if(!this.state.discipline) IdDiscipline=viejoIdDiscipline
 
         let obj = { name: newName, lastName:newLastName , email: newEmail, phone: newPhone, DNI:newDNI, entryDate: newEntryDate , userId:this.props.user.id, disciplineId: IdDiscipline, recruitId:recruitId }
@@ -60,7 +65,7 @@ class SingleRecruitEditFormContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <SingleRecruitEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} recruit={this.props.recruit}/>
+                <SingleRecruitEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} disciplinesOptions={this.props.disciplinesOptions} recruit={this.props.recruit}/>
             </Fragment>
         )
     }
@@ -70,13 +75,15 @@ class SingleRecruitEditFormContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         recruit: state.recruit.selectedRecruit,
-        user: state.login.user
+        user: state.login.user,
+        disciplinesOptions : state.disciplines.disciplines
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        updateRecruit: (recruit) => dispatch(updateRecruit(recruit))
+        updateRecruit: (recruit) => dispatch(updateRecruit(recruit)),
+        searchDisciplines: () => dispatch(searchDisciplines())
     }
 }
 

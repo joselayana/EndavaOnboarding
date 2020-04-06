@@ -1,6 +1,6 @@
 const passport = require('../passport/passport');
 const express = require('express');
-const { User, Discipline } = require("../models/index")
+const { User, Discipline, Recruit } = require("../models/index")
 const router = express.Router();
 const nodemailer = require("nodemailer");
 require('dotenv').config();
@@ -163,7 +163,26 @@ router.put("/changeProfile/:id", (req, res, next) => {
         .catch(next)
 })
 
+router.put("/:id", (req, res, next) => {
+    const id = req.params.id
+    const newUserId = req.body.newUserId
+    Recruit.update({ userId: newUserId }, { where: { userId: id } })
+        .then(recruitUp => res.status(200).json(recruitUp))
+        .catch(next)
+})
 
+router.delete("/:id", (req, res, next) => {
+    User.findByPk(req.params.id)
+        .then(user => {
+            if (user) {
+                user.destroy()
+                    .then(() => res.sendStatus(204))
+            } else {
+                res.sendStatus(404)
+            }
+        })
+        .catch(err => res.sendStatus(500))
+})
 
 
 

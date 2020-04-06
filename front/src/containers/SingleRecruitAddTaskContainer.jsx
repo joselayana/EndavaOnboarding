@@ -25,8 +25,6 @@ class SingleRecruitAddTaskContainer extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        console.log("aquiiiiiiiiiiiiiii", this.state.responsable);
-
         if (this.state.taskDescription && this.state.responsable && this.state.dueDate) {
             //this.props.setErrorFields()
             let idUser;
@@ -38,7 +36,6 @@ class SingleRecruitAddTaskContainer extends React.Component {
             this.state.taskDescription = ""
             this.state.responsable = ""
             this.state.dueDate = ""
-
         } else {
             alert("You must complete all the fields")
             // const recruitId = this.props.match.params.recruitId

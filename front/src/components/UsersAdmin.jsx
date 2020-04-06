@@ -1,7 +1,7 @@
 import React, { Fragment } from "react"
 import { Link } from "react-router-dom"
 
-export default ({ users, handleProfile, handleSearchInput }) => {
+export default ({ users, handleProfile, handleSearchInput, redirection }) => {
   let indice = 0
   return (
     <Fragment>
@@ -63,6 +63,29 @@ export default ({ users, handleProfile, handleSearchInput }) => {
                                 <div className="modal-footer">
                                   <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
                                   <button onClick={() => handleProfile(user.id, user.isAdmin)} data-dismiss="modal" type="button" className="btn btn-primary">Save change</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <button type="button" className="align-middle btn btn-outline-danger" style={{ marginTop: "12px", marginBottom: "12px" }} data-toggle="modal" data-target={`#deleteUser${indice}`}><i className="far fa-trash-alt"></i></button>
+                          {/* <!-- Modal Delete User --> */}
+                          <div className="modal fade" id={`deleteUser${indice}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                            <div className="modal-dialog modal-dialog-centered" role="document">
+                              <div className="modal-content">
+                                <div className="modal-header">
+                                  <h5 className="modal-title" id="exampleModalCenterTitle">Delete user request</h5>
+                                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                                <div className="modal-body">
+                                  <>
+                                    {(user.isAdmin) ? ("You're deleting an ADMIN") : ("You're deleting a REGULAR USER")}
+                                  </>
+                                </div>
+                                <div className="modal-footer">
+                                  <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                  <button data-dismiss="modal" type="button" className="btn btn-primary" onClick={() => redirection(user.id)}>Delete User</button>
                                 </div>
                               </div>
                             </div>
