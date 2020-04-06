@@ -112,7 +112,9 @@ class TasksAdminContainer extends React.Component {
     }
 
     handleClick2(taskId) {
-        this.props.deleteTask(taskId)
+        // this.props.deleteTask(taskId)
+        this.props.history.push(`/editAvailableTasks/${taskId}`)
+
     }
 
     render() {

@@ -620,7 +620,9 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllPendingInputS,
                                     <tr key={task.id}>
                                       <th scope="row" className="align-middle">{++indice3}</th>
                                       <td className="align-middle">{task.description} </td>
-                                      <td className="align-middle"><button type="button" class="btn btn-outline-danger" onClick={() => handleClick2(task.id)}><i className="far fa-trash-alt"></i></button></td>
+                                      {/* <td className="align-middle"><button type="button" class="btn btn-outline-danger" onClick={() => handleClick2(task.id)}><i className="far fa-trash-alt"></i></button></td> */}
+                                      <td className="align-middle"><button type="button" class="btn btn-outline-success" data-dismiss="modal" onClick={() => handleClick2(task.id)}><i className="fas fa-pencil-alt"></i></button></td>
+
                                     </tr>
                                   )
                                 })}
