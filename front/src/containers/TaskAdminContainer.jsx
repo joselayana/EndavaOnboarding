@@ -19,8 +19,6 @@ class TasksAdminContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.handleSearchInput = this.handleSearchInput.bind(this);
-        // this.handleSearchAllInputS = this.handleSearchAllInputS.bind(this);
-        // this.handleSearchAllInputT = this.handleSearchAllInputT.bind(this);
         this.handleSearchAllPendingInputS = this.handleSearchAllPendingInputS.bind(this);
         this.handleSearchAllPendingInputT = this.handleSearchAllPendingInputT.bind(this);
         this.handleSearchAllFinishedInputS = this.handleSearchAllFinishedInputS.bind(this);
@@ -55,21 +53,6 @@ class TasksAdminContainer extends React.Component {
             : this.props.searchTasks(userId)
 
     }
-
-    // handleSearchAllInputS (e) {
-    //     this.setState({busquedaS : e.target.value})
-    //     const busqueda = e.target.value
-    //     busqueda.length >=2? this.props.searchAllTasks(busqueda, 1)
-    //     : this.props.searchAllTasks()
-
-    // }
-
-    // handleSearchAllInputT (e) {
-    //     this.setState({busquedaT : e.target.value})
-    //     const busqueda = e.target.value
-    //     busqueda.length >=2? this.props.searchAllTasks(busqueda, 2)
-    //     : this.props.searchAllTasks()
-    // }
 
     clearState(e) {
         this.setState({ busquedaS: "", busquedaT: "" })
@@ -109,10 +92,10 @@ class TasksAdminContainer extends React.Component {
         if (this.state.taskState) {
             this.props.updateTaskState(obj)
         }
+        this.setState({ taskState: "" })
     }
 
     handleClick2(taskId) {
-        // this.props.deleteTask(taskId)
         this.props.history.push(`/editAvailableTasks/${taskId}`)
 
     }
