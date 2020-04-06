@@ -16,6 +16,7 @@ import UsersAdminContainer from "../containers/UsersAdminContainer"
 import SingleRecruitContainer from "../containers/SingleRecruitContainer"
 import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormContainer"
 import DeleteUserContainer from "../containers/DeleteUserContainer"
+import TasksAdminEditFormTasksListContainer from "../containers/TasksAdminEditFormTasksListContainer"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 
@@ -43,6 +44,7 @@ class Main extends React.Component {
                     <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
                     <Route exact path="/newRecruit" component={CreateRecruitContainer} />
                     <Route exact path="/task/:taskId" component={SingleTaskContainer} />
+                    <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
                 </Switch>
             </Fragment>
         )
@@ -50,16 +52,16 @@ class Main extends React.Component {
 
 }
 const mapStateToProps = (state, ownProps) => {
-    return {
-      user: state.login.user
-    };
+  return {
+    user: state.login.user
   };
-  
-  const mapDispatchToProps = (dispatch, ownProps) => {
-    return {
-      
-      getLoggedUser: () => dispatch(getLoggedUser())
-    };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+
+    getLoggedUser: () => dispatch(getLoggedUser())
   };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main)

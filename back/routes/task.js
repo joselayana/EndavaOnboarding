@@ -17,9 +17,15 @@ router.put("/edit/:id", function (req, res, next) {
     const taskId = req.params.id
     const newState = req.body.taskState
     const newComment = req.body.comment
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+
+    today = yyyy + '-' + mm + '-' + dd
 
     TaskRecruit.update(
-        { comment: newComment, state: newState },
+        { comment: newComment, state: newState, finishDate: (newState == "finished") ? today : null },
         { where: { id: taskId } }
     )
         .then(TaskRecruit.findAll({
@@ -50,10 +56,12 @@ router.get("/myTasks/:id", function (req, res) {
             include: [
                 {
                     model: Recruit,
-                    where: { [Op.or]: [
-                        {name: { [Op.iLike]: `%${req.query.s}%` } },
-                        {lastName: { [Op.iLike]: `%${req.query.s}%` } }
-                    ] }
+                    where: {
+                        [Op.or]: [
+                            { name: { [Op.iLike]: `%${req.query.s}%` } },
+                            { lastName: { [Op.iLike]: `%${req.query.s}%` } }
+                        ]
+                    }
                 },
                 { model: Task }
             ],
@@ -102,11 +110,15 @@ router.get("/allTasks", (req, res) => {
     if (req.query.s) {
         TaskRecruit.findAll({
             include: [
-                { model: Recruit,
-                    where: { [Op.or]: [
-                    {name: { [Op.iLike]: `%${req.query.s}%` } },
-                    {lastName: { [Op.iLike]: `%${req.query.s}%` } }
-                ] } },
+                {
+                    model: Recruit,
+                    where: {
+                        [Op.or]: [
+                            { name: { [Op.iLike]: `%${req.query.s}%` } },
+                            { lastName: { [Op.iLike]: `%${req.query.s}%` } }
+                        ]
+                    }
+                },
                 { model: Task },
                 { model: User }
             ]
@@ -115,13 +127,17 @@ router.get("/allTasks", (req, res) => {
     } else if (req.query.t) {
         TaskRecruit.findAll({
             include: [
-                { model: Recruit},
+                { model: Recruit },
                 { model: Task },
-                { model: User ,
-                    where: { [Op.or]: [
-                    {name: { [Op.iLike]: `%${req.query.t}%` } },
-                    {lastName: { [Op.iLike]: `%${req.query.t}%` } }
-                ] } }
+                {
+                    model: User,
+                    where: {
+                        [Op.or]: [
+                            { name: { [Op.iLike]: `%${req.query.t}%` } },
+                            { lastName: { [Op.iLike]: `%${req.query.t}%` } }
+                        ]
+                    }
+                }
             ]
         })
             .then(allTasks => res.status(200).json(allTasks))
@@ -203,6 +219,18 @@ router.delete("byRecruit/:recruitId", (req, res, next) => {
         })
         .catch(err => res.sendStatus(500))
 })
+
+router.put(`/editAvailableTask/:taskId`, (req, res, next) => {
+    let taskId = req.params.taskId
+    let newDescription = req.body.description
+    Task.update({ description: newDescription }, { where: { id: taskId } })
+        .then(Task.findAll()
+            .then(tasksList => res.status(200).send(tasksList))
+            .catch(err => res.sendStatus(500))
+        )
+        .catch(err => res.sendStatus(500))
+})
+
 
 module.exports = router
 
