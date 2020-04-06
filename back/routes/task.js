@@ -220,6 +220,18 @@ router.delete("byRecruit/:recruitId", (req, res, next) => {
         .catch(err => res.sendStatus(500))
 })
 
+router.put(`/editAvailableTask/:taskId`, (req, res, next) => {
+    let taskId = req.params.taskId
+    let newDescription = req.body.description
+    Task.update({ description: newDescription }, { where: { id: taskId } })
+        .then(Task.findAll()
+            .then(tasksList => res.status(200).send(tasksList))
+            .catch(err => res.sendStatus(500))
+        )
+        .catch(err => res.sendStatus(500))
+})
+
+
 module.exports = router
 
 

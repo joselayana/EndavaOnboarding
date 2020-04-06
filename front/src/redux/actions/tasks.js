@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_ERROR } from "../constants";
+import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_ERROR, } from "../constants";
 
 export const findTasks = (tasks) => ({
     type: SEARCH_TASKS,
@@ -29,6 +29,8 @@ export const findTasksRecruits = (tasksRecruits) => ({
     type: SEARCH_TASKS_RECRUIT,
     tasksRecruits
 })
+
+
 
 export const createTask = (task) => dispatch => {
     return Axios.post("/api/task/newTask", task)
@@ -75,12 +77,12 @@ export const searchAllTasks = (busqueda, valor) => dispatch => {
             .then(allTasks => dispatch(findAllTasks(allTasks)))
     } else if (valor === 1) {
         return Axios.get(`/api/task/allTasks?s=${busqueda}`)
-                .then(res => res.data)
-                .then(allTasks => dispatch(findAllTasks(allTasks)))
+            .then(res => res.data)
+            .then(allTasks => dispatch(findAllTasks(allTasks)))
     } else if (valor === 2) {
         return Axios.get(`/api/task/allTasks?t=${busqueda}`)
-                .then(res => res.data)
-                .then(allTasks => dispatch(findAllTasks(allTasks)))
+            .then(res => res.data)
+            .then(allTasks => dispatch(findAllTasks(allTasks)))
     }
 }
 
@@ -103,8 +105,6 @@ export const searchTasksRecruits = (recruitId) => dispatch => {
 }
 
 export const createTaskRecruit = (obj) => dispatch => {
-    console.log("aqui el froooooooooooont", obj);
-
     return Axios.post("/api/taskRecruit", obj)
         .then(res => res.data)
         .then(nuevaTaskRec => dispatch(searchTasksRecruits(nuevaTaskRec.recruitId)))
@@ -115,6 +115,12 @@ export const deleteTaskRecruit = (taskRecruitId, recruitId) => dispatch => {
         .then(() => dispatch(searchTasksRecruits(recruitId)))
 }
 
-export const setErrorFields = () => dispatch =>{
+export const setErrorFields = () => dispatch => {
     dispatch(setError())
+}
+
+export const changeTask = (obj) => dispatch => {
+    return Axios.put(`/api/task/editAvailableTask/${obj.taskId}`, obj)
+        .then(res => res.data)
+        .then(tasksList => dispatch(findTasksList(tasksList)))
 }
