@@ -273,3 +273,118 @@ width: 94% !important
  {
    color:#f0f3f3
  }
+
+/*-----------Dashboard------------*/
+
+.HeaderCard
+{
+
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  position: relative;
+  color:#fff;
+  padding: 3%;
+}
+
+.bodyCard
+{
+  background-color: #F0F3F3;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color:#48545B;
+  padding:3%;
+}
+
+.bodyCardTitle
+{
+  padding-left: 14%;
+}
+.fa-ban:before {
+    position:center;
+    color:#ffffff;
+    font-size: 3rem;
+    padding:2%
+}
+.fa-calendar-times:before {
+    position:center;
+    color:#ffffff;
+    font-size: 3rem;
+    padding:2%
+}
+
+.fa-clock:before {
+    position:center;
+    color:#ffffff;
+    font-size: 3rem;
+    padding:2%
+}
+
+.fa-list-ol:before {
+    position:center;
+    color:#ffffff;
+    font-size: 3rem;
+    padding:2%
+}
+
+.redHead
+{
+  background-color:#cc0000;
+}
+
+.orangeHead
+{
+  background-color:#ff8800
+}
+
+.greenHead
+{
+  background-color:#007e33
+}
+
+.blueHead
+{
+  background-color:#0099cc
+}
+
+.bodyCardGraphic
+{
+  background-color: #F0F3F3;
+  color:#48545B;
+
+}
+
+.box_container3
+{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+  position:relative;
+  overflow: hidden;
+  max-width: 700px;
+  max-width: 100%;
+  padding:5px;
+}
+.bodyCard2
+{
+  background-color: #F0F3F3;
+  overflow: hidden;
+}
+
+.progress
+{
+  margin:1%
+}
+
+.box_container4
+{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+  position:relative;
+  overflow: hidden;
+  width: 1359px;
+  max-width: 100%;
+  padding:25px;
+}

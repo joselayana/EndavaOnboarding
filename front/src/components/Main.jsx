@@ -19,6 +19,8 @@ import DeleteUserContainer from "../containers/DeleteUserContainer"
 import TasksAdminEditFormTasksListContainer from "../containers/TasksAdminEditFormTasksListContainer"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
+import DashboardContainer from "../containers/DashboardContainer"
+
 
 class Main extends React.Component {
     constructor() {
@@ -45,7 +47,8 @@ class Main extends React.Component {
                     <Route exact path="/newRecruit" component={CreateRecruitContainer} />
                     <Route exact path="/task/:taskId" component={SingleTaskContainer} />
                     <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
-                </Switch>
+                    <Route exact path="/dashboard" component={DashboardContainer} />
+                  </Switch>
             </Fragment>
         )
     }
