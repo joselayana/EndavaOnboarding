@@ -9,6 +9,7 @@ const session = require("express-session");
 const User = require("./models/user");
 const LocalStrategy = require("passport-local").Strategy;
 const app = express();
+const mail = require("./followUpMail")
 require("./passport/passport")
 require('dotenv').config()
 
