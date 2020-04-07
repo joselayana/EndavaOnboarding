@@ -321,11 +321,16 @@ width: 94% !important
     padding:2%
 }
 
-.fa-list-ol:before {
+.fa-list-ul:before {
     position:center;
-    color:#ffffff;
     font-size: 3rem;
-    padding:2%
+    padding:2%;
+    color:#fff;
+}
+
+.colorW
+{
+  color:#fff
 }
 
 .redHead
@@ -387,4 +392,25 @@ width: 94% !important
   width: 1359px;
   max-width: 100%;
   padding:25px;
+}
+
+#dashTable a
+{
+  color: #48525b;
+}
+
+
+.fa-lock:before {
+    position:center;
+    color:#cc0000;
+}
+
+.fa-hourglass-end:before {
+    position:center;
+    color:#ff8800;
+}
+
+.fa-stopwatch:before {
+    position:center;
+    color:#0099cc;
 }
