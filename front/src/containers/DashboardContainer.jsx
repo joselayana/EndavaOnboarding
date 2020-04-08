@@ -6,8 +6,11 @@ import Dashboard from "../components/Dashboard";
 import Graphics from "../components/Graphics";
 import DashboardRows from "../components/DashboardRows";
 import Progress from "../components/Progress";
+
+
 import {searchAllTasks} from "../redux/actions/tasks";
 import {searchRecruits} from "../redux/actions/recruits"
+
 
 
 class DashboardContainer extends React.Component {
@@ -28,7 +31,7 @@ class DashboardContainer extends React.Component {
         return (
             <div>
                 <Dashboard allTasks={allTasks}/>
-                <Graphics/>
+                <Graphics allTasks={allTasks} />
                 <DashboardRows allTasks={allTasks}/>
                 <Progress allTasks={allTasks} allRecruits={allRecruits}/>
             </div>

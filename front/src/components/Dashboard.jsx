@@ -23,7 +23,9 @@ export default ({allTasks}) => {
 
   <div style={{marginLeft:"3%", marginRight:"2%"}}> 
     <div class="row"> 
+
       <div class="col">
+        <a href="#home-tab">
         <div className=" dashCard1 card"></div>
           <div className=" dashCard2 card">
             <div className="card-img-top HeaderCard redHead">
@@ -33,17 +35,21 @@ export default ({allTasks}) => {
               <p className="card-text text-center">{arrBlocked.length}</p>
             </div>
           </div>
+          </a>
         </div> 
+
       <div class="col">
-        <div className=" dashCard1 card"></div>
-        <div className=" dashCard2 card">
-          <div className="card-img-top HeaderCard orangeHead">
-          <i class="far fa-calendar-times"></i><span className="bodyCardTitle">EXPIRED</span>
+        <a href="#profile-tab">
+          <div className=" dashCard1 card"></div>
+            <div className=" dashCard2 card">
+              <div className="card-img-top HeaderCard orangeHead">
+                <i class="far fa-calendar-times"></i><span className="bodyCardTitle">EXPIRED</span>
+              </div>
+              <div className="card-body bodyCard">
+                <p className="card-text text-center">{arrExpired.length}</p>
+              </div>
           </div>
-          <div className="card-body bodyCard">
-            <p className="card-text text-center">{arrExpired.length}</p>
-          </div>
-        </div>
+        </a>
       </div> 
       <div class="col">
         <div className=" dashCard1 card"></div>
@@ -57,6 +63,7 @@ export default ({allTasks}) => {
         </div>
       </div>
       <div class="col">
+        <a href="#contact-tab">
         <div className=" dashCard1 card"></div>
         <div className=" dashCard2 card">
           <div className="card-img-top HeaderCard blueHead">
@@ -66,6 +73,7 @@ export default ({allTasks}) => {
             <p className="card-text text-center">{arrPending.length}</p>
           </div>
         </div>
+      </a>
       </div> 
     </div>
 
