@@ -27,7 +27,8 @@ class DeleteUserContainer extends React.Component {
         if (this.state.newResponsable) {
             let idUser;
             let oldUser = this.props.match.params.userId
-            this.props.userOptions.map((user) => (this.state.newResponsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
+            // this.props.userOptions.map((user) => (this.state.newResponsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
+            this.props.userOptions.map((user) => (parseInt(this.state.newResponsable[this.state.newResponsable.length - 2]) == user.id) ? (idUser = user.id) : null)
             let obj = { taskId: taskId, userId: idUser, oldUserId: oldUser }
             this.props.updateTaskRecruit(obj)
             this.setState({ newResponsable: "" })

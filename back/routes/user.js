@@ -7,9 +7,6 @@ require('dotenv').config();
 const hbs = require('nodemailer-express-handlebars');
 const Sequelize = require("sequelize")
 
-
-
-
 //-------------------> Config. Mail
 const sendMail = function (name, lastName, email) {
 
@@ -62,8 +59,6 @@ const sendMail = function (name, lastName, email) {
     });
 }
 //------------------------->
-
-
 
 
 const loggedUser = function (req, res, next) {

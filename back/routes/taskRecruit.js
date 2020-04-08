@@ -67,7 +67,6 @@ router.get('/', function (req, res, next) {
         .then((tasksRec) => res.status(200).json(tasksRec))
 });
 
-
 router.get("/:recruitId", (req, res, next) => {
     TaskRecruit.findAll({
         where: {

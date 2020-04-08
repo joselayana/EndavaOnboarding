@@ -29,7 +29,8 @@ class SingleRecruitAddTaskContainer extends React.Component {
             //this.props.setErrorFields()
             let idUser;
             let idTask;
-            this.props.userOptions.map((user) => (this.state.responsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
+            // this.props.userOptions.map((user) => (this.state.responsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
+            this.props.userOptions.map((user) => (parseInt(this.state.responsable[this.state.responsable.length - 2]) == user.id) ? (idUser = user.id) : null)
             this.props.taskOptions.map((task) => (this.state.taskDescription == task.description) ? (idTask = task.id) : null)
             let obj = { taskId: idTask, responsableId: idUser, dueDate: this.state.dueDate, recruitId: this.props.match.params.recruitId }
             this.props.createTaskRecruit(obj)
