@@ -37,10 +37,13 @@ const sendMail = function (objMail) {
         This is the summary of all the tasks in which you are assigned as owner:
 
          - Amount of pending tasks: ${objMail.pendingTask}.
+         - Amount of ongoing tasks: ${objMail.onGoingTask}.
          - Amount of blocked out tasks: ${objMail.blockedOutTask}.
          - Amount of finished: ${objMail.finishedTask}.
 
          --------------------------------------------------------
+
+        The status of your ongoing tasks is the following:
 
          - Amount of tasks near to due date: ${objMail.nearDueDateTask}.
          - Amount of expired tasks: ${objMail.expiredTask}.
@@ -86,6 +89,7 @@ const weeklyEmail = () => {
                     })
                         .then(allTasks => {
                             let pending = 0
+                            let onGoing = 0
                             let finished = 0
                             let blockedOut = 0
                             let expired = 0
@@ -94,20 +98,32 @@ const weeklyEmail = () => {
                             allTasks.map(task => {
                                 let today = new Date()
                                 let due = new Date(task.dueDate)
-                                if (due > today) {
+
+                                switch (task.state) {
+                                    case "finished":
+                                        finished++
+                                        break
+                                    case "pending":
+                                        pending++
+                                        break
+                                    case "blocked out":
+                                        blockedOut++
+                                        break
+                                    case "started":
+                                        onGoing++
+                                        break
+                                    default:
+
+                                }
+                                if (due > today && task.state != "finished") {
                                     var diffTime = Math.abs(due - today);
                                     var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                                     (diffDays <= 3) ? nearDueDate++ : null
-                                } else {
+                                } else if (task.state != "finished") {
                                     expired++
                                 }
-                                (task.state != "finished") ?
-                                    (
-                                        (task.state != "blocked out") ? pending++ : blockedOut++
-                                    )
-                                    : finished++
                             })
-                            return ({ pending, finished, blockedOut, expired, nearDueDate })
+                            return ({ pending, finished, blockedOut, onGoing, expired, nearDueDate })
                         })
                         .then((input) => {
                             let objMail = {
@@ -115,6 +131,7 @@ const weeklyEmail = () => {
                                 lastName: user.lastName,
                                 email: user.email,
                                 pendingTask: input.pending,
+                                onGoingTask: input.onGoing,
                                 finishedTask: input.finished,
                                 blockedOutTask: input.blockedOut,
                                 expiredTask: input.expired,

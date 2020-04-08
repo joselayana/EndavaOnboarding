@@ -42,22 +42,37 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllPendingInputS,
                       <thead>
                         <tr className="table1">
                           <th scope="col">#</th>
+                          <th scope="col"></th>
                           <th scope="col">Task</th>
                           <th scope="col">New Hire</th>
                           <th scope="col">Due Date</th>
-                          <th scope="col">State</th>
+                          <th scope="col">Status</th>
                           <th scope="col">New State</th>
                           <th scope="col">Comments</th>
                         </tr>
                       </thead>
                       <tbody>
                         {tasks.map((task) => {
+                          let today = new Date();
+                          let due = new Date(task.dueDate);
+                          let color = ""
+                          if (due > today) {
+                            var diffTime = Math.abs(due - today);
+                            var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                            (diffDays <= 3) ? color = "amarillo" : color = "verde";
+                          } else {
+                            color = "rojo"
+                          }
+
                           return (
                             <>
                               {(task.state != "finished") ? (
                                 <>
                                   <tr key={task.id}>
                                     <th scope="row" className="align-middle">{++indice}</th>
+                                    <> {(color === "rojo") ? (<td style={{ color: "red" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                    <> {(color === "amarillo") ? (<td style={{ color: "yellow" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                    <> {(color === "verde") ? (<td style={{ color: "green" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
                                     <td className="align-middle"><Link style={{ color: "#285078" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                     <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
                                     <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
@@ -187,21 +202,35 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllPendingInputS,
                           <thead>
                             <tr className="table1">
                               <th scope="col">#</th>
+                              <th scope="col"></th>
                               <th scope="col">Task</th>
                               <th scope="col">New Hire</th>
                               <th scope="col">Task owner</th>
                               <th scope="col">Due Date</th>
-                              <th scope="col">State</th>
+                              <th scope="col">Status</th>
                               <th scope="col">Comments</th>
                             </tr>
                           </thead>
                           <tbody>
                             {allTasks.map((task) => {
+                              let today = new Date();
+                              let due = new Date(task.dueDate);
+                              let color = ""
+                              if (due > today) {
+                                var diffTime = Math.abs(due - today);
+                                var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                                (diffDays <= 3) ? color = "amarillo" : color = "verde";
+                              } else {
+                                color = "rojo"
+                              }
                               return (
                                 <>
                                   {(task.state != "finished") ? (
                                     <tr key={task.id}>
                                       <th scope="row" className="align-middle">{++indice2}</th>
+                                      <> {(color === "rojo") ? (<td style={{ color: "red" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                      <> {(color === "amarillo") ? (<td style={{ color: "yellow" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                      <> {(color === "verde") ? (<td style={{ color: "green" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
                                       <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                       <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
                                       <td className="align-middle">{task.user.name} {task.user.lastName}</td>
@@ -214,16 +243,11 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllPendingInputS,
                                           )
                                         }
                                       </>
-                                      {/* <td className="align-middle">{task.state}</td> */}
                                       <td className="align-middle">{task.comment}</td>
                                     </tr>
                                   ) : (null)}
 
                                 </>
-
-
-
-
                               )
                             })}
                           </tbody>

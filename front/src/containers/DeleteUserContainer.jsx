@@ -27,8 +27,12 @@ class DeleteUserContainer extends React.Component {
         if (this.state.newResponsable) {
             let idUser;
             let oldUser = this.props.match.params.userId
-            // this.props.userOptions.map((user) => (this.state.newResponsable.includes(user.name && user.lastName)) ? (idUser = user.id) : null)
-            this.props.userOptions.map((user) => (parseInt(this.state.newResponsable[this.state.newResponsable.length - 2]) == user.id) ? (idUser = user.id) : null)
+            this.props.userOptions.map((user) => {
+                let inicio = this.state.newResponsable.indexOf("(") + 1
+                let fin = this.state.responnewResponsablesable.length - 1
+                let idSelected = this.state.newResponsable.slice(inicio, fin);
+                (parseInt(idSelected) == user.id) ? (idUser = user.id) : null
+            })
             let obj = { taskId: taskId, userId: idUser, oldUserId: oldUser }
             this.props.updateTaskRecruit(obj)
             this.setState({ newResponsable: "" })
@@ -49,6 +53,8 @@ class DeleteUserContainer extends React.Component {
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
+
+
     }
 
     render() {

@@ -1,5 +1,5 @@
 const weekly = require("./weekly")
-
+const daily = require("./daily")
 
 
 
