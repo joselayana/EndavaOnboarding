@@ -4,7 +4,7 @@ import "../css/style.css"
 
 export default ({ user, onLogout }) => (
   <section id="nav-bar">
-    <nav className="navbar navbar-light pt-2">
+    <nav className="navbar navbar-light pt-2 ">
       <a className="navbar-brand" href="/">
         <img src="images/logo/Endava_Logo_Rojo.svg" />
       </a>
