@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { Recruit, Discipline, User } = require('../models');
+const { Recruit, Discipline, User, TaskRecruit } = require('../models');
 const Sequelize = require("sequelize")
 const Promise = require("bluebird");
 module.exports = router;
@@ -65,18 +65,42 @@ router.post('/', function (req, res, next) {
         })
 });
 
-router.delete("/:id", (req, res, next) => {
-    Recruit.findByPk(req.params.id)
-        .then(recruit => {
-            if (recruit) {
-                recruit.destroy()
-                    .then(() => res.sendStatus(204))
-            } else {
-                res.sendStatus(404)
-            }
-
+router.delete("/delete/:id", (req, res, next) => {
+    let recruitId = req.params.id
+    TaskRecruit.findAll({
+        where: {
+            recruitId
+        }
+    })
+        .then(allTask => {
+            allTask.map(task => task.destroy())
         })
-        .catch(err => res.sendStatus(500))
+        .then(
+            Recruit.destroy({
+                where: {
+                    id: recruitId
+                }
+            })
+
+        )
+        .then(
+            Recruit.findAll({
+                include: [
+                    { model: Discipline }
+                ],
+            })
+                .then(allRecruit => {
+                    console.log("aquiiii", allRecruit.length);
+                    console.log("aquiiiiiiiiiiiiiiii000000", allRecruit[0].dataValues);
+                    console.log("aquiiiiiiiiiiiiiiii11111111", allRecruit[1].dataValues);
+                    console.log("aquiiiiiiiiiiiiiiii222222", allRecruit[2].dataValues);
+
+                    res.status(200).send(allRecruit)
+                })
+        )
+
+
+
 })
 
 router.put("/edit/:id", (req, res, next) => {
