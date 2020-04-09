@@ -57,7 +57,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection }) => {
                                 </div>
                                 <div className="modal-body">
                                   <>
-                                    {(user.isAdmin) ? ("You're changing this user's profile to REGULAR USER") : ("You're changing this user's profile to ADMIN")}
+                                    {(user.isAdmin) ? ("You are changing this user's profile to REGULAR USER") : ("You are changing this user's profile to ADMIN")}
                                   </>
                                 </div>
                                 <div className="modal-footer">

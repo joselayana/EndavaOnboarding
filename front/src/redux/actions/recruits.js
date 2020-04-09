@@ -19,12 +19,12 @@ export const singleRecruit = (recruit) => ({
 export const searchRecruits = (busqueda) => dispatch => {
     if (busqueda === undefined) {
         return Axios.get("/api/recruit/")
-        .then(res => res.data)
-        .then(recruits => dispatch(findRecruits(recruits)))
+            .then(res => res.data)
+            .then(recruits => dispatch(findRecruits(recruits)))
     } else {
         return Axios.get(`/api/recruit/?s=${busqueda}`)
-        .then(res => res.data)
-        .then(recruits => dispatch(findRecruits(recruits)))
+            .then(res => res.data)
+            .then(recruits => dispatch(findRecruits(recruits)))
     }
 }
 
@@ -45,3 +45,7 @@ export const updateRecruit = (objRecruit) => dispatch => {
         .then(res => res.data)
         .then(recruit => dispatch(setRecruit(recruit)))
 }
+
+export const deleteRecruit = (recruitId) => dispatch => {
+    return Axios.delete(`/api/recruit/delete/${recruitId}`)
+} 
