@@ -3,8 +3,6 @@ import "../css/style.css"
 import { Bar, Line, Pie } from "react-chartjs-2";
 
 export default ({ allUsers, allTasks }) => {
-  console.log("usuarios", allUsers, "allTasks", allTasks)
-
 
   let usuarios = {}
 

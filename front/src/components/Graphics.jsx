@@ -4,6 +4,7 @@ import "../css/style2.scss";
 import Chart1Component from "./Chart1Component";
 import Chart2Component from "./Chart2Component";
 import Chart3Component from "./Chart3Component";
+import Chart4Container from "../containers/Chart4Container";
 
 export default ({allTasks, allRecruits, allDisciplines, allUsers}) => (
 
@@ -78,7 +79,7 @@ export default ({allTasks, allRecruits, allDisciplines, allUsers}) => (
     <div class="div4Graph">
 
       <div class="dashCardGraphic card" data-toggle="modal" data-target=".bd-example3-modal-lg">
-        <Chart3Component allUsers={allUsers} allTasks={allTasks}/>
+        <Chart4Container allUsers={allUsers} allTasks={allTasks}/>
         <div class="card-body bodyCard2">
           <h5 class="card-title">Task Stats</h5>
           <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
@@ -89,7 +90,7 @@ export default ({allTasks, allRecruits, allDisciplines, allUsers}) => (
       <div class="modal fade bd-example3-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
-            <Chart3Component allUsers={allUsers} allTasks={allTasks}/>
+            <Chart4Container allUsers={allUsers} allTasks={allTasks}/>
           </div>
         </div>
       </div>
