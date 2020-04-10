@@ -2,6 +2,7 @@
 {
   margin:0;
   padding: 0;
+  text-decoration: none !important
 }
 
 body
@@ -77,12 +78,12 @@ body
   height: calc(100vh - 56px);
   width: inherit;
   overflow-y: auto;
-  border-right: 2px solid #555; 
+  border-right: 2px solid #555;
 }
 
   .sidebar::-webkit-scrollbar{
     width: 10px;
-    background-color: #222; 
+    background-color: #222;
   }
   .sidebar::-webkit-scrollbar-thumb{
     background-color: black;
@@ -90,7 +91,7 @@ body
   }
   .sidebar .logo {
     width: 100%;
-    padding: 15px; 
+    padding: 15px;
   }
   .sidebar section > * {
     padding: 0 15px;
@@ -101,13 +102,13 @@ body
     .sidebar .menu-item a {
       transition: border-left, 0.2s;
       padding-left: 15px;
-      color: #c8c8c8; 
+      color: #c8c8c8;
     }
       .sidebar .menu-item a:hover {
-        color: white; 
+        color: white;
       }
     .sidebar .menu-item a.active, .sidebar .menu-item a:hover {
-      border-left: 3px solid #00bc8c; 
+      border-left: 3px solid #00bc8c;
     }
 
 
@@ -505,7 +506,7 @@ width: 94% !important
   border-bottom: 1px solid #bdb8d7;
   border-bottom: 1px solid rgba(0,0,0,0.05);
   border-top: 1px solid rgba(255,255,255,0.05);
-}    
+}
 
 .wrapper .sidebar ul li a{
   color: #f0f3f3;
@@ -519,11 +520,11 @@ width: 94% !important
 .wrapper .sidebar ul li:hover{
   background-color: #233237;
 }
-    
+
 .wrapper .sidebar ul li:hover a{
   color: #f0f3f3;
 }
- 
+
 .wrapper .sidebar .social_media{
   position: absolute;
   bottom: 0;
@@ -586,3 +587,65 @@ padding-right: 2%;
 .linkSection:hover{
   color: white;
 }
+/*-----------Dashboard y Sidebar Container------------*/
+
+
+.parent {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+}
+
+.div1
+{
+  grid-area: 1 / 1 / 2 / 3;
+}
+
+.div2
+{
+  grid-area: 1 / 3 / 2 / 13;
+  margin-right: 3%
+}
+
+
+.parentGraph {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: repeat(2, 1fr);
+grid-column-gap: 20px;
+grid-row-gap: 20px;
+margin-top:20px;
+}
+
+.div1Graph { grid-area: 1 / 1 / 2 / 7; }
+.div2Graph { grid-area: 1 / 7 / 2 / 13; }
+.div3Graph { grid-area: 2 / 1 / 3 / 7; }
+.div4Graph { grid-area: 2 / 7 / 3 / 13; }
+
+.parentDash {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 20px;
+grid-row-gap: 20px;
+margin-top:20px;
+}
+
+.div1Dash { grid-area: 1 / 1 / 2 / 4; }
+.div2Dash { grid-area: 1 / 4 / 2 / 7; }
+.div3Dash { grid-area: 1 / 7 / 2 / 10; }
+.div4Dash { grid-area: 1 / 10 / 2 / 13; }
+
+
+.parentDashRow {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 20px;
+grid-row-gap: 20px;
+margin-top:20px;
+}
+
+.div1DashRow { grid-area: 1 / 1 / 2 / 13; }

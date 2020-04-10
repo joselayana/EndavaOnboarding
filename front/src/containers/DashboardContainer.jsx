@@ -6,7 +6,9 @@ import Dashboard from "../components/Dashboard";
 import Graphics from "../components/Graphics";
 import DashboardRows from "../components/DashboardRows";
 import Progress from "../components/Progress";
+import Sidebar from "../components/Sidebar";
 
+import "../css/style.css"
 
 import {searchAllTasks} from "../redux/actions/tasks";
 import {searchRecruits} from "../redux/actions/recruits"
@@ -33,12 +35,17 @@ class DashboardContainer extends React.Component {
       const {allTasks,allRecruits,allDisciplines,allUsers}=this.props;
 
         return (
-            <div>
-                <Dashboard allTasks={allTasks}/>
-                <Graphics allTasks={allTasks} allRecruits={allRecruits} allDisciplines={allDisciplines} allUsers={allUsers}/>
-                <DashboardRows allTasks={allTasks}/>
-                <Progress allTasks={allTasks} allRecruits={allRecruits}/>
+          <div class="parent">
+            <div class="div1">
+              <Sidebar />
             </div>
+            <div class="div2">
+              <Dashboard allTasks={allTasks}/>
+              <Graphics allTasks={allTasks} allRecruits={allRecruits} allDisciplines={allDisciplines} allUsers={allUsers}/>
+              <DashboardRows allTasks={allTasks}/>
+              <Progress allTasks={allTasks} allRecruits={allRecruits}/>
+            </div>
+          </div>
         )
     }
 }
