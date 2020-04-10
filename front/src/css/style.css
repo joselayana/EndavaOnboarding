@@ -67,8 +67,8 @@ body
   color:#48545b
 }
 
-
-/*-----------sidebar------------*/
+/* 
+/*-----------sidebar------------
 .sidebar {
   position: fixed;
   left: 0;
@@ -87,7 +87,7 @@ body
   }
   .sidebar::-webkit-scrollbar-thumb{
     background-color: black;
-    /* -webkit-border-radius: 1ex;  */
+    /* -webkit-border-radius: 1ex;  
   }
   .sidebar .logo {
     width: 100%;
@@ -112,7 +112,7 @@ body
     }
 
 
-
+ */
 
 
 
@@ -569,6 +569,24 @@ width: 94% !important
 }
 
 
+/*----------COLLLAPSE -Sidebar ------------*/
+
+.linkInternos{
+  margin: 20px 20px 
+}
+
+.imgLinkSection{
+padding-right: 2%;
+}
+
+.linkSection{
+  color: white;
+  padding: 0%;
+  
+}
+.linkSection:hover{
+  color: white;
+}
 /*-----------Dashboard y Sidebar Container------------*/
 
 
@@ -631,3 +649,16 @@ margin-top:20px;
 }
 
 .div1DashRow { grid-area: 1 / 1 / 2 / 13; }
+
+
+/*-----------Users y Sidebar Container------------*/
+
+.parentUsers {
+  display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: repeat(12, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+  }
+  
+  .div1Users { grid-area: 2 / 2 / 12 / 12; }
