@@ -18,37 +18,47 @@ import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormC
 import DeleteUserContainer from "../containers/DeleteUserContainer"
 import TasksAdminEditFormTasksListContainer from "../containers/TasksAdminEditFormTasksListContainer"
 
+
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
+import DashboardContainer from "../containers/DashboardContainer"
+import Sidebar from "./Sidebar";
+
 
 class Main extends React.Component {
-    constructor() {
-        super()
-    }
-    componentDidMount() {
-        this.props.getLoggedUser();
-    }
-    render() {
-        return (
-            <Fragment>
-                <NavbarContainer />
-                <Switch>
-                    <Route exact path="/" component={BannerWelcomeContainer} />
-                    <Route exact path="/login" component={BannerLoginContainer} />
-                    <Route exact path="/register" component={BannerRegisterContainer} />
-                    <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
-                    <Route exact path="/users" component={UsersAdminContainer} />
-                    <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
-                    <Route exact path="/home" component={AdminLandingCardsContainer} />
-                    <Route exact path="/recruits" component={RecruitContainer} />
-                    <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
-                    <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
-                    <Route exact path="/newRecruit" component={CreateRecruitContainer} />
-                    <Route exact path="/task/:taskId" component={SingleTaskContainer} />
-                    <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
-                </Switch>
-            </Fragment>
-        )
-    }
+  constructor() {
+    super()
+  }
+  componentDidMount() {
+    this.props.getLoggedUser();
+  }
+  render() {
+    return (
+      <Fragment>
+
+        <NavbarContainer />
+        {/* <Sidebar /> */}
+        {/* <div className="col-10"> */}
+        <Switch>
+          <Route exact path="/" component={BannerWelcomeContainer} />
+          <Route exact path="/login" component={BannerLoginContainer} />
+          <Route exact path="/register" component={BannerRegisterContainer} />
+          <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
+          <Route exact path="/users" component={UsersAdminContainer}/>
+          <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
+          <Route exact path="/home" component={AdminLandingCardsContainer} />
+          <Route exact path="/recruits" component={RecruitContainer} />
+          <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
+          <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
+          <Route exact path="/newRecruit" component={CreateRecruitContainer} />
+          <Route exact path="/task/:taskId" component={SingleTaskContainer} />
+          <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
+          <Route exact path="/dashboard" component={DashboardContainer} />
+          <Route exact path="/sidebar" component={Sidebar} />
+        </Switch>
+        {/* </div> */}
+      </Fragment>
+    )
+  }
 
 }
 const mapStateToProps = (state, ownProps) => {

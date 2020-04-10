@@ -36,7 +36,7 @@ export default ({ taskOptions, userOptions, handleSubmit, handleChange, state })
                                         <select selected="" name="responsable" className="form-control border1" onChange={handleChange} value={state.responsable}>
                                             <option className="border1">Select Responsable</option>
                                             {userOptions.map((userOption) => (
-                                                <option key={userOption.id} className="border1">{userOption.name} {userOption.lastName} ({userOption.id} )</option>
+                                                <option key={userOption.id} className="border1">{userOption.name} {userOption.lastName} ({userOption.id})</option>
                                             ))}
                                         </select>
                                     </div>

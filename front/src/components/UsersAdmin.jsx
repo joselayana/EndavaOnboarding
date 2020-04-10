@@ -13,7 +13,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection }) => {
             <div className="container box_container2 margen">
               <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
                 <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Name" onChange={handleSearchInput}
-                  aria-label="Search"/>
+                  aria-label="Search" />
                 <i class="fas fa-search searchColor" aria-hidden="true"></i>
               </form>
             </div>
@@ -57,7 +57,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection }) => {
                                 </div>
                                 <div className="modal-body">
                                   <>
-                                    {(user.isAdmin) ? ("You're changing this user's profile to REGULAR USER") : ("You're changing this user's profile to ADMIN")}
+                                    {(user.isAdmin) ? ("You are changing this user's profile to REGULAR USER") : ("You are changing this user's profile to ADMIN")}
                                   </>
                                 </div>
                                 <div className="modal-footer">
@@ -67,7 +67,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection }) => {
                               </div>
                             </div>
                           </div>
-                          <button type="button" className="align-middle btn btn-outline-danger" style={{ marginTop: "12px", marginBottom: "12px" }} data-toggle="modal" data-target={`#deleteUser${indice}`}><i className="far fa-trash-alt"></i></button>
+                          <button type="button" className="align-middle btn btn-outline-danger" style={{ marginLeft: "5px", marginTop: "12px", marginBottom: "12px" }} data-toggle="modal" data-target={`#deleteUser${indice}`}><i className="far fa-trash-alt"></i></button>
                           {/* <!-- Modal Delete User --> */}
                           <div className="modal fade" id={`deleteUser${indice}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered" role="document">
@@ -80,7 +80,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection }) => {
                                 </div>
                                 <div className="modal-body">
                                   <>
-                                    {(user.isAdmin) ? ("You're deleting an ADMIN") : ("You're deleting a REGULAR USER")}
+                                    {(user.isAdmin) ? (`You're deleting an ADMIN: ${user.name} ${user.lastName}`) : (`You're deleting a REGULAR USER: ${user.name} ${user.lastName}`)}
                                   </>
                                 </div>
                                 <div className="modal-footer">

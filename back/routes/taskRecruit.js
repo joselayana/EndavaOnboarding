@@ -14,8 +14,8 @@ const sendMail = function (objMail) {
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-          user: "endavaOnBoard@gmail.com",
-          pass: "onboard123"
+            user: "endavaOnBoard@gmail.com",
+            pass: "onboard123"
         }
     });
 
@@ -66,7 +66,6 @@ router.get('/', function (req, res, next) {
     TaskRecruit.findAll()
         .then((tasksRec) => res.status(200).json(tasksRec))
 });
-
 
 router.get("/:recruitId", (req, res, next) => {
     TaskRecruit.findAll({
@@ -181,17 +180,28 @@ router.delete("byRecruit/:recruitId", (req, res, next) => {
 })
 
 router.put("/:id", (req, res, next) => {
-    TaskRecruit.findByPk(req.params.id)
-        .then(task => {
-            if (task) {
-                task.update({
-                    userId: req.body.userId
-                })
-                    .then(taskU => res.status(200).json(taskU))
-            } else {
-                res.sendStatus(404)
-            }
+    if (req.body.taskState) {
+        TaskRecruit.update({ userId: req.body.newUserId }, { where: { userId: req.body.userId } })
+            .then(taskU => res.status(200).json(taskU))
+            .catch(err => console.log(err))
+    } else {
+        TaskRecruit.findByPk(req.params.id)
+            .then(task => {
+                if (task) {
+                    task.update({
+                        userId: req.body.userId
+                    })
+                        .then(taskU => res.status(200).json(taskU))
+                } else {
+                    res.sendStatus(404)
+                }
+            })
+            .catch(err => res.sendStatus(500))
+    }
 
-        })
-        .catch(err => res.sendStatus(500))
+
+
+
+
+
 })
