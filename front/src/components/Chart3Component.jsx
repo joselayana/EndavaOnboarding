@@ -42,11 +42,14 @@ export default ({ allUsers, allTasks}) => {
                 data:arrTask,
                 label:"Titulo",
                 backgroundColor:[
-                  "#cc0000",
-                  "#ff8800",
-                  "#007e33",
-                  "#0099cc",
-                  "#17a2b8"
+                  "#C31900",
+                  "#ed6861",
+                  "#BFBFBF",
+                  "#F2F2F2",
+                  "#48545B",
+                  "#404040",
+                  "#9BB4BE",
+                  "#F0F3F3"
                 ]
               }
             ],

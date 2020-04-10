@@ -384,6 +384,42 @@ width: 94% !important
     color:#fff;
 }
 
+/* Color Theme Swatches in Hex */
+/*rojo endava*/
+.EndavaDash3-1-hex { background-color: #C31900; }
+/*coral endava*/
+.EndavaDash3-2-hex { color: #EC6861; }
+/*gris claro*/
+.EndavaDash3-3-hex { color: #F0F3F3; }
+/*gris azulado claro*/
+.EndavaDash3-4-hex { color: #9BB4BE; }
+/*gris oscuro*/
+.EndavaDash3-5-hex { background-color: #48545B; }
+/*azul oscuro*/
+.EndavaDash3-6-hex { background-color: #285078; }
+/*azul claro*/
+.EndavaDash3-7-hex { background-color: #379bd7; }
+/*celeste*/
+.EndavaDash3-8-hex { background-color: #0ac3e5; }
+/*bordo*/
+.EndavaDash3-9-hex { background-color: #690505; }
+
+
+/* Color Theme Swatches in Hex */
+.EndavaDash2-1-hex { color: #D93A2B; }
+.EndavaDash2-2-hex { color: #F26F63; }
+/*gris blanco*/
+.EndavaDash2-3-hex { color: #F2F2F2; }
+/*gris claro*/
+.EndavaDash2-4-hex { background-color: #abb2b6 }
+/*gris oscuro*/
+.EndavaDash2-5-hex { color: #404040; }
+/*gris medio tarjetas*/
+.EndavaDash2-6-hex { color: #abb2b6; }
+
+
+
+
 .colorW
 {
   color:#fff
@@ -463,12 +499,12 @@ width: 94% !important
 
 .fa-hourglass-end:before {
     position:center;
-    color:#ff8800;
+    color:#EC6861;
 }
 
 .fa-stopwatch:before {
     position:center;
-    color:#0099cc;
+    color:#9BB4BE;
 }
 
 
@@ -631,3 +667,14 @@ margin-top:20px;
 }
 
 .div1DashRow { grid-area: 1 / 1 / 2 / 13; }
+
+.parentProgress {
+display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: 1fr;
+grid-column-gap: 20px;
+grid-row-gap: 20px;
+margin-top:20px;
+}
+
+.div1Progress { grid-area: 1 / 1 / 2 / 13; }
