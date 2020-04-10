@@ -3,8 +3,6 @@ import "../css/style.css"
 import {Bar, Line, Pie} from "react-chartjs-2";
 
 export default ({ allUsers, allTasks}) => {
-console.log("usuarios",allUsers, "allTasks", allTasks)
-
 
     let usuarios= {}
 
@@ -18,17 +16,27 @@ console.log("usuarios",allUsers, "allTasks", allTasks)
 
 
     let userKeyValueArray=Object.entries(usuarios)
-    let arrUser=[]
+    let arrIdUsers=[]
     let arrTask=[]
+    let finalArrTask=[]
 
     userKeyValueArray.map((arr)=>{
-      arrUser.push(arr[0]);
+      arrIdUsers.push(arr[0]);
       arrTask.push(arr[1])
+    })
+
+    arrIdUsers.map((userId) => {
+      allUsers.map((userGeneral) => {
+        if(userId == userGeneral.id) {
+          let fullName = userGeneral.name + " " + userGeneral.lastName
+          finalArrTask.push(fullName)
+        }
+      })
     })
 
 
           let data = {
-            labels:arrUser,
+            labels:finalArrTask,
             datasets:[
               {
                 data:arrTask,
@@ -44,11 +52,18 @@ console.log("usuarios",allUsers, "allTasks", allTasks)
             ],
           }
 
+          let options={
+            legend:{
+              position:"right",
+            },
+        }
+
           return (
               <Fragment>
                 <div className="chart">
-                  <Bar
+                  <Pie
                     data={data}
+                    options={options}
                   />
                 </div>
               </Fragment>
