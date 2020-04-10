@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import TaskAdmin from "../components/TasksAdmin";
 import { createTask, searchTasks, searchAllTasks, searchTasksList, updateTaskState, deleteTask } from "../redux/actions/tasks"
+import SidebarContainer from "../containers/SidebarContainer";
 
 
 class TasksAdminContainer extends React.Component {
@@ -103,9 +104,14 @@ class TasksAdminContainer extends React.Component {
     render() {
         return (
             <Fragment>
-
-                <TaskAdmin clearState={this.clearState} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
-
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer />
+                    </div>
+                    <div class="div2">
+                        <TaskAdmin clearState={this.clearState} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                    </div>
+                </div>
             </Fragment>
         )
     }

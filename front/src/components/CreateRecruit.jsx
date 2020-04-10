@@ -2,16 +2,16 @@ import React from "react";
 
 
 
-export default ({handleChange, handleSubmit, disciplinesOptions}) => {
-  if(disciplinesOptions.length){
-    return(
+export default ({ handleChange, handleSubmit, disciplinesOptions }) => {
+  if (disciplinesOptions.length) {
+    return (
       <div className="container box_container2" style={{ marginTop: "50px" }}>
         <div className="card bg-light">
           <div className="card-body mx-auto" style={{ maxWidth: "400px" }}>
-            <h4 className="card-title mt-3 text-center">Add a New Recruit</h4>
+            <h4 className="card-title mt-3 text-center">Add a New Hire</h4>
             <p className="text-center">Add a new member to your organization!</p>
 
-            <form onSubmit= {handleSubmit}>
+            <form onSubmit={handleSubmit}>
 
               <div className="form-group input-group">
                 <div className="input-group-prepend">
@@ -52,8 +52,8 @@ export default ({handleChange, handleSubmit, disciplinesOptions}) => {
                 <div className="input-group-prepend">
                   <span className="input-group-text"> <i className="fa fa-user-clock"></i> </span>
                 </div>
-                  <input onChange={handleChange} type="date" name="entryDate" max="2050-12-31" min="2020-03-01" className="form-control"
-                    placeholder="Starting on" />
+                <input onChange={handleChange} type="date" name="entryDate" max="2050-12-31" min="2020-03-01" className="form-control"
+                  placeholder="Starting on" />
               </div>
 
               <div className="form-group input-group">
@@ -76,11 +76,12 @@ export default ({handleChange, handleSubmit, disciplinesOptions}) => {
           </div>
         </div>
       </div>
-  )} else{
-  return (
-    <div class="spinner-border text-danger" role="status" style={{ marginTop: "20%", marginLeft: "50%" }}>
+    )
+  } else {
+    return (
+      <div class="spinner-border text-danger" role="status" style={{ marginTop: "20%", marginLeft: "50%" }}>
         <span class="sr-only">Loading...</span>
-    </div>
-  )
-}
+      </div>
+    )
+  }
 };

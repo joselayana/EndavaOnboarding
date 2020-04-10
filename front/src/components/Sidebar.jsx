@@ -3,13 +3,18 @@ import { Link } from "react-router-dom";
 import "../css/style.css"
 import "../css/style2.scss"
 
-export default ({ user }) => {
+export default ({ user, onLogout }) => {
   return (
     <div className="wrapper">
       <div className="sidebar">
-        <a className="sidebar-brand" href="/">
-          <img src="images/logo/Endava_Logo_GyR.svg" />
-        </a>
+        <div style={{ marginBottom: "40%" }} >
+          <a className="sidebar-brand" href="/">
+            <img src="/images/logo/Endava_Logo_GyR.svg" />
+          </a>
+        </div>
+        <div style={{ color: "white" }}  >
+          <center><h6> Wellcome {user.name}!!!</h6></center>
+        </div>
         <ul>
           <li>
             <a className="linkSection" href="/dashboard"><i className="fas fa-chart-line"></i> Dashboard</a>
@@ -74,6 +79,9 @@ export default ({ user }) => {
             }
           </>
         </ul>
+        <div className="social_media">
+          <button onClick={onLogout} type="button" class="btn btn-light btnout"><i class="fa fa-sign-out-alt"></i>Log Out</button>
+        </div>
       </div>
     </div>
   )

@@ -5,12 +5,12 @@ import { updateRecruit } from "../redux/actions/recruits"
 import { searchDisciplines } from "../redux/actions/disciplines"
 
 import SingleRecruitEditForm from "../components/SingleRecruitEditForm"
-
+import SidebarContainer from "../containers/SidebarContainer";
 
 class SingleRecruitEditFormContainer extends React.Component {
     constructor() {
         super()
-        this.state={
+        this.state = {
             name: "",
             lastName: "",
             email: "",
@@ -23,7 +23,7 @@ class SingleRecruitEditFormContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.searchDisciplines()
     }
 
@@ -51,21 +51,29 @@ class SingleRecruitEditFormContainer extends React.Component {
         // if(this.state.discipline === "Project Manager") IdDiscipline=2
         // if(this.state.discipline === "Testing") IdDiscipline=3
         // if(this.state.discipline === "Pdrc") IdDiscipline=4
-        if(!this.state.discipline) IdDiscipline=viejoIdDiscipline
+        if (!this.state.discipline) IdDiscipline = viejoIdDiscipline
 
-        let obj = { name: newName, lastName:newLastName , email: newEmail, phone: newPhone, DNI:newDNI, entryDate: newEntryDate , userId:this.props.user.id, disciplineId: IdDiscipline, recruitId:recruitId }
+        let obj = { name: newName, lastName: newLastName, email: newEmail, phone: newPhone, DNI: newDNI, entryDate: newEntryDate, userId: this.props.user.id, disciplineId: IdDiscipline, recruitId: recruitId }
         this.props.updateRecruit(obj)
             .then(() => this.props.history.push(`/recruit/${recruitId}`))
     }
 
     handleChange(e) {
-        this.setState({[e.target.name]: e.target.value });
+        this.setState({ [e.target.name]: e.target.value });
     }
 
     render() {
         return (
             <Fragment>
-                <SingleRecruitEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} disciplinesOptions={this.props.disciplinesOptions} recruit={this.props.recruit}/>
+
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer />
+                    </div>
+                    <div class="div2">
+                        <SingleRecruitEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} disciplinesOptions={this.props.disciplinesOptions} recruit={this.props.recruit} />
+                    </div>
+                </div>
             </Fragment>
         )
     }
@@ -76,7 +84,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         recruit: state.recruit.selectedRecruit,
         user: state.login.user,
-        disciplinesOptions : state.disciplines.disciplines
+        disciplinesOptions: state.disciplines.disciplines
     }
 }
 

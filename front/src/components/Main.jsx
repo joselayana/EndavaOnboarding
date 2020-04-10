@@ -36,14 +36,13 @@ class Main extends React.Component {
       <Fragment>
 
         <NavbarContainer />
-        {/* <Sidebar /> */}
-        {/* <div className="col-10"> */}
+
         <Switch>
           <Route exact path="/" component={BannerWelcomeContainer} />
           <Route exact path="/login" component={BannerLoginContainer} />
           <Route exact path="/register" component={BannerRegisterContainer} />
           <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
-          <Route exact path="/users" component={UsersAdminContainer}/>
+          <Route exact path="/users" component={UsersAdminContainer} />
           <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
           <Route exact path="/home" component={AdminLandingCardsContainer} />
           <Route exact path="/recruits" component={RecruitContainer} />
@@ -55,7 +54,7 @@ class Main extends React.Component {
           <Route exact path="/dashboard" component={DashboardContainer} />
           <Route exact path="/sidebar" component={SidebarContainer} />
         </Switch>
-        {/* </div> */}
+
       </Fragment>
     )
   }
