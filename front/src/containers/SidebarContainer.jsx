@@ -5,16 +5,18 @@ import Sidebar from "../components/Sidebar";
 
 
 
-class sideContainer extends React.Component {
+class sidebarContainer extends React.Component {
     constructor() {
         super()
 
     }
+
     render() {
+        console.log("yoooooooooooo", this.props)
         return (
 
             <Fragment>
-                <Sidebar />
+                <Sidebar user={this.props.user} />
             </Fragment>
 
         )
@@ -24,4 +26,18 @@ class sideContainer extends React.Component {
     }
 
 }
-export default withRouter(connect(null, null)(sideContainer))
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        user: state.login.user
+    };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+
+};
+
+
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(sidebarContainer))
