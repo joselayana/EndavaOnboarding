@@ -35,11 +35,11 @@ export default ({ allRecruits, allDisciplines }) => {
                 data:arrVal,
                 label:"Titulo",
                 backgroundColor:[
-                  "#cc0000",
-                  "#ff8800",
-                  "#007e33",
-                  "#0099cc",
-                  "#17a2b8"
+                  "#C31900",
+                  "#ed6861",
+                  "#BFBFBF",
+                  "#F2F2F2",
+                  "#48545B"
                 ]
               }
             ],
@@ -49,6 +49,7 @@ export default ({ allRecruits, allDisciplines }) => {
               legend:{
                 position:"right",
               },
+              cutoutPercentage:50
           }
 
 
