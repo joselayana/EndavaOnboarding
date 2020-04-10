@@ -21,6 +21,7 @@ import Sidebar from "./Sidebar"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 import DashboardContainer from "../containers/DashboardContainer"
+import Sidebar from "./Sidebar";
 
 
 class Main extends React.Component {
@@ -33,7 +34,10 @@ class Main extends React.Component {
   render() {
     return (
       <Fragment>
+
         <NavbarContainer />
+        {/* <Sidebar /> */}
+        {/* <div className="col-10"> */}
         <Switch>
           <Route exact path="/" component={BannerWelcomeContainer} />
           <Route exact path="/login" component={BannerLoginContainer} />
@@ -51,6 +55,7 @@ class Main extends React.Component {
           <Route exact path="/dashboard" component={DashboardContainer} />
           <Route exact path="/sidebar" component={Sidebar} />
         </Switch>
+        {/* </div> */}
       </Fragment>
     )
   }
