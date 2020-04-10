@@ -17,7 +17,7 @@ import SingleRecruitContainer from "../containers/SingleRecruitContainer"
 import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormContainer"
 import DeleteUserContainer from "../containers/DeleteUserContainer"
 import TasksAdminEditFormTasksListContainer from "../containers/TasksAdminEditFormTasksListContainer"
-import Sidebar from "./Sidebar"
+
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 import DashboardContainer from "../containers/DashboardContainer"
@@ -43,7 +43,7 @@ class Main extends React.Component {
           <Route exact path="/login" component={BannerLoginContainer} />
           <Route exact path="/register" component={BannerRegisterContainer} />
           <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
-          <Route exact path="/users" component={UsersAdminContainer} />
+          <Route exact path="/users" component={UsersAdminContainer}/>
           <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
           <Route exact path="/home" component={AdminLandingCardsContainer} />
           <Route exact path="/recruits" component={RecruitContainer} />

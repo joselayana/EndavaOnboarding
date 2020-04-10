@@ -3,6 +3,7 @@ import { withRouter } from "react-router-dom";
 import { connet, connect } from "react-redux";
 import UsersAdmin from "../components/UsersAdmin";
 import { fetchUsers, changeProfile } from "../redux/actions/users"
+import Sidebar from "../components/Sidebar";
 
 
 class UsersAdminContainer extends React.Component {
@@ -30,7 +31,7 @@ class UsersAdminContainer extends React.Component {
         const busqueda = e.target.value
         busqueda.length >=2? this.props.fetchUsers(busqueda)
         : this.props.fetchUsers()
-        
+
     }
 
     redirection (userId){
@@ -41,8 +42,15 @@ class UsersAdminContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <UsersAdmin users={this.props.users} redirection={this.redirection} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />
-            </Fragment>
+              <div class="parent">
+                <div class="div1">
+                  <Sidebar />
+                </div>
+                <div class="div2">
+                  <UsersAdmin users={this.props.users} redirection={this.redirection} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />
+                </div>
+              </div>
+          </Fragment>
         )
     }
 }
