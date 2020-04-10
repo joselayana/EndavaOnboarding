@@ -17,6 +17,7 @@ import SingleRecruitContainer from "../containers/SingleRecruitContainer"
 import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormContainer"
 import DeleteUserContainer from "../containers/DeleteUserContainer"
 import TasksAdminEditFormTasksListContainer from "../containers/TasksAdminEditFormTasksListContainer"
+import Sidebar from "./Sidebar"
 
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 import DashboardContainer from "../containers/DashboardContainer"
@@ -52,6 +53,7 @@ class Main extends React.Component {
           <Route exact path="/task/:taskId" component={SingleTaskContainer} />
           <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
           <Route exact path="/dashboard" component={DashboardContainer} />
+          <Route exact path="/sidebar" component={Sidebar} />
         </Switch>
         {/* </div> */}
       </Fragment>
