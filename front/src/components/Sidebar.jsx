@@ -1,14 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/style.css"
+import "../css/style2.scss"
 
 export default ({ user }) => {
   return (
     <div className="wrapper">
       <div className="sidebar">
-        {/* <a className="sidebar-brand" href="/">
-                <img src="images/logo/Endava_Logo_GyR.svg" />
-            </a> */}
+        <a className="sidebar-brand" href="/">
+          <img src="images/logo/Endava_Logo_GyR.svg" />
+        </a>
         <ul>
           <li>
             <a className="linkSection" href="/dashboard"><i className="fas fa-chart-line"></i> Dashboard</a>

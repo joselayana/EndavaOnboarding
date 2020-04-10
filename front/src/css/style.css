@@ -649,3 +649,16 @@ margin-top:20px;
 }
 
 .div1DashRow { grid-area: 1 / 1 / 2 / 13; }
+
+
+/*-----------Users y Sidebar Container------------*/
+
+.parentUsers {
+  display: grid;
+grid-template-columns: repeat(12, 1fr);
+grid-template-rows: repeat(12, 1fr);
+grid-column-gap: 0px;
+grid-row-gap: 0px;
+  }
+  
+  .div1Users { grid-area: 2 / 2 / 12 / 12; }

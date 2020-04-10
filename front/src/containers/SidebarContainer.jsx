@@ -12,12 +12,12 @@ class sidebarContainer extends React.Component {
     }
 
     render() {
-        console.log("yoooooooooooo", this.props)
         return (
 
-            <Fragment>
+            <>
+
                 <Sidebar user={this.props.user} />
-            </Fragment>
+            </>
 
         )
 
