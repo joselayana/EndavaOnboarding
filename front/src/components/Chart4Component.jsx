@@ -2,81 +2,87 @@ import React, { Fragment } from "react";
 import "../css/style.css"
 import {Bar, Line, Pie, HorizontalBar} from "react-chartjs-2";
 
-export default ({ allTasks}) => {
+export default ({ usersTasks, state, allUsers, idUser }) => {
 
-    let lastThirtyDays=[];
-    let arrBlocked=[];
-    let arrExpired=[];
-    let arrOngoing=[];
-    let arrPending=[];
-    let arrFinished=[];
+    if(!usersTasks.length){
 
-        //   allTasks.map((task)=>{
-        //     var created = new Date(task.createdAt);
-        //     var today = new Date();
+        return (
+            <div class="spinner-border text-danger" role="status" style={{ marginTop: "20%", marginLeft: "50%" }}>
+                <span class="sr-only">Loading...</span>
+            </div>
+        )
 
-        //     // To calculate the time difference of two dates
-        //     var Difference_In_Time = today.getTime() - created.getTime();
+    }else if(usersTasks.length && allUsers.length){
 
-        //     // To calculate the no. of days between two dates
-        //     var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24);
+        let arrBlocked=[];
+        let arrExpired=[];
+        let arrOngoing=[];
+        let arrPending=[];
+        let arrFinished=[];
+        let userName;
 
+        if(state.responsable){
+            let fin = state.responsable.indexOf("(") - 1
+            userName = state.responsable.slice(0, fin);
+        }else{
+            allUsers.map((user) => { 
+                (user.id == idUser) ? (userName = user.name + " " + user.lastName) : (null)
+            })
+        }
+        
+        usersTasks.map((task)=>{
+        (task.state === "pending") ? arrPending.push(task) : null;
+        (task.state === "started") ? arrOngoing.push(task) : null;
+        (task.state === "blocked out") ? arrBlocked.push(task) : null;
+        (task.state === "finished") ? arrFinished.push(task) : null;
+        if (task.state !== "finished") {
+            if (new Date(task.dueDate) < new Date) arrExpired.push(task)
+        }
+        })
 
-        //       if (Math.round(Difference_In_Days) < 30) lastThirtyDays.push(task)
-        //   })
-
-
-        //   lastThirtyDays.map((task)=>{
-        //     (task.state === "pending") ? arrPending.push(task) : null;
-        //     (task.state === "started") ? arrOngoing.push(task) : null;
-        //     (task.state === "blocked out") ? arrBlocked.push(task) : null;
-        //     (task.state === "finished") ? arrFinished.push(task) : null;
-        //     if (task.state !== "finished") {
-        //       if (new Date(task.dueDate) < new Date) arrExpired.push(task)
-        //     }
-        //   })
-
-          let data = {
-            labels:["Blocked","Expired", "Ongoing", "Pending", "Finished" ],
-            datasets:[
-              {
-                data:[10,8,7,8,6],
-                label:"Titulo",
-                minBarLength: 10,
-                backgroundColor:[
-                  "#cc0000",
-                  "#ff8800",
-                  "#007e33",
-                  "#0099cc",
-                  "#17a2b8"
-                ]
-              }
-            ],
-          }
-
-          let options = {
-            legend: {
-              position: "right",
-            },
-            scales: {
-                yAxes: [{
-                    ticks: {
-                        beginAtZero: true
-                    }
-                }]
+        let data = {
+        labels:["Blocked","Expired", "Ongoing", "Pending", "Finished" ],
+        datasets:[
+            {
+            data:[arrBlocked.length, arrExpired.length, arrOngoing.length, arrPending.length, arrFinished.length],
+            label:"Titulo",
+            backgroundColor:[
+                "#C31900",
+                "#ed6861",
+                "#BFBFBF",
+                "#F2F2F2",
+                "#48545B"
+            ]
             }
-          }
+        ],
+        }
 
-          return (
-              <Fragment>
-                <div className="chart">
-                  <Bar
-                    data={data}
-                    options={options}
-                  />
-                </div>
-              </Fragment>
-          )
+        let options = {
+        legend: {
+            position: "right",
+        },
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        },
+        title: {
+            display: true,
+            text: `State of ${userName}'s Tasks`
+        }
+        }
 
-
+        return (
+            <Fragment>
+            <div className="chart">
+                <Bar
+                data={data}
+                options={options}
+                />
+            </div>
+            </Fragment>
+        )
+    }    
 }

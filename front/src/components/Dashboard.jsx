@@ -28,7 +28,7 @@ export default ({allTasks}) => {
 
         <a href="#home-tab">
             <div className=" dashCard2 card ">
-              <div className="card-img-top HeaderCard redHead">
+              <div className="card-img-top HeaderCard EndavaDash3-5-hex">
               <i className="fas fa-ban text-center"></i><span className="bodyCardTitle">BLOCKED</span>
               </div>
               <div className="card-body bodyCard">
@@ -44,7 +44,7 @@ export default ({allTasks}) => {
 
         <a href="#profile-tab">
             <div className=" dashCard2 card">
-              <div className="card-img-top HeaderCard orangeHead">
+              <div className="card-img-top HeaderCard EndavaDash3-5-hex">
                 <i class="far fa-calendar-times"></i><span className="bodyCardTitle">EXPIRED</span>
               </div>
               <div className="card-body bodyCard">
@@ -59,7 +59,7 @@ export default ({allTasks}) => {
       <div class="div3Dash shrink">
 
         <div className=" dashCard2 card">
-          <div className="card-img-top HeaderCard greenHead">
+          <div className="card-img-top HeaderCard EndavaDash3-5-hex">
           <i class="fas fa-list-ul"></i><span className="bodyCardTitle">ONGOING</span>
           </div>
           <div className="card-body bodyCard">
@@ -74,7 +74,7 @@ export default ({allTasks}) => {
 
         <a href="#contact-tab ">
           <div className=" dashCard2 card">
-            <div className="card-img-top HeaderCard blueHead">
+            <div className="card-img-top HeaderCard EndavaDash3-5-hex">
             <i class="far fa-clock"></i><span className="bodyCardTitle">PENDING</span>
             </div>
             <div className="card-body bodyCard">

@@ -1,9 +1,10 @@
-import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SEARCH_TASKS_RECRUIT, SET_ERROR } from "../constants/index";
+import { SEARCH_ALL_TASKS_DASH, SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SEARCH_TASKS_RECRUIT, SET_ERROR } from "../constants/index";
 
 const initialTaskState = {
     tasks: [],
     tasksRecruit: [],
     allTasks: [],
+    allTasksDash: [],
     tasksList: [],
     selectedTask: {},
     errorFields: false
@@ -15,6 +16,8 @@ export default function (state = initialTaskState, action) {
             return Object.assign({}, state, { tasks: action.tasks })
         case SEARCH_ALL_TASKS:
             return Object.assign({}, state, { allTasks: action.allTasks })
+        case SEARCH_ALL_TASKS_DASH:
+            return Object.assign({}, state, { allTasksDash: action.allTasks })
         case SEARCH_TASKS_LIST:
             return Object.assign({}, state, { tasksList: action.tasksList })
         case SINGLE_TASK_RECRUIT:

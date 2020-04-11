@@ -14,13 +14,11 @@ class Chart4Container extends React.Component {
 
   }
 
-  componentDidMount() {
-    const idUserLoged = this.props.user.idUserLoged
-    this.props.searchTasks(idUserLoged)
-  }
 
   handleSubmit(){
-
+    const idUserLoged = this.props.user.id
+    console.log("IDDDD", idUserLoged)
+    this.props.searchTasks(idUserLoged)
   }
 
   render() {
