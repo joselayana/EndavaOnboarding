@@ -75,7 +75,7 @@ class DashboardContainer extends React.Component {
     return (
       <div class="parent">
         <div class="div1">
-          <SidebarContainer />
+          <SidebarContainer path={this.props.match} />
         </div>
         <div class="div2">
           <Dashboard allTasks={allTasks} />

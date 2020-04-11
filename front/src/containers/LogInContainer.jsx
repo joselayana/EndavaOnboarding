@@ -24,7 +24,7 @@ class LogInContainer extends React.Component {
         let obj = { email: e.target[0].value, password: e.target[1].value }
         this.props.login(obj)
             .then(() => { this.setState({ error: false }) })
-            .then(() => this.props.history.push("/home"))
+            .then(() => this.props.history.push("/dashboard/:userId"))
             .catch(() => { this.setState({ error: true }) })
 
     }

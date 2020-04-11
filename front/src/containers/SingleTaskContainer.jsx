@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom"
 
 import SingleTask from "../components/SingleTask"
 import { searchSingleTaskRecruit } from "../redux/actions/tasks"
+import SidebarContainer from "../containers/SidebarContainer";
 
 
 class SingleTaskContainer extends React.Component {
@@ -24,7 +25,14 @@ class SingleTaskContainer extends React.Component {
     render() {
         return (
             <Fragment>
-                <SingleTask selectedTask={this.props.selectedTask} user={this.props.user} />
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer path={this.props.match} />
+                    </div>
+                    <div class="div2">
+                        <SingleTask selectedTask={this.props.selectedTask} user={this.props.user} />
+                    </div>
+                </div>
             </Fragment>
 
         )

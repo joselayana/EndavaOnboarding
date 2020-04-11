@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import DeleteUser from "../components/DeleteUser";
 import { searchTasks, updateTaskRecruit } from "../redux/actions/tasks"
 import { fetchUsers, changeTaskOwner, deleteUser } from "../redux/actions/users"
+import SidebarContainer from "../containers/SidebarContainer";
 
 
 class DeleteUserContainer extends React.Component {
@@ -60,7 +61,14 @@ class DeleteUserContainer extends React.Component {
     render() {
         return (
             <div>
-                <DeleteUser userId={this.props.match.params.userId} tasks={this.props.tasks} userOptions={this.props.userOptions} handleClickDelete={this.handleClickDelete} handleChange={this.handleChange} handleClick={this.handleClick} />
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer path={this.props.match} />
+                    </div>
+                    <div class="div2">
+                        <DeleteUser userId={this.props.match.params.userId} tasks={this.props.tasks} userOptions={this.props.userOptions} handleClickDelete={this.handleClickDelete} handleChange={this.handleChange} handleClick={this.handleClick} />
+                    </div>
+                </div>
             </div>
         )
     }

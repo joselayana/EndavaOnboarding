@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import SingleRecruit from "../components/SingleRecruit";
 import { searchTasksRecruits, deleteTaskRecruit } from "../redux/actions/tasks"
 import { searchSingleRecruit, deleteRecruit } from "../redux/actions/recruits"
+import SidebarContainer from "../containers/SidebarContainer";
 
 class SingleRecruitContainer extends React.Component {
     constructor() {
@@ -33,7 +34,14 @@ class SingleRecruitContainer extends React.Component {
     render() {
         return (
             <div>
-                <SingleRecruit recruit={this.props.recruit} tasks={this.props.tasks} handlerClick={this.handlerClick} handleDeleteRecruit={this.handleDeleteRecruit} />
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer path={this.props.match} />
+                    </div>
+                    <div class="div2">
+                        <SingleRecruit recruit={this.props.recruit} tasks={this.props.tasks} handlerClick={this.handlerClick} handleDeleteRecruit={this.handleDeleteRecruit} />
+                    </div>
+                </div>
             </div>
         )
     }
