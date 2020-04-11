@@ -24,7 +24,7 @@ class LogInContainer extends React.Component {
         let obj = { email: e.target[0].value, password: e.target[1].value }
         this.props.login(obj)
             .then(() => { this.setState({ error: false }) })
-            .then(() => this.props.history.push("/dashboard/:userId"))
+            .then(() => this.props.history.push(`/dashboard/${this.props.user.id}`))
             .catch(() => { this.setState({ error: true }) })
 
     }
@@ -42,6 +42,7 @@ class LogInContainer extends React.Component {
 }
 
 const mapStateToProps = (state, ownProps) => ({
+    user: state.login.user
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {

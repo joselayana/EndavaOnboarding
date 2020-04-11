@@ -15,7 +15,7 @@ export default ({ user, onLogout, path }) => {
               </a>
             </div>
             <div style={{ color: "white" }}  >
-              <center><h6> Wellcome {user.name}!!!</h6></center>
+              <center><h6> Welcome {user.name}!!!</h6></center>
             </div>
             <ul>
               {/* DASHBOARD */}
