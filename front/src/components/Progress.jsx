@@ -6,7 +6,9 @@ export default ({allTasks,allRecruits}) => {
 
  if(allTasks && allRecruits){
   return(
-    <div className="box_container4" style={{marginLeft:"3%", marginRight:"2%", marginTop: "3%"}}> 
+<div className="parentProgress">
+  <div className="div1Progress">
+    <div className="box_container4" > 
       {allRecruits.map((recruit)=>{
         let recruitTasks=[];
         let finishedTasks=[];
@@ -28,17 +30,22 @@ export default ({allTasks,allRecruits}) => {
        }
 
         return(
-            <>
-              <p>{recruit.name} {recruit.lastName}</p>
-              <div className="progress">
-                <div className= "progress-bar" role="progressbar" style= {{width: `${porcentage}%` ,backgroundColor:`${color}`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </>
+          <>
+            <p>{recruit.name} {recruit.lastName}</p>
+                <div className="progress">
+                  <div className= "progress-bar" role="progressbar" style= {{width: `${porcentage}%` ,backgroundColor:`${color}`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+
+            </div>
+          </>
           )
         })
       }
 
- </div>
+    </div>
+
+  </div>
+</div>
+
 
 )}
 

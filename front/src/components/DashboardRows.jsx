@@ -34,7 +34,7 @@ export default ({allTasks}) =>{
 
                 <table className="table table-striped">
                   <thead>
-                    <tr className="table1 redHead">
+                    <tr className="table1 EndavaDash2-4-hex">
                       <th scope="col">#</th>
                       <th scope="col">Task</th>
                       <th scope="col">New Hire</th>
@@ -75,7 +75,7 @@ export default ({allTasks}) =>{
 
               <table className="table table-striped">
                 <thead>
-                  <tr className="table1 orangeHead">
+                  <tr className="table1 EndavaDash2-4-hex">
                     <th scope="col">#</th>
                     <th scope="col">Task</th>
                     <th scope="col">New Hire</th>
@@ -114,7 +114,7 @@ export default ({allTasks}) =>{
 
               <table className="table table-striped">
                 <thead>
-                  <tr className="table1 blueHead">
+                  <tr className="table1 EndavaDash2-4-hex">
                     <th scope="col">#</th>
                     <th scope="col">Task</th>
                     <th scope="col">New Hire</th>
