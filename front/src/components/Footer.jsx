@@ -5,7 +5,7 @@ import "../css/style.css"
 
 export default () => (
 
-  <footer id="footer" class="page-footer font-small special-color-dark pt-4">
+  <footer id="footer" class="page-footer font-small special-color-dark pt-4" >
 
     <div class="container">
 

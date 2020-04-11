@@ -22,7 +22,8 @@ body
 
 .navbar
 {
-  background-image:linear-gradient(to right,#f0f3f3, #f0f3f3);
+  background-color:#fff;
+  /* background-image:linear-gradient(to right,#f0f3f3, #f0f3f3); */
 }
 .navbar-brand img
 {
@@ -67,7 +68,7 @@ body
   color:#48545b
 }
 
-/* 
+/*
 /*-----------sidebar------------
 .sidebar {
   position: fixed;
@@ -87,7 +88,7 @@ body
   }
   .sidebar::-webkit-scrollbar-thumb{
     background-color: black;
-    /* -webkit-border-radius: 1ex;  
+    /* -webkit-border-radius: 1ex;
   }
   .sidebar .logo {
     width: 100%;
@@ -127,14 +128,15 @@ body
 {
   background-color:#f0f3f3;
   color:#48545b;
-  padding-top:5%
+  padding-top:3%
 }
 .banner-tittle
 {
   font-family: 'Roboto Condensed', sans-serif;
-  font-size: 40px;
+  font-size: 50px;
   font-weight: 700;
   margin-top: 92px;
+  color:#273338;
 }
 .welcome-btn
 {
@@ -154,7 +156,8 @@ body
 {
   background-color: #fff;
   color:#fff;
-  padding-top:5%
+  padding-top:5%;
+  padding-bottom:5%;
 }
 
 .form
@@ -608,7 +611,7 @@ width: 94% !important
 /*----------COLLLAPSE -Sidebar ------------*/
 
 .linkInternos{
-  margin: 20px 20px 
+  margin: 20px 20px
 }
 
 .imgLinkSection{
@@ -618,7 +621,7 @@ padding-right: 2%;
 .linkSection{
   color: white;
   padding: 0%;
-  
+
 }
 .linkSection:hover{
   color: white;
@@ -707,6 +710,97 @@ grid-template-rows: repeat(12, 1fr);
 grid-column-gap: 0px;
 grid-row-gap: 0px;
   }
-  
+
   .div1Users { grid-area: 2 / 2 / 12 / 12; }
 
+
+  /*-----------AdminLandingCards------------*/
+
+  .box_container4
+  {
+    background: #f0f3f3;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+    position:relative;
+    overflow: hidden;
+    width: 1200px;
+    max-width: 100%;
+    padding:25px;
+  }
+
+  .category_title2
+  {
+    color: #48545b;
+    font-size: 1rem;
+    text-weight:400;
+    text-align: center;
+  }
+
+
+  .category_text
+  {
+    color:#717579;
+  }
+
+  .backgroundbanner2
+  {
+    background-color:#fff;
+    padding-top:4rem!important
+  }
+
+  .banner-title4
+  {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-top: 37px;
+    color:#48545b;
+    padding-left: 15px;
+    text-align: center;
+  }
+
+  .banner-subtitle4
+  {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    color:#48545b;
+    padding-left: 15px;
+    text-align: center;
+  }
+
+  .noPadding
+  {
+    padding-left: 0 !important;
+    padding-right: 0!important
+  }
+
+/*-----------Footer------------*/
+.btn-circle {
+  width: 60px;
+  height: 60px;
+  padding: 10px 16px;
+  border-radius: 35px;
+  font-size: 24px;
+  line-height: 1.33;
+      border-color:#fff;
+      background-color:#fff;
+
+}
+
+#footer
+{
+background-color:#f0f3f3;
+margin-top:10px
+}
+
+#footer a
+{
+  text-decoration: none;
+  color:#285078
+}
+
+.fot
+{
+color:#48545b
+}

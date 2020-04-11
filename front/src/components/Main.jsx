@@ -35,7 +35,7 @@ class Main extends React.Component {
     return (
       <Fragment>
 
-        <NavbarContainer />
+        {/*<NavbarContainer />*/}
         {/* <Sidebar /> */}
         {/* <div className="col-10"> */}
         <Switch>

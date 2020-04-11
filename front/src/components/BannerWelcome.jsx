@@ -1,10 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/style.css"
-
+import BannerLog from "./BannerLog"
+import LandingCards from "./LandingCards"
+import Footer from "./Footer"
+import NavbarContainer from "../containers/NavbarContainer"
 
 export default () => (
-<section id="banner">
+<>
+<NavbarContainer/>
+<section id="banner" style={{backgroundColor:"#fff"}}>
   <div className="container">
     <div className="row">
       <div className="col-md-6">
@@ -13,9 +18,14 @@ export default () => (
         <Link to = "/register" ><img src="images/welcome/3.png" className="welcome-btn"/>LOGIN OR REGISTER</Link>
       </div>
       <div className="col-md-6 text-center">
-        <img src="images/welcome/1/welcome1.svg" className="img-fluid"/>
+        <img src="images/welcome/1/illustration-1.png" className="img-fluid"/>
       </div>
     </div>
   </div>
+  <LandingCards/>
+  <Footer/>
+{/*  <BannerLog/>*/}
+
 </section>
+</>
 );
