@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_ERROR, } from "../constants";
+import { SEARCH_ALL_TASKS_DASH, SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_ERROR, } from "../constants";
 
 export const findTasks = (tasks) => ({
     type: SEARCH_TASKS,
@@ -8,6 +8,11 @@ export const findTasks = (tasks) => ({
 
 export const findAllTasks = (allTasks) => ({
     type: SEARCH_ALL_TASKS,
+    allTasks
+})
+
+export const findAllTasksDash = (allTasks) => ({
+    type: SEARCH_ALL_TASKS_DASH,
     allTasks
 })
 
@@ -81,6 +86,12 @@ export const searchAllTasks = (busqueda, valor) => dispatch => {
             .then(res => res.data)
             .then(allTasks => dispatch(findAllTasks(allTasks)))
     }
+}
+
+export const searchAllTasksDash = () => dispatch => {
+    return Axios.get("/api/task/allTasks")
+        .then(res => res.data)
+        .then(allTasks => dispatch(findAllTasksDash(allTasks)))
 }
 
 export const searchTasksList = () => dispatch => {

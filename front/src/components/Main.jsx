@@ -52,7 +52,7 @@ class Main extends React.Component {
           <Route exact path="/newRecruit" component={CreateRecruitContainer} />
           <Route exact path="/task/:taskId" component={SingleTaskContainer} />
           <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
-          <Route exact path="/dashboard" component={DashboardContainer} />
+          <Route exact path="/dashboard/:userId" component={DashboardContainer} />
           <Route exact path="/sidebar" component={SidebarContainer} />
         </Switch>
         {/* </div> */}
