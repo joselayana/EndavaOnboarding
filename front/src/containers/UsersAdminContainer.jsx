@@ -44,7 +44,7 @@ class UsersAdminContainer extends React.Component {
             <Fragment>
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <UsersAdmin users={this.props.users} redirection={this.redirection} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />

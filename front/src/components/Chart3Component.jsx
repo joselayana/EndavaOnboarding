@@ -59,6 +59,10 @@ export default ({ allUsers, allTasks }) => {
     legend: {
       position: "right",
     },
+    title: {
+      display: true,
+      text: "Amount of Tasks of Each User"
+  }
   }
 
   return (

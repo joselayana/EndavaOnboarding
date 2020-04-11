@@ -49,6 +49,10 @@ export default ({ allRecruits, allDisciplines }) => {
               legend:{
                 position:"right",
               },
+              title: {
+                display: true,
+                text: "New Hires by Discipline"
+            },
               cutoutPercentage:50
           }
 

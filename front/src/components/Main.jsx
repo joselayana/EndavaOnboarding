@@ -35,15 +35,37 @@ class Main extends React.Component {
     return (
       <Fragment>
 
-        {/*<NavbarContainer />*/}
-        {/* <Sidebar /> */}
-        {/* <div className="col-10"> */}
+
+        {/* <NavbarContainer /> */}
+
         <Switch>
           <Route exact path="/" component={BannerWelcomeContainer} />
           <Route exact path="/login" component={BannerLoginContainer} />
           <Route exact path="/register" component={BannerRegisterContainer} />
+          <Route exact path="/home" component={AdminLandingCardsContainer} />
+          <Route exact path="/sidebar" component={SidebarContainer} />
+          {/* Tasks */}
           <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
-          <Route exact path="/users" component={UsersAdminContainer}/>
+          <Route exact path="/task/:taskId" component={SingleTaskContainer} />
+          <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
+          {/* New hires */}
+          <Route exact path="/recruits" component={RecruitContainer} />
+          <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
+          <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
+          <Route exact path="/newRecruit" component={CreateRecruitContainer} />
+          {/* User */}
+          <Route exact path="/users" component={UsersAdminContainer} />
+          <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
+          {/* Dashboar       */}
+          <Route exact path="/dashboard/:userId" component={DashboardContainer} />
+
+
+
+          {/* <Route exact path="/" component={BannerWelcomeContainer} />
+          <Route exact path="/login" component={BannerLoginContainer} />
+          <Route exact path="/register" component={BannerRegisterContainer} />
+          <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
+          <Route exact path="/users" component={UsersAdminContainer} />
           <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
           <Route exact path="/home" component={AdminLandingCardsContainer} />
           <Route exact path="/recruits" component={RecruitContainer} />
@@ -53,9 +75,9 @@ class Main extends React.Component {
           <Route exact path="/task/:taskId" component={SingleTaskContainer} />
           <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
           <Route exact path="/dashboard" component={DashboardContainer} />
-          <Route exact path="/sidebar" component={SidebarContainer} />
+          <Route exact path="/sidebar" component={SidebarContainer} /> */}
         </Switch>
-        {/* </div> */}
+
       </Fragment>
     )
   }
