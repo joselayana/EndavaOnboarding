@@ -25,11 +25,11 @@ export default ({ usersTasks, state, allUsers, idUser }) => {
             let fin = state.responsable.indexOf("(") - 1
             userName = state.responsable.slice(0, fin);
         }else{
-            allUsers.map((user) => { 
+            allUsers.map((user) => {
                 (user.id == idUser) ? (userName = user.name + " " + user.lastName) : (null)
             })
         }
-        
+
         usersTasks.map((task)=>{
         (task.state === "pending") ? arrPending.push(task) : null;
         (task.state === "started") ? arrOngoing.push(task) : null;
@@ -86,6 +86,5 @@ export default ({ usersTasks, state, allUsers, idUser }) => {
             </div>
             </Fragment>
         )
-    }    
+    }
 }
-
