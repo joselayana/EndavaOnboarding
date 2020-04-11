@@ -40,6 +40,7 @@ export default ({ usersTasks, state, allUsers, idUser }) => {
         }
         })
 
+
         let data = {
         labels:["Blocked","Expired", "Ongoing", "Pending", "Finished" ],
         datasets:[
@@ -53,6 +54,7 @@ export default ({ usersTasks, state, allUsers, idUser }) => {
                 "#F2F2F2",
                 "#48545B"
             ]
+
             }
         ],
         }
@@ -86,3 +88,4 @@ export default ({ usersTasks, state, allUsers, idUser }) => {
         )
     }    
 }
+
