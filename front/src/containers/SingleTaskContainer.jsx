@@ -27,7 +27,7 @@ class SingleTaskContainer extends React.Component {
             <Fragment>
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <SingleTask selectedTask={this.props.selectedTask} user={this.props.user} />

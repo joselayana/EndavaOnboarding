@@ -54,7 +54,7 @@ class CreateRecruitContainer extends React.Component {
             <div>
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <CreateRecruit handleChange={this.handleChange} handleSubmit={this.handleSubmit} disciplinesOptions={this.props.disciplinesOptions} />

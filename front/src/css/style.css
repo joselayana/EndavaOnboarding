@@ -535,7 +535,7 @@ width: 94% !important
 
 .social_media{
   position: absolute;
-  bottom: 10%;
+  bottom: 6%;
   left: 50%;
   transform: translateX(-50%);
   display: flex;

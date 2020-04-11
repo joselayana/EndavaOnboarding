@@ -36,7 +36,7 @@ class SingleRecruitContainer extends React.Component {
             <div>
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <SingleRecruit recruit={this.props.recruit} tasks={this.props.tasks} handlerClick={this.handlerClick} handleDeleteRecruit={this.handleDeleteRecruit} />

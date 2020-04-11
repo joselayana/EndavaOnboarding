@@ -38,7 +38,7 @@ class RecruitContainer extends React.Component {
             <div>
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <Recruit recruits={this.props.recruits} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} state={this.state} />

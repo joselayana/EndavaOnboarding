@@ -63,7 +63,7 @@ class DeleteUserContainer extends React.Component {
             <div>
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <DeleteUser userId={this.props.match.params.userId} tasks={this.props.tasks} userOptions={this.props.userOptions} handleClickDelete={this.handleClickDelete} handleChange={this.handleChange} handleClick={this.handleClick} />

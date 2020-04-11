@@ -17,9 +17,10 @@ class sidebarContainer extends React.Component {
     }
 
     render() {
+        console.log("llegueeeeeeee Container", this.props.path)
         return (
             <>
-                <Sidebar user={this.props.user} onLogout={this.onLogout} />
+                <Sidebar user={this.props.user} onLogout={this.onLogout} path={this.props.path} />
             </>
 
         )

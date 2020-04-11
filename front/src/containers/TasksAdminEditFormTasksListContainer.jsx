@@ -44,16 +44,12 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
 
 
     }
-
-
-
-
     render() {
         return (
             <Fragment>
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <TasksAdminEditFormTasksList handleSubmit={this.handleSubmit} state={this.state} handleChange={this.handleChange} handleDelete={this.handleDelete} taskListId={this.props.match.params.taskId} tasksList={this.props.tasksList} allTasks={this.props.allTasks} />

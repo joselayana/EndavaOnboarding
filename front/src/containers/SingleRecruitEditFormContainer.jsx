@@ -68,7 +68,7 @@ class SingleRecruitEditFormContainer extends React.Component {
 
                 <div class="parent">
                     <div class="div1">
-                        <SidebarContainer />
+                        <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
                         <SingleRecruitEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} disciplinesOptions={this.props.disciplinesOptions} recruit={this.props.recruit} />
