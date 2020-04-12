@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import "../css/style.css"
 
 export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleSearchAllPendingInputS, handleSearchAllPendingInputT, handleSearchAllFinishedInputS, handleSearchAllFinishedInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user, clearState, handleClick2 }) => {
-  
+
   let indice = 0
   let indice2 = 0
   let indice3 = 0
@@ -141,6 +141,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                         </thead>
                         <tbody>
                           {tasks.map((task) => {
+                            console.log(`dueeeeeeee ${task.dueDate} finishhhhhh ${task.finishDate}`)
                             return (
                               <>
                                 {(task.state == "finished") ? (

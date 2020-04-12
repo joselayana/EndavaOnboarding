@@ -30,7 +30,7 @@ class DeleteUserContainer extends React.Component {
             let oldUser = this.props.match.params.userId
             this.props.userOptions.map((user) => {
                 let inicio = this.state.newResponsable.indexOf("(") + 1
-                let fin = this.state.responnewResponsablesable.length - 1
+                let fin = this.state.newResponsable.length - 1
                 let idSelected = this.state.newResponsable.slice(inicio, fin);
                 (parseInt(idSelected) == user.id) ? (idUser = user.id) : null
             })
@@ -59,10 +59,10 @@ class DeleteUserContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        if (!this.props.user.isAdmin && this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <div>
