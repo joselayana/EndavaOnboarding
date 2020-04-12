@@ -9,7 +9,7 @@ export default ({ user, onLogout, path }) => {
       {(user.id && path.path) ? (
         <div className="wrapper">
           <div className="sidebar">
-            <div style={{ marginBottom: "40%" }} >
+            <div style={{ marginBottom: "30%" }} >
               <a className="sidebar-brand" href="/">
                 <img src="/images/logo/Endava_Logo_GyR.svg" />
               </a>
@@ -17,7 +17,13 @@ export default ({ user, onLogout, path }) => {
             <div style={{ color: "white" }}  >
               <center><h6> Welcome {user.name}!!!</h6></center>
             </div>
+            {/* BOTON LOGOUT */}
             <ul>
+              <li>
+                <button onClick={onLogout} className="linkSection btn btn-link" type="button">
+                  <i className="fa fa-sign-out-alt"></i>  Log Out
+                </button>
+              </li>
               {/* DASHBOARD */}
               <li>
                 <a className="linkSection" href={`/dashboard/${user.id}`} ><i className="fas fa-chart-line"></i> Dashboard</a>
@@ -25,7 +31,7 @@ export default ({ user, onLogout, path }) => {
               {/* TASK */}
               <li>
                 <button className="linkSection btn btn-link" type="button" data-toggle="collapse" data-target="#myTasks" aria-expanded="false" aria-controls="collapseExample">
-                  <i className="fas fa-list-ol"></i>  Tasks
+                  <i className="fas fa-list-ol"></i>  &nbsp;Tasks
                 </button>
 
                 <> {(path.path === "/myTasks/:userId" || path.path === "/editAvailableTasks/:taskId" || path.path === "/task/:taskId") ? (
@@ -75,7 +81,7 @@ export default ({ user, onLogout, path }) => {
                     {/* NEW HIRES */}
                     <li>
                       <button className="linkSection btn btn-link" type="button" data-toggle="collapse" data-target="#newHires" aria-expanded="false" aria-controls="collapseExample">
-                        <i className="fas fa-users"></i> New Hires
+                        <i className="fas fa-users"></i> &nbsp;New Hires
                       </button>
 
                       <> {(path.path === "/recruits" || path.path === "/recruit/:recruitId" || path.path === "/recruit/edit/:recruitId" || path.path === "/newRecruit") ? (
@@ -105,7 +111,7 @@ export default ({ user, onLogout, path }) => {
                     {/* USERS */}
                     <li>
                       <button className="linkSection btn btn-link" type="button" data-toggle="collapse" data-target="#users" aria-expanded="false" aria-controls="collapseExample">
-                        <i className="fas fa-user"></i> Users
+                        <i className="fas fa-user"></i> &nbsp;Users
                       </button>
 
 
@@ -133,9 +139,7 @@ export default ({ user, onLogout, path }) => {
                 }
               </>
             </ul>
-            <div className="social_media">
-              <button onClick={onLogout} type="button" class="btn btn-light btnout"><i class="fa fa-sign-out-alt"></i>Log Out</button>
-            </div>
+
           </div>
         </div>
       ) : (

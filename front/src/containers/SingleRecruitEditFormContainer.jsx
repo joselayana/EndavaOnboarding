@@ -43,7 +43,7 @@ class SingleRecruitEditFormContainer extends React.Component {
         this.state.lastName ? (newLastName = this.state.lastName) : (newLastName = this.props.recruit.lastName)
         this.state.email ? (newEmail = this.state.email) : (newEmail = this.props.recruit.email)
         this.state.phone ? (newPhone = this.state.phone) : (newPhone = this.props.recruit.phone)
-        this.state.DNI ? (newnewDNIName = this.state.DNI) : (newDNI = this.props.recruit.DNI)
+        this.state.DNI ? (newDNI = this.state.DNI) : (newDNI = this.props.recruit.DNI)
         this.state.entryDate ? (newEntryDate = this.state.entryDate) : (newEntryDate = this.props.recruit.entryDate)
 
         this.props.disciplinesOptions.map((discipline) => (this.state.discipline == discipline.description) ? (IdDiscipline = discipline.id) : null)

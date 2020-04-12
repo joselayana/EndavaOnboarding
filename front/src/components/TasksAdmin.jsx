@@ -3,12 +3,13 @@ import { Link } from "react-router-dom"
 import "../css/style.css"
 
 export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleSearchAllPendingInputS, handleSearchAllPendingInputT, handleSearchAllFinishedInputS, handleSearchAllFinishedInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user, clearState, handleClick2 }) => {
-  
+
   let indice = 0
   let indice2 = 0
   let indice3 = 0
   let indice4 = 0
   let indice5 = 0
+
   return (
     <Fragment>
       {(user.id) ? (
@@ -64,6 +65,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                               color = "rojo"
                             }
 
+                            console.log(`las due date es ${task.dueDate} y la finishDate es ${new Date(task.finishDate)}`)
                             return (
                               <>
                                 {(task.state != "finished") ? (
