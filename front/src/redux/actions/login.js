@@ -10,12 +10,15 @@ const userLogout = () => ({
   type: USER_LOGOUT,
 });
 
-export const getLoggedUser = (user) => dispatch =>
-        Axios.get(`/api/user/check`)
+export const getLoggedUser = (user) => dispatch =>{
+        return Axios.get(`/api/user/check`)
         .then(rta => rta.data)
         .then(data => {
           dispatch(userLogin(data))
-})
+          return data
+        })
+      
+}
 
 export const login = (user) => (dispatch) => {
   return Axios.post("api/user/login", user)

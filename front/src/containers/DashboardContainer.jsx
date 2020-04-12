@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Dashboard from "../components/Dashboard";
 import Graphics from "../components/Graphics";
@@ -72,6 +72,9 @@ class DashboardContainer extends React.Component {
 
   render() {
     const { allTasks, allRecruits, allDisciplines, allUsers, usersTasks, allTasksDash } = this.props;
+    if (!this.props.user.name) {
+      return <Redirect to={{pathname: "/login"}}/>
+    }
     return (
       <div class="parent">
         <div class="div1">
@@ -94,7 +97,8 @@ const mapStateToProps = (state, ownProps) => ({
   allDisciplines: state.disciplines.disciplines,
   allUsers: state.user.users,
   usersTasks: state.task.tasks,
-  allTasksDash: state.task.allTasksDash
+  allTasksDash: state.task.allTasksDash,
+  user: state.login.user
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {

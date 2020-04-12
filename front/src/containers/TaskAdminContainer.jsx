@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import TaskAdmin from "../components/TasksAdmin";
+
 import { createTask, searchTasks, searchAllTasks, searchTasksList, updateTaskState, deleteTask } from "../redux/actions/tasks"
 import SidebarContainer from "../containers/SidebarContainer";
 
@@ -15,6 +16,7 @@ class TasksAdminContainer extends React.Component {
             busqueda: "",
             busquedaS: "",
             busquedaT: "",
+            busquedaTask:"",
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -24,6 +26,7 @@ class TasksAdminContainer extends React.Component {
         this.handleSearchAllPendingInputT = this.handleSearchAllPendingInputT.bind(this);
         this.handleSearchAllFinishedInputS = this.handleSearchAllFinishedInputS.bind(this);
         this.handleSearchAllFinishedInputT = this.handleSearchAllFinishedInputT.bind(this);
+        this.handleSearchTaskList = this.handleSearchTaskList.bind(this);
         this.clearState = this.clearState.bind(this)
         this.handleClick2 = this.handleClick2.bind(this);
     }
@@ -87,6 +90,12 @@ class TasksAdminContainer extends React.Component {
         busqueda.length >= 2 ? this.props.searchAllTasks(busqueda, 2)
             : this.props.searchAllTasks()
     }
+    handleSearchTaskList(e) {
+        this.setState({ busquedaTask: e.target.value })
+        const busqueda = e.target.value
+        busqueda.length >= 2 ? this.props.searchTasksList(busqueda)
+            : this.props.searchTasksList()
+    }
 
     handleClick(taskId) {
         let obj = { taskState: this.state.taskState, taskId: taskId, userId: this.props.user.id }
@@ -98,11 +107,12 @@ class TasksAdminContainer extends React.Component {
 
     handleClick2(taskId) {
         this.props.history.push(`/editAvailableTasks/${taskId}`)
-
     }
 
     render() {
-        // console.log("aquiiiiiiiii", this.props.match)
+        if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <Fragment>
                 <div class="parent">
@@ -110,7 +120,7 @@ class TasksAdminContainer extends React.Component {
                         <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
-                        <TaskAdmin clearState={this.clearState} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                        <TaskAdmin clearState={this.clearState} handleSearchTaskList={this.handleSearchTaskList} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
                     </div>
                 </div>
             </Fragment>
@@ -132,7 +142,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         createTask: (task) => dispatch(createTask(task)),
         searchTasks: (userId, busqueda) => dispatch(searchTasks(userId, busqueda)),
         searchAllTasks: (busqueda, valor) => dispatch(searchAllTasks(busqueda, valor)),
-        searchTasksList: () => dispatch(searchTasksList()),
+        searchTasksList: (busqueda) => dispatch(searchTasksList(busqueda)),
         updateTaskState: (taskState) => dispatch(updateTaskState(taskState)),
         deleteTask: (taskId) => dispatch(deleteTask(taskId))
     }

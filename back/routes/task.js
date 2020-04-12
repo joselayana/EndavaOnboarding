@@ -56,12 +56,6 @@ router.get("/myTasks/:id", function (req, res) {
             include: [
                 {
                     model: Recruit,
-                    where: {
-                        [Op.or]: [
-                            { name: { [Op.iLike]: `%${req.query.s}%` } },
-                            { lastName: { [Op.iLike]: `%${req.query.s}%` } }
-                        ]
-                    }
                 },
                 { model: Task }
             ],
@@ -72,6 +66,13 @@ router.get("/myTasks/:id", function (req, res) {
                 ['id', 'DESC'],
             ],
         })
+        .then(tasks => tasks.filter(task => {
+            let fullName = `${task.recruit.name} ${task.recruit.lastName}`
+            let fullNameMin = fullName.toLowerCase()
+            let query= req.query.s
+            let queryMin = query.toLowerCase()
+            return fullNameMin.includes(queryMin)
+            }))
             .then(tasks => res.send(tasks))
     } else {
         TaskRecruit.findAll({
@@ -110,36 +111,34 @@ router.get("/allTasks", (req, res) => {
     if (req.query.s) {
         TaskRecruit.findAll({
             include: [
-                {
-                    model: Recruit,
-                    where: {
-                        [Op.or]: [
-                            { name: { [Op.iLike]: `%${req.query.s}%` } },
-                            { lastName: { [Op.iLike]: `%${req.query.s}%` } }
-                        ]
-                    }
-                },
+                {model: Recruit},
                 { model: Task },
                 { model: User }
             ]
         })
+            .then(tasks => tasks.filter(task => {
+            let fullName = `${task.recruit.name} ${task.recruit.lastName}`
+            let fullNameMin = fullName.toLowerCase()
+            let query= req.query.s
+            let queryMin = query.toLowerCase()
+            return fullNameMin.includes(queryMin)
+            }))
             .then(allTasks => res.status(200).json(allTasks))
     } else if (req.query.t) {
         TaskRecruit.findAll({
             include: [
                 { model: Recruit },
                 { model: Task },
-                {
-                    model: User,
-                    where: {
-                        [Op.or]: [
-                            { name: { [Op.iLike]: `%${req.query.t}%` } },
-                            { lastName: { [Op.iLike]: `%${req.query.t}%` } }
-                        ]
-                    }
-                }
+                { model: User,}
             ]
         })
+            .then(tasks => tasks.filter(task => {
+            let fullName = `${task.user.name} ${task.user.lastName}`
+            let fullNameMin = fullName.toLowerCase()
+            let query= req.query.t
+            let queryMin = query.toLowerCase()
+            return fullNameMin.includes(queryMin)
+            }))
             .then(allTasks => res.status(200).json(allTasks))
     } else {
         TaskRecruit.findAll({
@@ -155,8 +154,17 @@ router.get("/allTasks", (req, res) => {
 })
 
 router.get("/tasksList", (req, res) => {
-    Task.findAll()
+    const Op = Sequelize.Op
+
+    if (req.query.s) {
+        Task.findAll({
+            where: {description: { [Op.iLike]: `%${req.query.s}%` }}
+        })
         .then(tasksList => res.status(200).json(tasksList))
+    } else {
+        Task.findAll()
+        .then(tasksList => res.status(200).json(tasksList))
+    }
 })
 
 

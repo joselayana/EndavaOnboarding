@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Redirect } from "react-router-dom"
 import TasksAdminEditFormTasksList from "../components/TasksAdminEditFormTasksList"
 import { deleteTask, changeTask } from "../redux/actions/tasks"
 import SidebarContainer from "../containers/SidebarContainer";
@@ -18,10 +18,6 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     componentDidMount() {
-
-
-
-
     }
 
     handleDelete() {
@@ -45,6 +41,11 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
 
     }
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <Fragment>
                 <div class="parent">

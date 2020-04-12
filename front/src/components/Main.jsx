@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import Loader from 'react-loader-spinner';
 
 import AdminLandingCardsContainer from "../containers/AdminLandingCardsContainer"
 import TasksAdminContainer from "../containers/TaskAdminContainer"
@@ -25,13 +26,31 @@ import SidebarContainer from "../containers/SidebarContainer";
 
 
 class Main extends React.Component {
-  constructor() {
-    super()
+constructor() {
+  super()
+  this.state={
+    isLoading: true
   }
-  componentDidMount() {
-    this.props.getLoggedUser();
-  }
-  render() {
+}
+componentDidMount() {
+  this.props.getLoggedUser()
+  .then(()=>{
+    this.setState({isLoading:false})
+  })
+}
+render() {
+  if(this.state.isLoading){return (
+    <Fragment>
+          <NavbarContainer />
+          {/* <Loader
+          type="Puff"
+          color="#00BFFF"
+          height={100}
+          width={100}
+          timeout={3000}
+          /> */}
+    </Fragment>
+  )}
     return (
       <Fragment>
 
@@ -43,7 +62,7 @@ class Main extends React.Component {
           <Route exact path="/login" component={BannerLoginContainer} />
           <Route exact path="/register" component={BannerRegisterContainer} />
           <Route exact path="/home" component={AdminLandingCardsContainer} />
-          <Route exact path="/sidebar" component={SidebarContainer} />
+          {/* <Route exact path="/sidebar" component={SidebarContainer} /> */}
           {/* Tasks */}
           <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
           <Route exact path="/task/:taskId" component={SingleTaskContainer} />

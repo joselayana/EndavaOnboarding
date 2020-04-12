@@ -1,8 +1,9 @@
 import React, { Fragment } from "react"
 import { Link } from "react-router-dom"
 
-export default ({ users, handleProfile, handleSearchInput, redirection }) => {
+export default ({ users, handleProfile, handleSearchInput, redirection, onSortChange, state }) => {
   let indice = 0
+  let orden =state.currentSort==="up" ? [...users].sort(state.sortTypes["up"]) : [...users].sort(state.sortTypes["up"]).reverse()
   return (
     <Fragment>
       <div className="parentUsers" >
@@ -24,7 +25,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection }) => {
                     <thead>
                       <tr className="table1">
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
+                        <th scope="col"><div onClick={onSortChange}>Name </div></th>
                         <th scope="col">Discipline</th>
                         <th scope="col">Email</th>
                         <th scope="col">Profile</th>
@@ -32,7 +33,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection }) => {
                       </tr>
                     </thead>
                     <tbody>
-                      {users.map((user) => {
+                      {orden.map((user) => {
                         indice = indice + 1
                         return (
 

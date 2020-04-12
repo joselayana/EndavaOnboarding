@@ -115,17 +115,21 @@ router.get("/allUsers", (req, res) => {
     const Op = Sequelize.Op
     if (req.query.s) {
         User.findAll({
-            where: {
-                [Op.or]: [
-                    { name: { [Op.iLike]: `%${req.query.s}%` } },
-                    { lastName: { [Op.iLike]: `%${req.query.s}%` } }
-                ]
-            },
+            // where: {
+            //     fullName: { [Op.iLike]: `%${req.query.s}%` }
+            // },
             include: [
                 { model: Discipline }
             ]
         })
-            .then(users => res.status(200).json(users))
+            .then(usuarios => usuarios.filter(usuario => {
+                let fullName = `${usuario.name} ${usuario.lastName}`
+                let fullNameMin = fullName.toLowerCase()
+                let query= req.query.s
+                let queryMin = query.toLowerCase()
+                return fullNameMin.includes(queryMin)
+                }))
+            .then(users => {console.log(users), res.status(200).json(users)})
     } else {
         User.findAll({
             include: [
