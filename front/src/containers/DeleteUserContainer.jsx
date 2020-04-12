@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import DeleteUser from "../components/DeleteUser";
 import { searchTasks, updateTaskRecruit } from "../redux/actions/tasks"
@@ -59,6 +59,11 @@ class DeleteUserContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <div>
                 <div class="parent">

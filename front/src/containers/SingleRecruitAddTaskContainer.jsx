@@ -54,6 +54,11 @@ class SingleRecruitAddTaskContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <div>
                 <SingleRecruitAddTask taskOptions={this.props.taskOptions} userOptions={this.props.userOptions} handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} newTasks={this.props.newTasks} />
@@ -66,7 +71,9 @@ const mapStateToProps = (state, ownProps) => {
     return {
         taskOptions: state.task.tasksList,
         userOptions: state.user.users,
-        newTasks: state.task.newTasks
+        newTasks: state.task.newTasks,
+        user: state.login.user
+
     }
 }
 

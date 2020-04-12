@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 import SingleRecruit from "../components/SingleRecruit";
@@ -32,6 +32,11 @@ class SingleRecruitContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <div>
                 <div class="parent">
@@ -49,6 +54,7 @@ class SingleRecruitContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        user: state.login.user,
         recruit: state.recruit.selectedRecruit,
         tasks: state.task.tasksRecruit
     }

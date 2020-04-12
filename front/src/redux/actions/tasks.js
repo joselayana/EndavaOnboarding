@@ -94,10 +94,16 @@ export const searchAllTasksDash = () => dispatch => {
         .then(allTasks => dispatch(findAllTasksDash(allTasks)))
 }
 
-export const searchTasksList = () => dispatch => {
-    return Axios.get("/api/task/tasksList")
+export const searchTasksList = (busqueda) => dispatch => {
+        if (busqueda === undefined) {
+        return Axios.get("/api/task/tasksList")
         .then(res => res.data)
         .then(tasksList => dispatch(findTasksList(tasksList)))
+    } else {
+        return Axios.get(`/api/task/tasksList?s=${busqueda}`)
+        .then(res => res.data)
+        .then(tasksList => dispatch(findTasksList(tasksList)))
+    }
 }
 
 export const searchSingleTaskRecruit = (taskId) => dispatch => {

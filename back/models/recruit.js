@@ -41,6 +41,14 @@ Recruit.init({
     },
     DNI: {
         type: Sequelize.INTEGER
+    },
+    fullName: {
+        type: Sequelize.VIRTUAL,
+        get(){
+            // const nombre = this.getDataValue("name");
+            // const apellido = this.getDataValue("lastName")
+            return `${this.name} ${this.lastName}`
+        }
     }
 }, {
     sequelize,

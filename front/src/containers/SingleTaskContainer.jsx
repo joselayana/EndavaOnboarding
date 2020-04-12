@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Redirect } from "react-router-dom"
 
 
 import SingleTask from "../components/SingleTask"
@@ -23,6 +23,9 @@ class SingleTaskContainer extends React.Component {
     }
 
     render() {
+        if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <Fragment>
                 <div class="parent">
