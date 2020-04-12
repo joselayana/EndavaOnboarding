@@ -5,7 +5,7 @@ import SingleRecruitAddTaskContainer from "../containers/SingleRecruitAddTaskCon
 
 
 
-export default ({ recruit, tasks, handlerClick }) => {
+export default ({ recruit, tasks, handlerClick, handleDeleteRecruit }) => {
     let indice = 0
     if (tasks) {
         return (
@@ -21,7 +21,7 @@ export default ({ recruit, tasks, handlerClick }) => {
                                 </button>
                                 </h2>
                             </div>
-
+                            {/* Collapse information */}
                             <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                                 <div className="card-body">
 
@@ -44,9 +44,33 @@ export default ({ recruit, tasks, handlerClick }) => {
                                         </div>
                                     </section>
                                     <div style={{ padding: "3%", display: "flex", justifyContent: "flex-end" }}>
-                                        <Link to={`/recruit/edit/${recruit.id}`}><button type="button" className="btn btn-outline-primary" style={{ borderColor: "#1E5DAC" }} >Edit Information</button></Link>
+                                        <div style={{ paddingRight: "1%" }}>
+                                            <Link to={`/recruit/edit/${recruit.id}`}><button type="button" className="btn btn-outline-primary" style={{ borderColor: "#1E5DAC" }} >Edit Information</button></Link>
+                                        </div>
+                                        <div >
+                                            <button type="button" className="btn btn-outline-danger" data-toggle="modal" data-target="#deleteNewHire" >Delete New Hire</button>
+                                        </div>
                                     </div>
-
+                                    {/* <!-- Modal  delete new hire--> */}
+                                    <div className="modal fade" id="deleteNewHire" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                        <div className="modal-dialog modal-dialog-centered" role="document">
+                                            <div className="modal-content">
+                                                <div className="modal-header">
+                                                    <h5 className="modal-title" id="exampleModalCenterTitle">Delete new hire request</h5>
+                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div className="modal-body">
+                                                    <p>You are deleting the new hire {recruit.name} {recruit.lastName}</p>
+                                                </div>
+                                                <div className="modal-footer">
+                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                    <button onClick={() => handleDeleteRecruit(recruit.id)} data-dismiss="modal" type="button" className="btn btn-primary">Save change</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -58,6 +82,7 @@ export default ({ recruit, tasks, handlerClick }) => {
                                 </button>
                                 </h2>
                             </div>
+                            {/* Collapse Associated Tasks */}
                             <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                 <div className="card-body">
 

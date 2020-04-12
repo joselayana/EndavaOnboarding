@@ -21,28 +21,30 @@ export default ({allTasks}) => {
 
   return (
 
-  <div style={{marginLeft:"3%", marginRight:"2%"}}> 
-    <div class="row"> 
+    <div class="parentDash">
 
-      <div class="col">
+
+      <div class="div1Dash shrink">
+
         <a href="#home-tab">
-        <div className=" dashCard1 card"></div>
-          <div className=" dashCard2 card">
-            <div className="card-img-top HeaderCard redHead">
-            <i className="fas fa-ban text-center"></i><span className="bodyCardTitle">BLOCKED</span>
+            <div className=" dashCard2 card ">
+              <div className="card-img-top HeaderCard EndavaDash3-5-hex">
+              <i className="fas fa-ban text-center"></i><span className="bodyCardTitle">BLOCKED</span>
+              </div>
+              <div className="card-body bodyCard">
+                <p className="card-text text-center">{arrBlocked.length}</p>
+              </div>
             </div>
-            <div className="card-body bodyCard">
-              <p className="card-text text-center">{arrBlocked.length}</p>
-            </div>
-          </div>
           </a>
-        </div> 
 
-      <div class="col">
+      </div>
+
+
+      <div class="div2Dash shrink">
+
         <a href="#profile-tab">
-          <div className=" dashCard1 card"></div>
             <div className=" dashCard2 card">
-              <div className="card-img-top HeaderCard orangeHead">
+              <div className="card-img-top HeaderCard EndavaDash3-5-hex">
                 <i class="far fa-calendar-times"></i><span className="bodyCardTitle">EXPIRED</span>
               </div>
               <div className="card-body bodyCard">
@@ -50,33 +52,41 @@ export default ({allTasks}) => {
               </div>
           </div>
         </a>
-      </div> 
-      <div class="col">
-        <div className=" dashCard1 card"></div>
+
+      </div>
+
+
+      <div class="div3Dash shrink">
+
         <div className=" dashCard2 card">
-          <div className="card-img-top HeaderCard greenHead">
+          <div className="card-img-top HeaderCard EndavaDash3-5-hex">
           <i class="fas fa-list-ul"></i><span className="bodyCardTitle">ONGOING</span>
           </div>
           <div className="card-body bodyCard">
             <p className="card-text text-center">{arrOngoing.length}</p>
           </div>
         </div>
+
       </div>
-      <div class="col">
-        <a href="#contact-tab">
-        <div className=" dashCard1 card"></div>
-        <div className=" dashCard2 card">
-          <div className="card-img-top HeaderCard blueHead">
-          <i class="far fa-clock"></i><span className="bodyCardTitle">PENDING</span>
+
+
+      <div class="div4Dash shrink">
+
+        <a href="#contact-tab ">
+          <div className=" dashCard2 card">
+            <div className="card-img-top HeaderCard EndavaDash3-5-hex">
+            <i class="far fa-clock"></i><span className="bodyCardTitle">PENDING</span>
+            </div>
+            <div className="card-body bodyCard">
+              <p className="card-text text-center">{arrPending.length}</p>
+            </div>
           </div>
-          <div className="card-body bodyCard">
-            <p className="card-text text-center">{arrPending.length}</p>
-          </div>
-        </div>
-      </a>
-      </div> 
+        </a>
+
+      </div>
+
+
     </div>
 
- </div>
 
 )}

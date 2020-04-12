@@ -2,6 +2,8 @@ import React from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { searchRecruits } from "../redux/actions/recruits"
+import SidebarContainer from "../containers/SidebarContainer";
+
 
 import Recruit from "../components/Recruit";
 
@@ -9,7 +11,7 @@ class RecruitContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            busqueda:"",
+            busqueda: "",
         }
         this.handleChange = this.handleChange.bind(this);
         this.handleSearchInput = this.handleSearchInput.bind(this);
@@ -23,12 +25,12 @@ class RecruitContainer extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
-    handleSearchInput (e) {
-        this.setState({busqueda : e.target.value})
+    handleSearchInput(e) {
+        this.setState({ busqueda: e.target.value })
         const busqueda = e.target.value
-        busqueda.length >=2? this.props.searchRecruits(busqueda)
-        : this.props.searchRecruits()
-        
+        busqueda.length >= 2 ? this.props.searchRecruits(busqueda)
+            : this.props.searchRecruits()
+
     }
 
     render() {
@@ -39,7 +41,14 @@ class RecruitContainer extends React.Component {
         }
         return (
             <div>
-                <Recruit recruits={this.props.recruits} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} state={this.state} />
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer path={this.props.match} />
+                    </div>
+                    <div class="div2">
+                        <Recruit recruits={this.props.recruits} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} state={this.state} />
+                    </div>
+                </div>
             </div>
         )
     }

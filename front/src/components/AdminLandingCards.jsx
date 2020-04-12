@@ -64,7 +64,7 @@ export default ({ user }) => (
 						<div className="card-body">
 							<h5 className="card-title category_title">My Dashboard</h5>
 							<p className="card-text category_text">Discover al the metrics and reports that you need.</p>
-							<Link to='/myTasks'>
+							<Link to='/dashboard'>
 								<button className="btn category_button btn-block mb-2">Access</button>
 							</Link>
 						</div>

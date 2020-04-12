@@ -3,6 +3,7 @@ import { withRouter, Redirect } from "react-router-dom";
 import { connet, connect } from "react-redux";
 import UsersAdmin from "../components/UsersAdmin";
 import { fetchUsers, changeProfile } from "../redux/actions/users"
+import SidebarContainer from "../containers/SidebarContainer";
 
 
 class UsersAdminContainer extends React.Component {
@@ -31,15 +32,15 @@ class UsersAdminContainer extends React.Component {
 
     }
 
-    handleSearchInput (e) {
-        this.setState({busqueda : e.target.value})
+    handleSearchInput(e) {
+        this.setState({ busqueda: e.target.value })
         const busqueda = e.target.value
-        busqueda.length >=2? this.props.fetchUsers(busqueda)
-        : this.props.fetchUsers()
-        
+        busqueda.length >= 2 ? this.props.fetchUsers(busqueda)
+            : this.props.fetchUsers()
+
     }
 
-    redirection (userId){
+    redirection(userId) {
         this.props.history.push(`/deleteUser/${userId}`)
     }
     onSortChange(){
@@ -63,7 +64,14 @@ class UsersAdminContainer extends React.Component {
         }
         return (
             <Fragment>
-                <UsersAdmin users={this.props.users} state={this.state} onSortChange={this.onSortChange} redirection={this.redirection} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer path={this.props.match} />
+                    </div>
+                    <div class="div2">
+                        <UsersAdmin users={this.props.users} state={this.state} onSortChange={this.onSortChange} redirection={this.redirection} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />
+                    </div>
+                </div>
             </Fragment>
         )
     }

@@ -3,6 +3,9 @@ import { connect } from "react-redux"
 import { withRouter, Redirect } from "react-router-dom"
 import TasksAdminEditFormTasksList from "../components/TasksAdminEditFormTasksList"
 import { deleteTask, changeTask } from "../redux/actions/tasks"
+import SidebarContainer from "../containers/SidebarContainer";
+
+
 
 class TasksAdminEditFormTasksListContainer extends React.Component {
     constructor() {
@@ -37,10 +40,6 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
 
 
     }
-
-
-
-
     render() {
         if(!this.props.user.isAdmin && this.props.user.name){
             return <Redirect to={{pathname: "/home"}}/>
@@ -49,7 +48,14 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
         }
         return (
             <Fragment>
-                <TasksAdminEditFormTasksList handleSubmit={this.handleSubmit} state={this.state} handleChange={this.handleChange} handleDelete={this.handleDelete} taskListId={this.props.match.params.taskId} tasksList={this.props.tasksList} allTasks={this.props.allTasks} />
+                <div class="parent">
+                    <div class="div1">
+                        <SidebarContainer path={this.props.match} />
+                    </div>
+                    <div class="div2">
+                        <TasksAdminEditFormTasksList handleSubmit={this.handleSubmit} state={this.state} handleChange={this.handleChange} handleDelete={this.handleDelete} taskListId={this.props.match.params.taskId} tasksList={this.props.tasksList} allTasks={this.props.allTasks} />
+                    </div>
+                </div>
             </Fragment>
         )
     }
