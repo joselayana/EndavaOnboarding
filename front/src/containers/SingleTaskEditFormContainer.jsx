@@ -40,6 +40,9 @@ class SingleTaskEditFormContainer extends React.Component {
     }
 
     render() {
+        if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <Fragment>
                 <SingleTaskEditForm handleSubmit={this.handleSubmit} handleChange={this.handleChange} />

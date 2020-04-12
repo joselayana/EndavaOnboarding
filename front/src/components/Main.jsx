@@ -62,7 +62,7 @@ render() {
           <Route exact path="/login" component={BannerLoginContainer} />
           <Route exact path="/register" component={BannerRegisterContainer} />
           <Route exact path="/home" component={AdminLandingCardsContainer} />
-          <Route exact path="/sidebar" component={SidebarContainer} />
+          {/* <Route exact path="/sidebar" component={SidebarContainer} /> */}
           {/* Tasks */}
           <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
           <Route exact path="/task/:taskId" component={SingleTaskContainer} />

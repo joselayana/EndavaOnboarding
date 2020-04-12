@@ -60,7 +60,7 @@ class DeleteUserContainer extends React.Component {
 
     render() {
         if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: "/home"}}/>
+            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
         } else if (!this.props.user.name) {
             return <Redirect to={{pathname: "/login"}}/>
         }

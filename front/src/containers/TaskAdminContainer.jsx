@@ -120,7 +120,7 @@ class TasksAdminContainer extends React.Component {
                         <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
-                        <TaskAdmin clearState={this.clearState} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
+                        <TaskAdmin clearState={this.clearState} handleSearchTaskList={this.handleSearchTaskList} user={this.props.user} handleSearchInput={this.handleSearchInput} handleSearchAllPendingInputS={this.handleSearchAllPendingInputS} handleSearchAllPendingInputT={this.handleSearchAllPendingInputT} handleSearchAllFinishedInputS={this.handleSearchAllFinishedInputS} handleSearchAllFinishedInputT={this.handleSearchAllFinishedInputT} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleClick={this.handleClick} state={this.state} handleClick2={this.handleClick2} tasks={this.props.tasks} allTasks={this.props.allTasks} tasksList={this.props.tasksList} />
                     </div>
                 </div>
             </Fragment>
