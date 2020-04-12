@@ -9,6 +9,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
   let indice3 = 0
   let indice4 = 0
   let indice5 = 0
+
   return (
     <Fragment>
       {(user.id) ? (
@@ -64,6 +65,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                               color = "rojo"
                             }
 
+                            console.log(`las due date es ${task.dueDate} y la finishDate es ${new Date(task.finishDate)}`)
                             return (
                               <>
                                 {(task.state != "finished") ? (
