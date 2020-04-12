@@ -43,6 +43,14 @@ User.init({
     },
     salt: {
         type: Sequelize.STRING
+    },
+    fullName: {
+        type: Sequelize.VIRTUAL,
+        get(){
+            // const nombre = this.getDataValue("name");
+            // const apellido = this.getDataValue("lastName")
+            return `${this.name} ${this.lastName}`
+        }
     }
 }, {
     sequelize,
@@ -52,7 +60,6 @@ User.init({
 
 User.beforeCreate((user) => {
     user.salt = crypto.randomBytes(20).toString('hex');
-
     user.password = crypto.createHmac('sha1', user.salt).update(user.password).digest('hex')
 })
 

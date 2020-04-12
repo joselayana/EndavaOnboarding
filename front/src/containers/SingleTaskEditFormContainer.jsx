@@ -17,6 +17,14 @@ class SingleTaskEditFormContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
+    componentDidMount() {
+        if(!this.props.user.name){
+            this.props.history.push("/login")
+        }
+        const taskId = this.props.match.params.taskId
+        this.props.searchSingleTaskRecruit(taskId)
+
+    }
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });

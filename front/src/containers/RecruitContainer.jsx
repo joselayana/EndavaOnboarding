@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { searchRecruits } from "../redux/actions/recruits"
 
@@ -32,6 +32,11 @@ class RecruitContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: "/home"}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <div>
                 <Recruit recruits={this.props.recruits} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} state={this.state} />
@@ -42,6 +47,7 @@ class RecruitContainer extends React.Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        user: state.login.user,
         recruits: state.recruit.recruits
     }
 }

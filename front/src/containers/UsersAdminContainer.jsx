@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
-import { withRouter } from "react-router-dom";
+import React, { Fragment, useEffect} from "react";
+import { withRouter, Redirect } from "react-router-dom";
 import { connet, connect } from "react-redux";
 import UsersAdmin from "../components/UsersAdmin";
 import { fetchUsers, changeProfile } from "../redux/actions/users"
@@ -9,17 +9,23 @@ class UsersAdminContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            busqueda:""
+            busqueda:"",
+            sortTypes: {
+                up: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
+            },
+            currentSort: 'up',
         }
         this.handleProfile = this.handleProfile.bind(this)
         this.handleSearchInput = this.handleSearchInput.bind(this);
         this.redirection = this.redirection.bind(this)
+        this.onSortChange = this.onSortChange.bind(this)
+
 
     }
     componentDidMount() {
         this.props.fetchUsers()
-
     }
+
     handleProfile(idUser, profile) {
         this.props.changeProfile(idUser, profile)
 
@@ -36,12 +42,28 @@ class UsersAdminContainer extends React.Component {
     redirection (userId){
         this.props.history.push(`/deleteUser/${userId}`)
     }
+    onSortChange(){
+        let nextSort;
+        
+
+		if (this.state.currentSort === 'down') nextSort = 'up';
+		else if (this.state.currentSort === 'up') nextSort = 'down';
+		this.setState({
+			currentSort: nextSort
+        });
+        console.log(this.state.currentSort)
+	};
 
 
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: "/home"}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <Fragment>
-                <UsersAdmin users={this.props.users} redirection={this.redirection} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />
+                <UsersAdmin users={this.props.users} state={this.state} onSortChange={this.onSortChange} redirection={this.redirection} handleProfile={this.handleProfile} handleSearchInput={this.handleSearchInput} />
             </Fragment>
         )
     }
@@ -50,6 +72,7 @@ class UsersAdminContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         users: state.user.users,
+        user: state.login.user
     }
 
 };

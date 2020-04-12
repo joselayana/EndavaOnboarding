@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import Loader from 'react-loader-spinner';
 
 import AdminLandingCardsContainer from "../containers/AdminLandingCardsContainer"
 import TasksAdminContainer from "../containers/TaskAdminContainer"
@@ -25,11 +26,29 @@ import DashboardContainer from "../containers/DashboardContainer"
 class Main extends React.Component {
     constructor() {
         super()
+        this.state={
+          isLoading: true
+        }
     }
     componentDidMount() {
-        this.props.getLoggedUser();
+        this.props.getLoggedUser()
+        .then(()=>{
+          this.setState({isLoading:false})
+        })
     }
     render() {
+        if(this.state.isLoading){return (
+          <Fragment>
+                <NavbarContainer />
+                {/* <Loader
+                type="Puff"
+                color="#00BFFF"
+                height={100}
+                width={100}
+                timeout={3000}
+                /> */}
+          </Fragment>
+        )}
         return (
             <Fragment>
                 <NavbarContainer />
@@ -37,17 +56,20 @@ class Main extends React.Component {
                     <Route exact path="/" component={BannerWelcomeContainer} />
                     <Route exact path="/login" component={BannerLoginContainer} />
                     <Route exact path="/register" component={BannerRegisterContainer} />
+
                     <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
+                    <Route exact path="/home" component={AdminLandingCardsContainer} />
+                    <Route exact path="/task/:taskId" component={SingleTaskContainer} />
+                    <Route exact path="/dashboard" component={DashboardContainer} />
+
                     <Route exact path="/users" component={UsersAdminContainer} />
                     <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
-                    <Route exact path="/home" component={AdminLandingCardsContainer} />
                     <Route exact path="/recruits" component={RecruitContainer} />
                     <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
                     <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
                     <Route exact path="/newRecruit" component={CreateRecruitContainer} />
-                    <Route exact path="/task/:taskId" component={SingleTaskContainer} />
                     <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
-                    <Route exact path="/dashboard" component={DashboardContainer} />
+                    
                   </Switch>
             </Fragment>
         )

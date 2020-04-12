@@ -1,6 +1,6 @@
 import React, { Fragment } from "react"
 import { connect } from "react-redux"
-import { withRouter } from "react-router-dom"
+import { withRouter, Redirect } from "react-router-dom"
 import TasksAdminEditFormTasksList from "../components/TasksAdminEditFormTasksList"
 import { deleteTask, changeTask } from "../redux/actions/tasks"
 
@@ -15,10 +15,6 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     componentDidMount() {
-
-
-
-
     }
 
     handleDelete() {
@@ -46,6 +42,11 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
 
 
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: "/home"}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <Fragment>
                 <TasksAdminEditFormTasksList handleSubmit={this.handleSubmit} state={this.state} handleChange={this.handleChange} handleDelete={this.handleDelete} taskListId={this.props.match.params.taskId} tasksList={this.props.tasksList} allTasks={this.props.allTasks} />

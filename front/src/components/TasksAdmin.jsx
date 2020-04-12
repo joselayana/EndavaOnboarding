@@ -2,8 +2,8 @@ import React, { Fragment } from "react"
 import { Link } from "react-router-dom"
 import "../css/style.css"
 
-export default ({ handleSubmit, handleSearchInput, handleSearchAllPendingInputS, handleSearchAllPendingInputT, handleSearchAllFinishedInputS, handleSearchAllFinishedInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user, clearState, handleClick2 }) => {
-
+export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleSearchAllPendingInputS, handleSearchAllPendingInputT, handleSearchAllFinishedInputS, handleSearchAllFinishedInputT, handleChange, state, tasks, handleClick, allTasks, tasksList, user, clearState, handleClick2 }) => {
+  
   let indice = 0
   let indice2 = 0
   let indice3 = 0
@@ -370,6 +370,13 @@ export default ({ handleSubmit, handleSearchInput, handleSearchAllPendingInputS,
                             </button>
                           </div>
                           <div className="modal-body">
+                          <div className="container box_container2 margen">
+                            <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                              <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Task" onChange={handleSearchTaskList}
+                                aria-label="Search" />
+                              <i class="fas fa-search searchColor" aria-hidden="true"></i>
+                            </form>
+                          </div>
                             <table className="table table-striped">
                               <thead>
                                 <tr className="table1">

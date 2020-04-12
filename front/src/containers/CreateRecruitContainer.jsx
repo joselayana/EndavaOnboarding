@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { createRecruit } from "../redux/actions/recruits"
 import CreateRecruit from "../components/CreateRecruit";
@@ -48,6 +48,11 @@ class CreateRecruitContainer extends React.Component {
     }
 
     render() {
+        if(!this.props.user.isAdmin && this.props.user.name){
+            return <Redirect to={{pathname: "/home"}}/>
+        } else if (!this.props.user.name) {
+            return <Redirect to={{pathname: "/login"}}/>
+        }
         return (
             <div>
                 <CreateRecruit handleChange={this.handleChange} handleSubmit={this.handleSubmit} disciplinesOptions={this.props.disciplinesOptions}/>
