@@ -95,7 +95,7 @@ export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
             ) : null}
 
             <div className="form-group">
-              <button type="submit" className="btn btn-primary btn-block button1"> Create Account  </button>
+              <button type="submit" className="btn btn-danger btn-block button1"> Create Account  </button>
             </div>
 
             <p className="text-center log">Already have an account? <Link className="log" to={"/login"}> Log In</Link></p>

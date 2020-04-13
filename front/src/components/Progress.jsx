@@ -6,40 +6,42 @@ export default ({allTasks,allRecruits}) => {
 
  if(allTasks && allRecruits){
   return(
-<div className="parentProgress">
-  <div className="div1Progress">
-    <div className="box_container4" > 
-      {allRecruits.map((recruit)=>{
-        let recruitTasks=[];
-        let finishedTasks=[];
-        let porcentage;
-        let color;
+    <div className="parentProgress">
+      <div className="div1Progress">
 
-        {allTasks.map((task)=>{
-          if (task.recruitId==recruit.id) recruitTasks.push(task)
-          if (task.state==="finished" && task.recruitId==recruit.id) finishedTasks.push(task)
-          porcentage=finishedTasks.length*100/recruitTasks.length
-        })
-        }
+        <div className="box_container4" > 
+          <h5 class="card-title2 card-title3">NEW HIRES ONBOARDING PROCESS</h5>
 
-        {
-         if (porcentage <= 25) color= "#cc0000"
-         else if (porcentage <= 50) color= "#ff8800"
-         else if (porcentage <= 99) color= "#0099cc"
-         else if (porcentage = 100) color= "#007e33"
-       }
+          {allRecruits.map((recruit)=>{
+            let recruitTasks=[];
+            let finishedTasks=[];
+            let porcentage;
+            let color;
 
-        return(
-          <>
-            <p>{recruit.name} {recruit.lastName}</p>
-                <div className="progress">
-                  <div className= "progress-bar" role="progressbar" style= {{width: `${porcentage}%` ,backgroundColor:`${color}`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+            {allTasks.map((task)=>{
+              if (task.recruitId==recruit.id) recruitTasks.push(task)
+              if (task.state==="finished" && task.recruitId==recruit.id) finishedTasks.push(task)
+              porcentage=finishedTasks.length*100/recruitTasks.length
+            })
+            }
 
-            </div>
-          </>
-          )
-        })
-      }
+            {
+             if (porcentage <= 25) color= "#cc0000"
+             else if (porcentage <= 50) color= "#ff8800"
+             else if (porcentage <= 99) color= "#0099cc"
+             else if (porcentage = 100) color= "#007e33"
+           }
+
+            return(
+              <>
+                <p>{recruit.name} {recruit.lastName}, {Math.floor(porcentage)}% completed </p>
+                    <div className="progress">
+                      <div className= "progress-bar" role="progressbar" style= {{width: `${porcentage}%` ,backgroundColor:`${color}`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+              </>
+              )
+            })
+          }
 
     </div>
 
@@ -48,5 +50,13 @@ export default ({allTasks,allRecruits}) => {
 
 
 )}
+
+else {
+  return (
+      <div class="spinner-border text-danger" role="status" style={{ marginTop: "20%", marginLeft: "50%" }}>
+          <span class="sr-only">Loading...</span>
+      </div>
+  )
+}
 
 }
