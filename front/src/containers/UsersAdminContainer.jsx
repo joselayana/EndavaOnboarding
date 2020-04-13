@@ -11,9 +11,8 @@ class UsersAdminContainer extends React.Component {
         super()
         this.state = {
             busqueda:"",
-            sortTypes: {
-                up: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
-            },
+            sortCol: "name",
+            sortTypes: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
             currentSort: 'up',
         }
         this.handleProfile = this.handleProfile.bind(this)
@@ -43,16 +42,30 @@ class UsersAdminContainer extends React.Component {
     redirection(userId) {
         this.props.history.push(`/deleteUser/${userId}`)
     }
-    onSortChange(){
+    onSortChange(columna){
+        if(columna!==this.state.sortCol){
+            if(columna.includes(".")){
+                this.setState({sortCol: columna})
+                this.setState({currentSort: "up"})
+                let columnaSplit = columna.split(".")
+                this.setState({sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())})
+            } else {
+            let col = columna
+            this.setState({sortCol: columna})
+            this.setState({currentSort: "up"})
+            console.log(col)
+            console.log(this.state.sortCol)
+            this.setState({sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())})
+            }
+        }
+        else{
         let nextSort;
-        
-
 		if (this.state.currentSort === 'down') nextSort = 'up';
 		else if (this.state.currentSort === 'up') nextSort = 'down';
 		this.setState({
 			currentSort: nextSort
         });
-        console.log(this.state.currentSort)
+        }
 	};
 
 
