@@ -95,7 +95,7 @@ const sendMail = function (obj, num) {
 
 
 
-const daiyEmail = () => {
+const dailyEmail = () => {
     setInterval(() => {
         User.findAll()
             .then(res => {
@@ -116,7 +116,7 @@ const daiyEmail = () => {
                                 let objMail = {
                                     name: user.name,
                                     lastName: user.lastName,
-                                    email: user.email,
+                                    email: "lauralimonmolina@gmail.com", //user.email,
                                     newHire: `${task.recruit.name} ${task.recruit.lastName}`,
                                     taskName: task.task.description,
                                     dueDate: task.dueDate.split("-").reverse().join("/"),
@@ -137,9 +137,22 @@ const daiyEmail = () => {
 
                 })
             })
-    }, 10000)  // ojooooooooooooooooooooo con el tiempo
+    }, 5000)
 }
-// daiyEmail()
+// dailyEmail()
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 const prueba = "aqui"
 module.exports = prueba

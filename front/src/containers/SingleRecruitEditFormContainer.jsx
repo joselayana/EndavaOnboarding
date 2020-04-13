@@ -63,10 +63,10 @@ class SingleRecruitEditFormContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        if (!this.props.user.isAdmin && this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <Fragment>

@@ -143,6 +143,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                         </thead>
                         <tbody>
                           {tasks.map((task) => {
+                            console.log(`dueeeeeeee ${task.dueDate} finishhhhhh ${task.finishDate}`)
                             return (
                               <>
                                 {(task.state == "finished") ? (

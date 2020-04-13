@@ -48,4 +48,7 @@ export const updateRecruit = (objRecruit) => dispatch => {
 
 export const deleteRecruit = (recruitId) => dispatch => {
     return Axios.delete(`/api/recruit/delete/${recruitId}`)
+        .then(res => res.data)
+        .then(recruits => dispatch(findRecruits(recruits)))
+
 } 

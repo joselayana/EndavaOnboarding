@@ -4,8 +4,8 @@ import { withRouter } from "react-router-dom"
 import { updateTaskState, searchSingleTaskRecruit } from "../redux/actions/tasks"
 
 
-
 import SingleTaskEditForm from "../components/SingleTaskEditForm"
+
 
 
 class SingleTaskEditFormContainer extends React.Component {
@@ -19,7 +19,7 @@ class SingleTaskEditFormContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount() {
-        if(!this.props.user.name){
+        if (!this.props.user.name) {
             this.props.history.push("/login")
         }
         const taskId = this.props.match.params.taskId
@@ -42,7 +42,7 @@ class SingleTaskEditFormContainer extends React.Component {
 
     render() {
         if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <Fragment>
@@ -63,7 +63,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         updateTaskState: (taskState) => dispatch(updateTaskState(taskState)),
-        searchSingleTaskRecruit: (taskId)=> dispatch (searchSingleTaskRecruit(taskId))
+        searchSingleTaskRecruit: (taskId) => dispatch(searchSingleTaskRecruit(taskId))
     }
 }
 

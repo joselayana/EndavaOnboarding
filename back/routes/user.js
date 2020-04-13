@@ -32,9 +32,9 @@ const sendMail = function (name, lastName, email) {
     const mailOptions = {
         from: "endavaOnBoard@gmail.com",
         to: `${email}`,
-        subject: `Wellcome On Board ${name} ${lastName}!!!`,
+        subject: `Welcome On Board ${name} ${lastName}!!!`,
         text:
-            ` Wellcome On Board ${name} ${lastName}!!!
+            ` Welcome On Board ${name} ${lastName}!!!
 
          Your user has been successfully created with the email: ${email}, from
          now on you'll be able to manage all the tasks assigned to you regarding to new hires
@@ -125,11 +125,11 @@ router.get("/allUsers", (req, res) => {
             .then(usuarios => usuarios.filter(usuario => {
                 let fullName = `${usuario.name} ${usuario.lastName}`
                 let fullNameMin = fullName.toLowerCase()
-                let query= req.query.s
+                let query = req.query.s
                 let queryMin = query.toLowerCase()
                 return fullNameMin.includes(queryMin)
-                }))
-            .then(users => {console.log(users), res.status(200).json(users)})
+            }))
+            .then(users => { console.log(users), res.status(200).json(users) })
     } else {
         User.findAll({
             include: [
