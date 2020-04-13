@@ -39,7 +39,7 @@ const sendMail = function (objMail) {
          - Amount of pending tasks: ${objMail.pendingTask}.
          - Amount of ongoing tasks: ${objMail.onGoingTask}.
          - Amount of blocked out tasks: ${objMail.blockedOutTask}.
-         - Amount of finished: ${objMail.finishedTask}.
+         - Amount of finished tasks: ${objMail.finishedTask}.
 
          --------------------------------------------------------
 
@@ -129,7 +129,7 @@ const weeklyEmail = () => {
                             let objMail = {
                                 name: user.name,
                                 lastName: user.lastName,
-                                email: user.email,
+                                email: "lauralimonmolina@gmail.com", //user.email,
                                 pendingTask: input.pending,
                                 onGoingTask: input.onGoing,
                                 finishedTask: input.finished,
@@ -137,15 +137,24 @@ const weeklyEmail = () => {
                                 expiredTask: input.expired,
                                 nearDueDateTask: input.nearDueDate
                             }
-                            console.log("previaaaaaaaaa", objMail)
                             sendMail(objMail)
 
                         })
                 })
             })
-    }, 15000)  // ojooooooooooooooooooooo con el tiempo
+    }, 5000)  // ojo con el tiempo
 }
 // weeklyEmail()
+
+
+
+
+
+
+
+
+
+
 
 const prueba = "aqui"
 module.exports = prueba

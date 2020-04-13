@@ -13,14 +13,14 @@ router.get('/', function (req, res, next) {
                 { model: Discipline }
             ],
         })
-        .then(reclutas => reclutas.filter(recluta => {
-            let fullName = `${recluta.name} ${recluta.lastName}`
-            let fullNameMin = fullName.toLowerCase()
-            let query= req.query.s
-            let queryMin = query.toLowerCase()
-            return fullNameMin.includes(queryMin)
+            .then(reclutas => reclutas.filter(recluta => {
+                let fullName = `${recluta.name} ${recluta.lastName}`
+                let fullNameMin = fullName.toLowerCase()
+                let query = req.query.s
+                let queryMin = query.toLowerCase()
+                return fullNameMin.includes(queryMin)
             }))
-        .then(recruits => res.status(200).json(recruits))
+            .then(recruits => res.status(200).json(recruits))
     } else {
         Recruit.findAll({
             include: [
@@ -68,40 +68,29 @@ router.post('/', function (req, res, next) {
 
 router.delete("/delete/:id", (req, res, next) => {
     let recruitId = req.params.id
-    TaskRecruit.findAll({
+    TaskRecruit.destroy({
         where: {
             recruitId
         }
     })
-        .then(allTask => {
-            allTask.map(task => task.destroy())
-        })
-        .then(
-            Recruit.destroy({
+        .then(() => {
+            return Recruit.destroy({
                 where: {
                     id: recruitId
                 }
             })
-
-        )
-        .then(
+        })
+        .then(() => {
             Recruit.findAll({
                 include: [
                     { model: Discipline }
                 ],
             })
                 .then(allRecruit => {
-                    console.log("aquiiii", allRecruit.length);
-                    console.log("aquiiiiiiiiiiiiiiii000000", allRecruit[0].dataValues);
-                    console.log("aquiiiiiiiiiiiiiiii11111111", allRecruit[1].dataValues);
-                    console.log("aquiiiiiiiiiiiiiiii222222", allRecruit[2].dataValues);
-
+                    console.log("length", allRecruit.length);
                     res.status(200).send(allRecruit)
                 })
-        )
-
-
-
+        })
 })
 
 router.put("/edit/:id", (req, res, next) => {
