@@ -179,7 +179,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                       aria-controls="collapse30">
                       <i class="far fa-list-alt collapseLogo fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                       <h4 class="text-uppercase mb-0 py-3 mt-1 collapseTitle" style={{ textDecoration: "none" }}>
-                        ALL  PENDING TASKS
+                        TEAM PENDING TASKS
                     </h4>
                     </a>
                   </div>
@@ -273,7 +273,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                       aria-controls="collapse30">
                       <i class="far fa-list-alt collapseLogo fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                       <h4 class="text-uppercase mb-0 py-3 mt-1 collapseTitle" style={{ textDecoration: "none" }}>
-                        ALL FINISHED TASKS
+                        TEAM FINISHED TASKS
                     </h4>
                     </a>
                   </div>
@@ -350,7 +350,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                       aria-controls="collapse30">
                       <i class="far fa-plus-square collapseLogo fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                       <h4 class="text-uppercase mb-0 py-3 mt-1 collapseTitle" style={{ textDecoration: "none" }}>
-                        EDIT TASKS
+                        ADD AND EDIT AVAIABLE TASKS
                   </h4>
                     </a>
                   </div>

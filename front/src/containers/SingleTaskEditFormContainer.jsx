@@ -1,7 +1,8 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux"
 import { withRouter } from "react-router-dom"
-import { updateTaskState } from "../redux/actions/tasks"
+import { updateTaskState, searchSingleTaskRecruit } from "../redux/actions/tasks"
+
 
 
 import SingleTaskEditForm from "../components/SingleTaskEditForm"
@@ -61,7 +62,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        updateTaskState: (taskState) => dispatch(updateTaskState(taskState))
+        updateTaskState: (taskState) => dispatch(updateTaskState(taskState)),
+        searchSingleTaskRecruit: (taskId)=> dispatch (searchSingleTaskRecruit(taskId))
     }
 }
 

@@ -9,7 +9,7 @@ export default ({handleChange, handleSubmit, recruit, disciplinesOptions }) => {
       <div className="card bg-light">
         <div className="card-body mx-auto" style={{ maxWidth: "400px" }}>
           <h4 className="card-title mt-3 text-center">Edit {recruit.name} {recruit.lastName}'s Information</h4>
-          <p className="text-center">It's not necessary to complete all the fields</p>
+          <p className="text-center">The fields you don't change will remain as they were</p>
 
           <form onSubmit= {handleSubmit}>
 
@@ -84,4 +84,3 @@ export default ({handleChange, handleSubmit, recruit, disciplinesOptions }) => {
     )
   }
 }
-

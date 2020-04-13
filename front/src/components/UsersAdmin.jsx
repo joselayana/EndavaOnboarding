@@ -12,7 +12,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection, onSortCh
             <div className="div1Users" >
               <h1 className="titleSection">Users</h1>
               <br />
-              <div className="container box_container2 margen">
+              <div className="container box_container5 margen" >
                 <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
                   <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Name" onChange={handleSearchInput}
                     aria-label="Search" />
@@ -20,7 +20,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection, onSortCh
                 </form>
               </div>
               <div>
-                <div className="container box_container2">
+                <div className="container box_container5">
                   <table className="table table-striped">
                     <thead>
                       <tr className="table1">
@@ -60,12 +60,12 @@ export default ({ users, handleProfile, handleSearchInput, redirection, onSortCh
                                   </div>
                                   <div className="modal-body">
                                     <>
-                                      {(user.isAdmin) ? ("You are changing this user's profile to REGULAR USER") : ("You are changing this user's profile to ADMIN")}
+                                      {(user.isAdmin) ? ("Change this user's profile from ADMIN to REGULAR USER") : ("Change this user's profile from REGULAR USER to ADMIN")}
                                     </>
                                   </div>
                                   <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button onClick={() => handleProfile(user.id, user.isAdmin)} data-dismiss="modal" type="button" className="btn btn-primary">Save change</button>
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
+                                    <button onClick={() => handleProfile(user.id, user.isAdmin)} data-dismiss="modal" type="button" className="btn btn-primary">Yes</button>
                                   </div>
                                 </div>
                               </div>
@@ -83,12 +83,12 @@ export default ({ users, handleProfile, handleSearchInput, redirection, onSortCh
                                   </div>
                                   <div className="modal-body">
                                     <>
-                                      {(user.isAdmin) ? (`You're deleting an ADMIN: ${user.name} ${user.lastName}`) : (`You're deleting a REGULAR USER: ${user.name} ${user.lastName}`)}
+                                      {(user.isAdmin) ? (`Do you want to delete this ADMIN: ${user.name} ${user.lastName}?`) : (`Do you want to delete this REGULAR USER: ${user.name} ${user.lastName}?`)}
                                     </>
                                   </div>
                                   <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                    <button data-dismiss="modal" type="button" className="btn btn-primary" onClick={() => redirection(user.id)}>Delete User</button>
+                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
+                                    <button data-dismiss="modal" type="button" className="btn btn-primary" onClick={() => redirection(user.id)}>Yes</button>
                                   </div>
                                 </div>
                               </div>

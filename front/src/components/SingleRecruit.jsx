@@ -62,11 +62,11 @@ export default ({ recruit, tasks, handlerClick, handleDeleteRecruit }) => {
                                                     </button>
                                                 </div>
                                                 <div className="modal-body">
-                                                    <p>You are deleting the new hire {recruit.name} {recruit.lastName}</p>
+                                                    <p>Do you want to delete {recruit.name} {recruit.lastName}?</p>
                                                 </div>
                                                 <div className="modal-footer">
-                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                    <button onClick={() => handleDeleteRecruit(recruit.id)} data-dismiss="modal" type="button" className="btn btn-primary">Save change</button>
+                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
+                                                    <button onClick={() => handleDeleteRecruit(recruit.id)} data-dismiss="modal" type="button" className="btn btn-primary">Yes</button>
                                                 </div>
                                             </div>
                                         </div>

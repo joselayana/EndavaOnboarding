@@ -1,6 +1,6 @@
 import React from "react";
 import "../css/style.css"
-
+import { Link } from "react-router-dom";
 
 export default ({ handleSubmit, handleChange, state }) => (
 
@@ -33,10 +33,10 @@ export default ({ handleSubmit, handleChange, state }) => (
                 </div>
                 {state.error ? <div class="alert alert-danger" role="alert">Error: The email entered is not registered or the password is incorrect</div> : null}
                 <div className="form-group">
-                    <button type="submit" className="btn btn-primary btn-block button1"> Log In  </button>
+                    <button type="submit" className="btn btn-danger btn-block button1"> Log In  </button>
                 </div>
 
-                <p className="text-center log">Forgot your password? <a href="">Click here</a> </p>
+                <p className="text-center log">Don't have an account yet? <Link className="log" to={"/register"}>Register</Link></p>
 
             </form>
         </div>
