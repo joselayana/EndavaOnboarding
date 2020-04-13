@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export default ({ users, handleProfile, handleSearchInput, redirection, onSortChange, state }) => {
   let indice = 0
-  let orden =state.currentSort==="up" ? [...users].sort(state.sortTypes["up"]) : [...users].sort(state.sortTypes["up"]).reverse()
+  let orden =state.currentSort==="up" ? [...users].sort(state.sortTypes) : [...users].sort(state.sortTypes).reverse()
   return (
     <Fragment>
       <div className="parentUsers" >
@@ -25,10 +25,10 @@ export default ({ users, handleProfile, handleSearchInput, redirection, onSortCh
                     <thead>
                       <tr className="table1">
                         <th scope="col">#</th>
-                        <th scope="col"><div onClick={onSortChange}>Name </div></th>
-                        <th scope="col">Discipline</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Profile</th>
+                        <th scope="col"><div onClick={() => onSortChange("name")}>Name </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("discipline.description")}>Discipline </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("email")}>Email </div></th>
+                        <th scope="col">Profile </th>
                         <th scope="col"> </th>
                       </tr>
                     </thead>
