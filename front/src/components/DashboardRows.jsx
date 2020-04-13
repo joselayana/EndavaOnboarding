@@ -5,12 +5,13 @@ import { Link } from "react-router-dom"
 
 export default ({allTasks}) =>{
 
+  if(allTasks.length){
 
- let indice=0;
- let indice1=0;
- let indice2=0;
+   let indice=0;
+   let indice1=0;
+   let indice2=0;
 
-  return(
+   return(
 
     <div class="parentDashRow">
 
@@ -160,4 +161,12 @@ export default ({allTasks}) =>{
 
 
 
-)}
+  )} else {
+    return (
+        <div class="spinner-border text-danger" role="status" style={{ marginTop: "20%", marginLeft: "50%" }}>
+            <span class="sr-only">Loading...</span>
+        </div>
+    )
+  }
+
+}

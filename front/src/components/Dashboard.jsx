@@ -4,6 +4,8 @@ import "../css/style2.scss"
 
 export default ({allTasks}) => {
 
+    if(allTasks.length){
+
   let arrBlocked=[];
   let arrExpired=[];
   let arrOngoing=[];
@@ -89,4 +91,11 @@ export default ({allTasks}) => {
     </div>
 
 
-)}
+)} else {
+  return (
+      <div class="spinner-border text-danger" role="status" style={{ marginTop: "20%", marginLeft: "50%" }}>
+          <span class="sr-only">Loading...</span>
+      </div>
+  )
+}
+}

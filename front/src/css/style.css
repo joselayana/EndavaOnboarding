@@ -241,6 +241,17 @@ body
   max-width: 100%;
   padding:25px;
 }
+.box_container5
+{
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25),0 10px 10px rgba(0,0,0,0.22);
+  position:relative;
+  overflow: hidden;
+  width: 1200px;
+  max-width: 100%;
+  padding:10px;
+}
 
 .category_title
 {
@@ -812,4 +823,10 @@ margin-top:10px
 .fot
 {
 color:#48545b
+}
+
+.card-title3{
+  margin-bottom: 2%;
+  font-weight: 400;
+  color:#48545b;
 }
