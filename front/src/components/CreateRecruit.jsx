@@ -5,11 +5,11 @@ import React from "react";
 export default ({ handleChange, handleSubmit, disciplinesOptions }) => {
   if (disciplinesOptions.length) {
     return (
-      <div className="container box_container2" style={{ marginTop: "50px" }}>
-        <div className="card bg-light">
+      <div>
+        <div>
           <div className="card-body mx-auto" style={{ maxWidth: "400px" }}>
-            <h4 className="card-title mt-3 text-center">Add a New Hire</h4>
-            <p className="text-center">Add a new member to your organization!</p>
+            <h4 className="card-title mt-2 text-center">Add a New Hire</h4>
+            <p className="text-center subtitle4">Add a new member to your organization!</p>
 
             <form onSubmit={handleSubmit}>
 

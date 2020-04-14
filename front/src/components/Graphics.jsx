@@ -8,7 +8,9 @@ import Chart4Component from "./Chart4Component";
 
 export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, handleChange, state, handleSubmit, handleSubmit2, usersTasks, idUser}) => {
 
-if(allTasks.length){
+console.log(`alltasks es ${allTasks} y allTasksDash es ${allTasksDash} y allDisciplineses ${allDisciplines} y allUsers es ${allUsers} y usersTasks es ${usersTasks}`)
+
+if(allTasks.length && allDisciplines.length && allUsers.length && usersTasks.length){
 
 return(
 

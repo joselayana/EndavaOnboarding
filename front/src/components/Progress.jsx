@@ -4,7 +4,7 @@ import "../css/style2.scss"
 
 export default ({allTasks,allRecruits}) => {
 
- if(allTasks && allRecruits){
+ if(allTasks.length && allRecruits.length){
   return(
     <div className="parentProgress">
       <div className="div1Progress">
@@ -34,10 +34,21 @@ export default ({allTasks,allRecruits}) => {
 
             return(
               <>
-                <p>{recruit.name} {recruit.lastName}, {Math.floor(porcentage)}% completed </p>
-                    <div className="progress">
-                      <div className= "progress-bar" role="progressbar" style= {{width: `${porcentage}%` ,backgroundColor:`${color}`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                <div  data-toggle="modal" data-target=".bd-uno-modal-lg">
+                  <p>{recruit.name} {recruit.lastName}, {Math.floor(porcentage)}% completed </p>
+                      <div className="progress">
+                        <div className= "progress-bar" role="progressbar" style= {{width: `${porcentage}%` ,backgroundColor:`${color}`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                      </div>
+                </div>
+
+                <div class="modal fade bd-uno-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <h5>Aca tenes tu modal de {recruit.name} {recruit.lastName} </h5>
+                      {/*<Chart1Component allTasks={allTasks} state={state} allTasksDash={allTasksDash}/>*/}
                     </div>
+                  </div>
+                </div>
               </>
               )
             })
