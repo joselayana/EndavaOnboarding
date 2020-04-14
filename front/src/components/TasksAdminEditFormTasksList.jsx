@@ -61,9 +61,35 @@ export default ({ taskListId, tasksList, allTasks, handleDelete, handleChange, s
                                                         </>
                                                     </div>
                                                 </form>
+
+
+
+
+
+
+
+
+
                                             </div>
                                         </div>
                                     </div>
+
+                                    {state.errorDescription ? (
+                                        <div
+                                            className="alert alert-danger"
+                                            style={{
+                                                borderRadius: "5px",
+                                                marginTop: "17px"
+                                            }}
+                                            role="alert"
+                                        >
+                                            Please check the task's description
+                                        </div>
+                                    ) : null}
+
+
+
+
                                 </div>
                             </div>
                         </div>
