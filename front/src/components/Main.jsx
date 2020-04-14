@@ -3,6 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from 'react-loader-spinner';
+import { getLoggedUser } from "../redux/actions/login";
 
 import AdminLandingCardsContainer from "../containers/AdminLandingCardsContainer"
 import TasksAdminContainer from "../containers/TaskAdminContainer"
@@ -10,7 +11,6 @@ import NavbarContainer from "../containers/NavbarContainer"
 import BannerLoginContainer from "../containers/BannerLoginContainer"
 import BannerRegisterContainer from "../containers/BannerRegisterContainer"
 import SingleTaskContainer from "../containers/SingleTaskContainer"
-import { getLoggedUser } from "../redux/actions/login";
 import RecruitContainer from "../containers/RecruitContainer"
 import CreateRecruitContainer from "../containers/CreateRecruitContainer"
 import UsersAdminContainer from "../containers/UsersAdminContainer"
@@ -18,29 +18,32 @@ import SingleRecruitContainer from "../containers/SingleRecruitContainer"
 import SingleRecruitEditFormContainer from "../containers/SingleRecruitEditFormContainer"
 import DeleteUserContainer from "../containers/DeleteUserContainer"
 import TasksAdminEditFormTasksListContainer from "../containers/TasksAdminEditFormTasksListContainer"
-
-
 import BannerWelcomeContainer from "../containers/BannerWelcomeContainer"
 import DashboardContainer from "../containers/DashboardContainer"
 import SidebarContainer from "../containers/SidebarContainer";
+import MyPendingTasksContainer from "../containers/MyPendingTasksContainer";
+import MyFinishedTasksContainer from "../containers/MyFinishedTasksContainer";
+import TeamPendingTasksContainer from "../containers/TeamPendingTasksContainer";
+import TeamFinishedTasksContainer from "../containers/TeamFinishedTasksContainer";
 
 
 class Main extends React.Component {
-constructor() {
-  super()
-  this.state={
-    isLoading: true
+  constructor() {
+    super()
+    this.state = {
+      isLoading: true
+    }
   }
-}
-componentDidMount() {
-  this.props.getLoggedUser()
-  .then(()=>{
-    this.setState({isLoading:false})
-  })
-}
-render() {
-  if(this.state.isLoading){return (
-    <Fragment>
+  componentDidMount() {
+    this.props.getLoggedUser()
+      .then(() => {
+        this.setState({ isLoading: false })
+      })
+  }
+  render() {
+    if (this.state.isLoading) {
+      return (
+        <Fragment>
           <NavbarContainer />
           {/* <Loader
           type="Puff"
@@ -49,8 +52,9 @@ render() {
           width={100}
           timeout={3000}
           /> */}
-    </Fragment>
-  )}
+        </Fragment>
+      )
+    }
     return (
       <Fragment>
 
@@ -65,6 +69,12 @@ render() {
           {/* <Route exact path="/sidebar" component={SidebarContainer} /> */}
           {/* Tasks */}
           <Route exact path="/myTasks/:userId" component={TasksAdminContainer} />
+          <Route exact path="/myPendingTasks/:userId" component={MyPendingTasksContainer} />
+          <Route exact path="/myFinishedTasks/:userId" component={MyFinishedTasksContainer} />
+          <Route exact path="/TeamPendingTasks/:userId" component={TeamPendingTasksContainer} />
+          <Route exact path="/TeamFinishedTasks/:userId" component={TeamFinishedTasksContainer} />
+
+
           <Route exact path="/task/:taskId" component={SingleTaskContainer} />
           <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
           {/* New hires */}
