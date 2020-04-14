@@ -13,7 +13,7 @@ class UsersAdminContainer extends React.Component {
             busqueda:"",
             sortCol: "name",
             sortTypes: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
-            currentSort: 'up',
+            currentSort: 'down',
         }
         this.handleProfile = this.handleProfile.bind(this)
         this.handleSearchInput = this.handleSearchInput.bind(this);
@@ -46,13 +46,13 @@ class UsersAdminContainer extends React.Component {
         if(columna!==this.state.sortCol){
             if(columna.includes(".")){
                 this.setState({sortCol: columna})
-                this.setState({currentSort: "up"})
+                this.setState({currentSort: "down"})
                 let columnaSplit = columna.split(".")
                 this.setState({sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())})
             } else {
             let col = columna
             this.setState({sortCol: columna})
-            this.setState({currentSort: "up"})
+            this.setState({currentSort: "down"})
             console.log(col)
             console.log(this.state.sortCol)
             this.setState({sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())})
