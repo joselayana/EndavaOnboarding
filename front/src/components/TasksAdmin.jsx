@@ -64,8 +64,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                             } else {
                               color = "rojo"
                             }
-
-                            console.log(`las due date es ${task.dueDate} y la finishDate es ${new Date(task.finishDate)}`)
                             return (
                               <>
                                 {(task.state != "finished") ? (
@@ -143,7 +141,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                         </thead>
                         <tbody>
                           {tasks.map((task) => {
-                            console.log(`dueeeeeeee ${task.dueDate} finishhhhhh ${task.finishDate}`)
                             return (
                               <>
                                 {(task.state == "finished") ? (
@@ -351,7 +348,7 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                       aria-controls="collapse30">
                       <i class="far fa-plus-square collapseLogo fa-2x p-3 mr-4 float-left black-text" aria-hidden="true"></i>
                       <h4 class="text-uppercase mb-0 py-3 mt-1 collapseTitle" style={{ textDecoration: "none" }}>
-                        ADD AND EDIT AVAIABLE TASKS
+                        ADD AND EDIT AVAILABLE TASKS
                   </h4>
                     </a>
                   </div>
@@ -419,6 +416,31 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
 
                         </form>
                       </div>
+
+
+                      {state.errorDescription ? (
+                        <div
+                          className="alert alert-danger"
+                          style={{
+                            borderRadius: "5px",
+                            marginTop: "17px"
+                          }}
+                          role="alert"
+                        >
+                          Please check the task's description
+                        </div>
+                      ) : null}
+
+
+
+
+
+
+
+
+
+
+
                     </div>
                   </div>
                 </div>

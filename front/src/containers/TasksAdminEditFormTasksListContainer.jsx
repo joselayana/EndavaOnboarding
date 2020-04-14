@@ -11,7 +11,9 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            description: ""
+            description: "",
+            errorDescription: false,
+
         }
         this.handleDelete = this.handleDelete.bind(this)
         this.handleChange = this.handleChange.bind(this)
@@ -33,18 +35,24 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        let newDescription = this.state.description
-        let obj = { taskId: this.props.match.params.taskId, description: newDescription }
-        this.props.changeTask(obj)
-            .then(this.props.history.push(`/myTasks/${this.props.user.id}`))
-
-
+        let flagDescription = false;
+        this.setState({ errorDescription: false });
+        (this.state.description.length >= 2) ? flagDescription = true : null;
+        if (flagDescription) {
+            let newDescription = this.state.description
+            let obj = { taskId: this.props.match.params.taskId, description: newDescription }
+            this.props.changeTask(obj)
+                .then(this.props.history.push(`/myTasks/${this.props.user.id}`))
+        } else {
+            this.setState({ errorDescription: true })
+        }
     }
+
     render() {
-        if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        if (!this.props.user.isAdmin && this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <Fragment>

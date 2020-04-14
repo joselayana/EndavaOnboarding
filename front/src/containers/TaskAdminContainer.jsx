@@ -16,7 +16,8 @@ class TasksAdminContainer extends React.Component {
             busqueda: "",
             busquedaS: "",
             busquedaT: "",
-            busquedaTask:"",
+            busquedaTask: "",
+            errorDescription: false,
         }
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
@@ -40,9 +41,16 @@ class TasksAdminContainer extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        let obj = { description: e.target[0].value }
-        this.props.createTask(obj)
-            .then(() => this.setState({ description: '' }))
+        let flagDescription = false;
+        this.setState({ errorDescription: false });
+        (e.target[0].value.length >= 2) ? flagDescription = true : null;
+        if (flagDescription) {
+            let obj = { description: e.target[0].value }
+            this.props.createTask(obj)
+                .then(() => this.setState({ description: '' }))
+        } else {
+            this.setState({ errorDescription: true })
+        }
     }
 
     handleChange(e) {
@@ -111,7 +119,7 @@ class TasksAdminContainer extends React.Component {
 
     render() {
         if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <Fragment>

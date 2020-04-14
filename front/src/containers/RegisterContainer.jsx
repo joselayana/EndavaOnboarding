@@ -23,7 +23,7 @@ class RegisterContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.props.searchDisciplines()
     }
 
@@ -37,11 +37,6 @@ class RegisterContainer extends React.Component {
         this.setState({ errorInc: false })
 
         this.props.disciplinesOptions.map((discipline) => (this.state.discipline == discipline.description) ? (IdDiscipline = discipline.id) : null)
-
-        // if (this.state.discipline === "Development") IdDiscipline = 1
-        // if (this.state.discipline === "Project Manager") IdDiscipline = 2
-        // if (this.state.discipline === "Testing") IdDiscipline = 3
-        // if (this.state.discipline === "Pdrc") IdDiscipline = 4
 
         if (e.target[0].value && e.target[1].value && e.target[2].value && e.target[3].value && e.target[4].value && e.target[5].value) {
             // if (e.target[2].value.includes("@endava.com")) flagMail = true
@@ -67,7 +62,7 @@ class RegisterContainer extends React.Component {
     render() {
         return (
             <div>
-                <Register handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} disciplinesOptions={this.props.disciplinesOptions}/>
+                <Register handleSubmit={this.handleSubmit} handleChange={this.handleChange} state={this.state} disciplinesOptions={this.props.disciplinesOptions} />
             </div>
         )
     }
@@ -75,7 +70,7 @@ class RegisterContainer extends React.Component {
 
 
 const mapStateToProps = (state, ownProps) => ({
-    disciplinesOptions : state.disciplines.disciplines
+    disciplinesOptions: state.disciplines.disciplines
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
