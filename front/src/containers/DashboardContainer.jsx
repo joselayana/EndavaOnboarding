@@ -14,7 +14,7 @@ import { searchAllTasks, searchAllTasksDash } from "../redux/actions/tasks";
 import { searchRecruits } from "../redux/actions/recruits"
 import { searchDisciplines } from "../redux/actions/disciplines"
 import { fetchUsers } from "../redux/actions/users"
-import { searchTasks } from "../redux/actions/tasks"
+import { searchTasks, searchTasksRecruits } from "../redux/actions/tasks"
 
 
 
@@ -29,6 +29,7 @@ class DashboardContainer extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleSubmit2 = this.handleSubmit2.bind(this)
+        this.handleClickDash = this.handleClickDash.bind(this)
     }
 
     componentDidMount() {
@@ -69,9 +70,13 @@ class DashboardContainer extends React.Component {
         this.setState({ [e.target.name]: e.target.value });
     }
 
+    handleClickDash(id){
+      this.props.searchTasksRecruits(id)
+    }
+
 
   render() {
-    const { allTasks, allRecruits, allDisciplines, allUsers, usersTasks, allTasksDash } = this.props;
+    const { allTasks, allRecruits, allDisciplines, allUsers, usersTasks, allTasksDash, tasksRecruit } = this.props;
     if (!this.props.user.name) {
       return <Redirect to={{pathname: "/login"}}/>
     }
@@ -84,7 +89,7 @@ class DashboardContainer extends React.Component {
           <Dashboard allTasks={allTasks} />
           <Graphics usersTasks={usersTasks} handleSubmit2={this.handleSubmit2} allTasksDash={allTasksDash} idUser={this.props.match.params.userId} allTasks={allTasks} allRecruits={allRecruits} handleSubmit={this.handleSubmit} allDisciplines={allDisciplines} allUsers={allUsers} handleChange={this.handleChange} state={this.state}/>
           <DashboardRows allTasks={allTasks} />
-          <Progress allTasks={allTasks} allRecruits={allRecruits} />
+          <Progress allTasks={allTasks} allRecruits={allRecruits} handleClickDash={this.handleClickDash} tasksRecruit={tasksRecruit}/>
         </div>
       </div>
     )
@@ -98,7 +103,8 @@ const mapStateToProps = (state, ownProps) => ({
   allUsers: state.user.users,
   usersTasks: state.task.tasks,
   allTasksDash: state.task.allTasksDash,
-  user: state.login.user
+  user: state.login.user,
+  tasksRecruit:state.task.tasksRecruit,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -108,7 +114,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     searchDisciplines: () => dispatch(searchDisciplines()),
     fetchUsers: () => dispatch(fetchUsers()),
     searchTasks: (userId) => dispatch(searchTasks(userId)),
-    searchAllTasksDash: () => dispatch(searchAllTasksDash())
+    searchAllTasksDash: () => dispatch(searchAllTasksDash()),
+    searchTasksRecruits: (id) => dispatch(searchTasksRecruits(id))
   }
 }
 
