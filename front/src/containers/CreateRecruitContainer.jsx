@@ -62,7 +62,23 @@ class CreateRecruitContainer extends React.Component {
                         <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
-                        <CreateRecruit handleChange={this.handleChange} handleSubmit={this.handleSubmit} disciplinesOptions={this.props.disciplinesOptions} />
+                      <section id="banner_white">
+                        <div className="container box_container">
+                          <div className="row">
+
+                            <div className="col-md-6 text-center">
+                              <img src="images/design/register12.svg" className="img-fluid"/>
+                            </div>
+
+                            <div className="col-md-6" style={{backgroundColor:"#f0f3f3"}}>
+                              <CreateRecruit handleChange={this.handleChange} handleSubmit={this.handleSubmit} disciplinesOptions={this.props.disciplinesOptions} />
+                            </div>
+
+
+
+                          </div>
+                        </div>
+                      </section>
                     </div>
                 </div>
             </div>
