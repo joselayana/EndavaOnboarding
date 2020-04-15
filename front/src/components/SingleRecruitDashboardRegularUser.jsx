@@ -5,10 +5,10 @@ import SingleRecruitAddTaskContainer from "../containers/SingleRecruitAddTaskCon
 
 
 
-export default ({ name, handlerClick, handleDeleteRecruit, tasksRecruit }) => {
+export default ({ name, handlerClick, handleDeleteRecruit, tasksRecruit, user }) => {
     let indice = 0
 
-          if(tasksRecruit.length){
+          if(tasksRecruit.length && user){
             return (
               <div style={{ padding: "3%" }}>
                         <div className="largeModal">
@@ -36,6 +36,8 @@ export default ({ name, handlerClick, handleDeleteRecruit, tasksRecruit }) => {
                                                         let fechaOrdenada = fechaArray.reverse()
                                                         let dueDate = fechaOrdenada.join("/")
                                                         indice = indice + 1
+
+                                                        if(task.userId===user.id){
                                                         return (
                                                             <tr key={task.id}>
                                                                 <th scope="row" className="align-middle">{indice}</th>
@@ -46,7 +48,7 @@ export default ({ name, handlerClick, handleDeleteRecruit, tasksRecruit }) => {
                                                                 <td className="align-middle">{task.comment}</td>
 
                                                             </tr>
-                                                        )
+                                                        )}
                                                     })}
                                                 </tbody>
                                             </table>
