@@ -13,6 +13,7 @@ class AddOrEditAvailableTaskContainer extends React.Component {
         super()
         this.state = {
             description: "",
+            toastAlert: false,
             busqueda: "",
             errorDescription: false,
         }
@@ -26,9 +27,6 @@ class AddOrEditAvailableTaskContainer extends React.Component {
         this.props.searchTasksList()
     }
 
-
-
-
     handleSubmit(e) {
         e.preventDefault();
         let flagDescription = false;
@@ -37,7 +35,7 @@ class AddOrEditAvailableTaskContainer extends React.Component {
         if (flagDescription) {
             let obj = { description: e.target[0].value }
             this.props.createTask(obj)
-                .then(() => this.setState({ description: '' }))
+                .then(() => this.setState({ toastAlert: true, description: '' }))
         } else {
             this.setState({ errorDescription: true })
         }

@@ -24,12 +24,24 @@ class DashboardContainer extends React.Component {
         this.state = {
             responsable: "",
             fromDate: "",
-            toDate: ""
+            toDate: "",
+            sortColBlocked: "task.description",
+            sortTypesBlocked: (a, b) => a.task.description.toLowerCase().localeCompare(b.task.description.toLowerCase()),
+            currentSortBlocked: 'down',
+            sortColExpired: "task.description",
+            sortTypesExpired: (a, b) => a.task.description.toLowerCase().localeCompare(b.task.description.toLowerCase()),
+            currentSortExpired: 'down',
+            sortColPending: "task.description",
+            sortTypesPending: (a, b) => a.task.description.toLowerCase().localeCompare(b.task.description.toLowerCase()),
+            currentSortPending: 'down',
         }
+        
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleSubmit2 = this.handleSubmit2.bind(this)
         this.handleClickDash = this.handleClickDash.bind(this)
+        this.onSortChange = this.onSortChange.bind(this);
+
     }
 
     componentDidMount() {
@@ -73,6 +85,145 @@ class DashboardContainer extends React.Component {
     handleClickDash(id){
       this.props.searchTasksRecruits(id)
     }
+    onSortChange(columna, tabla, isDate = false){
+        if(tabla === "blocked"){
+        if(!isDate){
+            if(columna!==this.state.sortColBlocked){
+                if(columna.includes(".")){
+                    this.setState({sortColBlocked: columna});
+                    this.setState({currentSortBlocked: "down"});
+                    let columnaSplit = columna.split(".")
+                    console.log(this.state.sortColBlocked, this.state.currentSortBlocked )
+                    this.setState({sortTypesBlocked: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())});
+                } else {
+                let col = columna
+                this.setState({sortColBlocked: columna});
+                this.setState({currentSortBlocked: "down"});
+                this.setState({sortTypesBlocked: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())});
+                }
+            }
+            else{
+            let nextSort;
+            if (this.state.currentSortBlocked === 'down') nextSort = 'up';
+            else if (this.state.currentSortBlocked === 'up') nextSort = 'down';
+            this.setState({
+              currentSortBlocked: nextSort
+            });
+            }
+        } else {
+            if(columna!==this.state.sortColBlocked){
+                let col = columna
+                this.setState({sortColBlocked: columna});
+                this.setState({currentSortBlocked: "down"});
+                this.setState({sortTypesBlocked: (a, b) => {
+                    let aSpliteado = a[col].split("-")
+                    let bSpliteado = b[col].split("-")
+                    a = new Date(aSpliteado[0],aSpliteado[1],aSpliteado[2]);
+                    b = new Date(bSpliteado[0],bSpliteado[1],bSpliteado[2]);
+                    return a<b ? -1 : a>b ? 1 : 0;
+                }})
+            }
+            else{
+              let nextSort;
+              if (this.state.currentSortBlocked === 'down') nextSort = 'up';
+              else if (this.state.currentSortBlocked === 'up') nextSort = 'down';
+              this.setState({
+                currentSortBlocked: nextSort
+              });
+            }
+        }
+      } else if(tabla === "expired"){
+        if(!isDate){
+            if(columna!==this.state.sortColExpired){
+                if(columna.includes(".")){
+                    this.setState({sortColExpired: columna});
+                    this.setState({currentSortExpired: "down"});
+                    let columnaSplit = columna.split(".")
+                    this.setState({sortTypesExpired: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())});
+                } else {
+                let col = columna
+                this.setState({sortColExpired: columna});
+                this.setState({currentSortExpired: "down"});
+                this.setState({sortTypesExpired: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())});
+                }
+            }
+            else{
+            let nextSort;
+            if (this.state.currentSortExpired === 'down') nextSort = 'up';
+            else if (this.state.currentSortExpired === 'up') nextSort = 'down';
+            this.setState({
+              currentSortExpired: nextSort
+            });
+            }
+        } else {
+            if(columna!==this.state.sortColExpired){
+                let col = columna
+                this.setState({sortColExpired: columna});
+                this.setState({tablaExpiredExpired, currentSort: "down"});
+                this.setState({sortTypesExpired: (a, b) => {
+                    let aSpliteado = a[col].split("-")
+                    let bSpliteado = b[col].split("-")
+                    a = new Date(aSpliteado[0],aSpliteado[1],aSpliteado[2]);
+                    b = new Date(bSpliteado[0],bSpliteado[1],bSpliteado[2]);
+                    return a<b ? -1 : a>b ? 1 : 0;
+                }})
+            }
+            else{
+              let nextSort;
+              if (this.state.currentSortExpired === 'down') nextSort = 'up';
+              else if (this.state.currentSortExpired === 'up') nextSort = 'down';
+              this.setState({
+                currentSortExpired: nextSort
+              });
+            }
+        }
+      } else if(tabla === "pending"){
+        if(!isDate){
+            if(columna!==this.state.sortColPending){
+                if(columna.includes(".")){
+                    this.setState({sortColPending: columna});
+                    this.setState({currentSortPending: "down"});
+                    let columnaSplit = columna.split(".")
+                    this.setState({sortTypesPending: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())});
+                } else {
+                let col = columna
+                this.setState({sortColPending: columna});
+                this.setState({currentSortPending: "down"});
+                this.setState({sortTypesPending: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())});
+                }
+            }
+            else{
+            let nextSort;
+            if (this.state.currentSortPending === 'down') nextSort = 'up';
+            else if (this.state.currentSortPending === 'up') nextSort = 'down';
+            this.setState({
+              currentSortPending: nextSort
+            });
+            }
+        } else {
+            if(columna!==this.state.sortColPending){
+                let col = columna
+                this.setState({sortColPending: columna});
+                this.setState({currentSortPending: "down"});
+                this.setState({sortTypesPending: (a, b) => {
+                    let aSpliteado = a[col].split("-")
+                    let bSpliteado = b[col].split("-")
+                    a = new Date(aSpliteado[0],aSpliteado[1],aSpliteado[2]);
+                    b = new Date(bSpliteado[0],bSpliteado[1],bSpliteado[2]);
+                    return a<b ? -1 : a>b ? 1 : 0;
+                }})
+            }
+            else{
+              let nextSort;
+              if (this.state.currentSortPending === 'down') nextSort = 'up';
+              else if (this.state.currentSortPending === 'up') nextSort = 'down';
+              this.setState({
+                currentSortPending: nextSort
+              });
+            }
+        }
+      }
+    };
 
 
   render() {
@@ -88,7 +239,7 @@ class DashboardContainer extends React.Component {
         <div class="div2">
           <Dashboard allTasks={allTasks} user={user} usersTasks={usersTasks} />
           <Graphics usersTasks={usersTasks} handleSubmit2={this.handleSubmit2} allTasksDash={allTasksDash} idUser={this.props.match.params.userId} allTasks={allTasks} allRecruits={allRecruits} handleSubmit={this.handleSubmit} allDisciplines={allDisciplines} allUsers={allUsers} handleChange={this.handleChange} state={this.state} user={user}/>
-          <DashboardRows allTasks={allTasks} user={user} usersTasks={usersTasks} />
+          <DashboardRows allTasks={allTasks} user={user} usersTasks={usersTasks} state={this.state} onSortChange={this.onSortChange} />
           <Progress allTasks={allTasks} allRecruits={allRecruits} handleClickDash={this.handleClickDash} tasksRecruit={tasksRecruit} user={user} usersTasks={usersTasks}/>
         </div>
       </div>

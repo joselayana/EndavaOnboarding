@@ -38,7 +38,7 @@ export default ({ handleSubmit, handleChange, state, tasksList, handleClick, han
                                         See, modify or delete available tasks.
                                     </button>
                                     {/* -- Modal task form -- */}
-                                    <div className="modal fade" id="tasksList" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div className="modal fade" id="tasksList" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                                         <div className="modal-dialog" role="document">
                                             <div className="modal-content">
                                                 <div className="modal-header">
@@ -89,6 +89,6 @@ export default ({ handleSubmit, handleChange, state, tasksList, handleClick, han
                     </div>
                 </div>
             </section>
-        </Fragment>
+        </Fragment >
     )
 }
