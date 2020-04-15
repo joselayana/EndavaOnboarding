@@ -76,7 +76,7 @@ class DashboardContainer extends React.Component {
 
 
   render() {
-    const { allTasks, allRecruits, allDisciplines, allUsers, usersTasks, allTasksDash, tasksRecruit } = this.props;
+    const { allTasks, allRecruits, allDisciplines, allUsers, usersTasks, allTasksDash, tasksRecruit,user } = this.props;
     if (!this.props.user.name) {
       return <Redirect to={{pathname: "/login"}}/>
     }
@@ -86,10 +86,10 @@ class DashboardContainer extends React.Component {
           <SidebarContainer path={this.props.match} />
         </div>
         <div class="div2">
-          <Dashboard allTasks={allTasks} />
-          <Graphics usersTasks={usersTasks} handleSubmit2={this.handleSubmit2} allTasksDash={allTasksDash} idUser={this.props.match.params.userId} allTasks={allTasks} allRecruits={allRecruits} handleSubmit={this.handleSubmit} allDisciplines={allDisciplines} allUsers={allUsers} handleChange={this.handleChange} state={this.state}/>
-          <DashboardRows allTasks={allTasks} />
-          <Progress allTasks={allTasks} allRecruits={allRecruits} handleClickDash={this.handleClickDash} tasksRecruit={tasksRecruit}/>
+          <Dashboard allTasks={allTasks} user={user} usersTasks={usersTasks} />
+          <Graphics usersTasks={usersTasks} handleSubmit2={this.handleSubmit2} allTasksDash={allTasksDash} idUser={this.props.match.params.userId} allTasks={allTasks} allRecruits={allRecruits} handleSubmit={this.handleSubmit} allDisciplines={allDisciplines} allUsers={allUsers} handleChange={this.handleChange} state={this.state} user={user}/>
+          <DashboardRows allTasks={allTasks} user={user} usersTasks={usersTasks} />
+          <Progress allTasks={allTasks} allRecruits={allRecruits} handleClickDash={this.handleClickDash} tasksRecruit={tasksRecruit} user={user} usersTasks={usersTasks}/>
         </div>
       </div>
     )
