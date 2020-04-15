@@ -13,7 +13,7 @@ export default ({ allTasks, state, allTasksDash, user, usersTasks}) => {
     let arrPending=[];
     let arrFinished=[];
 
-          allTasksDash.map((task)=>{
+          usersTasks.map((task)=>{
             let fromDate = new Date(state.fromDate);
             let toDate = new Date(state.toDate);
             let createdDate = new Date(task.createdAt);
@@ -68,7 +68,7 @@ export default ({ allTasks, state, allTasksDash, user, usersTasks}) => {
             },
               title: {
                 display: true,
-                text: `State of the Tasks Created From ${firstDate} To ${secondDate}DDDD`
+                text: `State of the Tasks Created From ${firstDate} To ${secondDate}`
             }
           }
 

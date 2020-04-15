@@ -682,6 +682,19 @@ margin-top:20px;
 .div2Graph { grid-area: 1 / 7 / 2 / 13; }
 .div3Graph { grid-area: 2 / 1 / 3 / 7; }
 .div4Graph { grid-area: 2 / 7 / 3 / 13; }
+.div5Graph { grid-area: 1 / 1 / 2 / 13; }
+
+/* .parent {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+}
+  
+.div1 { grid-area: 1 / 1 / 2 / 13; }
+.div2 { grid-area: 2 / 1 / 3 / 7; }
+.div3 { grid-area: 2 / 7 / 3 / 13; }  */
 
 .parentDash {
 display: grid;
