@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 
 
 
-export default ({ tasks, handleSearchInput, user }) => {
+export default ({ state, tasks, handleSearchInput, user, onSortChange }) => {
     let indice = 0
+    let orden =state.currentSort==="down" ? [...tasks].sort(state.sortTypes) : [...tasks].sort(state.sortTypes).reverse()
     return (
         <Fragment>
 
@@ -23,15 +24,29 @@ export default ({ tasks, handleSearchInput, user }) => {
                             <thead>
                                 <tr className="table1">
                                     <th scope="col">#</th>
-                                    <th scope="col">Task</th>
-                                    <th scope="col">New Hire</th>
-                                    <th scope="col">Due Date</th>
-                                    <th scope="col">End date</th>
+                                    <th scope="col"><div onClick={() => onSortChange("task.description")}>Task 
+                        {(state.sortCol === "task.description") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("recruit.name")}>New Hire 
+                        {(state.sortCol === "recruit.name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("dueDate", true)}>Due Date 
+                        {(state.sortCol === "dueDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>
+                        : ""}
+                        </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("finishDate", true)}>End date 
+                        {(state.sortCol === "finishDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>
+                        : ""}
+                        </div></th>
                                     <th scope="col">Comments</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {tasks.map((task) => {
+                                {orden.map((task) => {
                                     return (
                                         <>
                                             {(task.state == "finished") ? (
