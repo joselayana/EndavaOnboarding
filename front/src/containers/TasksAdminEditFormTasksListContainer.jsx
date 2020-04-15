@@ -4,6 +4,7 @@ import { withRouter, Redirect } from "react-router-dom"
 import TasksAdminEditFormTasksList from "../components/TasksAdminEditFormTasksList"
 import { deleteTask, changeTask } from "../redux/actions/tasks"
 import SidebarContainer from "../containers/SidebarContainer";
+import { searchAllTasks } from "../redux/actions/tasks"
 
 
 
@@ -20,12 +21,13 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this)
     }
     componentDidMount() {
+        this.props.searchAllTasks()
     }
 
     handleDelete() {
         this.props.deleteTask(this.props.match.params.taskId)
             .then(
-                this.props.history.push(`/myTasks/${this.props.user.id}`)
+                this.props.history.push(`/AddOrEditAvailableTasks`)
             )
     }
 
@@ -42,7 +44,7 @@ class TasksAdminEditFormTasksListContainer extends React.Component {
             let newDescription = this.state.description
             let obj = { taskId: this.props.match.params.taskId, description: newDescription }
             this.props.changeTask(obj)
-                .then(this.props.history.push(`/myTasks/${this.props.user.id}`))
+                .then(this.props.history.push(`/AddOrEditAvailableTasks`))
         } else {
             this.setState({ errorDescription: true })
         }
@@ -80,7 +82,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         deleteTask: (taskId) => dispatch(deleteTask(taskId)),
-        changeTask: (obj) => dispatch(changeTask(obj))
+        changeTask: (obj) => dispatch(changeTask(obj)),
+        searchAllTasks: () => dispatch(searchAllTasks()),
+
     }
 }
 
