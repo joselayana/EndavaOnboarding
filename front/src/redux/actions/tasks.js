@@ -72,6 +72,20 @@ export const searchTasks = (userId, busqueda) => dispatch => {
     }
 }
 
+export const searchFinishedTasks = (userId, busqueda) => dispatch => {
+    {
+        if (busqueda === undefined) {
+            return Axios.get(`/api/task/myFinishedTasks/${userId}`)
+                .then(res => res.data)
+                .then(tasks => dispatch(findTasks(tasks)))
+        } else {
+            return Axios.get(`/api/task/myFinishedTasks/${userId}?s=${busqueda}`)
+                .then(res => res.data)
+                .then(tasks => dispatch(findTasks(tasks)))
+        }
+    }
+}
+
 export const searchAllTasks = (busqueda, valor) => dispatch => {
     if (valor === undefined) {
         return Axios.get("/api/task/allTasks")
@@ -83,6 +97,22 @@ export const searchAllTasks = (busqueda, valor) => dispatch => {
             .then(allTasks => dispatch(findAllTasks(allTasks)))
     } else if (valor === 2) {
         return Axios.get(`/api/task/allTasks?t=${busqueda}`)
+            .then(res => res.data)
+            .then(allTasks => dispatch(findAllTasks(allTasks)))
+    }
+}
+
+export const searchAllFinishedTasks = (busqueda, valor) => dispatch => {
+    if (valor === undefined) {
+        return Axios.get("/api/task/allFinishedTasks")
+            .then(res => res.data)
+            .then(allTasks => dispatch(findAllTasks(allTasks)))
+    } else if (valor === 1) {
+        return Axios.get(`/api/task/allFinishedTasks?s=${busqueda}`)
+            .then(res => res.data)
+            .then(allTasks => dispatch(findAllTasks(allTasks)))
+    } else if (valor === 2) {
+        return Axios.get(`/api/task/allFinishedTasks?t=${busqueda}`)
             .then(res => res.data)
             .then(allTasks => dispatch(findAllTasks(allTasks)))
     }

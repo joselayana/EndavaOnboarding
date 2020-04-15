@@ -2,8 +2,9 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom"
 
 
-export default ({ handleSearchInputS, handleSearchInputT, allTasks, user }) => {
+export default ({ handleSearchInputS, handleSearchInputT, allTasks, user, state, onSortChange}) => {
     let indice = 0
+    let orden =state.currentSort==="down" ? [...allTasks].sort(state.sortTypes) : [...allTasks].sort(state.sortTypes).reverse()
     return (
         <Fragment>
             <div class="card-body rgba-black-light white-text z-depth-1">
@@ -30,16 +31,29 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks, user }) => {
                                 <tr className="table1">
                                     <th scope="col">#</th>
                                     <th scope="col"></th>
-                                    <th scope="col">Task</th>
-                                    <th scope="col">New Hire</th>
-                                    <th scope="col">Task owner</th>
-                                    <th scope="col">Due Date</th>
+                                    <th scope="col"><div onClick={() => onSortChange("task.description")}>Task 
+                        {(state.sortCol === "task.description") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("recruit.name")}>New Hire 
+                        {(state.sortCol === "recruit.name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("user.name")}>Task owner 
+                        {(state.sortCol === "user.name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("dueDate", true)}>Due Date 
+                        {(state.sortCol === "dueDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>
+                        : ""}
+                        </div></th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Comments</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                {allTasks.map((task) => {
+                                {orden.map((task) => {
                                     let today = new Date();
                                     let due = new Date(task.dueDate);
                                     let color = ""
