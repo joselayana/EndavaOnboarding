@@ -53,25 +53,50 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks, user }) => {
                                     return (
                                         <>
                                             {(task.state != "finished") ? (
-                                                <tr key={task.id}>
-                                                    <th scope="row" className="align-middle">{++indice}</th>
-                                                    <> {(color === "rojo") ? (<td style={{ color: "red" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
-                                                    <> {(color === "amarillo") ? (<td style={{ color: "yellow" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
-                                                    <> {(color === "verde") ? (<td style={{ color: "green" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
-                                                    <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
-                                                    <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                                                    <td className="align-middle">{task.user.name} {task.user.lastName}</td>
-                                                    <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
-                                                    <>
-                                                        {(task.state == "blocked out") ? (
-                                                            <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
-                                                        ) : (
-                                                                <td className="align-middle"   >{task.state}</td>
-                                                            )
-                                                        }
-                                                    </>
-                                                    <td className="align-middle">{task.comment}</td>
-                                                </tr>
+                                                <>
+                                                    {(color === "rojo" || task.state === "blocked out") ? (
+                                                        <tr key={task.id} style={{ backgroundColor: "#ff000036" }}  >
+                                                            <th scope="row" className="align-middle">{++indice}</th>
+                                                            <> {(color === "rojo") ? (<td style={{ color: "red" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                                            <> {(color === "amarillo") ? (<td style={{ color: "yellow" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                                            <> {(color === "verde") ? (<td style={{ color: "green" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                                            <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
+                                                            <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
+                                                            <td className="align-middle">{task.user.name} {task.user.lastName}</td>
+                                                            <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
+                                                            <>
+                                                                {(task.state == "blocked out") ? (
+                                                                    <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                                                                ) : (
+                                                                        <td className="align-middle"   >{task.state}</td>
+                                                                    )
+                                                                }
+                                                            </>
+                                                            <td className="align-middle">{task.comment}</td>
+                                                        </tr>
+                                                    ) : (
+                                                            <tr key={task.id} style={{ backgroundColor: "white" }} >
+                                                                <th scope="row" className="align-middle">{++indice}</th>
+                                                                <> {(color === "rojo") ? (<td style={{ color: "red" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                                                <> {(color === "amarillo") ? (<td style={{ color: "yellow" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                                                <> {(color === "verde") ? (<td style={{ color: "green" }} className="align-middle"><i class="fas fa-circle"></i></td>) : null}</>
+                                                                <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
+                                                                <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
+                                                                <td className="align-middle">{task.user.name} {task.user.lastName}</td>
+                                                                <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
+                                                                <>
+                                                                    {(task.state == "blocked out") ? (
+                                                                        <td className="align-middle" style={{ color: "red" }}  >{task.state}</td>
+                                                                    ) : (
+                                                                            <td className="align-middle"   >{task.state}</td>
+                                                                        )
+                                                                    }
+                                                                </>
+                                                                <td className="align-middle">{task.comment}</td>
+                                                            </tr>
+                                                        )}
+                                                </>
+
                                             ) : (null)}
                                         </>
                                     )

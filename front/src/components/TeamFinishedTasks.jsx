@@ -43,7 +43,7 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks }) => {
                                         <>
                                             {(task.state == "finished") ? (
                                                 <>
-                                                    <tr key={task.id}>
+                                                    <tr key={task.id} style={{ backgroundColor: "white" }} >
                                                         <th scope="row" className="align-middle">{++indice}</th>
                                                         <td className="align-middle"><Link style={{ color: "#1d57a8" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                                         <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
