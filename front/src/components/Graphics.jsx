@@ -25,7 +25,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
 
           <div class="card dashCardGraphic">
             <div  data-toggle="modal" data-target=".bd-example-modal-lg">
-              <Chart1Component allTasks={allTasks} state={state} allTasksDash={allTasksDash} user={user}/>
+              {(user.isAdmin)?<Chart1Component allTasks={allTasks} state={state} allTasksDash={allTasksDash} user={user}/>:<Chart1ComponentRegularUser allTasks={allTasks} state={state} allTasksDash={allTasksDash} user={user} usersTasks={usersTasks}/>}
             </div>
             <div class="card-body bodyCard2">
               <form onSubmit={handleSubmit2}>
@@ -51,7 +51,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
           <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
-                <Chart1Component allTasks={allTasks} state={state} allTasksDash={allTasksDash} user={user}/>
+              {(user.isAdmin)?<Chart1Component allTasks={allTasks} state={state} allTasksDash={allTasksDash} user={user}/>:<Chart1ComponentRegularUser allTasks={allTasks} state={state} allTasksDash={allTasksDash} user={user} usersTasks={usersTasks}/>}
               </div>
             </div>
           </div>
@@ -62,7 +62,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
 
           <div class="dashCardGraphic card" >
             <div data-toggle="modal" data-target=".bd-example3-modal-lg">
-              <Chart4Component allUsers={allUsers} allTasks={allTasks} usersTasks={usersTasks} state={state} idUser={idUser} user={user}/>
+            {(user.isAdmin)?<Chart4Component allUsers={allUsers} allTasks={allTasks} usersTasks={usersTasks} state={state} idUser={idUser} user={user}/>:<Chart4ComponentRegularUser allUsers={allUsers} allTasks={allTasks} usersTasks={usersTasks} state={state} idUser={idUser} user={user}/>}
             </div>
             <div class="card-body bodyCard2">
               <h5 class="card-title">Task Stats</h5>
@@ -87,7 +87,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
           <div class="modal fade bd-example3-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
-                <Chart4Component allUsers={allUsers} allTasks={allTasks} usersTasks={usersTasks} state={state} user={user}/>
+              {(user.isAdmin)?<Chart4Component allUsers={allUsers} allTasks={allTasks} usersTasks={usersTasks} state={state} idUser={idUser} user={user}/>:<Chart4ComponentRegularUser allUsers={allUsers} allTasks={allTasks} usersTasks={usersTasks} state={state} idUser={idUser} user={user}/>}
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
         <div class="div4Graph">
 
           <div class="dashCardGraphic card" data-toggle="modal" data-target=".bd-example1-modal-lg">
-            <Chart2Component allRecruits={allRecruits} allDisciplines={allDisciplines} user={user}/>
+          {(user.isAdmin)?<Chart2Component allRecruits={allRecruits} allDisciplines={allDisciplines} user={user}/>:<Chart2ComponentRegularUser allRecruits={allRecruits} allDisciplines={allDisciplines} user={user}/>}
             <div class="card-body bodyCard2">
               <h5 class="card-title">New Hires</h5>
               <p class="card-text">Amount of new employees in each discipline.</p>
@@ -107,7 +107,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
           <div class="modal fade bd-example1-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
-                <Chart2Component allRecruits={allRecruits} allDisciplines={allDisciplines} user={user}/>
+              {(user.isAdmin)?<Chart2Component allRecruits={allRecruits} allDisciplines={allDisciplines} user={user}/>:<Chart2ComponentRegularUser allRecruits={allRecruits} allDisciplines={allDisciplines} user={user}/>}
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
         <div class="div3Graph">
 
           <div class="dashCardGraphic card" data-toggle="modal" data-target=".bd-example2-modal-lg">
-            <Chart3Component allUsers={allUsers} allTasks={allTasks} user={user}/>
+          {(user.isAdmin)?<Chart3Component allUsers={allUsers} allTasks={allTasks} user={user}/>:<Chart3ComponentRegularUser allUsers={allUsers} allTasks={allTasks} user={user}/>}
             <div class="card-body bodyCard2">
               <h5 class="card-title">Task Owners</h5>
               <p class="card-text">Tasks divided by owner.</p>
@@ -128,7 +128,7 @@ export default ({allTasks, allTasksDash, allRecruits, allDisciplines, allUsers, 
           <div class="modal fade bd-example2-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
               <div class="modal-content">
-                <Chart3Component allUsers={allUsers} allTasks={allTasks} user={user}/>
+              {(user.isAdmin)?<Chart3Component allUsers={allUsers} allTasks={allTasks} user={user}/>:<Chart3ComponentRegularUser allUsers={allUsers} allTasks={allTasks} user={user}/>}
               </div>
             </div>
           </div>
