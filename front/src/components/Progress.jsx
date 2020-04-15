@@ -1,8 +1,9 @@
 import React from "react";
 import "../css/style.css"
 import "../css/style2.scss"
+import SingleRecruitDashboard from "./SingleRecruitDashboard"
 
-export default ({allTasks,allRecruits}) => {
+export default ({allTasks,allRecruits, handleClickDash, tasksRecruit}) => {
 
  if(allTasks.length && allRecruits.length){
   return(
@@ -15,14 +16,16 @@ export default ({allTasks,allRecruits}) => {
           {allRecruits.map((recruit)=>{
             let recruitTasks=[];
             let finishedTasks=[];
-            let porcentage;
+            let porcentage=0;
             let color;
 
             {allTasks.map((task)=>{
-              if (task.recruitId==recruit.id) recruitTasks.push(task)
-              if (task.state==="finished" && task.recruitId==recruit.id) finishedTasks.push(task)
-              porcentage=finishedTasks.length*100/recruitTasks.length
-            })
+                if (task.recruitId==recruit.id) recruitTasks.push(task)
+                if (task.state==="finished" && task.recruitId==recruit.id) finishedTasks.push(task)
+                if (recruitTasks.length){
+                  porcentage=finishedTasks.length*100/recruitTasks.length
+                }
+              })
             }
 
             {
@@ -34,18 +37,17 @@ export default ({allTasks,allRecruits}) => {
 
             return(
               <>
-                <div  data-toggle="modal" data-target=".bd-uno-modal-lg">
+                <div  data-toggle="modal" data-target=".uno" onClick={()=>handleClickDash(recruit.id)}>
                   <p>{recruit.name} {recruit.lastName}, {Math.floor(porcentage)}% completed </p>
                       <div className="progress">
                         <div className= "progress-bar" role="progressbar" style= {{width: `${porcentage}%` ,backgroundColor:`${color}`}} aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                       </div>
                 </div>
 
-                <div class="modal fade bd-uno-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-                  <div class="modal-dialog modal-lg">
+                <div class="modal fade uno" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl">
                     <div class="modal-content">
-                      <h5>Aca tenes tu modal de {recruit.name} {recruit.lastName} </h5>
-                      {/*<Chart1Component allTasks={allTasks} state={state} allTasksDash={allTasksDash}/>*/}
+                      <SingleRecruitDashboard tasksRecruit={tasksRecruit}/>
                     </div>
                   </div>
                 </div>

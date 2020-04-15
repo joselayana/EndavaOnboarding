@@ -7,6 +7,10 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks, user }) => {
     return (
         <Fragment>
             <div class="card-body rgba-black-light white-text z-depth-1">
+                <div style={{ textAlign: "center", marginTop: "3%" }} >
+                    <h1>TEAM PENDING TASKS</h1>
+                </div>
+                <br />
                 <div>
                     <div className="container box_container2 margen">
                         <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">

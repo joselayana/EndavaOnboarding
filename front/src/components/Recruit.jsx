@@ -3,8 +3,9 @@ import "../css/style.css"
 import { Link } from "react-router-dom"
 
 
-export default ({ recruits, handleSearchInput }) => {
+export default ({ state, recruits, handleSearchInput, onSortChange }) => {
   let indice = 0
+  let orden =state.currentSort==="down" ? [...recruits].sort(state.sortTypes) : [...recruits].sort(state.sortTypes).reverse()
   return (
     <div style={{ padding: "3%" }}>
 
@@ -24,18 +25,35 @@ export default ({ recruits, handleSearchInput }) => {
             <thead>
               <tr className="table1">
                 <th scope="col">#</th>
-                <th scope="col">Name</th>
-                <th scope="col">Last Name</th>
-                <th scope="col">Email</th>
-                <th scope="col">Discipline</th>
-                <th scope="col">Entry Date</th>
+                <th scope="col"><div onClick={() => onSortChange("name")}>Name 
+                        {(state.sortCol === "name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                <th scope="col"><div onClick={() => onSortChange("lastName")}>Last Name 
+                        {(state.sortCol === "lastName") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                <th scope="col"><div onClick={() => onSortChange("email")}>Email 
+                        {(state.sortCol === "email") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                <th scope="col"><div onClick={() => onSortChange("discipline.description")}>Discipline 
+                        {(state.sortCol === "discipline.description") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>
+                        : ""}
+                        </div></th>
+                <th scope="col"><div onClick={() => onSortChange("entryDate", true)}>Entry Date 
+                        {(state.sortCol === "entryDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>
+                        : ""}
+                        </div></th>
                 <th scope="col">Phone</th>
                 <th scope="col">DNI</th>
                 <th scope="col">Details</th>
               </tr>
             </thead>
             <tbody>
-              {recruits.map((recruit) => {
+              {orden.map((recruit) => {
                 let fechaArray = recruit.entryDate.split("-")
                 let fechaOrdenada = fechaArray.reverse()
                 let dateOfEntry = fechaOrdenada.join("/")

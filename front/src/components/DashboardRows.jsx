@@ -89,7 +89,7 @@ export default ({allTasks}) =>{
                   {allTasks.map((task) => {
                     return (
                       <>
-                        {(new Date(task.dueDate) < new Date) ? (
+                        {(new Date(task.dueDate) < new Date && (task.state!=="finished")) ? (
                           <>
                             <tr key={task.id}>
                               <th scope="row" className="align-middle">{++indice1}</th>

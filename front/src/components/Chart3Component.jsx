@@ -2,54 +2,46 @@ import React, { Fragment } from "react";
 import "../css/style.css"
 import { Bar, Line, Pie } from "react-chartjs-2";
 
-export default ({ allUsers, allTasks }) => {
+export default ({allTasks }) => {
 
-  let usuarios = {}
+  let taskCategory = {}
 
-  allUsers.map((user) => {
-    usuarios[user.id] = 0
+  allTasks.map((task) => {
+    if(task.state==="blocked out"){
+      taskCategory[task.task.description] =0
+    }
   })
 
   allTasks.map((task) => {
-    usuarios[task.userId] += 1
+    if(task.state==="blocked out"){
+      taskCategory[task.task.description] += 1
+    }
   })
 
+  let arrBloqueadasKeyyVal= Object.entries(taskCategory)
+  let arrKey=[];
+  let arrVal=[];
 
-  let userKeyValueArray = Object.entries(usuarios)
-  let arrIdUsers = []
-  let arrTask = []
-  let finalArrTask = []
-
-  userKeyValueArray.map((arr) => {
-    arrIdUsers.push(arr[0]);
-    arrTask.push(arr[1])
+  arrBloqueadasKeyyVal.map ((arr)=>{
+    arrKey.push(arr[0]);
+    arrVal.push(arr[1])
   })
-
-  arrIdUsers.map((userId) => {
-    allUsers.map((userGeneral) => {
-      if (userId == userGeneral.id) {
-        let fullName = userGeneral.name + " " + userGeneral.lastName
-        finalArrTask.push(fullName)
-      }
-    })
-  })
-
 
           let data = {
-            labels:finalArrTask,
+            labels:arrKey,
             datasets:[
               {
-                data:arrTask,
+                data:arrVal,
                 label:"Titulo",
                 backgroundColor:[
+                  "#48545B",,
+                  "#9BB4BE",
+                  "#F0F3F3",
+                  "#404040",
                   "#C31900",
                   "#ed6861",
                   "#BFBFBF",
                   "#F2F2F2",
-                  "#48545B",
-                  "#404040",
-                  "#9BB4BE",
-                  "#F0F3F3"
                 ]
               }
             ],
@@ -61,7 +53,7 @@ export default ({ allUsers, allTasks }) => {
     },
     title: {
       display: true,
-      text: "Amount of Tasks of Each User"
+      text: "Distribution of Blocked Tasks by Categories"
   }
   }
 
@@ -75,6 +67,5 @@ export default ({ allUsers, allTasks }) => {
       </div>
     </Fragment>
   )
-
 
 }

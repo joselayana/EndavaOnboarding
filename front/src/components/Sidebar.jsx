@@ -34,7 +34,7 @@ export default ({ user, onLogout, path }) => {
                   <i className="fas fa-list-ol"></i>  &nbsp;Tasks
                 </button>
 
-                <> {(path.path === "/myTasks/:userId" || path.path === "/myPendingTasks/:userId" || path.path === "/myFinishedTasks/:userId" || path.path === "/TeamPendingTasks/:userId" || path.path === "/TeamFinishedTasks/:userId" || path.path === "/editAvailableTasks/:taskId" || path.path === "/task/:taskId") ? (
+                <> {(path.path === "/myTasks/:userId" || path.path === "/myPendingTasks/:userId" || path.path === "/myFinishedTasks/:userId" || path.path === "/TeamPendingTasks/:userId" || path.path === "/TeamFinishedTasks/:userId" || path.path === "/AddOrEditAvailableTasks" || path.path === "/editAvailableTasks/:taskId" || path.path === "/task/:taskId") ? (
                   <div className="collapse show" id="myTasks">
                     <div >
                       <a className="linkInternos" href={`/myPendingTasks/${user.id}`}  > My tasks</a>
@@ -44,7 +44,7 @@ export default ({ user, onLogout, path }) => {
                           <>
                             <a className="linkInternos" href={`/TeamPendingTasks/${user.id}`}  > Team pending tasks</a>
                             <a className="linkInternos" href={`/TeamFinishedTasks/${user.id}`}  > Team finished tasks</a>
-                            <a className="linkInternos" href={`/myTasks/${user.id}`}  > Add or edit available tasks</a>
+                            <a className="linkInternos" href={"/AddOrEditAvailableTasks"}  > Add or edit available tasks</a>
 
                           </>
                         ) :
@@ -63,7 +63,7 @@ export default ({ user, onLogout, path }) => {
                             <>
                               <a className="linkInternos" href={`/TeamPendingTasks/${user.id}`}  > Team pending tasks</a>
                               <a className="linkInternos" href={`/TeamFinishedTasks/${user.id}`}  > Team finished tasks</a>
-                              <a className="linkInternos" href={`/myTasks/${user.id}`}  > Add or edit available tasks</a>
+                              <a className="linkInternos" href={"/AddOrEditAvailableTasks"}  > Add or edit available tasks</a>
 
                             </>
                           ) :
