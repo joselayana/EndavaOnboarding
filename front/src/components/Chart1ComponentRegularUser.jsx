@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import "../css/style.css"
 import {Bar, Line, Pie, Doughnut, HorizontalBar} from "react-chartjs-2";
 
-export default ({ allTasks, state, allTasksDash }) => {
+export default ({ allTasks, state, allTasksDash, user, usersTasks}) => {
 
   if(allTasksDash.length){
 
@@ -68,7 +68,7 @@ export default ({ allTasks, state, allTasksDash }) => {
             },
               title: {
                 display: true,
-                text: `State of the Tasks Created From ${firstDate} To ${secondDate}`
+                text: `State of the Tasks Created From ${firstDate} To ${secondDate}DDDD`
             }
           }
 
@@ -91,7 +91,7 @@ export default ({ allTasks, state, allTasksDash }) => {
     let arrPending=[];
     let arrFinished=[];
 
-    allTasks.map((task)=>{
+    usersTasks.map((task)=>{
       var created = new Date(task.createdAt);
       var today = new Date();
 
