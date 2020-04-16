@@ -5,86 +5,20 @@ import SingleRecruitAddTaskContainer from "../containers/SingleRecruitAddTaskCon
 
 
 
-export default ({ recruit, tasks, handlerClick, handleDeleteRecruit }) => {
+export default ({ recruit, tasks, handlerClick, handleDeleteRecruit, state, onSortChange }) => {
     let indice = 0
+    let orden =state.currentSort==="down" ? [...tasks].sort(state.sortTypes) : [...tasks].sort(state.sortTypes).reverse()
+
     if (tasks) {
         return (
             <div style={{ padding: "3%" }}>
                 <div className="container box_container2" >
-
-                    <div className="accordion" id="accordionExample">
-                        <div className="card">
-                            <div className="card-header" id="headingOne">
+                            <div>
                                 <h2 className="mb-0">
-                                    <button className="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                        {recruit.name} {recruit.lastName}'s Information
-                                </button>
-                                </h2>
-                            </div>
-                            {/* Collapse information */}
-                            <div id="collapseOne" className="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                <div className="card-body">
-
-                                    <section id="banner_white">
-                                        <div className="container box_container">
-                                            <div className="row">
-                                                <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
-                                                    <div className="form-container">
-                                                        <div className="card-body mx-auto">
-                                                            <p className="card-title mt-3 text-center title">New Hire Information</p>
-                                                            <p className="text-left subtitle">Name: {recruit.name} {recruit.lastName}</p>
-                                                            <p className="text-left subtitle">Email: {recruit.email}</p>
-                                                            <p className="text-left subtitle">Phone Number: {recruit.phone}</p>
-                                                            <p className="text-left subtitle">DNI: {recruit.DNI}</p>
-                                                            <p className="text-left subtitle">Entry date: {recruit.entryDate} </p>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </section>
-                                    <div style={{ padding: "3%", display: "flex", justifyContent: "flex-end" }}>
-                                        <div style={{ paddingRight: "1%" }}>
-                                            <Link to={`/recruit/edit/${recruit.id}`}><button type="button" className="btn btn-outline-primary" style={{ borderColor: "#1E5DAC" }} >Edit Information</button></Link>
-                                        </div>
-                                        <div >
-                                            <button type="button" className="btn btn-outline-danger" data-toggle="modal" data-target="#deleteNewHire" >Delete New Hire</button>
-                                        </div>
-                                    </div>
-                                    {/* <!-- Modal  delete new hire--> */}
-                                    <div className="modal fade" id="deleteNewHire" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                        <div className="modal-dialog modal-dialog-centered" role="document">
-                                            <div className="modal-content">
-                                                <div className="modal-header">
-                                                    <h5 className="modal-title" id="exampleModalCenterTitle">Delete new hire request</h5>
-                                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div className="modal-body">
-                                                    <p>Do you want to delete {recruit.name} {recruit.lastName}?</p>
-                                                </div>
-                                                <div className="modal-footer">
-                                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
-                                                    <button onClick={() => handleDeleteRecruit(recruit.id)} data-dismiss="modal" type="button" className="btn btn-primary">Yes</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="card">
-                            <div className="card-header" id="headingTwo">
-                                <h2 className="mb-0">
-                                    <button className="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                         Associated Tasks
-                                </button>
                                 </h2>
                             </div>
-                            {/* Collapse Associated Tasks */}
-                            <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                                <div className="card-body">
+                                <div>
 
                                     {(tasks.length > 0 && typeof tasks[0] === 'object') ? (
                                         <>
@@ -93,16 +27,30 @@ export default ({ recruit, tasks, handlerClick, handleDeleteRecruit }) => {
                                                 <thead>
                                                     <tr className="table1">
                                                         <th scope="col">#</th>
-                                                        <th scope="col">Task</th>
-                                                        <th scope="col">Responsable</th>
-                                                        <th scope="col">Due Date</th>
-                                                        <th scope="col">State</th>
+                                                        <th scope="col"><div onClick={() => onSortChange("task.description")}>Task 
+                        {(state.sortCol === "task.description") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                                                        <th scope="col"><div onClick={() => onSortChange("user.name")}>Responsable 
+                        {(state.sortCol === "user.name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
+                        </div></th>
+                                                        <th scope="col"><div onClick={() => onSortChange("dueDate", true)}>Due Date 
+                        {(state.sortCol === "dueDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>
+                        : ""}
+                        </div></th>
+                                                        <th scope="col"><div onClick={() => onSortChange("state")}>State 
+                        {(state.sortCol === "state") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                        : <i class="far fa-arrow-alt-circle-up"></i>
+                        : ""}
+                        </div></th>
                                                         <th scope="col">Coments</th>
                                                         <th scope="col">Delete</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    {tasks.map((task) => {
+                                                    {orden.map((task) => {
                                                         let fechaArray = task.dueDate.split("-")
                                                         let fechaOrdenada = fechaArray.reverse()
                                                         let dueDate = fechaOrdenada.join("/")
@@ -130,12 +78,8 @@ export default ({ recruit, tasks, handlerClick, handleDeleteRecruit }) => {
                                             </div>
                                         )}
                                 </div>
-                            </div>
                         </div>
                     </div>
-
-                </div>
-            </div>
         )
     } else {
         return (

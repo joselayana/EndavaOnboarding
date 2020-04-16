@@ -50,7 +50,6 @@ export default ({ state, recruits, handleSearchInput, onSortChange }) => {
                 </div></th>
                 <th scope="col">Phone</th>
                 <th scope="col">DNI</th>
-                <th scope="col">Details</th>
               </tr>
             </thead>
             <tbody>
@@ -69,7 +68,6 @@ export default ({ state, recruits, handleSearchInput, onSortChange }) => {
                     <td className="align-middle">{dateOfEntry}</td>
                     <td className="align-middle">{recruit.phone}</td>
                     <td className="align-middle">{recruit.DNI}</td>
-                    <Link to={`/recruit/${recruit.id}`}><td className="align-middle">View More</td></Link>
                   </tr>
                 )
               })}
