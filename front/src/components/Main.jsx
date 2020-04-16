@@ -11,6 +11,7 @@ import NavbarContainer from "../containers/NavbarContainer"
 import BannerLoginContainer from "../containers/BannerLoginContainer"
 import BannerRegisterContainer from "../containers/BannerRegisterContainer"
 import SingleTaskContainer from "../containers/SingleTaskContainer"
+import RecruitsEditDeleteAddContainer from "../containers/RecruitsEditDeleteAddContainer"
 import RecruitContainer from "../containers/RecruitContainer"
 import CreateRecruitContainer from "../containers/CreateRecruitContainer"
 import UsersAdminContainer from "../containers/UsersAdminContainer"
@@ -74,8 +75,9 @@ class Main extends React.Component {
           <Route exact path="/editAvailableTasks/:taskId" component={TasksAdminEditFormTasksListContainer} />
           {/* New hires */}
           <Route exact path="/recruits" component={RecruitContainer} />
-          <Route exact path="/recruit/:recruitId" component={SingleRecruitContainer} />
-          <Route exact path="/recruit/edit/:recruitId" component={SingleRecruitEditFormContainer} />
+          <Route exact path="/manageRecruits" component={RecruitsEditDeleteAddContainer} />
+          <Route exact path="/manageRecruits/tasks/:recruitId" component={SingleRecruitContainer} />
+          <Route exact path="/manageRecruits/edit/:recruitId" component={SingleRecruitEditFormContainer} />
           <Route exact path="/newRecruit" component={CreateRecruitContainer} />
           {/* User */}
           <Route exact path="/users" component={UsersAdminContainer} />

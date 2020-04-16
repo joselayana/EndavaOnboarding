@@ -17,11 +17,10 @@ export const getLoggedUser = (user) => dispatch =>{
           dispatch(userLogin(data))
           return data
         })
-      
 }
 
 export const login = (user) => (dispatch) => {
-  return Axios.post("api/user/login", user)
+  return Axios.post("/api/user/login", user)
     .then(data => data.data)
     .then((data) => { dispatch(userLogin(data)) })
     .catch(error => { throw new Error(error) })
@@ -29,7 +28,7 @@ export const login = (user) => (dispatch) => {
 
 export const logout = () => {
   return function (dispatch, getstate) {
-    return Axios.get("api/user/logout")
+    return Axios.get("/api/user/logout")
       .then(res => { dispatch(userLogout()) })
   }
 }

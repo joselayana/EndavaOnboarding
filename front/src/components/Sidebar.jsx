@@ -89,9 +89,7 @@ export default ({ user, onLogout, path }) => {
                           <div >
                             <a className="linkInternos" href="/newRecruit" > Register a new hire</a>
                             <a className="linkInternos" href="/recruits" > All new hires</a>
-                            <a className="linkInternos" href="/recruits" > Edit information of a new hire</a>
-                            <a className="linkInternos" href="/recruits" > Delete a new hire</a>
-                            <a className="linkInternos" href="/recruits" > Assign tasks to a new hire</a>
+                            <a className="linkInternos" href="/manageRecruits" > Edit, delete or add tasks to new hires</a>
                           </div>
                         </div>
                       ) : (
@@ -99,9 +97,7 @@ export default ({ user, onLogout, path }) => {
                             <div >
                               <a className="linkInternos" href="/newRecruit" > Register a new hire</a>
                               <a className="linkInternos" href="/recruits" > All new hires</a>
-                              <a className="linkInternos" href="/recruits" > Edit information of a new hire</a>
-                              <a className="linkInternos" href="/recruits" > Delete a new hire</a>
-                              <a className="linkInternos" href="/recruits" > Assign tasks to a new hire</a>
+                              <a className="linkInternos" href="/manageRecruits" > Edit, delete or add tasks to new hires</a>
                             </div>
                           </div>
                         )

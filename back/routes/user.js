@@ -62,6 +62,7 @@ const sendMail = function (name, lastName, email) {
 
 
 const loggedUser = function (req, res, next) {
+    console.log(req.user)
     if (req.isAuthenticated()) {
         res.json(req.user)
     } else {
@@ -92,7 +93,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 })
 
 router.get("/logout", function (req, res) {
-    req.logout()
+    req.logOut()
     res.send('deslogueado!')
 })
 

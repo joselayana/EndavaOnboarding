@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux"
 import { withRouter, Redirect } from "react-router-dom"
-import { updateRecruit } from "../redux/actions/recruits"
+import { searchSingleRecruit, updateRecruit } from "../redux/actions/recruits"
 import { searchDisciplines } from "../redux/actions/disciplines"
 
 import SingleRecruitEditForm from "../components/SingleRecruitEditForm"
@@ -24,7 +24,10 @@ class SingleRecruitEditFormContainer extends React.Component {
     }
 
     componentDidMount() {
+        const recruitId = this.props.match.params.recruitId
+        this.props.searchSingleRecruit(recruitId)
         this.props.searchDisciplines()
+        
     }
 
     handleSubmit(e) {
@@ -55,7 +58,7 @@ class SingleRecruitEditFormContainer extends React.Component {
 
         let obj = { name: newName, lastName: newLastName, email: newEmail, phone: newPhone, DNI: newDNI, entryDate: newEntryDate, userId: this.props.user.id, disciplineId: IdDiscipline, recruitId: recruitId }
         this.props.updateRecruit(obj)
-            .then(() => this.props.history.push(`/recruit/${recruitId}`))
+            .then(() => this.props.history.push(`/manageRecruits`))
     }
 
     handleChange(e) {
@@ -63,6 +66,7 @@ class SingleRecruitEditFormContainer extends React.Component {
     }
 
     render() {
+        console.log(this.props.recruit, "ACA ESTA")
         if (!this.props.user.isAdmin && this.props.user.name) {
             return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
@@ -95,6 +99,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
+        searchSingleRecruit: (recruit) => dispatch(searchSingleRecruit(recruit)),
         updateRecruit: (recruit) => dispatch(updateRecruit(recruit)),
         searchDisciplines: () => dispatch(searchDisciplines())
     }

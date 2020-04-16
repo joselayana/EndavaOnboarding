@@ -1,39 +1,57 @@
 import React from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
-
-import SingleRecruit from "../components/SingleRecruit";
-import { searchTasksRecruits, deleteTaskRecruit } from "../redux/actions/tasks"
-import { searchSingleRecruit, deleteRecruit } from "../redux/actions/recruits"
+import { searchRecruits } from "../redux/actions/recruits"
 import SidebarContainer from "../containers/SidebarContainer";
+import { searchTasksRecruits, deleteTaskRecruit } from "../redux/actions/tasks";
+import { searchSingleRecruit, deleteRecruit, singleRecruit } from "../redux/actions/recruits"
+import RecruitsEditDeleteAdd from "../components/RecruitsEditDeleteAdd";
+import { searchAllTasks} from "../redux/actions/tasks";
 
-class SingleRecruitContainer extends React.Component {
+
+class RecruitsEditDeleteAddContainer extends React.Component {
     constructor() {
         super()
-        this.state={
-            sortCol: "task.description",
-            sortTypes: (a, b) => a.task.description.toLowerCase().localeCompare(b.task.description.toLowerCase()),
+        this.state = {
+            busqueda: "",
+            sortCol: "name",
+            sortTypes: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
             currentSort: 'down',
         }
-        this.handlerClick = this.handlerClick.bind(this)
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSearchInput = this.handleSearchInput.bind(this);
         this.onSortChange = this.onSortChange.bind(this);
         this.handleDeleteRecruit = this.handleDeleteRecruit.bind(this)
+        this.handlerClick = this.handlerClick.bind(this)
+        
+
     }
 
     componentDidMount() {
-        const recruitId = this.props.match.params.recruitId
-        this.props.searchSingleRecruit(recruitId)
-        this.props.searchTasksRecruits(recruitId)
+        this.props.searchRecruits()
+        this.props.searchAllTasks()
+        this.props.singleRecruit({})
+
     }
 
-    handlerClick(taskRecruitId) {
-        let recruitId = this.props.match.params.recruitId
+    handleChange(e) {
+        this.setState({ [e.target.name]: e.target.value });
+    }
+
+    handleSearchInput(e) {
+        this.setState({ busqueda: e.target.value })
+        const busqueda = e.target.value
+        busqueda.length >= 2 ? this.props.searchRecruits(busqueda)
+            : this.props.searchRecruits()
+
+    }
+    handlerClick(recruitId, taskRecruitId) {
         this.props.deleteTaskRecruit(taskRecruitId, recruitId)
     }
 
     handleDeleteRecruit(recruitId) {
         this.props.deleteRecruit(recruitId)
-            .then(this.props.history.push("/recruits"))
+            .then(this.props.history.push("/manageRecruits"))
 
     }
 
@@ -86,7 +104,18 @@ class SingleRecruitContainer extends React.Component {
         }
 	};
 
-    render() {
+    render() 
+        {if (this.state.isLoading) {
+        return (
+            <div>
+            <div class="parent">
+                <div class="div1">
+                    <SidebarContainer path={this.props.match} />
+                </div>
+            </div>
+        </div>
+        )
+        }
         if(!this.props.user.isAdmin && this.props.user.name){
             return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
         } else if (!this.props.user.name) {
@@ -99,7 +128,7 @@ class SingleRecruitContainer extends React.Component {
                         <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
-                        <SingleRecruit state={this.state} onSortChange={this.onSortChange} recruit={this.props.recruit} tasks={this.props.tasks} handlerClick={this.handlerClick} handleDeleteRecruit={this.handleDeleteRecruit} />
+                        <RecruitsEditDeleteAdd allTasks={this.props.allTasks} handleDeleteRecruit={this.handleDeleteRecruit} handlerClick={this.handlerClick} state={this.state} recruits={this.props.recruits} onSortChange={this.onSortChange} handleSearchInput={this.handleSearchInput} handleChange={this.handleChange} />
                     </div>
                 </div>
             </div>
@@ -110,18 +139,19 @@ class SingleRecruitContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         user: state.login.user,
-        recruit: state.recruit.selectedRecruit,
-        tasks: state.task.tasksRecruit
+        recruits: state.recruit.recruits,
+        allTasks: state.task.allTasks,
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        searchSingleRecruit: (recruit) => dispatch(searchSingleRecruit(recruit)),
-        searchTasksRecruits: (recruitId) => dispatch(searchTasksRecruits(recruitId)),
+        singleRecruit: (recruit) => dispatch(singleRecruit(recruit)),
+        searchRecruits: (busqueda) => dispatch(searchRecruits(busqueda)),
         deleteTaskRecruit: (taskRecruitId, recruitId) => dispatch(deleteTaskRecruit(taskRecruitId, recruitId)),
-        deleteRecruit: (recruitId) => dispatch(deleteRecruit(recruitId))
+        deleteRecruit: (recruitId) => dispatch(deleteRecruit(recruitId)),
+        searchAllTasks: () => dispatch(searchAllTasks()),
     }
 }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SingleRecruitContainer))
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(RecruitsEditDeleteAddContainer))

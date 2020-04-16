@@ -1,6 +1,5 @@
 import React from "react";
-
-
+import { Link } from "react-router-dom"
 
 export default ({handleChange, handleSubmit, recruit, disciplinesOptions }) => {
   if(disciplinesOptions.length){
@@ -70,6 +69,9 @@ export default ({handleChange, handleSubmit, recruit, disciplinesOptions }) => {
 
             <div className="form-group">
               <button type="submit" className="btn btn-primary btn-block">Save Changes</button>
+            </div>
+            <div className="form-group">
+              <Link to={`/manageRecruits/`}><button className="btn btn-primary btn-block">Cancel Changes</button></Link>
             </div>
 
           </form>
