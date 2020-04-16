@@ -4,7 +4,7 @@ import "../css/style2.scss"
 import { Link } from "react-router-dom"
 
 export default ({allTasks, user, usersTasks, state, onSortChange}) =>{
-    console.log(usersTasks)
+
   if(allTasks.length && user.id && usersTasks){
 
 

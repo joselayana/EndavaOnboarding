@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { SEARCH_ALL_TASKS_DASH, SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_ERROR, } from "../constants";
+import { SEARCH_TASKS_DASH_3_REGULAR, SEARCH_TASKS_DASH_3, SEARCH_TASKS_DASH, SEARCH_ALL_TASKS_DASH, SEARCH_TASKS, SINGLE_TASK_RECRUIT, SEARCH_TASKS_RECRUIT, SEARCH_ALL_TASKS, SEARCH_TASKS_LIST, SET_ERROR, } from "../constants";
 
 export const findTasks = (tasks) => ({
     type: SEARCH_TASKS,
@@ -13,6 +13,21 @@ export const findAllTasks = (allTasks) => ({
 
 export const findAllTasksDash = (allTasks) => ({
     type: SEARCH_ALL_TASKS_DASH,
+    allTasks
+})
+
+export const findTasksDash = (tasks) => ({
+    type: SEARCH_TASKS_DASH,
+    tasks
+})
+
+export const findTasksDash3 = (tasks) => ({
+    type: SEARCH_TASKS_DASH_3_REGULAR,
+    tasks
+})
+
+export const findAllTasksDash3 = (allTasks) => ({
+    type: SEARCH_TASKS_DASH_3,
     allTasks
 })
 
@@ -72,6 +87,18 @@ export const searchTasks = (userId, busqueda) => dispatch => {
     }
 }
 
+export const searchTasksDash = (userId) => dispatch => {
+    return Axios.get(`/api/task/myTasks/${userId}`)
+        .then(res => res.data)
+        .then(tasks => dispatch(findTasksDash(tasks)))
+}
+
+export const searchTasksDash3 = (userId) => dispatch => {
+    return Axios.get(`/api/task/myTasks/${userId}`)
+        .then(res => res.data)
+        .then(tasks => dispatch(findTasksDash3(tasks)))
+}
+
 export const searchFinishedTasks = (userId, busqueda) => dispatch => {
     {
         if (busqueda === undefined) {
@@ -122,6 +149,12 @@ export const searchAllTasksDash = () => dispatch => {
     return Axios.get("/api/task/allTasks")
         .then(res => res.data)
         .then(allTasks => dispatch(findAllTasksDash(allTasks)))
+}
+
+export const searchAllTasksDash3 = () => dispatch => {
+    return Axios.get("/api/task/allTasks")
+        .then(res => res.data)
+        .then(allTasks => dispatch(findAllTasksDash3(allTasks)))
 }
 
 export const searchTasksList = (busqueda) => dispatch => {
