@@ -6,31 +6,31 @@ export default ({ selectedTask, user }) => {
         <Fragment>
             {(selectedTask.id) ?
                 (<Fragment>
-                    <section id="banner_white">
+                    <section id="banner_white" style={{paddingBottom:"0%"}}>
                         <div className="container box_container">
                             <div className="row">
-                                <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
+                                <div className="col-md-6" style={{ backgroundColor: "#fff" }}>
                                     <div className="form-container">
                                         <div className="card-body mx-auto">
-                                            <p className="card-title mt-3 text-center title">Recruit<br /> Information</p>
-                                            <p className="text-left subtitle">Name: {selectedTask.recruit.name} {selectedTask.recruit.lastName}</p>
-                                            <p className="text-left subtitle">Email: {selectedTask.recruit.email}</p>
-                                            <p className="text-left subtitle">Phone Number: {selectedTask.recruit.phone}</p>
-                                            <p className="text-left subtitle">DNI: {selectedTask.recruit.DNI}</p>
-                                            <p className="text-left subtitle">Entry date: {selectedTask.recruit.entryDate} </p>
+                                            <p className="mt-3 taskTitle"> <i class="fas fa-info-circle"></i>Recruit Information</p>
+                                            <p className="text-left subtitle"><span className="referencia">Name:</span> {selectedTask.recruit.name} {selectedTask.recruit.lastName}</p>
+                                            <p className="text-left subtitle"><span className="referencia">Email:</span> {selectedTask.recruit.email}</p>
+                                            <p className="text-left subtitle"><span className="referencia">Phone Number:</span> {selectedTask.recruit.phone}</p>
+                                            <p className="text-left subtitle"><span className="referencia">DNI: </span>{selectedTask.recruit.DNI}</p>
+                                            <p className="text-left subtitle"><span className="referencia">Entry date: </span>{selectedTask.recruit.entryDate} </p>
                                         </div>
                                     </div>
                                 </div>
-                                <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
+                                <div className="col-md-6" style={{ backgroundColor: "#fff" }}>
                                     <div className="form-container" style={{ display: "inline-block" }}>
                                         <div className="card-body mx-auto">
-                                            <p className="card-title mt-3 text-center title">Task General Information</p>
-                                            <p className="text-left subtitle">Task: {selectedTask.task.description}</p>
-                                            <p className="text-left subtitle">State: {selectedTask.state} </p>
-                                            <p className="text-left subtitle">Responsable: {user.name} {user.lastName} </p>
-                                            <p className="text-left subtitle">Due date: {selectedTask.dueDate} </p>
-                                            <p className="text-left subtitle">Finish date: </p>
-                                            {(selectedTask.comment) ? (<p className="text-left subtitle">Comment: {selectedTask.comment} </p>) : null}
+                                            <p className="mt-3 taskTitle"> <i class="fas fa-info-circle"></i>Task General Information</p>
+                                            <p className="text-left subtitle"><span className="referencia">Task:</span> {selectedTask.task.description}</p>
+                                            <p className="text-left subtitle"><span className="referencia">State:</span> {selectedTask.state} </p>
+                                            <p className="text-left subtitle"><span className="referencia">Responsable:</span> {user.name} {user.lastName} </p>
+                                            <p className="text-left subtitle"><span className="referencia">Due date: </span>{selectedTask.dueDate} </p>
+                                            <p className="text-left subtitle"><span className="referencia">Finish date:</span> </p>
+                                            {(selectedTask.comment) ? (<p className="text-left subtitle"><span className="referencia">Comment: </span>{selectedTask.comment} </p>) : null}
                                         </div>
                                     </div>
                                 </div>

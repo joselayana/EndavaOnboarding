@@ -51,16 +51,16 @@ export default ({ taskListId, tasksList, allTasks, handleDelete, handleChange, s
                                                             </>
                                                         </div>
                                                         <div className="form-group">
-                                                            <button style={{ margin: "1%" }} type="submit" className="btn btn-outline-primary btn-inline  ">Save changes </button>
+                                                            <button style={{ margin: "1%" }} type="submit" className="btn btn-outline-primary btn-inline "><i class="fas fa-check"></i></button>
                                                             <>
                                                                 {(!flag.length) ? (
-                                                                    <button onClick={handleDelete} style={{ margin: "1%" }} type="submit" className="btn btn-outline-danger btn-inline">Delete task</button>
+                                                                    <button onClick={handleDelete} style={{ margin: "1%" }} type="submit" className="btn btn-outline-danger btn-inline"><i class="fas fa-trash-alt"></i></button>
                                                                 ) : (
                                                                         null
                                                                     )
                                                                 }
                                                             </>
-                                                            <Link to="/AddOrEditAvailableTasks" ><button style={{ margin: "1%" }} type="submit" className="btn btn-outline-primary btn-inline  ">Cancel</button></Link>
+                                                            <Link to="/AddOrEditAvailableTasks" ><button style={{ margin: "1%" }} type="submit" className="btn btn-outline-primary btn-inline"><i class="fas fa-times"></i></button></Link>
 
                                                         </div>
                                                     </form>
