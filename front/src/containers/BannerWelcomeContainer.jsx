@@ -11,9 +11,9 @@ class BannerWelcomeContainer extends React.Component {
     }
     
     render() {
-        // if (this.props.user.name) {
-        //     return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
-        // }
+        if (this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
+        }
         return (
             <div>
                 <BannerWelcome/>

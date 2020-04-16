@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import Loader from 'react-loader-spinner';
 import { getLoggedUser } from "../redux/actions/login";
@@ -84,6 +84,8 @@ class Main extends React.Component {
           <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
           {/* Dashboar       */}
           <Route exact path="/dashboard/:userId" component={DashboardContainer} />
+          
+          <Redirect from="/" to="/" />
         </Switch>
 
       </Fragment>
@@ -99,7 +101,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-
     getLoggedUser: () => dispatch(getLoggedUser())
   };
 };
