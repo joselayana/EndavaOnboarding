@@ -49,11 +49,13 @@ export default ({ handleSubmit, handleChange, state, tasksList, handleClick, han
                                                 </div>
                                                 <div className="modal-body">
                                                     <div className="container box_container2 margen">
-                                                        <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
+                                                        
+                                                        <form class="lupa d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
                                                             <input class="form-control form-control-sm mr-3 ancho" type="text" placeholder="Search for Task" onChange={handleSearchTaskList}
                                                                 aria-label="Search" />
                                                             <i class="fas fa-search searchColor" aria-hidden="true"></i>
                                                         </form>
+                                                
                                                     </div>
                                                     <table className="table table-striped">
                                                         <thead>
@@ -69,7 +71,7 @@ export default ({ handleSubmit, handleChange, state, tasksList, handleClick, han
                                                                     <tr key={task.id}>
                                                                         <th scope="row" className="align-middle">{++indice}</th>
                                                                         <td className="align-middle">{task.description} </td>
-                                                                        <td className="align-middle"><button type="button" class="btn btn-outline-success" data-dismiss="modal" onClick={() => handleClick(task.id)}><i className="fas fa-pencil-alt"></i></button></td>
+                                                                        <td className="align-middle"><button type="button" class="btn btn-outline-danger" data-dismiss="modal" onClick={() => handleClick(task.id)}><i className="fas fa-pencil-alt"></i></button></td>
 
                                                                     </tr>
                                                                 )

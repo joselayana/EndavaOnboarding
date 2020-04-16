@@ -12,7 +12,7 @@ export default ({ state, recruits, handleSearchInput, onSortChange, handleDelete
     <div style={{ padding: "3%" }}>
 
 
-      <h1>Manage New Hires</h1>
+      <h1 className="componentTitle">Manage New Hires</h1>
       <br />
       <div className="container box_container2 margen">
         <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
@@ -45,9 +45,9 @@ export default ({ state, recruits, handleSearchInput, onSortChange, handleDelete
                         : <i class="far fa-arrow-alt-circle-up"></i>
                         : ""}
                         </div></th>
-                <th scope="col">Edit</th>
-                <th scope="col">Add Tasks</th>
-                <th scope="col">Delete</th>
+                <th scope="col" className="centerText">Edit</th>
+                <th scope="col" className="centerText">Add Tasks</th>
+                <th scope="col" className="centerText">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -66,9 +66,9 @@ export default ({ state, recruits, handleSearchInput, onSortChange, handleDelete
                     <td className="align-middle">{recruit.lastName}</td>
                     <td className="align-middle">{recruit.discipline.description}</td>
                     <td className="align-middle">{dateOfEntry}</td>
-                    <td className="align-middle"><Link to={`/manageRecruits/edit/${recruit.id}`}><i class="fas fa-user-edit"></i></Link></td>
-                    <td className="align-middle"><Link to={`/manageRecruits/tasks/${recruit.id}`}><i class="fas fa-plus"></i></Link></td>
-                    <td className="align-middle"><button type="button" className=" btn btn-link " data-toggle="modal" data-target={`#delete${recruit.id}`}><i class="far fa-trash-alt"></i></button></td>
+                    <td className="align-middle centerText"><Link to={`/manageRecruits/edit/${recruit.id}`}><i class="fas fa-user-edit"></i></Link></td>
+                    <td className="align-middle centerText"><Link to={`/manageRecruits/tasks/${recruit.id}`}><i class="fas fa-plus"></i></Link></td>
+                    <td className="align-middle centerText"><button type="button" className=" btn btn-link " data-toggle="modal" data-target={`#delete${recruit.id}`}><i class="fas fa-trash"></i></button></td>
                     <div className="modal fade" id={`delete${recruit.id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                         <div className="modal-dialog modal-dialog-centered" role="document">
                             <div className="modal-content">

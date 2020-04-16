@@ -9,13 +9,13 @@ export default ({ user, onLogout, path }) => {
       {(user.id && path.path) ? (
         <div className="wrapper">
           <div className="sidebar">
-            <div style={{ marginBottom: "30%" }} >
+            <div style={{ marginBottom: "15%" }} >
               <a className="sidebar-brand" href={`/dashboard/${user.id}`}>
                 <img src="/images/logo/Endava_Logo_GyR.svg" />
               </a>
             </div>
-            <div style={{ color: "white" }}  >
-              <center><h6> Welcome {user.name}!!!</h6></center>
+            <div>
+              <center><h6 className="welcome"> Welcome {user.name}!</h6></center>
             </div>
             {/* BOTON LOGOUT */}
             <ul>
@@ -115,14 +115,14 @@ export default ({ user, onLogout, path }) => {
                         <div className="collapse show" id="users">
                           <div >
                             <a className="linkInternos" href="/users" >Manage users profile</a>
-                            <a className="linkInternos" href="/users" > Delete a user</a>
+                           
                           </div>
                         </div>
                       ) : (
                           <div className="collapse" id="users">
                             <div >
                               <a className="linkInternos" href="/users" >Manage users profile</a>
-                              <a className="linkInternos" href="/users" > Delete a user</a>
+                              
                             </div>
                           </div>
                         )

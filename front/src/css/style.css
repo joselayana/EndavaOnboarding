@@ -165,6 +165,19 @@ body
   background-color: #1e5dac;
   position: center;
 }
+.lupa
+{
+  align-items: center;
+}
+
+.centerText
+{
+text-align: center
+}
+.table a
+{
+  color:#285078
+}
 
 .box_container
 {
@@ -506,7 +519,7 @@ width: 94% !important
 }
 
 
-.fa-lock:before {
+.fa-user-lock:before {
     position:center;
     color:#cc0000;
 }
@@ -855,4 +868,45 @@ color:#48545b
 .largeModal
 {
   width: 100%;
+}
+
+.componentTitle 
+{
+  font-size:2.5rem!important;
+  color:#48545b!important;
+  text-align:center!important;
+  text-transform:uppercase!important;
+  font-weight: 400!important;
+}
+
+.fa-circle:before
+{
+  text-shadow: 0 0 3px #48545B;
+}
+
+.fa-arrow-alt-circle-down:before {
+  margin-left: 7px;
+}
+
+.fa-arrow-alt-circle-up:before {
+  margin-left: 7px;
+}
+
+.fa-user-edit:before {
+  color:#48545B!important
+}
+
+.fa-plus:before {
+  color:#48545B!important
+}
+
+.fa-trash:before {
+  color:#c31900!important
+}
+
+.welcome
+{
+color: #fff;
+font-weight: 300;
+margin-bottom: 10%;
 }

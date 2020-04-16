@@ -11,7 +11,7 @@ export default ({ state, tasks, handleSearchInput, user, onSortChange }) => {
         <Fragment>
             <div class="card-body rgba-black-light white-text z-depth-1">
                 <div style={{ textAlign: "center", marginTop: "3%" }} >
-                    <h1>MY FINISHED TASKS</h1>
+                    <h1 className="componentTitle">MY FINISHED TASKS</h1>
                 </div>
                 <br />
                 <div>
@@ -50,6 +50,7 @@ export default ({ state, tasks, handleSearchInput, user, onSortChange }) => {
                             </thead>
                             <tbody>
                                 {orden.map((task) => {
+                                    if (task.finishDate.length>10) task.finishDate=task.finishDate.substr(0,10)
                                     return (
                                         <>
                                             {(task.state == "finished") ? (

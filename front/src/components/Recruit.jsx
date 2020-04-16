@@ -9,7 +9,7 @@ export default ({ state, recruits, handleSearchInput, onSortChange }) => {
   return (
     <div >
       <div style={{ textAlign: "center", marginTop: "3%" }} >
-        <h1>ALL NEW HIRES</h1>
+        <h1 className="componentTitle">ALL NEW HIRES</h1>
       </div>
 
       <br />

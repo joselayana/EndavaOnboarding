@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "../css/style.css"
-import BannerLog from "./BannerLog"
 import LandingCards from "./LandingCards"
 import Footer from "./Footer"
 import NavbarContainer from "../containers/NavbarContainer"
