@@ -84,7 +84,7 @@ export default ({ user, onLogout, path }) => {
                         <i className="fas fa-users"></i> &nbsp;New Hires
                       </button>
 
-                      <> {(path.path === "/recruits" || path.path === "/recruit/:recruitId" || path.path === "/recruit/edit/:recruitId" || path.path === "/newRecruit") ? (
+                      <> {(path.path === "/recruits" || path.path === "/manageRecruits" || path.path === "/manageRecruits/tasks/:recruitId" || path.path === "/manageRecruits/edit/:recruitId" || path.path === "/newRecruit") ? (
                         <div className="collapse show" id="newHires">
                           <div >
                             <a className="linkInternos" href="/newRecruit" > Register a new hire</a>

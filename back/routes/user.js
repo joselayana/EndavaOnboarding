@@ -18,16 +18,6 @@ const sendMail = function (name, lastName, email) {
         }
     });
 
-    // transporter.use("compile", hbs({
-    //     viewEngine: {
-    //         extName: '.hbs',
-    //         partialsDir: '../views/',
-    //         defaultLayout: false
-    //     },
-    //     viewPath: '../views/',
-    //     extName: ".hbs"
-    // }))
-
 
     const mailOptions = {
         from: "endavaOnBoard@gmail.com",
@@ -43,12 +33,6 @@ const sendMail = function (name, lastName, email) {
          it a try!!! :)
 
         `
-        // template: "wellcome",
-        // context: {
-        //     name: `${name}`,
-        //     lastName: `${lastName}`,
-        //     email: `${email}`
-        // }
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
