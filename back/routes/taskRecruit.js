@@ -19,16 +19,6 @@ const sendMail = function (objMail) {
         }
     });
 
-    // transporter.use("compile", hbs({
-    //     viewEngine: {
-    //         extName: '.hbs',
-    //         partialsDir: '../views/',
-    //         defaultLayout: false
-    //     },
-    //     viewPath: '../views/',
-    //     extName: ".hbs"
-    // }))
-
     const taskRecruitAssigned = {
         from: "endavaOnBoard@gmail.com",
         to: `${objMail.taskOwnerEmail}`,
@@ -42,13 +32,6 @@ const sendMail = function (objMail) {
 
         Please check the status of all your tasks in the ON BOARD APP.
         `
-        // template: "taskAssigned",
-        // context: {
-        //     name: `${name}`,
-        //     lastName: `${lastName}`,
-        //     email: `${email}`
-        // }
-
 
     };
     transporter.sendMail(taskRecruitAssigned, function (error, info) {

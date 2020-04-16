@@ -87,7 +87,6 @@ router.delete("/delete/:id", (req, res, next) => {
                 ],
             })
                 .then(allRecruit => {
-                    console.log("length", allRecruit.length);
                     res.status(200).send(allRecruit)
                 })
         })

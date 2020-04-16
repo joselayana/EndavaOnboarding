@@ -16,17 +16,6 @@ const sendMail = function (obj, num) {
         }
     });
 
-    // transporter.use("compile", hbs({
-    //     viewEngine: {
-    //         extName: '.hbs',
-    //         partialsDir: '../views/',
-    //         defaultLayout: false
-    //     },
-    //     viewPath: '../views/',
-    //     extName: ".hbs"
-    // }))
-
-
     let followUpMail = {}
 
     if (num > 0) {
@@ -45,12 +34,7 @@ const sendMail = function (obj, num) {
 
         Please check the status of all your tasks in the ON BOARD APP.
         `
-            // template: "taskAssigned",
-            // context: {
-            //     name: `${name}`,
-            //     lastName: `${lastName}`,
-            //     email: `${email}`
-            // }
+
         };
     } else {
         followUpMail = {
@@ -69,12 +53,6 @@ const sendMail = function (obj, num) {
             Please check the status of all your tasks in the ON BOARD APP.
     
             `
-            // template: "taskAssigned",
-            // context: {
-            //     name: `${name}`,
-            //     lastName: `${lastName}`,
-            //     email: `${email}`
-            // }
         };
     }
 

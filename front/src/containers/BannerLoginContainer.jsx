@@ -1,6 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { withRouter } from "react-router-dom";
+import { withRouter, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import BannerLogin from "../components/BannerLogin";
 
@@ -19,5 +19,16 @@ class BannerLoginContainer extends React.Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        user: state.login.user,
+    }
+}
 
-export default BannerLoginContainer
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+    }
+}
+
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(BannerLoginContainer))

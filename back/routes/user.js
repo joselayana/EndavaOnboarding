@@ -18,16 +18,6 @@ const sendMail = function (name, lastName, email) {
         }
     });
 
-    // transporter.use("compile", hbs({
-    //     viewEngine: {
-    //         extName: '.hbs',
-    //         partialsDir: '../views/',
-    //         defaultLayout: false
-    //     },
-    //     viewPath: '../views/',
-    //     extName: ".hbs"
-    // }))
-
 
     const mailOptions = {
         from: "endavaOnBoard@gmail.com",
@@ -43,12 +33,6 @@ const sendMail = function (name, lastName, email) {
          it a try!!! :)
 
         `
-        // template: "wellcome",
-        // context: {
-        //     name: `${name}`,
-        //     lastName: `${lastName}`,
-        //     email: `${email}`
-        // }
     };
     transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
@@ -62,7 +46,6 @@ const sendMail = function (name, lastName, email) {
 
 
 const loggedUser = function (req, res, next) {
-    console.log(req.user)
     if (req.isAuthenticated()) {
         res.json(req.user)
     } else {
@@ -93,7 +76,6 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 })
 
 router.get("/logout", function (req, res) {
-    console.log("llegue acá!")
     req.logOut()
     res.send('deslogueado!')
 })

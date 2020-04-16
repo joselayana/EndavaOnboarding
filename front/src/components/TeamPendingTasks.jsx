@@ -2,14 +2,14 @@ import React, { Fragment } from "react";
 import { Link } from "react-router-dom"
 
 
-export default ({ handleSearchInputS, handleSearchInputT, allTasks, user, state, onSortChange}) => {
+export default ({ handleSearchInputS, handleSearchInputT, allTasks, user, state, onSortChange }) => {
     let indice = 0
-    let orden =state.currentSort==="down" ? [...allTasks].sort(state.sortTypes) : [...allTasks].sort(state.sortTypes).reverse()
+    let orden = state.currentSort === "down" ? [...allTasks].sort(state.sortTypes) : [...allTasks].sort(state.sortTypes).reverse()
     return (
         <Fragment>
             <div class="card-body rgba-black-light white-text z-depth-1">
                 <div style={{ textAlign: "center", marginTop: "3%" }} >
-                    <h1 className="componentTitle">TEAM PENDING TASKS</h1>
+                    <h1 className="componentTitle">TEAM UNFINISHED TASKS</h1>
                 </div>
                 <br />
                 <div>
@@ -31,24 +31,28 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks, user, state,
                                 <tr className="table1">
                                     <th scope="col">#</th>
                                     <th scope="col"></th>
-                                    <th scope="col"><div onClick={() => onSortChange("task.description")}>Task 
+                                    <th scope="col"><div onClick={() => onSortChange("task.description")}>Task
                         {(state.sortCol === "task.description") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                                    <th scope="col"><div onClick={() => onSortChange("recruit.name")}>New Hire 
+                                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                                    </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("recruit.name")}>New Hire
                         {(state.sortCol === "recruit.name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                                    <th scope="col"><div onClick={() => onSortChange("user.name")}>Task owner 
+                                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                                    </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("user.name")}>Task owner
                         {(state.sortCol === "user.name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                                    <th scope="col"><div onClick={() => onSortChange("dueDate", true)}>Due Date 
+                                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                                    </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("dueDate", true)}>Due Date
                         {(state.sortCol === "dueDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>
-                        : ""}
-                        </div></th>
-                                    <th scope="col">Status</th>
+                                            : <i class="far fa-arrow-alt-circle-up"></i>
+                                            : ""}
+                                    </div></th>
+                                    <th scope="col"><div onClick={() => onSortChange("state")}>Status
+                        {(state.sortCol === "state") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                                            : <i class="far fa-arrow-alt-circle-up"></i>
+                                            : ""}
+                                    </div></th>
                                     <th scope="col">Comments</th>
                                 </tr>
                             </thead>

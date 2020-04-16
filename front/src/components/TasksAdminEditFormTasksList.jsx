@@ -1,4 +1,5 @@
 import React, { Fragment } from "react"
+import { Link } from "react-router-dom"
 
 export default ({ taskListId, tasksList, allTasks, handleDelete, handleChange, state, handleSubmit }) => {
     const flag = allTasks.filter(task => {
@@ -59,6 +60,8 @@ export default ({ taskListId, tasksList, allTasks, handleDelete, handleChange, s
                                                                     )
                                                                 }
                                                             </>
+                                                            <Link to="/AddOrEditAvailableTasks" ><button style={{ margin: "1%" }} type="submit" className="btn btn-outline-primary btn-inline  ">Cancel</button></Link>
+
                                                         </div>
                                                     </form>
                                                 </div>
