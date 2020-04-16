@@ -26,9 +26,7 @@ export const login = (user) => (dispatch) => {
     .catch(error => { throw new Error(error) })
 }
 
-export const logout = () => {
-  return function (dispatch, getstate) {
+export const logout = () => dispatch =>{
     return Axios.get("/api/user/logout")
       .then(res => { dispatch(userLogout()) })
-  }
 }
