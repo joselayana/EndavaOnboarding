@@ -10,7 +10,7 @@ export default ({ user, onLogout, path }) => {
         <div className="wrapper">
           <div className="sidebar">
             <div style={{ marginBottom: "30%" }} >
-              <a className="sidebar-brand" href="/">
+              <a className="sidebar-brand" href={`/dashboard/${user.id}`}>
                 <img src="/images/logo/Endava_Logo_GyR.svg" />
               </a>
             </div>

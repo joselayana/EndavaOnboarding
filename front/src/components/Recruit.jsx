@@ -5,12 +5,13 @@ import { Link } from "react-router-dom"
 
 export default ({ state, recruits, handleSearchInput, onSortChange }) => {
   let indice = 0
-  let orden =state.currentSort==="down" ? [...recruits].sort(state.sortTypes) : [...recruits].sort(state.sortTypes).reverse()
+  let orden = state.currentSort === "down" ? [...recruits].sort(state.sortTypes) : [...recruits].sort(state.sortTypes).reverse()
   return (
-    <div style={{ padding: "3%" }}>
+    <div >
+      <div style={{ textAlign: "center", marginTop: "3%" }} >
+        <h1>ALL NEW HIRES</h1>
+      </div>
 
-
-      <h1>All New Hires</h1>
       <br />
       <div className="container box_container2 margen">
         <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
@@ -25,28 +26,28 @@ export default ({ state, recruits, handleSearchInput, onSortChange }) => {
             <thead>
               <tr className="table1">
                 <th scope="col">#</th>
-                <th scope="col"><div onClick={() => onSortChange("name")}>Name 
+                <th scope="col"><div onClick={() => onSortChange("name")}>Name
                         {(state.sortCol === "name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                <th scope="col"><div onClick={() => onSortChange("lastName")}>Last Name 
+                    : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                </div></th>
+                <th scope="col"><div onClick={() => onSortChange("lastName")}>Last Name
                         {(state.sortCol === "lastName") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                <th scope="col"><div onClick={() => onSortChange("email")}>Email 
+                    : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                </div></th>
+                <th scope="col"><div onClick={() => onSortChange("email")}>Email
                         {(state.sortCol === "email") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                <th scope="col"><div onClick={() => onSortChange("discipline.description")}>Discipline 
+                    : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                </div></th>
+                <th scope="col"><div onClick={() => onSortChange("discipline.description")}>Discipline
                         {(state.sortCol === "discipline.description") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>
-                        : ""}
-                        </div></th>
-                <th scope="col"><div onClick={() => onSortChange("entryDate", true)}>Entry Date 
+                    : <i class="far fa-arrow-alt-circle-up"></i>
+                    : ""}
+                </div></th>
+                <th scope="col"><div onClick={() => onSortChange("entryDate", true)}>Entry Date
                         {(state.sortCol === "entryDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>
-                        : ""}
-                        </div></th>
+                    : <i class="far fa-arrow-alt-circle-up"></i>
+                    : ""}
+                </div></th>
                 <th scope="col">Phone</th>
                 <th scope="col">DNI</th>
                 <th scope="col">Details</th>
