@@ -93,6 +93,7 @@ router.post('/login', passport.authenticate('local'), (req, res) => {
 })
 
 router.get("/logout", function (req, res) {
+    console.log("llegue acá!")
     req.logOut()
     res.send('deslogueado!')
 })
