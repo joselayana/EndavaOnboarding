@@ -14,7 +14,7 @@ export default ({ handleSubmit, handleChange, state, tasksList, handleClick, han
                         <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
                             <div className="form-container">
                                 <div className="card-body mx-auto allform" style={{ maxWidth: "400px" }}>
-                                    <h4 className="card-title mt-2 text-center">Add a Task to The List of Availables Tasks</h4>
+                                    <h4 className="card-title mt-2 text-center">Add a task to the list of availables tasks.</h4>
                                     <form onSubmit={handleSubmit}>
                                         <div className="form-group">
                                             <label style={{ color: "#48545b" }}>Description</label>

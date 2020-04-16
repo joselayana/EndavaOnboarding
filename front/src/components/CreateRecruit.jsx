@@ -69,7 +69,7 @@ export default ({ handleChange, handleSubmit, disciplinesOptions }) => {
               </div>
 
               <div className="form-group">
-                <button type="submit" className="btn btn-danger btn-block"> Create Recruit  </button>
+                <button type="submit" className="btn btn-danger btn-block"> Create New Hire  </button>
               </div>
 
             </form>
