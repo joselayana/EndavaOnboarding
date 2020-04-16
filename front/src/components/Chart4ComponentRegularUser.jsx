@@ -79,7 +79,7 @@ export default ({ usersTasks, state, allUsers, idUser }) => {
         return (
             <Fragment>
             <div className="chart">
-                <Bar
+                <Line
                 data={data}
                 options={options}
                 />

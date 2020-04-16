@@ -2,9 +2,9 @@ import React, { Fragment } from "react";
 import "../css/style.css"
 import {Bar, Line, Pie, Doughnut, HorizontalBar} from "react-chartjs-2";
 
-export default ({ allTasks, state, allTasksDash }) => {
+export default ({ state, tasksDash, usersTasks}) => {
 
-  if(allTasksDash.length){
+  if(tasksDash.length){
 
     let taskWanted=[];
     let arrBlocked=[];
@@ -13,7 +13,7 @@ export default ({ allTasks, state, allTasksDash }) => {
     let arrPending=[];
     let arrFinished=[];
 
-          allTasksDash.map((task)=>{
+          tasksDash.map((task)=>{
             let fromDate = new Date(state.fromDate);
             let toDate = new Date(state.toDate);
             let createdDate = new Date(task.createdAt);
@@ -91,7 +91,7 @@ export default ({ allTasks, state, allTasksDash }) => {
     let arrPending=[];
     let arrFinished=[];
 
-    allTasks.map((task)=>{
+    usersTasks.map((task)=>{
       var created = new Date(task.createdAt);
       var today = new Date();
 

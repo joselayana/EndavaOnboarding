@@ -4,7 +4,7 @@ import "../css/style2.scss"
 import { Link } from "react-router-dom"
 
 export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
-  // console.log(usersTasks)
+
   if (allTasks.length && user.id && usersTasks) {
 
 
@@ -189,6 +189,9 @@ export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
       let indice = 0;
       let indice1 = 0;
       let indice2 = 0;
+      let ordenBlocked = state.currentSortBlocked === "down" ? [...usersTasks].sort(state.sortTypesBlocked) : [...usersTasks].sort(state.sortTypesBlocked).reverse()
+      let ordenExpired = state.currentSortExpired === "down" ? [...usersTasks].sort(state.sortTypesExpired) : [...usersTasks].sort(state.sortTypesExpired).reverse()
+      let ordenPending = state.currentSortPending === "down" ? [...usersTasks].sort(state.sortTypesPending) : [...usersTasks].sort(state.sortTypesPending).reverse()
 
       return (
 
@@ -216,15 +219,24 @@ export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
                     <thead>
                       <tr className="table1 EndavaDash2-4-hex">
                         <th scope="col">#</th>
-                        <th scope="col">Task</th>
-                        <th scope="col">New Hire</th>
-                        <th scope="col">Responsable</th>
-                        <th scope="col">Due Date</th>
+                        <th scope="col"><div onClick={() => onSortChange("task.description", "blocked")}>Task
+                              {(state.sortColBlocked === "task.description") ? state.currentSortBlocked === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                        </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("recruit.name", "blocked")}>New Hire
+                              {(state.sortColBlocked === "recruit.name") ? state.currentSortBlocked === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                        </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("dueDate", "blocked", true)}>Due Date
+                              {(state.sortColBlocked === "dueDate") ? state.currentSortBlocked === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i>
+                            : ""}
+                        </div></th>
                         <th scope="col">Comments</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {usersTasks.map((task) => {
+                      {ordenBlocked.map((task) => {
                         return (
                           <>
                             {(task.state === "blocked out") ? (
@@ -233,7 +245,6 @@ export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
                                   <th scope="row" className="align-middle">{++indice}</th>
                                   <td className="align-middle"><Link style={{ color: "#285078" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                   <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                                  <td className="align-middle">{user.name} {user.lastName}</td>
                                   <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
                                   <td className="align-middle">{task.comment}</td>
                                 </tr>
@@ -246,26 +257,30 @@ export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
                       })}
                     </tbody>
                   </table>
-
-
-
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-
-
                   <table className="table table-striped">
                     <thead>
                       <tr className="table1 EndavaDash2-4-hex">
                         <th scope="col">#</th>
-                        <th scope="col">Task</th>
-                        <th scope="col">New Hire</th>
-                        <th scope="col">Responsable</th>
-                        <th scope="col">Due Date</th>
+                        <th scope="col"><div onClick={() => onSortChange("task.description", "expired")}>Task
+                              {(state.sortColExpired === "task.description") ? state.currentSortExpired === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                        </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("recruit.name", "expired")}>New Hire
+                              {(state.sortColExpired === "recruit.name") ? state.currentSortExpired === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                        </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("dueDate", "expired", true)}>Due Date
+                              {(state.sortColExpired === "dueDate") ? state.currentSortExpired === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i>
+                            : ""}
+                        </div></th>
                         <th scope="col">Comments</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {usersTasks.map((task) => {
+                      {ordenExpired.map((task) => {
                         return (
                           <>
                             {(new Date(task.dueDate) < new Date && (task.state !== "finished")) ? (
@@ -274,7 +289,6 @@ export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
                                   <th scope="row" className="align-middle">{++indice1}</th>
                                   <td className="align-middle"><Link style={{ color: "#285078" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                   <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                                  <td className="align-middle">{user.name} {user.lastName}</td>
                                   <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
                                   <td className="align-middle">{task.comment}</td>
                                 </tr>
@@ -296,15 +310,24 @@ export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
                     <thead>
                       <tr className="table1 EndavaDash2-4-hex">
                         <th scope="col">#</th>
-                        <th scope="col">Task</th>
-                        <th scope="col">New Hire</th>
-                        <th scope="col">Responsable</th>
-                        <th scope="col">Due Date</th>
+                        <th scope="col"><div onClick={() => onSortChange("task.description", "pending")}>Task
+                              {(state.sortColPending === "task.description") ? state.currentSortPending === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                        </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("recruit.name", "pending")}>New Hire
+                              {(state.sortColPending === "recruit.name") ? state.currentSortPending === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                        </div></th>
+                        <th scope="col"><div onClick={() => onSortChange("dueDate", "pending", true)}>Due Date
+                              {(state.sortColPending === "dueDate") ? state.currentSortPending === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
+                            : <i class="far fa-arrow-alt-circle-up"></i>
+                            : ""}
+                        </div></th>
                         <th scope="col">Comments</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {usersTasks.map((task) => {
+                      {ordenPending.map((task) => {
                         return (
                           <>
                             {(task.state === "pending") ? (
@@ -313,7 +336,6 @@ export default ({ allTasks, user, usersTasks, state, onSortChange }) => {
                                   <th scope="row" className="align-middle">{++indice2}</th>
                                   <td className="align-middle"><Link style={{ color: "#285078" }} to={`/task/${task.id}`} >{task.task.description}</Link></td>
                                   <td className="align-middle">{task.recruit.name} {task.recruit.lastName}</td>
-                                  <td className="align-middle">{user.name} {user.lastName}</td>
                                   <td className="align-middle">{task.dueDate.split("-").reverse().join("/")}</td>
                                   <td className="align-middle">{task.comment}</td>
                                 </tr>
