@@ -1,5 +1,5 @@
 import Axios from "axios";
-import { SEARCH_RECRUITS, CREATE_RECRUIT, SINGLE_RECRUIT } from "../constants";
+import { SEARCH_RECRUITS_DASH_REGULAR, SEARCH_RECRUITS, CREATE_RECRUIT, SINGLE_RECRUIT, SEARCH_RECRUITS_DASH } from "../constants";
 
 export const setRecruit = (recruit) => ({
     type: CREATE_RECRUIT,
@@ -8,6 +8,16 @@ export const setRecruit = (recruit) => ({
 
 export const findRecruits = (recruits) => ({
     type: SEARCH_RECRUITS,
+    recruits
+})
+
+export const findRecruits2 = (recruits) => ({
+    type: SEARCH_RECRUITS_DASH,
+    recruits
+})
+
+export const findRecruits2Regular = (recruits) => ({
+    type: SEARCH_RECRUITS_DASH_REGULAR,
     recruits
 })
 
@@ -26,6 +36,18 @@ export const searchRecruits = (busqueda) => dispatch => {
             .then(res => res.data)
             .then(recruits => dispatch(findRecruits(recruits)))
     }
+}
+
+export const searchRecruits2 = () => dispatch => {
+    return Axios.get("/api/recruit/")
+        .then(res => res.data)
+        .then(recruits => dispatch(findRecruits2(recruits)))
+}
+
+export const searchRecruits2Regular = () => dispatch => {
+    return Axios.get("/api/recruit/")
+        .then(res => res.data)
+        .then(recruits => dispatch(findRecruits2Regular(recruits)))
 }
 
 export const createRecruit = (recruit) => dispatch => {

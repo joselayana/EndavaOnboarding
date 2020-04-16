@@ -10,11 +10,11 @@ import SidebarContainer from "../containers/SidebarContainer";
 
 import "../css/style.css"
 
-import { searchAllTasks, searchAllTasksDash } from "../redux/actions/tasks";
-import { searchRecruits } from "../redux/actions/recruits"
+import { searchAllTasks, searchAllTasksDash, searchAllTasksDash3 } from "../redux/actions/tasks";
+import { searchRecruits, searchRecruits2, searchRecruits2Regular } from "../redux/actions/recruits"
 import { searchDisciplines } from "../redux/actions/disciplines"
 import { fetchUsers } from "../redux/actions/users"
-import { searchTasks, searchTasksRecruits } from "../redux/actions/tasks"
+import { searchTasks, searchTasksRecruits, searchTasksDash, searchTasksDash3 } from "../redux/actions/tasks"
 
 
 
@@ -25,6 +25,10 @@ class DashboardContainer extends React.Component {
             responsable: "",
             fromDate: "",
             toDate: "",
+            fromDate3: "",
+            toDate3: "",
+            fromDate2: "",
+            toDate2: "",
             sortColBlocked: "task.description",
             sortTypesBlocked: (a, b) => a.task.description.toLowerCase().localeCompare(b.task.description.toLowerCase()),
             currentSortBlocked: 'down',
@@ -41,7 +45,8 @@ class DashboardContainer extends React.Component {
         this.handleSubmit2 = this.handleSubmit2.bind(this)
         this.handleClickDash = this.handleClickDash.bind(this)
         this.onSortChange = this.onSortChange.bind(this);
-
+        this.handleSubmit3 = this.handleSubmit3.bind(this);
+        this.handleSubmitChart2 = this.handleSubmitChart2.bind(this);
     }
 
     componentDidMount() {
@@ -51,6 +56,10 @@ class DashboardContainer extends React.Component {
         this.props.fetchUsers()
         const idUser = this.props.match.params.userId
         this.props.searchTasks(idUser)
+        this.setState({
+          fromDate: "",
+          toDate: "",
+        })
     }
 
     handleSubmit(e) {
@@ -72,7 +81,25 @@ class DashboardContainer extends React.Component {
     handleSubmit2(e){
       e.preventDefault();
       if (this.state.fromDate && this.state.toDate) {
-        this.props.searchAllTasksDash()
+        (this.props.user.isAdmin) ? (this.props.searchAllTasksDash()) : (this.props.searchTasksDash(this.props.user.id))
+    } else {
+        alert("You must complete all fields")
+    }
+    }
+
+    handleSubmit3(e){
+      e.preventDefault();
+      if (this.state.fromDate3 && this.state.toDate3) {
+        (this.props.user.isAdmin) ? (this.props.searchAllTasksDash3()) : (this.props.searchTasksDash3(this.props.user.id))
+    } else {
+        alert("You must complete all fields")
+    }
+    }
+
+    handleSubmitChart2(e){
+      e.preventDefault();
+      if (this.state.fromDate2 && this.state.toDate2) {
+        (this.props.user.isAdmin) ? (this.props.searchRecruits2()) : (this.props.searchRecruits2Regular())
     } else {
         alert("You must complete all fields")
     }
@@ -227,7 +254,7 @@ class DashboardContainer extends React.Component {
 
 
   render() {
-    const { allTasks, allRecruits, allDisciplines, allUsers, usersTasks, allTasksDash, tasksRecruit,user } = this.props;
+    const { allTasks, allRecruits, allDisciplines, allUsers, taskDash3, recruitsDashRegular, usersTasks, allTasksDash,allRecruitsDash, tasksRecruit, user, allTaskDash3, tasksDash } = this.props;
     if (!this.props.user.name) {
       return <Redirect to={{pathname: "/login"}}/>
     }
@@ -238,7 +265,7 @@ class DashboardContainer extends React.Component {
         </div>
         <div class="div2">
           <Dashboard allTasks={allTasks} user={user} usersTasks={usersTasks} />
-          <Graphics usersTasks={usersTasks} handleSubmit2={this.handleSubmit2} allTasksDash={allTasksDash} idUser={this.props.match.params.userId} allTasks={allTasks} allRecruits={allRecruits} handleSubmit={this.handleSubmit} allDisciplines={allDisciplines} allUsers={allUsers} handleChange={this.handleChange} state={this.state} user={user}/>
+          <Graphics handleSubmitChart2={this.handleSubmitChart2} taskDash3={taskDash3} recruitsDashRegular={recruitsDashRegular} allRecruitsDash={allRecruitsDash} allTaskDash3={allTaskDash3} handleSubmit3={this.handleSubmit3} usersTasks={usersTasks} tasksDash={tasksDash} handleSubmit2={this.handleSubmit2} allTasksDash={allTasksDash} idUser={this.props.match.params.userId} allTasks={allTasks} allRecruits={allRecruits} handleSubmit={this.handleSubmit} allDisciplines={allDisciplines} allUsers={allUsers} handleChange={this.handleChange} state={this.state} user={user}/>
           <DashboardRows allTasks={allTasks} user={user} usersTasks={usersTasks} state={this.state} onSortChange={this.onSortChange} />
           <Progress allTasks={allTasks} allRecruits={allRecruits} handleClickDash={this.handleClickDash} tasksRecruit={tasksRecruit} user={user} usersTasks={usersTasks}/>
         </div>
@@ -250,23 +277,33 @@ class DashboardContainer extends React.Component {
 const mapStateToProps = (state, ownProps) => ({
   allTasks: state.task.allTasks,
   allRecruits: state.recruit.recruits,
+  allRecruitsDash: state.recruit.recruitsDash,
   allDisciplines: state.disciplines.disciplines,
   allUsers: state.user.users,
   usersTasks: state.task.tasks,
   allTasksDash: state.task.allTasksDash,
+  allTaskDash3: state.task.allTasksDash3,
   user: state.login.user,
-  tasksRecruit:state.task.tasksRecruit,
+  tasksRecruit: state.task.tasksRecruit,
+  tasksDash: state.task.taskDash,
+  taskDash3: state.task.taskDash3,
+  recruitsDashRegular: state.recruit.recruitsDashRegular
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     searchAllTasks: () => dispatch(searchAllTasks()),
     searchRecruits: () => dispatch(searchRecruits()),
+    searchRecruits2: () => dispatch(searchRecruits2()),
     searchDisciplines: () => dispatch(searchDisciplines()),
     fetchUsers: () => dispatch(fetchUsers()),
     searchTasks: (userId) => dispatch(searchTasks(userId)),
     searchAllTasksDash: () => dispatch(searchAllTasksDash()),
-    searchTasksRecruits: (id) => dispatch(searchTasksRecruits(id))
+    searchTasksRecruits: (id) => dispatch(searchTasksRecruits(id)),
+    searchTasksDash: (id) => dispatch(searchTasksDash(id)),
+    searchTasksDash3: (id) => dispatch(searchTasksDash3(id)),
+    searchAllTasksDash3: () => dispatch(searchAllTasksDash3()),
+    searchRecruits2Regular: () => dispatch(searchRecruits2Regular())
   }
 }
 
