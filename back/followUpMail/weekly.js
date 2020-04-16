@@ -16,18 +16,6 @@ const sendMail = function (objMail) {
         }
     });
 
-    // transporter.use("compile", hbs({
-    //     viewEngine: {
-    //         extName: '.hbs',
-    //         partialsDir: '../views/',
-    //         defaultLayout: false
-    //     },
-    //     viewPath: '../views/',
-    //     extName: ".hbs"
-    // }))
-
-
-
     const followUpMail = {
         from: "endavaOnBoard@gmail.com",
         to: `${objMail.email}`,
@@ -43,7 +31,7 @@ const sendMail = function (objMail) {
 
          --------------------------------------------------------
 
-        The status of your ongoing tasks is the following:
+        The status of your unfinished tasks is the following:
 
          - Amount of tasks near to due date: ${objMail.nearDueDateTask}.
          - Amount of expired tasks: ${objMail.expiredTask}.
@@ -51,14 +39,6 @@ const sendMail = function (objMail) {
         Please check the status of all your tasks in the ON BOARD APP.
 
         `
-        // template: "taskAssigned",
-        // context: {
-        //     name: `${name}`,
-        //     lastName: `${lastName}`,
-        //     email: `${email}`
-        // }
-
-
     };
     transporter.sendMail(followUpMail, function (error, info) {
         if (error) {
@@ -142,7 +122,7 @@ const weeklyEmail = () => {
                         })
                 })
             })
-    }, 5000)  // ojo con el tiempo
+    }, 5000)
 }
 // weeklyEmail()
 
