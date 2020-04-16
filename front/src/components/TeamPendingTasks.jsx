@@ -9,7 +9,7 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks, user, state,
         <Fragment>
             <div class="card-body rgba-black-light white-text z-depth-1">
                 <div style={{ textAlign: "center", marginTop: "3%" }} >
-                    <h1>TEAM PENDING TASKS</h1>
+                    <h1 className="componentTitle">TEAM PENDING TASKS</h1>
                 </div>
                 <br />
                 <div>

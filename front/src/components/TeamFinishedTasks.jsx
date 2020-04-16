@@ -10,7 +10,7 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks, state, onSor
         <Fragment>
             <div class="card-body rgba-black-light white-text z-depth-1">
                 <div style={{ textAlign: "center", marginTop: "3%" }} >
-                    <h1>TEAM FINISHED TASKS</h1>
+                    <h1 className="componentTitle">TEAM FINISHED TASKS</h1>
                 </div>
                 <br />
                 <div>
@@ -58,6 +58,7 @@ export default ({ handleSearchInputS, handleSearchInputT, allTasks, state, onSor
                             </thead>
                             <tbody>
                                 {orden.map((task) => {
+                                    if (task.finishDate.length>10) task.finishDate=task.finishDate.substr(0,10)
                                     return (
                                         <>
                                             {(task.state == "finished") ? (

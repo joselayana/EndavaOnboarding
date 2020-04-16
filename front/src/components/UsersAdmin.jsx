@@ -10,7 +10,7 @@ export default ({ users, handleProfile, handleSearchInput, redirection, onSortCh
         {(users.length) ?
           (
             <div className="div1Users" >
-              <h1 className="titleSection">Users</h1>
+              <h1 className="titleSection componentTitle">MANAGE USERS PROFILE</h1>
               <br />
               <div className="container box_container5 margen" >
                 <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
