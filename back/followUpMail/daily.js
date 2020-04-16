@@ -94,7 +94,7 @@ const dailyEmail = () => {
                                 let objMail = {
                                     name: user.name,
                                     lastName: user.lastName,
-                                    email: "lauralimonmolina@gmail.com", //user.email,
+                                    email: "ccolamarinofracas@gmail.com", //user.email,
                                     newHire: `${task.recruit.name} ${task.recruit.lastName}`,
                                     taskName: task.task.description,
                                     dueDate: task.dueDate.split("-").reverse().join("/"),

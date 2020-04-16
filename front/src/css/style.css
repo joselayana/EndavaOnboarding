@@ -910,3 +910,27 @@ color: #fff;
 font-weight: 300;
 margin-bottom: 10%;
 }
+.referencia
+{
+  font-weight: 400;
+}
+
+.taskTitle
+{
+  text-align: left;
+  font-size: 38px;
+  font-weight:300;
+  color:#48545B;
+}
+
+.fa-info-circle:before {
+  content: "\f05a";
+  margin-right: 18px;
+  color: #285078;
+}
+
+.cardTitle5
+{
+color:#48545B;
+font-weight:400;
+}

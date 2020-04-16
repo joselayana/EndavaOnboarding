@@ -10,7 +10,7 @@ export default ({ state, user, handleSearchInput, tasks, handleChange, handleCli
         <Fragment>
             <div class="card-body rgba-black-light white-text z-depth-1">
                 <div style={{ textAlign: "center", marginTop: "3%" }} >
-                    <h1 className="componentTitle" >MY PENDING TASKS</h1>
+                    <h1 className="componentTitle" >MY TASKS</h1>
                 </div>
                 <br />
                 <div>

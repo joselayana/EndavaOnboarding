@@ -109,7 +109,7 @@ const weeklyEmail = () => {
                             let objMail = {
                                 name: user.name,
                                 lastName: user.lastName,
-                                email: "lauralimonmolina@gmail.com", //user.email,
+                                email: "ccolamarinofracas@gmail.com", //user.email,
                                 pendingTask: input.pending,
                                 onGoingTask: input.onGoing,
                                 finishedTask: input.finished,
