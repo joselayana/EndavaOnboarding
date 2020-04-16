@@ -42,7 +42,7 @@ export default ({ user, onLogout, path }) => {
                       <>
                         {(user.isAdmin) ? (
                           <>
-                            <a className="linkInternos" href={`/TeamPendingTasks/${user.id}`}  > Team pending tasks</a>
+                            <a className="linkInternos" href={`/TeamPendingTasks/${user.id}`}  > Team unfinished tasks</a>
                             <a className="linkInternos" href={`/TeamFinishedTasks/${user.id}`}  > Team finished tasks</a>
                             <a className="linkInternos" href={"/AddOrEditAvailableTasks"}  > Add or edit available tasks</a>
 
@@ -61,7 +61,7 @@ export default ({ user, onLogout, path }) => {
                         <>
                           {(user.isAdmin) ? (
                             <>
-                              <a className="linkInternos" href={`/TeamPendingTasks/${user.id}`}  > Team pending tasks</a>
+                              <a className="linkInternos" href={`/TeamPendingTasks/${user.id}`}  > Team unfinished tasks</a>
                               <a className="linkInternos" href={`/TeamFinishedTasks/${user.id}`}  > Team finished tasks</a>
                               <a className="linkInternos" href={"/AddOrEditAvailableTasks"}  > Add or edit available tasks</a>
 
