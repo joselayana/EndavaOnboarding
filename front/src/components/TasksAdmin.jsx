@@ -430,17 +430,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
                           Please check the task's description
                         </div>
                       ) : null}
-
-
-
-
-
-
-
-
-
-
-
                     </div>
                   </div>
                 </div>
@@ -455,7 +444,6 @@ export default ({ handleSubmit, handleSearchInput, handleSearchTaskList, handleS
           null
         )
       }
-
     </Fragment >
   )
 }

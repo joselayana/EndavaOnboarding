@@ -26,7 +26,6 @@ class SingleRecruitAddTaskContainer extends React.Component {
     handleSubmit(e) {
         e.preventDefault()
         if (this.state.taskDescription && this.state.responsable && this.state.dueDate) {
-            //this.props.setErrorFields()   laura limon molina (155)
             let idUser;
             let idTask;
             this.props.userOptions.map((user) => {
@@ -40,9 +39,6 @@ class SingleRecruitAddTaskContainer extends React.Component {
             this.props.createTaskRecruit(obj)
         } else {
             alert("You must complete all the fields")
-            // const recruitId = this.props.match.params.recruitId
-            // //this.props.setErrorFields()
-            // this.props.searchTasksRecruits(recruitId)
         }
     }
 
@@ -51,10 +47,10 @@ class SingleRecruitAddTaskContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        if (!this.props.user.isAdmin && this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <div>

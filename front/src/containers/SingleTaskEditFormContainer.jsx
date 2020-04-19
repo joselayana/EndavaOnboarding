@@ -6,8 +6,6 @@ import { updateTaskState, searchSingleTaskRecruit } from "../redux/actions/tasks
 
 import SingleTaskEditForm from "../components/SingleTaskEditForm"
 
-
-
 class SingleTaskEditFormContainer extends React.Component {
     constructor() {
         super()

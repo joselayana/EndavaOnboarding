@@ -3,8 +3,6 @@ import { Link } from "react-router-dom"
 import "../css/style.css"
 import SingleRecruitAddTaskContainer from "../containers/SingleRecruitAddTaskContainer"
 
-
-
 export default ({ name, handlerClick, handleDeleteRecruit, tasksRecruit }) => {
     let indice = 0
 
@@ -24,7 +22,6 @@ export default ({ name, handlerClick, handleDeleteRecruit, tasksRecruit }) => {
                                             <th scope="col">Due Date</th>
                                             <th scope="col">State</th>
                                             <th scope="col">Coments</th>
-
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -41,13 +38,11 @@ export default ({ name, handlerClick, handleDeleteRecruit, tasksRecruit }) => {
                                                     <td className="align-middle">{dueDate}</td>
                                                     <td className="align-middle">{task.state}</td>
                                                     <td className="align-middle">{task.comment}</td>
-
                                                 </tr>
                                             )
                                         })}
                                     </tbody>
                                 </table>
-
                             </>
                         ) : (
                                 <div style={{ padding: "3%" }}>

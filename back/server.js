@@ -26,11 +26,6 @@ app.use(session({
   secret: "cats",
   resave: false,
   saveUninitialized: false
-  // resave: true, // Guarda la sesion por mas que no haya sido modificada
-  //saveUninitialized: true, // Cuando iniciamos sesion en una App, si modificamos algo y nno guardamos nada, se va a guardar la sesion
-  //cookie: {
-  //   secure: true // Nos indica que la COOKIE es segura, y puede vincularse mediante las sesiones del protocolo HTTP.
-  // }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -74,7 +69,6 @@ app.get('/*', (req, res) => {
 db.sync({
   logging: false,
   force: false
-
 
 })
   .then(function () {

@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import "../css/style.css"
 
 export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
-  if(disciplinesOptions.length > 0){
-  return(
+  if (disciplinesOptions.length > 0) {
+    return (
       <div className="form-container">
         <div className="card-body mx-auto">
           <h4 className="card-title mt-3 text-center title">Sign Up</h4>
@@ -39,9 +39,9 @@ export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
 
               <select onChange={handleChange} value={state.discipline} selected="" name="discipline" className="form-control border1">
                 <option className="border1">Select Discipline</option>
-                  {disciplinesOptions.map((disciplinesOption) => (
-                    <option key={disciplinesOption.id} className="border1">{disciplinesOption.description}</option>
-                  ))}
+                {disciplinesOptions.map((disciplinesOption) => (
+                  <option key={disciplinesOption.id} className="border1">{disciplinesOption.description}</option>
+                ))}
               </select>
             </div>
 
@@ -57,7 +57,7 @@ export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
               </div>
               <input onChange={handleChange} name="password2" value={state.password2} className="form-control" placeholder="Repeat password" type="password" />
             </div>
-            {/* {state.errorMail ? (
+            {state.errorMail ? (
               <div
                 className="alert alert-danger"
                 style={{
@@ -67,8 +67,8 @@ export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
                 role="alert"
               >
                 The selected email is invalid
-                      </div>
-            ) : null} */}
+              </div>
+            ) : null}
             {state.errorPass ? (
               <div
                 className="alert alert-danger"
@@ -79,7 +79,7 @@ export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
                 role="alert"
               >
                 Both passwords have to be the same!
-                      </div>
+              </div>
             ) : null}
             {state.errorInc ? (
               <div
@@ -91,7 +91,7 @@ export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
                 role="alert"
               >
                 Fill in all the fields
-                      </div>
+              </div>
             ) : null}
 
             <div className="form-group">
@@ -103,10 +103,11 @@ export default ({ handleSubmit, handleChange, state, disciplinesOptions }) => {
           </form>
         </div>
       </div>
-  )} else{
+    )
+  } else {
     return (
       <div class="spinner-border text-danger" role="status" style={{ marginTop: "20%", marginLeft: "50%" }}>
-          <span class="sr-only">Loading...</span>
+        <span class="sr-only">Loading...</span>
       </div>
     )
   }

@@ -32,10 +32,6 @@ class CreateRecruitContainer extends React.Component {
         e.preventDefault();
         if (this.state.name && this.state.lastName && this.state.email && this.state.phone && this.state.DNI && this.state.entryDate && this.state.discipline) {
             let IdDiscipline;
-            // if(this.state.discipline === "Development") IdDiscipline=1
-            // if(this.state.discipline === "Project Manager") IdDiscipline=2
-            // if(this.state.discipline === "Testing") IdDiscipline=3
-            // if(this.state.discipline === "Pdrc") IdDiscipline=4
             this.props.disciplinesOptions.map((discipline) => (this.state.discipline == discipline.description) ? (IdDiscipline = discipline.id) : null)
             let obj = { name: this.state.name, lastName: this.state.lastName, email: this.state.email, phone: this.state.phone, DNI: this.state.DNI, entryDate: this.state.entryDate, userId: this.props.user.id, disciplineId: IdDiscipline }
             this.props.createRecruit(obj)
@@ -50,10 +46,10 @@ class CreateRecruitContainer extends React.Component {
     }
 
     render() {
-        if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        if (!this.props.user.isAdmin && this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <div>
@@ -62,23 +58,23 @@ class CreateRecruitContainer extends React.Component {
                         <SidebarContainer path={this.props.match} />
                     </div>
                     <div class="div2">
-                      <section id="banner_white">
-                        <div className="container box_container">
-                          <div className="row">
+                        <section id="banner_white">
+                            <div className="container box_container">
+                                <div className="row">
 
-                            <div className="col-md-6 text-center">
-                              <img src="images/design/register12.svg" className="img-fluid"/>
+                                    <div className="col-md-6 text-center">
+                                        <img src="images/design/register12.svg" className="img-fluid" />
+                                    </div>
+
+                                    <div className="col-md-6" style={{ backgroundColor: "#f0f3f3" }}>
+                                        <CreateRecruit handleChange={this.handleChange} handleSubmit={this.handleSubmit} disciplinesOptions={this.props.disciplinesOptions} />
+                                    </div>
+
+
+
+                                </div>
                             </div>
-
-                            <div className="col-md-6" style={{backgroundColor:"#f0f3f3"}}>
-                              <CreateRecruit handleChange={this.handleChange} handleSubmit={this.handleSubmit} disciplinesOptions={this.props.disciplinesOptions} />
-                            </div>
-
-
-
-                          </div>
-                        </div>
-                      </section>
+                        </section>
                     </div>
                 </div>
             </div>

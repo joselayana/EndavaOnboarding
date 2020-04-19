@@ -6,33 +6,29 @@ import Chart4Component from "../components/Chart4Component"
 import { searchTasks } from "../redux/actions/tasks"
 
 
-
-
 class Chart4Container extends React.Component {
   constructor() {
     super()
 
   }
 
-
-  handleSubmit(){
+  handleSubmit() {
     const idUserLoged = this.props.user.id
-    console.log("IDDDD", idUserLoged)
     this.props.searchTasks(idUserLoged)
   }
 
   render() {
-    const {  } = this.props;
+    const { } = this.props;
     return (
       <div>
-          <Chart4Component />
+        <Chart4Component />
       </div>
     )
   }
 }
 
 const mapStateToProps = (state, ownProps) => ({
-    user: state.login.user
+  user: state.login.user
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {
