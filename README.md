@@ -17,7 +17,8 @@ Ejecutar el comando node seed.js en el directorio del back, (/back) para realiza
 Cabe destacar que en la carpeta "back" podrán encontrar cuatro archivos mas de seed, los cuales no son indispensables para el funcionamiento de la aplicación. Fueron utilizados para testear el desarrollo.
 
 ### Datos Usuario Administrador
-email: m.gonzalez@endava.com pass: 123
+email: m.gonzalez@endava.com 
+pass: 123
 
 ### Importante:
 Una vez que se encuentren completas todas las tablas de la base de datos, dentro de la carpeta "back/followUpMail" descomentar la ejecución de las funciones para el envìo de mails. Las mismas se encuentran señaladas en la última línea de código de los archivos "daily.js y weekly.js".
