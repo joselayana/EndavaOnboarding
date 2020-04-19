@@ -46,7 +46,7 @@ class DeleteUserContainer extends React.Component {
         const userId = this.props.match.params.userId
         const newUserId = this.props.user.id
         let obj = { userId: userId, newUserId: newUserId, taskState: "finished" }
-        this.props.changeTaskOwner(obj) // en realidad cambia el usuario que dio de alta al new hire
+        this.props.changeTaskOwner(obj)
         this.props.updateTaskRecruit(obj)
         this.props.deleteUser(userId)
             .then(() => this.props.history.push("/users"))
@@ -54,8 +54,6 @@ class DeleteUserContainer extends React.Component {
 
     handleChange(e) {
         this.setState({ [e.target.name]: e.target.value });
-
-
     }
 
     render() {

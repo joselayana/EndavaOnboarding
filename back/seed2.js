@@ -1,8 +1,6 @@
 const { Recruit } = require("./models/index")
 
-// SEED RECRUITS //
 Recruit.create({
-    //id: 1,
     name: "Jose",
     lastName: "Layana",
     email: "jose.layana_@hotmail.com",
@@ -13,7 +11,6 @@ Recruit.create({
     userId: 1
 })
 Recruit.create({
-    //id: 2,
     name: "Laura",
     lastName: "Limon Molina",
     email: "lau@lau.com",
@@ -23,4 +20,3 @@ Recruit.create({
     disciplineId: 2,
     userId: 2
 })
-// ------------------------------------- //

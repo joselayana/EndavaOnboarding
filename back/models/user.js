@@ -46,9 +46,7 @@ User.init({
     },
     fullName: {
         type: Sequelize.VIRTUAL,
-        get(){
-            // const nombre = this.getDataValue("name");
-            // const apellido = this.getDataValue("lastName")
+        get() {
             return `${this.name} ${this.lastName}`
         }
     }

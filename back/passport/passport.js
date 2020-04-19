@@ -22,13 +22,13 @@ passport.use(new LocalStrategy({
                         message: 'Incorrect password.'
                     });
                 }
-                return done(null, user); //ESTA TODO OK!
+                return done(null, user);
             })
             .catch(done);
     }
 ));
 
-// esto es para actualizar el status
+
 
 passport.serializeUser(function (user, done) {
     done(null, user.id);

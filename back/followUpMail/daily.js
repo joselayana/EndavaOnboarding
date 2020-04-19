@@ -57,9 +57,6 @@ const sendMail = function (obj, num) {
     }
 
 
-
-
-
     transporter.sendMail(followUpMail, function (error, info) {
         if (error) {
             console.log(error);
@@ -94,7 +91,7 @@ const dailyEmail = () => {
                                 let objMail = {
                                     name: user.name,
                                     lastName: user.lastName,
-                                    email: "ccolamarinofracas@gmail.com", //user.email,
+                                    email: user.email,
                                     newHire: `${task.recruit.name} ${task.recruit.lastName}`,
                                     taskName: task.task.description,
                                     dueDate: task.dueDate.split("-").reverse().join("/"),
@@ -115,10 +112,9 @@ const dailyEmail = () => {
 
                 })
             })
-    }, 5000)
+    }, 86400000)
 }
-// dailyEmail()
-
+// dailyEmail() activar una vez que estes creados los usuarios e ingresantes con sus respectivas tareas.
 
 
 

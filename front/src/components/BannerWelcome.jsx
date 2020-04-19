@@ -23,8 +23,6 @@ export default () => (
       </div>
       <LandingCards />
       <Footer />
-      {/*  <BannerLog/>*/}
-
     </section>
   </>
 );

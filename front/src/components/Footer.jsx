@@ -1,8 +1,6 @@
 import React from "react";
 import "../css/style.css"
 
-
-
 export default () => (
 
   <footer id="footer" class="page-footer font-small special-color-dark pt-4" >
@@ -28,7 +26,6 @@ export default () => (
       </ul>
 
     </div>
-
     <div class="footer-copyright text-center pt-1">
     </div>
 

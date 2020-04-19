@@ -6,7 +6,7 @@ import SidebarContainer from "../containers/SidebarContainer";
 import { searchTasksRecruits, deleteTaskRecruit } from "../redux/actions/tasks";
 import { searchSingleRecruit, deleteRecruit, singleRecruit } from "../redux/actions/recruits"
 import RecruitsEditDeleteAdd from "../components/RecruitsEditDeleteAdd";
-import { searchAllTasks} from "../redux/actions/tasks";
+import { searchAllTasks } from "../redux/actions/tasks";
 
 
 class RecruitsEditDeleteAddContainer extends React.Component {
@@ -23,7 +23,7 @@ class RecruitsEditDeleteAddContainer extends React.Component {
         this.onSortChange = this.onSortChange.bind(this);
         this.handleDeleteRecruit = this.handleDeleteRecruit.bind(this)
         this.handlerClick = this.handlerClick.bind(this)
-        
+
 
     }
 
@@ -55,45 +55,45 @@ class RecruitsEditDeleteAddContainer extends React.Component {
 
     }
 
-    onSortChange(columna, isDate = false){
-        if(!isDate){
-            if(columna!==this.state.sortCol){
-                if(columna.includes(".")){
-                    this.setState({sortCol: columna})
-                    this.setState({currentSort: "down"})
+    onSortChange(columna, isDate = false) {
+        if (!isDate) {
+            if (columna !== this.state.sortCol) {
+                if (columna.includes(".")) {
+                    this.setState({ sortCol: columna })
+                    this.setState({ currentSort: "down" })
                     let columnaSplit = columna.split(".")
-                    this.setState({sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())})
+                    this.setState({ sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase()) })
                 } else {
-                let col = columna
-                this.setState({sortCol: columna})
-                this.setState({currentSort: "down"})
-                console.log(col)
-                console.log(this.state.sortCol)
-                this.setState({sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())})
+                    let col = columna
+                    this.setState({ sortCol: columna })
+                    this.setState({ currentSort: "down" })
+                    this.setState({ sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase()) })
                 }
             }
-            else{
-            let nextSort;
-            if (this.state.currentSort === 'down') nextSort = 'up';
-            else if (this.state.currentSort === 'up') nextSort = 'down';
-            this.setState({
-                currentSort: nextSort
-            });
+            else {
+                let nextSort;
+                if (this.state.currentSort === 'down') nextSort = 'up';
+                else if (this.state.currentSort === 'up') nextSort = 'down';
+                this.setState({
+                    currentSort: nextSort
+                });
             }
         } else {
-            if(columna!==this.state.sortCol){
+            if (columna !== this.state.sortCol) {
                 let col = columna
-                this.setState({sortCol: columna})
-                this.setState({currentSort: "down"})
-                this.setState({sortTypes: (a, b) => {
-                    let aSpliteado = a[col].split("-")
-                    let bSpliteado = b[col].split("-")
-                    a = new Date(aSpliteado[0],aSpliteado[1],aSpliteado[2]);
-                    b = new Date(bSpliteado[0],bSpliteado[1],bSpliteado[2]);
-                    return a<b ? -1 : a>b ? 1 : 0;
-                }})
+                this.setState({ sortCol: columna })
+                this.setState({ currentSort: "down" })
+                this.setState({
+                    sortTypes: (a, b) => {
+                        let aSpliteado = a[col].split("-")
+                        let bSpliteado = b[col].split("-")
+                        a = new Date(aSpliteado[0], aSpliteado[1], aSpliteado[2]);
+                        b = new Date(bSpliteado[0], bSpliteado[1], bSpliteado[2]);
+                        return a < b ? -1 : a > b ? 1 : 0;
+                    }
+                })
             }
-            else{
+            else {
                 let nextSort;
                 if (this.state.currentSort === 'down') nextSort = 'up';
                 else if (this.state.currentSort === 'up') nextSort = 'down';
@@ -102,24 +102,24 @@ class RecruitsEditDeleteAddContainer extends React.Component {
                 });
             }
         }
-	};
+    };
 
-    render() 
-        {if (this.state.isLoading) {
-        return (
-            <div>
-            <div class="parent">
-                <div class="div1">
-                    <SidebarContainer path={this.props.match} />
+    render() {
+        if (this.state.isLoading) {
+            return (
+                <div>
+                    <div class="parent">
+                        <div class="div1">
+                            <SidebarContainer path={this.props.match} />
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        )
+            )
         }
-        if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        if (!this.props.user.isAdmin && this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <div>

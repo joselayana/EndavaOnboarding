@@ -47,13 +47,6 @@ class Main extends React.Component {
       return (
         <Fragment>
           <NavbarContainer />
-          {/* <Loader
-          type="Puff"
-          color="#00BFFF"
-          height={100}
-          width={100}
-          timeout={3000}
-          /> */}
         </Fragment>
       )
     }
@@ -65,7 +58,6 @@ class Main extends React.Component {
           <Route exact path="/register" component={BannerRegisterContainer} />
           <Route exact path="/home" component={AdminLandingCardsContainer} />
           {/* Tasks */}
-          {/* <Route exact path="/myTasks/:userId" component={TasksAdminContainer} /> */}
           <Route exact path="/myPendingTasks/:userId" component={MyPendingTasksContainer} />
           <Route exact path="/myFinishedTasks/:userId" component={MyFinishedTasksContainer} />
           <Route exact path="/TeamPendingTasks/:userId" component={TeamPendingTasksContainer} />
@@ -84,7 +76,7 @@ class Main extends React.Component {
           <Route exact path="/deleteUser/:userId" component={DeleteUserContainer} />
           {/* Dashboar       */}
           <Route exact path="/dashboard/:userId" component={DashboardContainer} />
-          
+
           <Redirect from="/" to="/" />
         </Switch>
 

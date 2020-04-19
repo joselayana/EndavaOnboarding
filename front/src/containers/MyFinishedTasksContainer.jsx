@@ -45,8 +45,6 @@ class MyFinishedTasksContainer extends React.Component {
                     let col = columna
                     this.setState({ sortCol: columna })
                     this.setState({ currentSort: "down" })
-                    console.log(col)
-                    console.log(this.state.sortCol)
                     this.setState({ sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase()) })
                 }
             }
@@ -99,14 +97,6 @@ class MyFinishedTasksContainer extends React.Component {
                     </div>
                 </div>
             </Fragment>
-
-
-
-
-
-
-
-
         )
     }
 }

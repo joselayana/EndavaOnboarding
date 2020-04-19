@@ -82,26 +82,11 @@ router.get("/logout", function (req, res) {
 
 router.get("/check", loggedUser)
 
-/*
-<<<<<<< Este es el midelware de passport que vamos a usar mas adelante >>>>>>>
-
-function isLogedIn(req, res, next) {
-    if (req.session.passport.user) {
-        next();
-    } else {
-        console.log("no se logueo")
-    }
-}
-
-*/
 
 router.get("/allUsers", (req, res) => {
     const Op = Sequelize.Op
     if (req.query.s) {
         User.findAll({
-            // where: {
-            //     fullName: { [Op.iLike]: `%${req.query.s}%` }
-            // },
             include: [
                 { model: Discipline }
             ]
@@ -113,7 +98,7 @@ router.get("/allUsers", (req, res) => {
                 let queryMin = query.toLowerCase()
                 return fullNameMin.includes(queryMin)
             }))
-            .then(users => { console.log(users), res.status(200).json(users) })
+            .then(users => res.status(200).json(users))
     } else {
         User.findAll({
             include: [

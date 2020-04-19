@@ -38,45 +38,45 @@ class TeamPendingTasksContainer extends React.Component {
         const busqueda = e.target.value;
         (busqueda.length >= 2) ? this.props.searchAllTasks(busqueda, 2) : this.props.searchAllTasks()
     }
-    onSortChange(columna, isDate = false){
-        if(!isDate){
-            if(columna!==this.state.sortCol){
-                if(columna.includes(".")){
-                    this.setState({sortCol: columna})
-                    this.setState({currentSort: "down"})
+    onSortChange(columna, isDate = false) {
+        if (!isDate) {
+            if (columna !== this.state.sortCol) {
+                if (columna.includes(".")) {
+                    this.setState({ sortCol: columna })
+                    this.setState({ currentSort: "down" })
                     let columnaSplit = columna.split(".")
-                    this.setState({sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())})
+                    this.setState({ sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase()) })
                 } else {
-                let col = columna
-                this.setState({sortCol: columna})
-                this.setState({currentSort: "down"})
-                console.log(col)
-                console.log(this.state.sortCol)
-                this.setState({sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())})
+                    let col = columna
+                    this.setState({ sortCol: columna })
+                    this.setState({ currentSort: "down" })
+                    this.setState({ sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase()) })
                 }
             }
-            else{
-            let nextSort;
-            if (this.state.currentSort === 'down') nextSort = 'up';
-            else if (this.state.currentSort === 'up') nextSort = 'down';
-            this.setState({
-                currentSort: nextSort
-            });
+            else {
+                let nextSort;
+                if (this.state.currentSort === 'down') nextSort = 'up';
+                else if (this.state.currentSort === 'up') nextSort = 'down';
+                this.setState({
+                    currentSort: nextSort
+                });
             }
         } else {
-            if(columna!==this.state.sortCol){
+            if (columna !== this.state.sortCol) {
                 let col = columna
-                this.setState({sortCol: columna})
-                this.setState({currentSort: "down"})
-                this.setState({sortTypes: (a, b) => {
-                    let aSpliteado = a[col].split("-")
-                    let bSpliteado = b[col].split("-")
-                    a = new Date(aSpliteado[0],aSpliteado[1],aSpliteado[2]);
-                    b = new Date(bSpliteado[0],bSpliteado[1],bSpliteado[2]);
-                    return a<b ? -1 : a>b ? 1 : 0;
-                }})
+                this.setState({ sortCol: columna })
+                this.setState({ currentSort: "down" })
+                this.setState({
+                    sortTypes: (a, b) => {
+                        let aSpliteado = a[col].split("-")
+                        let bSpliteado = b[col].split("-")
+                        a = new Date(aSpliteado[0], aSpliteado[1], aSpliteado[2]);
+                        b = new Date(bSpliteado[0], bSpliteado[1], bSpliteado[2]);
+                        return a < b ? -1 : a > b ? 1 : 0;
+                    }
+                })
             }
-            else{
+            else {
                 let nextSort;
                 if (this.state.currentSort === 'down') nextSort = 'up';
                 else if (this.state.currentSort === 'up') nextSort = 'down';
@@ -85,7 +85,7 @@ class TeamPendingTasksContainer extends React.Component {
                 });
             }
         }
-	};
+    };
 
     render() {
         if (!this.props.user.isAdmin && this.props.user.name) {

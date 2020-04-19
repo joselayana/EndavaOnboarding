@@ -9,8 +9,6 @@ export default () => (
 
 			<div className="row">
 				<div className="col-md-12">
-					{/*}<p className="banner-title4">ON BOARD SECTIONS</p>
-				<p className="banner-subtitle4">Find out all that you can do with your On Board account! </p>*/}
 				</div>
 			</div>
 
@@ -51,12 +49,7 @@ export default () => (
 					</div>
 
 				</div>
-
-
-
 			</div>
-
 		</div>
-
 	</section>
 )

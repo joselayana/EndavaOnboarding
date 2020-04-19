@@ -7,10 +7,9 @@ import SingleRecruitAddTaskContainer from "../containers/SingleRecruitAddTaskCon
 
 export default ({ state, recruits, handleSearchInput, onSortChange, handleDeleteRecruit, handlerClick, allTasks }) => {
   let indice = 0
-  let orden =state.currentSort==="down" ? [...recruits].sort(state.sortTypes) : [...recruits].sort(state.sortTypes).reverse()
+  let orden = state.currentSort === "down" ? [...recruits].sort(state.sortTypes) : [...recruits].sort(state.sortTypes).reverse()
   return (
     <div style={{ padding: "3%" }}>
-
 
       <h1 className="componentTitle">Manage New Hires</h1>
       <br />
@@ -27,24 +26,24 @@ export default ({ state, recruits, handleSearchInput, onSortChange, handleDelete
             <thead>
               <tr className="table1">
                 <th scope="col">#</th>
-                <th scope="col"><div onClick={() => onSortChange("name")}>Name 
+                <th scope="col"><div onClick={() => onSortChange("name")}>Name
                         {(state.sortCol === "name") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                <th scope="col"><div onClick={() => onSortChange("lastName")}>Last Name 
+                    : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                </div></th>
+                <th scope="col"><div onClick={() => onSortChange("lastName")}>Last Name
                         {(state.sortCol === "lastName") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>: ""}
-                        </div></th>
-                <th scope="col"><div onClick={() => onSortChange("discipline.description")}>Discipline 
+                    : <i class="far fa-arrow-alt-circle-up"></i> : ""}
+                </div></th>
+                <th scope="col"><div onClick={() => onSortChange("discipline.description")}>Discipline
                         {(state.sortCol === "discipline.description") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>
-                        : ""}
-                        </div></th>
-                <th scope="col"><div onClick={() => onSortChange("entryDate", true)}>Entry Date 
+                    : <i class="far fa-arrow-alt-circle-up"></i>
+                    : ""}
+                </div></th>
+                <th scope="col"><div onClick={() => onSortChange("entryDate", true)}>Entry Date
                         {(state.sortCol === "entryDate") ? state.currentSort === "down" ? <i class="far fa-arrow-alt-circle-down"></i>
-                        : <i class="far fa-arrow-alt-circle-up"></i>
-                        : ""}
-                        </div></th>
+                    : <i class="far fa-arrow-alt-circle-up"></i>
+                    : ""}
+                </div></th>
                 <th scope="col" className="centerText">Edit</th>
                 <th scope="col" className="centerText">Add Tasks</th>
                 <th scope="col" className="centerText">Delete</th>
@@ -57,7 +56,7 @@ export default ({ state, recruits, handleSearchInput, onSortChange, handleDelete
                 let fechaArray = recruit.entryDate.split("-")
                 let fechaOrdenada = fechaArray.reverse()
                 let dateOfEntry = fechaOrdenada.join("/")
-                allRecruitTasks[`${recruit.id}`] = allTasks.map(task => {if(task.recruit.id === recruit.id) return task})
+                allRecruitTasks[`${recruit.id}`] = allTasks.map(task => { if (task.recruit.id === recruit.id) return task })
                 indice = indice + 1
                 return (
                   <tr key={recruit.id}>
@@ -70,23 +69,23 @@ export default ({ state, recruits, handleSearchInput, onSortChange, handleDelete
                     <td className="align-middle centerText"><Link to={`/manageRecruits/tasks/${recruit.id}`}><i class="fas fa-plus"></i></Link></td>
                     <td className="align-middle centerText"><button type="button" className=" btn btn-link " data-toggle="modal" data-target={`#delete${recruit.id}`}><i class="fas fa-trash"></i></button></td>
                     <div className="modal fade" id={`delete${recruit.id}`} tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                        <div className="modal-dialog modal-dialog-centered" role="document">
-                            <div className="modal-content">
-                                <div className="modal-header">
-                                    <h5 className="modal-title" id="exampleModalCenterTitle">Delete new hire request</h5>
-                                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div className="modal-body">
-                                    <p>Do you want to delete {recruit.name} {recruit.lastName}?</p>
-                                </div>
-                                <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
-                                    <button onClick={() => handleDeleteRecruit(recruit.id)} data-dismiss="modal" type="button" className="btn btn-primary">Yes</button>
-                                </div>
-                            </div>
+                      <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                          <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalCenterTitle">Delete new hire request</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                              <span aria-hidden="true">&times;</span>
+                            </button>
+                          </div>
+                          <div className="modal-body">
+                            <p>Do you want to delete {recruit.name} {recruit.lastName}?</p>
+                          </div>
+                          <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">No</button>
+                            <button onClick={() => handleDeleteRecruit(recruit.id)} data-dismiss="modal" type="button" className="btn btn-primary">Yes</button>
+                          </div>
                         </div>
+                      </div>
                     </div>
                   </tr>
                 )
@@ -96,12 +95,6 @@ export default ({ state, recruits, handleSearchInput, onSortChange, handleDelete
         </div>
       </div>
 
-      {/* <h1 style={{ marginTop: "50px" }}></h1>
-      <div className="container box_container2">
-        <p>Want to add a new hire?</p>
-        <label></label>
-        <Link to="/newRecruit"><button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#1d57a8", borderColor: "#1d57a8" }}>Create a New Hire</button></Link>
-      </div> */}
     </div>
   )
 }

@@ -7,7 +7,6 @@ import SidebarContainer from "./SidebarContainer"
 
 import { searchTasksList, createTask } from "../redux/actions/tasks"
 
-
 class AddOrEditAvailableTaskContainer extends React.Component {
     constructor() {
         super()
@@ -54,10 +53,6 @@ class AddOrEditAvailableTaskContainer extends React.Component {
         const busqueda = e.target.value;
         (busqueda.length >= 2) ? this.props.searchTasksList(busqueda) : this.props.searchTasksList()
     }
-
-
-
-
 
     render() {
 

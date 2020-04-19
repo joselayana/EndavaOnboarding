@@ -11,7 +11,6 @@ export default ({ state, recruits, handleSearchInput, onSortChange }) => {
       <div style={{ textAlign: "center", marginTop: "3%" }} >
         <h1 className="componentTitle">ALL NEW HIRES</h1>
       </div>
-
       <br />
       <div className="container box_container2 margen">
         <form class="form-inline d-flex justify-content-center md-form form-sm active-cyan-2 mt-2 ">
@@ -75,13 +74,6 @@ export default ({ state, recruits, handleSearchInput, onSortChange }) => {
           </table>
         </div>
       </div>
-
-      {/* <h1 style={{ marginTop: "50px" }}></h1>
-      <div className="container box_container2">
-        <p>Want to add a new hire?</p>
-        <label></label>
-        <Link to="/newRecruit"><button className="btn btn-info btn-block mb-2" style={{ backgroundColor: "#1d57a8", borderColor: "#1d57a8" }}>Create a New Hire</button></Link>
-      </div> */}
     </div>
   )
 }

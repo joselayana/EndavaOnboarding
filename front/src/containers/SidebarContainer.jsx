@@ -23,9 +23,6 @@ class sidebarContainer extends React.Component {
             </>
 
         )
-
-
-
     }
 
 }
@@ -41,8 +38,5 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         logout: () => dispatch(logout()),
     }
 }
-
-
-
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(sidebarContainer))

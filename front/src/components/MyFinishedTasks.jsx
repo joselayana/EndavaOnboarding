@@ -1,9 +1,6 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 
-
-
-
 export default ({ state, tasks, handleSearchInput, user, onSortChange }) => {
     let indice = 0
     let orden = state.currentSort === "down" ? [...tasks].sort(state.sortTypes) : [...tasks].sort(state.sortTypes).reverse()
@@ -50,7 +47,7 @@ export default ({ state, tasks, handleSearchInput, user, onSortChange }) => {
                             </thead>
                             <tbody>
                                 {orden.map((task) => {
-                                    if (task.finishDate.length>10) task.finishDate=task.finishDate.substr(0,10)
+                                    if (task.finishDate.length > 10) task.finishDate = task.finishDate.substr(0, 10)
                                     return (
                                         <>
                                             {(task.state == "finished") ? (

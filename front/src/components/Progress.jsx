@@ -7,16 +7,13 @@ import SingleRecruitDashboardRegularUser from "./SingleRecruitDashboardRegularUs
 export default ({allTasks,allRecruits, handleClickDash, tasksRecruit,user, usersTasks}) => {
 
   if(allTasks.length && allRecruits.length && user.id && usersTasks){
-
    if(user.isAdmin===true){
-
      return(
-
          <div className="parentProgress">
            <div className="div1Progress">
              <div className="box_container4" > 
                <h5 class="card-title2 card-title3">NEW HIRES ONBOARDING PROCESS</h5>
-
+               
                 {allRecruits.map((recruit)=>{
                   let recruitTasks=[];
                   let finishedTasks=[];

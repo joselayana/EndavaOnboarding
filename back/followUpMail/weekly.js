@@ -109,7 +109,7 @@ const weeklyEmail = () => {
                             let objMail = {
                                 name: user.name,
                                 lastName: user.lastName,
-                                email: "ccolamarinofracas@gmail.com", //user.email,
+                                email: user.email,
                                 pendingTask: input.pending,
                                 onGoingTask: input.onGoing,
                                 finishedTask: input.finished,
@@ -122,9 +122,9 @@ const weeklyEmail = () => {
                         })
                 })
             })
-    }, 5000)
+    }, 2592000000)
 }
-// weeklyEmail()
+// weeklyEmail()     activar una vez que estes creados los usuarios e ingresantes con sus respectivas tareas.
 
 
 

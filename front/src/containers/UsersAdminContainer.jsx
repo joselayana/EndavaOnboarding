@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect} from "react";
+import React, { Fragment, useEffect } from "react";
 import { withRouter, Redirect } from "react-router-dom";
 import { connet, connect } from "react-redux";
 import UsersAdmin from "../components/UsersAdmin";
@@ -10,7 +10,7 @@ class UsersAdminContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            busqueda:"",
+            busqueda: "",
             sortCol: "name",
             sortTypes: (a, b) => a.name.toLowerCase().localeCompare(b.name.toLowerCase()),
             currentSort: 'down',
@@ -42,38 +42,36 @@ class UsersAdminContainer extends React.Component {
     redirection(userId) {
         this.props.history.push(`/deleteUser/${userId}`)
     }
-    onSortChange(columna){
-        if(columna!==this.state.sortCol){
-            if(columna.includes(".")){
-                this.setState({sortCol: columna})
-                this.setState({currentSort: "down"})
+    onSortChange(columna) {
+        if (columna !== this.state.sortCol) {
+            if (columna.includes(".")) {
+                this.setState({ sortCol: columna })
+                this.setState({ currentSort: "down" })
                 let columnaSplit = columna.split(".")
-                this.setState({sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase())})
+                this.setState({ sortTypes: (a, b) => a[columnaSplit[0]][columnaSplit[1]].toLowerCase().localeCompare(b[columnaSplit[0]][columnaSplit[1]].toLowerCase()) })
             } else {
-            let col = columna
-            this.setState({sortCol: columna})
-            this.setState({currentSort: "down"})
-            console.log(col)
-            console.log(this.state.sortCol)
-            this.setState({sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase())})
+                let col = columna
+                this.setState({ sortCol: columna })
+                this.setState({ currentSort: "down" })
+                this.setState({ sortTypes: (a, b) => a[col].toLowerCase().localeCompare(b[col].toLowerCase()) })
             }
         }
-        else{
-        let nextSort;
-		if (this.state.currentSort === 'down') nextSort = 'up';
-		else if (this.state.currentSort === 'up') nextSort = 'down';
-		this.setState({
-			currentSort: nextSort
-        });
+        else {
+            let nextSort;
+            if (this.state.currentSort === 'down') nextSort = 'up';
+            else if (this.state.currentSort === 'up') nextSort = 'down';
+            this.setState({
+                currentSort: nextSort
+            });
         }
-	};
+    };
 
 
     render() {
-        if(!this.props.user.isAdmin && this.props.user.name){
-            return <Redirect to={{pathname: `/dashboard/${this.props.user.id}`}}/>
+        if (!this.props.user.isAdmin && this.props.user.name) {
+            return <Redirect to={{ pathname: `/dashboard/${this.props.user.id}` }} />
         } else if (!this.props.user.name) {
-            return <Redirect to={{pathname: "/login"}}/>
+            return <Redirect to={{ pathname: "/login" }} />
         }
         return (
             <Fragment>
