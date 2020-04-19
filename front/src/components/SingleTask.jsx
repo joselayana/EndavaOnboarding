@@ -12,7 +12,7 @@ export default ({ selectedTask, user }) => {
                                 <div className="col-md-6" style={{ backgroundColor: "#fff" }}>
                                     <div className="form-container">
                                         <div className="card-body mx-auto">
-                                            <p className="mt-3 taskTitle"> <i class="fas fa-info-circle"></i>Recruit Information</p>
+                                            <p className="mt-3 taskTitle"> <i class="fas fa-info-circle"></i>New Hire Information</p>
                                             <p className="text-left subtitle"><span className="referencia">Name:</span> {selectedTask.recruit.name} {selectedTask.recruit.lastName}</p>
                                             <p className="text-left subtitle"><span className="referencia">Email:</span> {selectedTask.recruit.email}</p>
                                             <p className="text-left subtitle"><span className="referencia">Phone Number:</span> {selectedTask.recruit.phone}</p>
