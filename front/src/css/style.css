@@ -23,7 +23,6 @@ body
 .navbar
 {
   background-color:#fff;
-  /* background-image:linear-gradient(to right,#f0f3f3, #f0f3f3); */
 }
 .navbar-brand img
 {
@@ -67,59 +66,6 @@ body
 {
   color:#48545b
 }
-
-/*
-/*-----------sidebar------------
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  padding: 0 !important;
-  background: #303030;
-  height: calc(100vh - 56px);
-  width: inherit;
-  overflow-y: auto;
-  border-right: 2px solid #555;
-}
-
-  .sidebar::-webkit-scrollbar{
-    width: 10px;
-    background-color: #222;
-  }
-  .sidebar::-webkit-scrollbar-thumb{
-    background-color: black;
-    /* -webkit-border-radius: 1ex;
-  }
-  .sidebar .logo {
-    width: 100%;
-    padding: 15px;
-  }
-  .sidebar section > * {
-    padding: 0 15px;
-   }
-  .sidebar .menu-item {
-    padding-left: 0px;
-   }
-    .sidebar .menu-item a {
-      transition: border-left, 0.2s;
-      padding-left: 15px;
-      color: #c8c8c8;
-    }
-      .sidebar .menu-item a:hover {
-        color: white;
-      }
-    .sidebar .menu-item a.active, .sidebar .menu-item a:hover {
-      border-left: 3px solid #00bc8c;
-    }
-
-
- */
-
-
-
-
-
-
 
 
 /*-----------WelcomeLogin------------*/
@@ -412,6 +358,7 @@ width: 94% !important
 }
 
 /* Color Theme Swatches in Hex */
+
 /*rojo endava*/
 .EndavaDash3-1-hex { background-color: #C31900; }
 /*coral endava*/
@@ -588,35 +535,10 @@ width: 94% !important
   color: #f0f3f3;
 }
 
-/* .wrapper .sidebar .social_media{
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-} */
 
 .social_media{
-  /* bottom: 6%; */
-  /* left: 45%; */
-  /* transform: translateX(-50%); */
   display: flex;
 }
-
-
-
-/* .wrapper .sidebar .social_media {
-  display: block;
-  width: 40px;
-  background: #594f8d;
-  height: 40px;
-  line-height: 45px;
-  text-align: center;
-  margin: 0 5px;
-  color: #bdb8d7;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-} */
 
 .wrapper .main_content{
   width: 100%;
@@ -697,17 +619,6 @@ margin-top:20px;
 .div4Graph { grid-area: 2 / 7 / 3 / 13; }
 .div5Graph { grid-area: 1 / 1 / 2 / 13; }
 
-/* .parent {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
-}
-  
-.div1 { grid-area: 1 / 1 / 2 / 13; }
-.div2 { grid-area: 2 / 1 / 3 / 7; }
-.div3 { grid-area: 2 / 7 / 3 / 13; }  */
 
 .parentDash {
 display: grid;
@@ -761,7 +672,36 @@ grid-row-gap: 0px;
 
 
   /*-----------AdminLandingCards------------*/
-
+  .welcome
+  {
+  color: #fff;
+  font-weight: 300;
+  margin-bottom: 10%;
+  }
+  .referencia
+  {
+    font-weight: 400;
+  }
+  
+  .taskTitle
+  {
+    text-align: left;
+    font-size: 38px;
+    font-weight:300;
+    color:#48545B;
+  }
+  
+  .fa-info-circle:before {
+    content: "\f05a";
+    margin-right: 18px;
+    color: #285078;
+  }
+  
+  .cardTitle5
+  {
+  color:#48545B;
+  font-weight:400;
+  }
   .box_container4
   {
     background: #fff;
@@ -904,33 +844,3 @@ color:#48545b
   color:#c31900!important
 }
 
-.welcome
-{
-color: #fff;
-font-weight: 300;
-margin-bottom: 10%;
-}
-.referencia
-{
-  font-weight: 400;
-}
-
-.taskTitle
-{
-  text-align: left;
-  font-size: 38px;
-  font-weight:300;
-  color:#48545B;
-}
-
-.fa-info-circle:before {
-  content: "\f05a";
-  margin-right: 18px;
-  color: #285078;
-}
-
-.cardTitle5
-{
-color:#48545B;
-font-weight:400;
-}
